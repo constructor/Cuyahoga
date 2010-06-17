@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionNotAllowedException" xml:space="preserve">
+    <value>De opgevraagde actie is niet toegestaan.</value>
+  </data>
+  <data name="AuthenticationException" xml:space="preserve">
+    <value>Er is een fout opgetreden bij de authenticatie van de gebruiker.</value>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Afbreken</value>
+  </data>
+  <data name="EmptyUsernameOrPassword" xml:space="preserve">
+    <value>De gebruikersnaam of het wachtwoord mag niet leeg zijn.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Ongeldig wachtwoord. Zorg er voor dat het minimaal 5 tekens zijn.</value>
+  </data>
+  <data name="InvalidUsernamePassword" xml:space="preserve">
+    <value>Ongeldige gebruikersnaam-wachtwoord combinatie.</value>
+  </data>
+  <data name="LoggedInAsLabel" xml:space="preserve">
+    <value>Ingelogd als</value>
+  </data>
+  <data name="LoginButtonLabel" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginPageTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogoutButtonLabel" xml:space="preserve">
+    <value>Log uit</value>
+  </data>
+  <data name="ManagerMenuDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="ManagerMenuFiles" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="ManagerMenuPages" xml:space="preserve">
+    <value>Pagina's</value>
+  </data>
+  <data name="ManagerMenuServer" xml:space="preserve">
+    <value>Server instellingen</value>
+  </data>
+  <data name="ManagerMenuSite" xml:space="preserve">
+    <value>Site instellingen</value>
+  </data>
+  <data name="ManagerMenuUsers" xml:space="preserve">
+    <value>Gebruikers en rollen</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="UserNullException" xml:space="preserve">
+    <value>De huidige gebruiker is geen officieel ingelogde Cuyahoga gebruiker.</value>
+  </data>
+  <data name="CreateUserLabel" xml:space="preserve">
+    <value>Nieuwe gebruiker</value>
+  </data>
+  <data name="RoleLabel" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="EditLabel" xml:space="preserve">
+    <value>Wijzigen</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="FilterButtonLabel" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="IsActiveLabel" xml:space="preserve">
+    <value>Actief</value>
+  </data>
+  <data name="LastLoginfromLabel" xml:space="preserve">
+    <value>Laatste login vanaf</value>
+  </data>
+  <data name="LastLoginLabel" xml:space="preserve">
+    <value>Laatste login</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="NoUsersFound" xml:space="preserve">
+    <value>Geen gebruiker(s) gevonden.</value>
+  </data>
+  <data name="OptionAll" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="GlobalSearchLabel" xml:space="preserve">
+    <value>Zoek in alle sites</value>
+  </data>
+  <data name="ManageUsersPageTitle" xml:space="preserve">
+    <value>Beheer gebruikers</value>
+  </data>
+  <data name="TasksLabel" xml:space="preserve">
+    <value>Taken</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
+  <data name="EditUserPageTitle" xml:space="preserve">
+    <value>Wijzig gebruiker</value>
+  </data>
+  <data name="FirstNameLabel" xml:space="preserve">
+    <value>Voornaam</value>
+  </data>
+  <data name="GeneralLabel" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Achternaam</value>
+  </data>
+  <data name="ManageRolesPageTitle" xml:space="preserve">
+    <value>Beheer rollen</value>
+  </data>
+  <data name="NewUserPageTitle" xml:space="preserve">
+    <value>Nieuwe gebruiker</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="RolesLabel" xml:space="preserve">
+    <value>Rollen</value>
+  </data>
+  <data name="SaveButtonLabel" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>Tijdzone</value>
+  </data>
+  <data name="WebsiteLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="ChangePasswordLabel" xml:space="preserve">
+    <value>Verander wachtwoord</value>
+  </data>
+  <data name="PasswordChangedMessage" xml:space="preserve">
+    <value>Het wachtwoord is gewijzigd.</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Zeker weten?</value>
+  </data>
+  <data name="DeleteButtonLabel" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="UserDeletedMessage" xml:space="preserve">
+    <value>De gebruiker {0} is verwijderd.</value>
+  </data>
+  <data name="DeleteYourselfNotAllowedException" xml:space="preserve">
+    <value>Je kunt jezelf niet verwijderen.</value>
+  </data>
+  <data name="UserCreatedMessage" xml:space="preserve">
+    <value>De gebruiker {0} is aangemaakt.</value>
+  </data>
+  <data name="UserUpdatedMessage" xml:space="preserve">
+    <value>De gebruiker {0} is gewijzigd.</value>
+  </data>
+  <data name="ModelValidationErrorMessage" xml:space="preserve">
+    <value>Er zijn 1 of meerdere fouten opgetreden:</value>
+  </data>
+  <data name="CreateRoleLabel" xml:space="preserve">
+    <value>Nieuwe rol</value>
+  </data>
+  <data name="EditRolePageTitle" xml:space="preserve">
+    <value>Wijzig rol</value>
+  </data>
+  <data name="IsGlobalLabel" xml:space="preserve">
+    <value>Globaal</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="NewRolePageTitle" xml:space="preserve">
+    <value>Nieuwe rol</value>
+  </data>
+  <data name="NoRolesFound" xml:space="preserve">
+    <value>Geen rol(len) gevonden</value>
+  </data>
+  <data name="RightsLabel" xml:space="preserve">
+    <value>Rechten</value>
+  </data>
+  <data name="RoleCreatedMessage" xml:space="preserve">
+    <value>De rol {0} is aangemaakt.</value>
+  </data>
+  <data name="RoleDeletedMessage" xml:space="preserve">
+    <value>De rol {0} is verwijderd.</value>
+  </data>
+  <data name="RoleUpdatedMessage" xml:space="preserve">
+    <value>De rol {0} is gewijzigd.</value>
+  </data>
+  <data name="UsersLabel" xml:space="preserve">
+    <value>Gebruikers</value>
+  </data>
+  <data name="ManagerMenuRoles" xml:space="preserve">
+    <value>Beheer rollen</value>
+  </data>
+  <data name="ManagerMenuTemplates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="ManageTemplatesPageTitle" xml:space="preserve">
+    <value>Beheer templates</value>
+  </data>
+  <data name="CreateSiteLabel" xml:space="preserve">
+    <value>Nieuwe site</value>
+  </data>
+  <data name="DefaultCultureLabel" xml:space="preserve">
+    <value>Standaard culture</value>
+  </data>
+  <data name="DefaultRoleLabel" xml:space="preserve">
+    <value>Standaard rol voor ingelogde gebruikers</value>
+  </data>
+  <data name="DefaultsLabel" xml:space="preserve">
+    <value>Standaardwaarden</value>
+  </data>
+  <data name="ManageSitePageTitle" xml:space="preserve">
+    <value>Beheer site</value>
+  </data>
+  <data name="NewSitePageTitle" xml:space="preserve">
+    <value>Nieuwe site</value>
+  </data>
+  <data name="SiteUrlLabel" xml:space="preserve">
+    <value>Site url</value>
+  </data>
+  <data name="UseFriendlyUrlsLabel" xml:space="preserve">
+    <value>SEO-vriendelijke urls</value>
+  </data>
+  <data name="WebmasterEmailLabel" xml:space="preserve">
+    <value>Webmaster email</value>
+  </data>
+  <data name="CopyTemplatesLabel" xml:space="preserve">
+    <value>Kopieer templates</value>
+  </data>
+  <data name="TemplatesLabel" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="JumpToSiteAdminLabel" xml:space="preserve">
+    <value>Klik hier om naar de manager van de nieuwe site te gaan</value>
+  </data>
+  <data name="NewSiteSuccessPageTitle" xml:space="preserve">
+    <value>De nieuwe site is aangemaakt.</value>
+  </data>
+  <data name="NewSiteWarningText" xml:space="preserve">
+    <value>Let op: de url van de nieuwe site moet toegankelijk zijn. Check dat de fysieke directory die bij de url hoort verwijst naar de directory waar Cuyahoga geinstalleerd is.</value>
+  </data>
+  <data name="DefaultMetaDescriptionLabel" xml:space="preserve">
+    <value>Meta description</value>
+  </data>
+  <data name="DefaultMetaKeywordsLabel" xml:space="preserve">
+    <value>Meta keywords</value>
+  </data>
+  <data name="DefaultPlaceholderLabel" xml:space="preserve">
+    <value>Placeholder in standaard template</value>
+  </data>
+  <data name="DefaultTemplateLabel" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="SiteUpdatedMessage" xml:space="preserve">
+    <value>De site is gewijzigd.</value>
+  </data>
+  <data name="BasePathLabel" xml:space="preserve">
+    <value>Basis pad</value>
+  </data>
+  <data name="CssLabel" xml:space="preserve">
+    <value>Css</value>
+  </data>
+  <data name="EditTemplatePageTitle" xml:space="preserve">
+    <value>Wijzig template</value>
+  </data>
+  <data name="NoTemplatesFound" xml:space="preserve">
+    <value>Geen templates gevonden</value>
+  </data>
+  <data name="RegisterTemplateLabel" xml:space="preserve">
+    <value>Registreer nieuw template</value>
+  </data>
+  <data name="RegisterTemplatePageTitle" xml:space="preserve">
+    <value>Registeer nieuw template</value>
+  </data>
+  <data name="TemplateControlLabel" xml:space="preserve">
+    <value>Template control</value>
+  </data>
+  <data name="TemplateCreatedMessage" xml:space="preserve">
+    <value>De template {0} is aangemaakt.</value>
+  </data>
+  <data name="TemplateDeletedMessage" xml:space="preserve">
+    <value>De template {0} is verwijderd.</value>
+  </data>
+  <data name="TemplateUpdatedMessage" xml:space="preserve">
+    <value>De template {0} is gewijzigd.</value>
+  </data>
+  <data name="InvalidAscxLocationException" xml:space="preserve">
+    <value>Ongeldige plaats van een .ascx bestand in het .zip bestand. Deze mogen alleen in de root van het bestand voorkomen.</value>
+  </data>
+  <data name="InvalidCssLocationException" xml:space="preserve">
+    <value>Ongeldige plaats van een .css bestand in het .zip bestand. Deze mogen alleen in de 'Css' subdirectory van het bestand voorkomen.</value>
+  </data>
+  <data name="InvalidDirectoryInPackageFoundException" xml:space="preserve">
+    <value>Ongeldige subdirectory gevonden in het .zip bestand. Alleen 'Images' en 'Css' zijn toegestaan.</value>
+  </data>
+  <data name="InvalidExtensionFoundException" xml:space="preserve">
+    <value>Ongeldige bestandsextensie gevonden in het .zip bestand.</value>
+  </data>
+  <data name="InvalidZipFileMessage" xml:space="preserve">
+    <value>Ongeldig .zip archief.</value>
+  </data>
+  <data name="NoFileUploadedMessage" xml:space="preserve">
+    <value>Er is geen bestand geupload.</value>
+  </data>
+  <data name="TemplatesUploadedMessage" xml:space="preserve">
+    <value>De template bestanden zijn geupload. Er kunnen nu nieuwe templates geregistreerd worden op basis van deze bestanden.</value>
+  </data>
+  <data name="UploadNewTemplateFilesHint" xml:space="preserve">
+    <value>Template bestanden kunnen worden geupload als een .zip bestand. Check dat de .ascx bestanden in de root van het .zip bestand staan, de .css bestanden in de 'Css' subdirectory en de afbeeldingen in de 'Images' subdirectory.</value>
+  </data>
+  <data name="UploadNewTemplateFilesLabel" xml:space="preserve">
+    <value>Upload nieuwe template bestanden.</value>
+  </data>
+  <data name="ManagePagesPageTitle" xml:space="preserve">
+    <value>Beheer pagina's</value>
+  </data>
+  <data name="ViewLabel" xml:space="preserve">
+    <value>Bekijk</value>
+  </data>
+  <data name="ViewTemplatePageTitle" xml:space="preserve">
+    <value>Bekijk template</value>
+  </data>
+  <data name="SelectLabel" xml:space="preserve">
+    <value>Selecteer</value>
+  </data>
+  <data name="CopyButtonLabel" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="CultureLabel" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="LastModifiedLabel" xml:space="preserve">
+    <value>Laatst gewijzigd</value>
+  </data>
+  <data name="LinkTargetLabel" xml:space="preserve">
+    <value>Link target</value>
+  </data>
+  <data name="LinkTitleLabel" xml:space="preserve">
+    <value>Link titel</value>
+  </data>
+  <data name="LinkUrlLabel" xml:space="preserve">
+    <value>Link url</value>
+  </data>
+  <data name="MoveButtonLabel" xml:space="preserve">
+    <value>Verplaatsen</value>
+  </data>
+  <data name="MoveOrCopyPageDialogText" xml:space="preserve">
+    <value>Wil je deze pagina onder een andere pagina zetten? Je kunt ook een kopie maken van de pagina. In dat geval worden de pagina eigenschappen en secties gekopieerd, maar niet de content die aan de secties verbonden is.</value>
+  </data>
+  <data name="MoveOrCopyPageDialogTitle" xml:space="preserve">
+    <value>Verplaats of kopieer pagina</value>
+  </data>
+  <data name="PageTitleLabel" xml:space="preserve">
+    <value>Pagina titel</value>
+  </data>
+  <data name="PageUrlLabel" xml:space="preserve">
+    <value>Pagina url</value>
+  </data>
+  <data name="TemplateLabel" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="LinkPropertiesLabel" xml:space="preserve">
+    <value>Link eigenschappen</value>
+  </data>
+  <data name="LinkPropertiesUpdatedMessage" xml:space="preserve">
+    <value>De link eigenschappen zijn gewijzigd.</value>
+  </data>
+  <data name="PageCopiedMessage" xml:space="preserve">
+    <value>De pagina is gekopieerd.</value>
+  </data>
+  <data name="PageMovedMessage" xml:space="preserve">
+    <value>De pagina is verplaatst.</value>
+  </data>
+  <data name="PageOrderUpdatedMessage" xml:space="preserve">
+    <value>De volgorde van de pagina's is aangepast.</value>
+  </data>
+  <data name="PagePropertiesLabel" xml:space="preserve">
+    <value>Pagina eigenschappen</value>
+  </data>
+  <data name="PagePropertiesUpdatedMessage" xml:space="preserve">
+    <value>De pagina eigenschappen zijn gewijzigd.</value>
+  </data>
+  <data name="ShowInNavigationLabel" xml:space="preserve">
+    <value>Toon in navigatie</value>
+  </data>
+  <data name="CreateButtonLabel" xml:space="preserve">
+    <value>Aanmaken</value>
+  </data>
+  <data name="DeleteLinkLabel" xml:space="preserve">
+    <value>Verwijder de huidige link</value>
+  </data>
+  <data name="DeletePageLabel" xml:space="preserve">
+    <value>Verwijder de huidge pagina</value>
+  </data>
+  <data name="NewChildLinkLabel" xml:space="preserve">
+    <value>Nieuwe link onder de huidige link</value>
+  </data>
+  <data name="NewChildPageLabel" xml:space="preserve">
+    <value>Nieuwe pagina onder de huidige pagina</value>
+  </data>
+  <data name="NewRootPageLabel" xml:space="preserve">
+    <value>Nieuwe pagina op het hoogste niveau</value>
+  </data>
+  <data name="LinkCreatedMessage" xml:space="preserve">
+    <value>De link {0} is aangemaakt.</value>
+  </data>
+  <data name="LinkDeletedMessage" xml:space="preserve">
+    <value>De link {0} is verwijderd.</value>
+  </data>
+  <data name="PageCreatedMessage" xml:space="preserve">
+    <value>De pagina {0} is aangemaakt. Je kunt nu een template kiezen en content plaatsen.</value>
+  </data>
+  <data name="PageDeletedMessage" xml:space="preserve">
+    <value>De pagina {0} is verwijderd.</value>
+  </data>
+  <data name="ChooseTemplateOption" xml:space="preserve">
+    <value>Kies een template</value>
+  </data>
+  <data name="DesignPagePageTitle" xml:space="preserve">
+    <value>Layout pagina '{0}'</value>
+  </data>
+  <data name="TemplateSetMessage" xml:space="preserve">
+    <value>Template is gekoppeld aan de pagina.</value>
+  </data>
+  <data name="AddSectionDialogTitle" xml:space="preserve">
+    <value>Toevoegen sectie aan pagina</value>
+  </data>
+  <data name="CreateSectionLabel" xml:space="preserve">
+    <value>Nieuwe sectie aanmaken</value>
+  </data>
+  <data name="SectionCreatedMessage" xml:space="preserve">
+    <value>De sectie {0} is aangemaakt.</value>
+  </data>
+  <data name="SectionsArrangedMessage" xml:space="preserve">
+    <value>Secties voor placeholder {0} zijn gearrangeerd.</value>
+  </data>
+  <data name="AvailableModulesLabel" xml:space="preserve">
+    <value>Beschikbare modules</value>
+  </data>
+  <data name="AvailableModulesHint" xml:space="preserve">
+    <value>Kies een module uit onderstaande lijst en sleep deze in een content placeholder in het template om een nieuwe sectie aan te maken.</value>
+  </data>
+  <data name="CloseLabel" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="DeleteSectionBoxHint" xml:space="preserve">
+    <value>Sleep een sectie naar dit vak om deze van de pagina te verwijderen</value>
+  </data>
+  <data name="DeleteSectionConfirmLabel" xml:space="preserve">
+    <value>OK, verwijder sectie</value>
+  </data>
+  <data name="DetachSectionConfirmLabel" xml:space="preserve">
+    <value>Ontkoppel de sectie van deze pagina</value>
+  </data>
+  <data name="EditContentDialogTitle" xml:space="preserve">
+    <value>Wijzig content</value>
+  </data>
+  <data name="EditContentLabel" xml:space="preserve">
+    <value>Wijzig content</value>
+  </data>
+  <data name="RemoveSectionDialogTitle" xml:space="preserve">
+    <value>Verwijderen of ontkoppelen van sectie</value>
+  </data>
+  <data name="RemoveSectionLabel" xml:space="preserve">
+    <value>Verwijder sectie</value>
+  </data>
+  <data name="SectionDeletedMessage" xml:space="preserve">
+    <value>De sectie {0} is verwijderd.</value>
+  </data>
+  <data name="SectionDetachedMessage" xml:space="preserve">
+    <value>De sectie {0} is losgekoppeld van deze pagina.</value>
+  </data>
+  <data name="SectionPropertiesDialogTitle" xml:space="preserve">
+    <value>Sectie eigenschappen</value>
+  </data>
+  <data name="SectionPropertiesLabel" xml:space="preserve">
+    <value>Sectie eigenschappen</value>
+  </data>
+  <data name="SectionPropertiesUpdatedMessage" xml:space="preserve">
+    <value>Sectie eigenschappen zijn opgeslagen.</value>
+  </data>
+  <data name="AddSectionLabel" xml:space="preserve">
+    <value>Toevoegen sectie aan pagina</value>
+  </data>
+  <data name="BackToPageListLabel" xml:space="preserve">
+    <value>Terug naar het paginaoverzicht</value>
+  </data>
+  <data name="DesignCurrentPageLabel" xml:space="preserve">
+    <value>Layout van de geselecteerde pagina</value>
+  </data>
+  <data name="EditRolesLabel" xml:space="preserve">
+    <value>Rollen die de content mogen wijzigen</value>
+  </data>
+  <data name="ManagePermissionsLabel" xml:space="preserve">
+    <value>Beheer rechten</value>
+  </data>
+  <data name="ViewRolesLabel" xml:space="preserve">
+    <value>Rollen die de content mogen zien</value>
+  </data>
+  <data name="PropagateToChildPagesLabel" xml:space="preserve">
+    <value>Doorvoeren naar onderliggende pagina's</value>
+  </data>
+  <data name="PropagateToChildSectionsLabel" xml:space="preserve">
+    <value>Doorvoeren naar secties op de pagina</value>
+  </data>
+  <data name="PermissionsUpdatedMessage" xml:space="preserve">
+    <value>Rechten voor {0} zijn gewijzigd.</value>
+  </data>
+  <data name="PropagatePermissionsLabel" xml:space="preserve">
+    <value>Doorvoeren rechten</value>
+  </data>
+  <data name="SectionConnectionsLabel" xml:space="preserve">
+    <value>Uitgaande connecties</value>
+  </data>
+  <data name="SelectedSectionLabel" xml:space="preserve">
+    <value>Geselecteerde sectie</value>
+  </data>
+  <data name="SectionPermissionsLabel" xml:space="preserve">
+    <value>Sectie rechten</value>
+  </data>
+  <data name="DeleteSectionChoiceLabel" xml:space="preserve">
+    <value>Wil je de sectie verwijderen of alleen maar ontkoppelen van deze pagina?</value>
+  </data>
+  <data name="ManageContentPageTitle" xml:space="preserve">
+    <value>Beheer content op '{0}'</value>
+  </data>
+  <data name="ManageContentCurrentPageLabel" xml:space="preserve">
+    <value>Beheer content geselecteerde pagina</value>
+  </data>
+  <data name="ManagerMenuCategories" xml:space="preserve">
+    <value>Categorieen</value>
+  </data>
+  <data name="ManagerMenuSharedContent" xml:space="preserve">
+    <value>Gedeelde content</value>
+  </data>
+  <data name="CreateCategoryLabel" xml:space="preserve">
+    <value>Nieuwe categorie</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="ManageCategoriesPageTitle" xml:space="preserve">
+    <value>Beheer categorieen</value>
+  </data>
+  <data name="ManagerMenuContent" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="NoneLabel" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="ParentCategoryLabel" xml:space="preserve">
+    <value>Valt onder categorie</value>
+  </data>
+  <data name="CategoryCreatedMessage" xml:space="preserve">
+    <value>De categorie {0} is aangemaakt.</value>
+  </data>
+  <data name="CategoryDeletedMessage" xml:space="preserve">
+    <value>De categorie {0} is verwijderd.</value>
+  </data>
+  <data name="CategoryHasChildCategoriesException" xml:space="preserve">
+    <value>De categorie kan niet verwijderd worden want er hangen andere categorieen onder.</value>
+  </data>
+  <data name="CategoryHasContentItemsException" xml:space="preserve">
+    <value>De categorie kan niet verwijderd worden want er zijn content items die onder de categorie vallen.</value>
+  </data>
+  <data name="CategoryUpdatedMessage" xml:space="preserve">
+    <value>De categorie {0} is gewijzigd.</value>
+  </data>
+  <data name="EditCategoryPageTitle" xml:space="preserve">
+    <value>Wijzig categorie</value>
+  </data>
+  <data name="NewCategoryPageTitle" xml:space="preserve">
+    <value>Nieuwe categorie</value>
+  </data>
+  <data name="CategoriesLabel" xml:space="preserve">
+    <value>Categorieen</value>
+  </data>
+  <data name="OkLabel" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="CommentsLabel" xml:space="preserve">
+    <value>Reacties</value>
+  </data>
+  <data name="AuthorLabel" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="CommentLabel" xml:space="preserve">
+    <value>Reactie</value>
+  </data>
+  <data name="CurrentDirectoryLabel" xml:space="preserve">
+    <value>Huidige directory</value>
+  </data>
+  <data name="ManageFilesPageTitle" xml:space="preserve">
+    <value>Beheer bestanden</value>
+  </data>
+  <data name="PathLabel" xml:space="preserve">
+    <value>Pad</value>
+  </data>
+  <data name="CopySelectedItemsTo" xml:space="preserve">
+    <value>Kopieer de geselecteerde items naar</value>
+  </data>
+  <data name="CreateDirectoryLabel" xml:space="preserve">
+    <value>Maak een nieuwe directory aan</value>
+  </data>
+  <data name="DateModifiedLabel" xml:space="preserve">
+    <value>Datum wijziging</value>
+  </data>
+  <data name="DeleteSelectedItems" xml:space="preserve">
+    <value>Verwijder de geselecteerde items</value>
+  </data>
+  <data name="DirectoryCreatedMessage" xml:space="preserve">
+    <value>De directory {0} is aangemaakt</value>
+  </data>
+  <data name="FilesDirectoriesCopiedMessage" xml:space="preserve">
+    <value>De bestanden en/of directories zijn gekopieerd naar {0}.</value>
+  </data>
+  <data name="FilesDirectoriesDeletedMessage" xml:space="preserve">
+    <value>De bestanden en/of directories zijn verwijderd.</value>
+  </data>
+  <data name="FilesDirectoriesMovedMessage" xml:space="preserve">
+    <value>De bestanden en/of directories zijn verplaatst naar {0}.</value>
+  </data>
+  <data name="MoveSelectedItemsTo" xml:space="preserve">
+    <value>Verplaats de geselecteerde items naar</value>
+  </data>
+  <data name="SizeLabel" xml:space="preserve">
+    <value>Grootte</value>
+  </data>
+  <data name="WithSelectedItemsDo" xml:space="preserve">
+    <value>Voer de volgende actie uit</value>
+  </data>
+  <data name="BrowseButtonLabel" xml:space="preserve">
+    <value>Bladeren</value>
+  </data>
+  <data name="FileUploadSuccessMessage" xml:space="preserve">
+    <value>Het bestand is op de server opgeslagen als {0}.</value>
+  </data>
+  <data name="UploadButtonLabel" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UploadFilesLabel" xml:space="preserve">
+    <value>Upload bestanden</value>
+  </data>
+  <data name="CurrentIndexProperties" xml:space="preserve">
+    <value>Eigenschappen van zoekindex</value>
+  </data>
+  <data name="FullTextIndexDirectoryLabel" xml:space="preserve">
+    <value>Directory index bestanden</value>
+  </data>
+  <data name="FullTextIndexRebuildMessage" xml:space="preserve">
+    <value>De zoekindex is geherindexeerd.</value>
+  </data>
+  <data name="IndexSizeLabel" xml:space="preserve">
+    <value>Aantal documenten in index</value>
+  </data>
+  <data name="RebuildFullTextIndexLabel" xml:space="preserve">
+    <value>Zoekindex herindexeren</value>
+  </data>
+  <data name="RebuildFullTextIndexPageTitle" xml:space="preserve">
+    <value>Beheer zoekindex</value>
+  </data>
+  <data name="ManagerMenuModules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="ActionsLabel" xml:space="preserve">
+    <value>Acties</value>
+  </data>
+  <data name="ActivationStatusLabel" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>Actief</value>
+  </data>
+  <data name="AssemblyLabel" xml:space="preserve">
+    <value>Assembly</value>
+  </data>
+  <data name="InactiveStatus" xml:space="preserve">
+    <value>Niet actief</value>
+  </data>
+  <data name="InstallationStatusLabel" xml:space="preserve">
+    <value>Installatie status</value>
+  </data>
+  <data name="LoadOnStartupLabel" xml:space="preserve">
+    <value>Laden bij start</value>
+  </data>
+  <data name="ManageModulesPageTitle" xml:space="preserve">
+    <value>Beheer modules</value>
+  </data>
+  <data name="InstalledStatus" xml:space="preserve">
+    <value>Geinstalleerd</value>
+  </data>
+  <data name="InstalledUpgradeStatus" xml:space="preserve">
+    <value>Geinstalleerd (upgrade beschikbaar)</value>
+  </data>
+  <data name="InstallLabel" xml:space="preserve">
+    <value>Installeren</value>
+  </data>
+  <data name="ModuleActivatedMessage" xml:space="preserve">
+    <value>De module {0} is geactiveerd.</value>
+  </data>
+  <data name="ModuleDeactivatedMessage" xml:space="preserve">
+    <value>De module {0} is gedeactiveerd en zal bij de eerstvolgende herstart van de applicatie niet meer geladen worden.</value>
+  </data>
+  <data name="ModuleInstallConfirmation" xml:space="preserve">
+    <value>Weet je zeker dat je deze module wilt installeren?</value>
+  </data>
+  <data name="ModuleInstalledAndActivatedMessage" xml:space="preserve">
+    <value>De module {0} is geinstalleerd en geactiveerd.</value>
+  </data>
+  <data name="ModuleUninstallConfirmation" xml:space="preserve">
+    <value>Weet je zeker dat je deze module wilt deinstalleren?</value>
+  </data>
+  <data name="ModuleUninstalledMessage" xml:space="preserve">
+    <value>De module {0} is gedeinstalleerd.</value>
+  </data>
+  <data name="ModuleUpgradeConfirmation" xml:space="preserve">
+    <value>Weet je zeker dat je deze module wilt upgraden?</value>
+  </data>
+  <data name="ModuleUpgradedMessage" xml:space="preserve">
+    <value>De module {0} is geupgraded.</value>
+  </data>
+  <data name="UninstalledStatus" xml:space="preserve">
+    <value>Niet geinstalleerd</value>
+  </data>
+  <data name="UninstallLabel" xml:space="preserve">
+    <value>Deinstalleren</value>
+  </data>
+  <data name="UninstallModuleForbiddenBecauseOfRelatedSectionsMessage" xml:space="preserve">
+    <value>De module kan niet gedeinstalleerd worden omdat deze gebruikt wordt in de volgende secties</value>
+  </data>
+  <data name="UpgradeLabel" xml:space="preserve">
+    <value>Upgraden</value>
+  </data>
+  <data name="EditLayoutLabel" xml:space="preserve">
+    <value>Beheer layout</value>
+  </data>
+  <data name="AttachSectionToTemplatesPageTitle" xml:space="preserve">
+    <value>Koppel sectie '{0}' aan template(s)</value>
+  </data>
+  <data name="AttachToTemplateLabel" xml:space="preserve">
+    <value>Koppel aan template(s)</value>
+  </data>
+  <data name="BackLabel" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="CreateSharedSectionLabel" xml:space="preserve">
+    <value>Nieuwe gedeelde sectie</value>
+  </data>
+  <data name="IsAttachedLabel" xml:space="preserve">
+    <value>Is gekoppeld</value>
+  </data>
+  <data name="ManageSharedContentPageTitle" xml:space="preserve">
+    <value>Beheer gedeelte content</value>
+  </data>
+  <data name="MoveSectionToPageLabel" xml:space="preserve">
+    <value>Verplaats naar pagina</value>
+  </data>
+  <data name="NewSharedSectionPageTitle" xml:space="preserve">
+    <value>Nieuwe gedeelde sectie</value>
+  </data>
+  <data name="PlaceholderLabel" xml:space="preserve">
+    <value>Placeholder</value>
+  </data>
+  <data name="SectionAttachedMessage" xml:space="preserve">
+    <value>Sectie is ge- of ontkoppeld aan template(s)</value>
+  </data>
+  <data name="SelectModuleTypeLabel" xml:space="preserve">
+    <value>Selecteer module type</value>
+  </data>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="ConnectionDeletedMessage" xml:space="preserve">
+    <value>Connectie voor actie {0} is verwijderd.</value>
+  </data>
+  <data name="PageLabel" xml:space="preserve">
+    <value>Pagina</value>
+  </data>
+  <data name="SectionLabel" xml:space="preserve">
+    <value>Sectie</value>
+  </data>
+  <data name="AddConnectionLabel" xml:space="preserve">
+    <value>Nieuwe connectie</value>
+  </data>
+  <data name="NewConnectionPageTitle" xml:space="preserve">
+    <value>Nieuwe connectie voor '{0}'</value>
+  </data>
+  <data name="ConnectionAddedMessage" xml:space="preserve">
+    <value>Connectie voor actie {0} is aangemaakt.</value>
+  </data>
+  <data name="ConnectToLabel" xml:space="preserve">
+    <value>Verbind met sectie</value>
+  </data>
+  <data name="SelectActionOption" xml:space="preserve">
+    <value>Selecteer actie</value>
+  </data>
+</root>

@@ -1,0 +1,25 @@
+#menupane
+{
+	position: relative;
+    float: left;
+	width: 24%;
+	overflow: hidden;
+}
+
+#contentpane
+{
+    position: relative;
+    float: right;
+    width: 74%;
+    overflow: hidden;
+}
+
+#login .btnLogin
+{
+    left: 64px;
+}
+
+#login .btnLogin:hover
+{
+    left: 64px;
+}

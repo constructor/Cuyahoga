@@ -1,0 +1,567 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 ;
+	font-size: small;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	margin-bottom: 12px;
+	padding: 0;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
+body {
+    padding: 16px;
+}
+
+h1 {
+    font-size: large;
+}
+
+h2 {
+	text-transform: uppercase;
+	font-size: medium;
+}
+
+h3 {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 11px;
+}
+
+p, blockquote, ul, ol {
+	line-height: 18px;
+	text-align: justify;
+}
+
+blockquote {
+	padding-left: 20px;
+	background: url(../images/img05.gif) repeat-y;
+}
+
+a {
+	color: #F49500;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* Header */
+
+#header
+{
+    background-position: 300px;
+    width: 85%;
+    min-width: 760px;
+    height: 180px;
+    margin: 0 auto;
+    background: url(../images/img02.jpg);
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+}
+#header #banner
+{
+    width: 610px;
+    height: 180px;
+    background: url(../images/bannerimage1.jpg);
+    float: right;
+}
+
+#header h1, #header h2 {
+	text-transform: lowercase;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#header h1 {
+	float: left;
+	padding: 120px 0 0 20px;
+	font-size: 36px;
+}
+
+#header h2 {
+	float: right;
+	padding: 134px 20px 0 0;
+	font-size: 22px;
+}
+
+/* Menu TYPE = DROP DOWN */
+
+#menu
+{
+    position: relative;
+    width: 85%;
+    height: 50px;
+    min-width: 760px;
+    margin: 0 auto;
+    overflow: visible;
+    z-index: 100;
+    text-align: left;
+}
+
+#menu ul, #sitemap ul {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style-type:none;
+	list-style-position:outside;
+	overflow: visible;
+	float:left;
+}
+
+#menu ul li, #sitemap ul li {
+	position:relative;
+	height: 50px;
+	float:left;
+	background-image: url(../Images/menu-item-up.gif);
+	background-repeat: repeat-x;
+}
+#menu ul li:hover, #sitemap ul li:hover
+{
+    position: relative;
+    height: 50px;
+    float: left;
+    background-image: url(../Images/menu-item-over.gif);
+    background-repeat: repeat-x;
+    color: #AAAAAA;
+}
+
+#menu ul li a, #sitemap ul li a{
+	position:relative;
+	display: block;
+	padding: 17px 15px 15px 15px;
+	text-decoration: none;
+	font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #AAAAAA;
+}
+
+#menu ul li ul, #sitemap ul li ul{
+	position: absolute;
+	top: 50px;
+	width: auto;
+	height: auto;
+	clear: left;
+	background-color: #bda4de;
+	
+	border-style: none solid solid solid;
+    border-right-color: #bda4de;
+    border-bottom-color: #bda4de;
+    border-left-color: #bda4de;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+#menu ul li.selected, #sitemap ul li.selected {
+    position: relative;
+    height: 50px;
+    float: left;
+    background-image: url(../Images/menu-item-over.gif);
+    background-repeat: repeat-x;
+}
+
+#menu .selected a, #sitemap .selected a {
+   	color: #FFFFFF;
+}
+
+#menu .selected ul li a, #sitemap .selected ul li a{
+   	color: #AAAAAA;
+}
+
+#menu ul li ul li, #sitemap ul li ul li
+{
+    position: relative;
+    width: 192px;
+    height: auto;
+    background-image: none;
+    display: block;
+    clear: left;
+    overflow: visible;
+    background-color: #FFFFFF;
+}
+#menu ul li ul li:hover, #sitemap ul li ul li:hover
+{
+    position: relative;
+    width: 192px;
+    height: auto;
+    background-image: none;
+    display: block;
+    clear: left;
+    overflow: visible;
+    background-color: #bda4de;
+}
+#menu ul li ul li a, #sitemap ul li ul li a{
+	position:relative;
+	display: block;
+	/*Set Subnavigantion Elements Height Below*/
+	padding: 4px 8px 4px 8px;
+	text-decoration: none;
+	font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #948dbf;
+}
+
+#menu ul li ul li.selected, #sitemap ul li ul li.selected {
+    position: relative;
+    width: 192px;
+    height: auto;
+    background-image: none;
+    display: block;
+    clear: left;
+    overflow: visible;
+    background-color: #bda4de;
+}
+
+#menu ul li ul ul, #sitemap ul li ul ul{
+	position: absolute;
+	left: 192px;
+	top: 0px;
+	float: left;
+}
+
+#menu a:hover, #sitemap a:hover{
+	color: #FFFFFF;
+}
+
+#menu ul li a, #sitemap ul li a{
+	background: none;
+}
+
+/* Content */
+#contentwrapper
+{
+    position: relative;
+    width: 85%;
+    min-width: 760px;
+    overflow: auto;
+    margin: 0px auto 20px auto;
+}
+
+#content
+{
+    position: relative;
+    background-position: left bottom;
+    padding: 20px 10px 10px 10px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-width: 5px;
+    border-left-width: 5px;
+    border-right-color: #FF6600;
+    border-left-color: #FF6600;
+    overflow: auto;
+    background: url(../images/img04.jpg) repeat-x left bottom;
+}
+
+/* Posts */
+
+#posts {
+    position: relative;
+	float: left;
+	min-width: 480px;
+	width: 65%;
+	height: inherit;
+	overflow: auto;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+.post
+{
+    padding-left: 12px;
+}
+
+/* Links */
+
+#links {
+    position: relative;
+	float: right;
+	width: 200px;
+	padding-left: 20px;
+	background: url(../images/img05.gif) repeat-y;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+#links ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#links li ul {
+	padding: 5px 0 30px 0;
+}
+
+#links li li {
+	padding: 7px 10px;
+	background: url(../images/img06.gif) repeat-x left bottom;
+}
+
+#links li a {
+	text-decoration: none;
+}
+
+#links li a:hover {
+	text-decoration: underline;
+}
+
+#links li i {
+	font-style: normal;
+	font-size: 9px;
+}
+
+#links li h2 {
+	font-size: 14px;
+}
+
+/* Footer */
+
+#footer
+{
+    height: 100px;
+    padding: 20px;
+    background: #FFFFFF url(../images/footer-background.gif) repeat-x;
+    text-align: center;
+}
+
+#footer p {
+	text-align: center;
+	color: #999999;
+}
+
+div[id*="Login"] input[type*="text"] {
+	border: 1px #CCCCCC solid;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="password"] {
+	border: 1px #CCCCCC solid;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="submit"] {
+	border: 1px #CCCCCC solid;
+	background: #DDDDDD;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="submit"]:hover {
+	border: 1px #CCCCCC solid;
+	background: #EFEFEF;
+	padding: 4px;
+}
+
+
+
+
+/*Standard Fieldset CSS*/
+fieldset 
+{  
+	margin: 15px 0 5px 0;  
+	border: 1px solid #CCCCCC;
+	display: block;
+}
+
+fieldset .padding {
+    padding: 8px;
+}
+
+fieldset p
+{  
+	margin: 15px 0px 5px 0px;  
+	padding: 8px;
+}
+
+fieldset hr
+{  
+    color: #CCCCCC;
+    height: 1px;
+}
+
+fieldset legend 
+{
+    display: block;
+	border: 2px solid #DDDDDD;
+	padding: 8px;
+	margin-bottom: 8px;
+	background-color: #FFFFFF;
+}
+
+fieldset label 
+{
+	position: relative;
+	float: left;
+	display: block;
+	height: auto;
+	width: 128px;
+	padding-top: 12px;
+	padding-left: 32px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #666666;
+}
+
+fieldset .labeltext
+{
+    display: inline-block;
+    margin-top: 4px;
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+	color: #333333;
+}
+
+fieldset input[type*="text"]
+{
+	border: 1px solid #CCCCCC;
+	width: 256px;
+	padding: 6px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: #333333;
+}
+
+fieldset input[type*="password"]
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: #333333;
+}
+
+fieldset textarea
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+	overflow: auto;
+	color: #333333;
+	margin-bottom: 2px;
+}
+fieldset select
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+	color: #333333;
+}
+
+fieldset .selectlarge
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+	color: #333333;
+	margin-left: 24px;
+	margin-top: 8px;
+}
+
+fieldset input[type*="submit"]
+{
+	border: 2px solid #CCCCCC;
+	padding: 3px;
+	background-color: #CCCCCC;
+	color: #FFFFFF;
+	font-weight: bold;
+	float: right;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 8px;
+}
+
+fieldset input[type*="submit"]:hover
+{
+	border: 2px solid #AAAAAA;
+	background-color: #AAAAAA;
+	color: #FFFFFF;
+}
+
+fieldset ol 
+{  
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+fieldset li 
+{  
+	list-style: none;
+	margin-left: 2px;
+	padding: 3px;
+	float: left;  
+	clear: left;  
+	width: 99%; 
+	border-bottom: 1px solid #eee;
+}
+
+/*Admin Required CSS*/
+.modulewrapper {
+    position: relative;
+    overflow: auto;
+}
+.moduletools {
+    position: relative;
+    display: inline-block;
+    float: right;
+    top: 0px;
+    right: 0px;
+	height: 0px;
+	z-index: 110;
+	overflow: visible;
+}
+.moduletools span {
+	display: none;
+	visibility: hidden;
+}
+
+.moduletools a
+{
+    display: block;
+    float: left;
+    overflow: visible;
+    margin-top: 8px;
+}
+
+.moduletools a img
+{
+    border-style: none;
+}
+
+.moduletools a[id*="edit"] {
+	background-image: url(../../../Images/edit_up.png);
+	height: 24px;
+	width: 36px;
+}
+.moduletools a[id*="edit"]:hover{
+	background-image: url(../../../Images/edit_over.png);
+}
+
+.moduletools a[id*="properties"]{
+	background-image: url(../../../Images/sectionproperties_up.png);
+	height: 24px;
+	width: 107px;
+}
+.moduletools a:hover{
+	background-image: url(../../../Images/sectionproperties_over.png);
+}
+
+.fltright {
+    float: right;
+    padding-left: 12px;
+}
+.fltleft {
+    float: left;
+    padding-right: 12px;
+}
+.box50right {
+    width: 50%;
+    padding: 8px;
+    background-color: #FAFAFA;
+    float: right;
+}
+.box50left {
+    width: 50%;
+    padding: 8px;
+    background-color: #FAFAFA;
+    float: left;
+}

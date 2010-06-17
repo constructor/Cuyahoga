@@ -1,0 +1,15 @@
+﻿#downloads
+{
+    position: relative;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    overflow: auto;
+}
+
+#downloads ul
+{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}

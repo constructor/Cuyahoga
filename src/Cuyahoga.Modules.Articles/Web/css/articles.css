@@ -1,0 +1,28 @@
+﻿#articles
+{
+    position: relative;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    overflow: auto;
+}
+
+#articles ul
+{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+div[id*="ArticleDetails"]
+{
+    border: 1px solid #CCCCCC;
+    width: 100%;
+    padding: 8px;
+}
+
+#articles .articlelist li {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #CCCCCC;
+}

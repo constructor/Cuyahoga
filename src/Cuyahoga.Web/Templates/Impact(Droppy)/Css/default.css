@@ -1,0 +1,299 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(../images/img01.jpg) repeat-x;
+	font: normal 11px Tahoma, Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #3366CC;
+}
+
+h2 {
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+h3 {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 11px;
+}
+
+p, blockquote, ul, ol {
+	line-height: 18px;
+	text-align: justify;
+}
+
+blockquote {
+	padding-left: 20px;
+	background: url(../images/img05.gif) repeat-y;
+}
+
+a {
+	color: #3366CC;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* Header */
+
+.syndicate img {
+    border: 0;
+}
+
+#header {
+	width: 760px;
+	height: 180px;
+	margin: 0 auto;
+	background: url(../images/img02.jpg);
+}
+
+#header h1, #header h2 {
+	text-transform: lowercase;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#header h1 {
+	float: left;
+	padding: 120px 0 0 20px;
+	font-size: 36px;
+}
+
+#header h2 {
+	float: right;
+	padding: 134px 20px 0 0;
+	font-size: 22px;
+}
+
+
+
+
+
+
+
+
+/* Menu TYPE = Droppy*/
+#menu{
+	position: relative;
+	width: 760px;
+	height: 50px;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+#Menu_Main {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style-type:none;
+	list-style-position:outside;
+	overflow: visible;
+}
+
+#Menu_Main li {
+	position:relative;
+	height: 50px;
+	float:left;
+	background-image: url(../Images/img03.gif);
+	background-repeat: no-repeat;
+}
+
+#Menu_Main li > a {
+	position:relative;
+	display: block;
+	padding: 17px 16px 15px 16px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #D8D8D8;
+}
+
+#Menu_Main li ul
+{
+    position: absolute;
+    top: 50px;
+    padding: 0;
+    width: auto;
+    height: auto;
+    clear: left;
+    background-color: #444;
+    display: none;
+    list-style-type: none;
+}
+
+#Menu_Main .selected {
+	color: #fff;
+}
+
+#Menu_Main li ul li a {
+	position:relative;
+	display: block;
+	/*Set Subnavigantion Elements Height Below*/
+	padding: 4px 8px 4px 8px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font: bold 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #D8D8D8;
+}
+
+#Menu_Main li ul li{
+	position: relative;
+	width: 128px;
+	height: auto;
+	background-image: none;
+	display: block;
+	clear: left;
+	overflow: visible;
+}
+
+#Menu_Main li ul ul{
+	position: absolute;
+	left: 128px;
+	top: 0px;
+	float: left;
+}
+
+#Menu_Main .selected a{
+	color: #fff;
+}
+
+#Menu_Main a:hover {
+	color: #fff;
+}
+
+#Menu_Main ul li a {
+	background: none;
+}
+
+
+
+
+
+
+
+/* Content */
+
+#content {    
+    position: relative;
+	width: 720px;
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	background: #FFFFFF url(../images/img04.jpg) repeat-x left bottom;
+}
+
+/* Posts */
+
+#posts {
+    position: relative;
+	float: left;
+	width: 480px;
+}
+
+/* Links */
+
+#links {
+	float: right;
+	width: 200px;
+	padding-left: 20px;
+	background: url(../images/img05.gif) repeat-y;
+}
+
+#links ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#links li ul {
+	padding: 5px 0 30px 0;
+}
+
+#links li li {
+	padding: 7px 10px;
+	background: url(../images/img06.gif) repeat-x left bottom;
+}
+
+#links li a {
+	text-decoration: none;
+}
+
+#links li a:hover {
+	text-decoration: underline;
+}
+
+#links li i {
+	font-style: normal;
+	font-size: 9px;
+}
+
+#links li h2 {
+	font-size: 14px;
+}
+
+/* Footer */
+
+#footer {
+	height: 100px;
+	padding: 20px;
+	background: #2D2D2D url(../images/img07.gif) repeat-x;
+}
+
+#footer p {
+	text-align: center;
+	color: #999999;
+}
+
+div[id*="Login"] input[type*="text"] {
+	border: 1px #CCCCCC solid;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="password"] {
+	border: 1px #CCCCCC solid;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="submit"] {
+	border: 1px #CCCCCC solid;
+	background: #DDDDDD;
+	padding: 4px;
+}
+
+div[id*="Login"] input[type*="submit"]:hover {
+	border: 1px #CCCCCC solid;
+	background: #EFEFEF;
+	padding: 4px;
+}
+
+
+
+
+
+.fltright {
+    float: right;
+    padding-left: 12px;
+}
+.fltleft {
+    float: left;
+    padding-right: 12px;
+}
+.box50right {
+    width: 50%;
+    padding: 8px;
+    background-color: #FAFAFA;
+    float: right;
+}
+.box50left {
+    width: 50%;
+    padding: 8px;
+    background-color: #FAFAFA;
+    float: left;
+}

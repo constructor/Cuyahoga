@@ -1,0 +1,1 @@
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuControl.ascx.cs" Inherits="Cuyahoga.Modules.Menu.Web.MenuControl" %><asp:PlaceHolder ID="plHolder" runat="server" EnableViewState="false"></asp:PlaceHolder>

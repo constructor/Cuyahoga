@@ -1,0 +1,3 @@
+There should be a copy of the template css that is renamed with the prefix 'editor_' that will be used for the FCK editor.
+
+This copy should NOT have any styles set for the 'body' tag. This will prevent unwanted background styles in the editor.

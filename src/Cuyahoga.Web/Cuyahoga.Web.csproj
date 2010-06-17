@@ -1,0 +1,1242 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD158F08-6E8F-4234-B3F6-A5402C8E34CC}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Cuyahoga.Web</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Flow</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Cuyahoga.Web</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cuyahoga.Core\Cuyahoga.Core.csproj">
+      <Name>Cuyahoga.Core</Name>
+      <Project>{723B7D30-6472-4B96-8D09-4F094C96650E}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Cuyahoga.ServerControls\Cuyahoga.ServerControls.csproj">
+      <Name>Cuyahoga.ServerControls</Name>
+      <Project>{C64DAA00-AAB1-4AC7-ADE2-119B53B9666A}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FredCK.FCKeditorV2, Version=2.6.3.35540, Culture=neutral, PublicKeyToken=4f86767c9b519a06, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FredCK.FCKeditorV2.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteHelper.RouteDebugger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RouteHelper.RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\System.Web.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminService.asmx.cs">
+      <DependentUpon>AdminService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminServices\AdminWebService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CategoryEdit.aspx.cs">
+      <DependentUpon>CategoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CategoryEdit.aspx.designer.cs">
+      <DependentUpon>CategoryEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ConnectionEdit.aspx.cs">
+      <DependentUpon>ConnectionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ConnectionEdit.aspx.designer.cs">
+      <DependentUpon>ConnectionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Controls\AdminTemplate.ascx.cs">
+      <DependentUpon>AdminTemplate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\Navigation.ascx.cs">
+      <DependentUpon>Navigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MenuEdit.aspx.cs">
+      <DependentUpon>MenuEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MenuEdit.aspx.designer.cs">
+      <DependentUpon>MenuEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Modules.aspx.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Modules.aspx.designer.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NodeEdit.aspx.cs">
+      <DependentUpon>NodeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NodeEdit.aspx.designer.cs">
+      <DependentUpon>NodeEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RebuildIndex.aspx.cs">
+      <DependentUpon>RebuildIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RebuildIndex.aspx.designer.cs">
+      <DependentUpon>RebuildIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RoleEdit.aspx.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RoleEdit.aspx.designer.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SectionAttachNode.aspx.cs">
+      <DependentUpon>SectionAttachNode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SectionAttachNode.aspx.designer.cs">
+      <DependentUpon>SectionAttachNode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SectionAttachTemplate.aspx.cs">
+      <DependentUpon>SectionAttachTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SectionAttachTemplate.aspx.designer.cs">
+      <DependentUpon>SectionAttachTemplate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SectionEdit.aspx.cs">
+      <DependentUpon>SectionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SectionEdit.aspx.designer.cs">
+      <DependentUpon>SectionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Sections.aspx.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Sections.aspx.designer.cs">
+      <DependentUpon>Sections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SiteAliasEdit.aspx.cs">
+      <DependentUpon>SiteAliasEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SiteEdit.aspx.cs">
+      <DependentUpon>SiteEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SiteEdit.aspx.designer.cs">
+      <DependentUpon>SiteEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TemplateEdit.aspx.cs">
+      <DependentUpon>TemplateEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TemplateEdit.aspx.designer.cs">
+      <DependentUpon>TemplateEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TemplatePreview.aspx.cs">
+      <DependentUpon>TemplatePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Templates.aspx.cs">
+      <DependentUpon>Templates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Templates.aspx.designer.cs">
+      <DependentUpon>Templates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TemplateSection.aspx.cs">
+      <DependentUpon>TemplateSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TemplateSection.aspx.designer.cs">
+      <DependentUpon>TemplateSection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\AdminBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UI\SettingControlHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Enums.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Enums.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Enums.nl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Enums.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Controls.Resources.Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.it.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Controls.Resources.Strings.it.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.nl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Controls.Resources.Strings.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.sv-SE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Controls.Resources.Strings.sv-SE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Manager.GlobalResources.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Manager.GlobalResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.Web.Manager.GlobalResources.nl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.Web.Manager.GlobalResources.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.ValidationMessages.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.ValidationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Cuyahoga.ValidationMessages.nl.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuyahoga.ValidationMessages.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Bootstrapper.cs" />
+    <Compile Include="Components\CuyahogaContext.cs" />
+    <Compile Include="HttpHandlers\SitemapHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HttpModules\PageRequestModule.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\CuyahogaContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\ModuleLoader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\UrlRewriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\EditProfile.ascx.cs">
+      <DependentUpon>EditProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ModuleAdminHeader.ascx.cs">
+      <DependentUpon>ModuleAdminHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ModuleAdminTemplate.ascx.cs">
+      <DependentUpon>ModuleAdminTemplate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Navigation\HierarchicalMenu.ascx.cs">
+      <DependentUpon>HierarchicalMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Navigation\NavigationLevelTwo.ascx.cs">
+      <DependentUpon>NavigationLevelTwo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Navigation\NavigationLevelZeroOne.ascx.cs">
+      <DependentUpon>NavigationLevelZeroOne.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Register.ascx.cs">
+      <DependentUpon>Register.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ResetPassword.ascx.cs">
+      <DependentUpon>ResetPassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewProfile.ascx.cs">
+      <DependentUpon>ViewProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HttpModules\AuthenticationModule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HttpModules\CoreRepositoryModule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Install\Install.aspx.cs">
+      <DependentUpon>Install.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Install\Sorry.aspx.cs">
+      <DependentUpon>Sorry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Install\Upgrade.aspx.cs">
+      <DependentUpon>Upgrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rss.aspx.cs">
+      <DependentUpon>Rss.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BaseModuleControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BaseModuleControl`1.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BasePageControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\BaseTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CuyahogaPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\DefaultButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\GenericBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ICuyahogaPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\LocalizedUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ModuleAdminBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\PageEngine.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Util\ContainerAccessorUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Email.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\FormFixerHtmlTextWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\SearchHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\UrlHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="Admin\AdminService.asmx" />
+    <Content Include="Admin\Categories.aspx" />
+    <Content Include="Admin\CategoryEdit.aspx" />
+    <Content Include="Admin\ConnectionEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Controls\AdminTemplate.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Admin\Controls\Footer.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Admin\Controls\Header.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Admin\Controls\Navigation.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Admin\Css\AdminIE6.css" />
+    <Content Include="Admin\Css\adminpanel.css" />
+    <Content Include="Admin\Css\Admin.css" />
+    <Content Include="Admin\Default.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\js\adminpanel.js" />
+    <Content Include="Admin\MenuEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Modules.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\NodeEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\RebuildIndex.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\RoleEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Roles.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\SectionAttachNode.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\SectionAttachTemplate.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\SectionEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Sections.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\SiteAliasEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\SiteEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\TemplateEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\TemplatePreview.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Templates.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\TemplateSection.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\UserEdit.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Users.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Admin\Web.config" />
+    <Content Include="Login.aspx" />
+    <Content Include="Controls\EditProfile.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\ModuleAdminHeader.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\ModuleAdminTemplate.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\Navigation\HierarchicalMenu.ascx" />
+    <Content Include="Controls\Navigation\NavigationLevelTwo.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\Navigation\NavigationLevelZeroOne.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\Register.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\ResetPassword.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Controls\ViewProfile.ascx">
+      <SubType>UserControl</SubType>
+    </Content>
+    <Content Include="Default.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Error.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Install\Core\Database\mssql2000\1.5.0.sql" />
+    <Content Include="Install\Core\Database\mssql2000\2.0.0.sql" />
+    <Content Include="Install\Core\Database\mysql\1.5.0.sql" />
+    <Content Include="Install\Core\Database\postgresql\1.5.0.sql" />
+    <Content Include="Install\Install.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Install\Modules\Database\mssql2000\1.5.0.sql" />
+    <Content Include="Install\Modules\Database\mysql\1.5.0.sql" />
+    <Content Include="Install\Modules\Database\postgresql\1.5.0.sql" />
+    <Content Include="Install\Sorry.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Install\Upgrade.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="js\DefaultButton.js" />
+    <Content Include="Profile.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Rss.aspx">
+      <SubType>Form</SubType>
+    </Content>
+    <Content Include="Support\fckeditor\editor\css\behaviors\disablehandles.htc" />
+    <Content Include="Support\fckeditor\editor\css\behaviors\showtableborders.htc" />
+    <Content Include="Support\fckeditor\editor\css\fck_editorarea.css" />
+    <Content Include="Support\fckeditor\editor\css\fck_internal.css" />
+    <Content Include="Support\fckeditor\editor\css\fck_showtableborders_gecko.css" />
+    <Content Include="Support\fckeditor\editor\css\images\block_address.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_blockquote.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_div.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h1.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h2.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h3.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h4.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h5.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_h6.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_p.png" />
+    <Content Include="Support\fckeditor\editor\css\images\block_pre.png" />
+    <Content Include="Support\fckeditor\editor\css\images\fck_anchor.gif" />
+    <Content Include="Support\fckeditor\editor\css\images\fck_flashlogo.gif" />
+    <Content Include="Support\fckeditor\editor\css\images\fck_hiddenfield.gif" />
+    <Content Include="Support\fckeditor\editor\css\images\fck_pagebreak.gif" />
+    <Content Include="Support\fckeditor\editor\css\images\fck_plugin.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\common\fck_dialog_common.css" />
+    <Content Include="Support\fckeditor\editor\dialog\common\fck_dialog_common.js" />
+    <Content Include="Support\fckeditor\editor\dialog\common\images\locked.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\common\images\reset.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\common\images\unlocked.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_about.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_about\logo_fckeditor.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_about\logo_fredck.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_about\sponsors\spellchecker_net.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_anchor.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_button.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_checkbox.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_colorselector.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_div.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_docprops.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_docprops\fck_document_preview.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_flash.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_flash\fck_flash.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_flash\fck_flash_preview.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_form.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_hiddenfield.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_image.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_image\fck_image.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_image\fck_image_preview.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_link.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_link\fck_link.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_listprop.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_paste.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_radiobutton.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_replace.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_select.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_select\fck_select.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_smiley.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_source.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_specialchar.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\blank.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\controls.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\controlWindow.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellchecker.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellChecker.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\spellerStyle.css" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\wordWindow.js" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_table.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_tablecell.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_template.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_template\images\template1.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_template\images\template2.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_template\images\template3.gif" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_textarea.html" />
+    <Content Include="Support\fckeditor\editor\dialog\fck_textfield.html" />
+    <Content Include="Support\fckeditor\editor\dtd\fck_dtd_test.html" />
+    <Content Include="Support\fckeditor\editor\dtd\fck_xhtml10strict.js" />
+    <Content Include="Support\fckeditor\editor\dtd\fck_xhtml10transitional.js" />
+    <Content Include="Support\fckeditor\editor\fckdebug.html" />
+    <Content Include="Support\fckeditor\editor\fckdialog.html" />
+    <Content Include="Support\fckeditor\editor\fckeditor.html" />
+    <Content Include="Support\fckeditor\editor\fckeditor.original.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\browser.css" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\browser.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmactualfolder.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmcreatefolder.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmfolders.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmresourceslist.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmresourcetype.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\frmupload.html" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\ButtonArrow.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\Folder.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\Folder32.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\FolderOpened.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\FolderOpened32.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\FolderUp.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\ai.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\avi.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\bmp.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\cs.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\default.icon.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\dll.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\doc.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\exe.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\fla.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\gif.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\htm.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\html.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\jpg.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\js.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\mdb.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\mp3.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\pdf.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\png.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\ppt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\rdp.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\swf.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\swt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\txt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\vsd.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\xls.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\xml.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\32\zip.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\ai.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\avi.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\bmp.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\cs.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\default.icon.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\dll.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\doc.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\exe.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\fla.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\gif.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\htm.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\html.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\jpg.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\js.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\mdb.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\mp3.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\pdf.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\png.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\ppt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\rdp.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\swf.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\swt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\txt.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\vsd.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\xls.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\xml.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\icons\zip.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\images\spacer.gif" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\js\common.js" />
+    <Content Include="Support\fckeditor\editor\filemanager\browser\default\js\fckxml.js" />
+    <Content Include="Support\fckeditor\editor\filemanager\connectors\aspx\config.ascx" />
+    <Content Include="Support\fckeditor\editor\filemanager\connectors\aspx\connector.aspx" />
+    <Content Include="Support\fckeditor\editor\filemanager\connectors\aspx\upload.aspx" />
+    <Content Include="Support\fckeditor\editor\images\anchor.gif" />
+    <Content Include="Support\fckeditor\editor\images\arrow_ltr.gif" />
+    <Content Include="Support\fckeditor\editor\images\arrow_rtl.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\angel_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\angry_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\broken_heart.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\cake.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\confused_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\cry_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\devil_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\embaressed_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\envelope.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\heart.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\kiss.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\lightbulb.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\omg_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\regular_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\sad_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\shades_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\teeth_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\thumbs_down.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\thumbs_up.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\tounge_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\whatchutalkingabout_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\smiley\msn\wink_smile.gif" />
+    <Content Include="Support\fckeditor\editor\images\spacer.gif" />
+    <Content Include="Support\fckeditor\editor\js\fckadobeair.js" />
+    <Content Include="Support\fckeditor\editor\js\fckeditorcode_gecko.js" />
+    <Content Include="Support\fckeditor\editor\js\fckeditorcode_ie.js" />
+    <Content Include="Support\fckeditor\editor\lang\af.js" />
+    <Content Include="Support\fckeditor\editor\lang\ar.js" />
+    <Content Include="Support\fckeditor\editor\lang\bg.js" />
+    <Content Include="Support\fckeditor\editor\lang\bn.js" />
+    <Content Include="Support\fckeditor\editor\lang\bs.js" />
+    <Content Include="Support\fckeditor\editor\lang\ca.js" />
+    <Content Include="Support\fckeditor\editor\lang\cs.js" />
+    <Content Include="Support\fckeditor\editor\lang\da.js" />
+    <Content Include="Support\fckeditor\editor\lang\de.js" />
+    <Content Include="Support\fckeditor\editor\lang\el.js" />
+    <Content Include="Support\fckeditor\editor\lang\en-au.js" />
+    <Content Include="Support\fckeditor\editor\lang\en-ca.js" />
+    <Content Include="Support\fckeditor\editor\lang\en-uk.js" />
+    <Content Include="Support\fckeditor\editor\lang\en.js" />
+    <Content Include="Support\fckeditor\editor\lang\eo.js" />
+    <Content Include="Support\fckeditor\editor\lang\es.js" />
+    <Content Include="Support\fckeditor\editor\lang\et.js" />
+    <Content Include="Support\fckeditor\editor\lang\eu.js" />
+    <Content Include="Support\fckeditor\editor\lang\fa.js" />
+    <Content Include="Support\fckeditor\editor\lang\fi.js" />
+    <Content Include="Support\fckeditor\editor\lang\fo.js" />
+    <Content Include="Support\fckeditor\editor\lang\fr-ca.js" />
+    <Content Include="Support\fckeditor\editor\lang\fr.js" />
+    <Content Include="Support\fckeditor\editor\lang\gl.js" />
+    <Content Include="Support\fckeditor\editor\lang\gu.js" />
+    <Content Include="Support\fckeditor\editor\lang\he.js" />
+    <Content Include="Support\fckeditor\editor\lang\hi.js" />
+    <Content Include="Support\fckeditor\editor\lang\hr.js" />
+    <Content Include="Support\fckeditor\editor\lang\hu.js" />
+    <Content Include="Support\fckeditor\editor\lang\is.js" />
+    <Content Include="Support\fckeditor\editor\lang\it.js" />
+    <Content Include="Support\fckeditor\editor\lang\ja.js" />
+    <Content Include="Support\fckeditor\editor\lang\km.js" />
+    <Content Include="Support\fckeditor\editor\lang\ko.js" />
+    <Content Include="Support\fckeditor\editor\lang\lt.js" />
+    <Content Include="Support\fckeditor\editor\lang\lv.js" />
+    <Content Include="Support\fckeditor\editor\lang\mn.js" />
+    <Content Include="Support\fckeditor\editor\lang\ms.js" />
+    <Content Include="Support\fckeditor\editor\lang\nb.js" />
+    <Content Include="Support\fckeditor\editor\lang\nl.js" />
+    <Content Include="Support\fckeditor\editor\lang\no.js" />
+    <Content Include="Support\fckeditor\editor\lang\pl.js" />
+    <Content Include="Support\fckeditor\editor\lang\pt-br.js" />
+    <Content Include="Support\fckeditor\editor\lang\pt.js" />
+    <Content Include="Support\fckeditor\editor\lang\ro.js" />
+    <Content Include="Support\fckeditor\editor\lang\ru.js" />
+    <Content Include="Support\fckeditor\editor\lang\sk.js" />
+    <Content Include="Support\fckeditor\editor\lang\sl.js" />
+    <Content Include="Support\fckeditor\editor\lang\sr-latn.js" />
+    <Content Include="Support\fckeditor\editor\lang\sr.js" />
+    <Content Include="Support\fckeditor\editor\lang\sv.js" />
+    <Content Include="Support\fckeditor\editor\lang\th.js" />
+    <Content Include="Support\fckeditor\editor\lang\tr.js" />
+    <Content Include="Support\fckeditor\editor\lang\uk.js" />
+    <Content Include="Support\fckeditor\editor\lang\vi.js" />
+    <Content Include="Support\fckeditor\editor\lang\zh-cn.js" />
+    <Content Include="Support\fckeditor\editor\lang\zh.js" />
+    <Content Include="Support\fckeditor\editor\lang\_translationstatus.txt" />
+    <Content Include="Support\fckeditor\editor\plugins\autogrow\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\plugins\bbcode\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\plugins\bbcode\_sample\sample.config.js" />
+    <Content Include="Support\fckeditor\editor\plugins\bbcode\_sample\sample.html" />
+    <Content Include="Support\fckeditor\editor\plugins\dragresizetable\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\fck_placeholder.html" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\de.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\en.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\es.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\fr.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\it.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\lang\pl.js" />
+    <Content Include="Support\fckeditor\editor\plugins\placeholder\placeholder.gif" />
+    <Content Include="Support\fckeditor\editor\plugins\simplecommands\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\plugins\tablecommands\fckplugin.js" />
+    <Content Include="Support\fckeditor\editor\skins\default\fck_dialog.css" />
+    <Content Include="Support\fckeditor\editor\skins\default\fck_dialog_ie6.js" />
+    <Content Include="Support\fckeditor\editor\skins\default\fck_editor.css" />
+    <Content Include="Support\fckeditor\editor\skins\default\fck_strip.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\dialog.sides.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\dialog.sides.png" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\dialog.sides.rtl.png" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\sprites.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\sprites.png" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.arrowright.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.buttonarrow.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.collapse.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.end.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.expand.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.separator.gif" />
+    <Content Include="Support\fckeditor\editor\skins\default\images\toolbar.start.gif" />
+    <Content Include="Support\fckeditor\editor\skins\_fckviewstrips.html" />
+    <Content Include="Support\fckeditor\editor\wsc\ciframe.html" />
+    <Content Include="Support\fckeditor\editor\wsc\tmpFrameset.html" />
+    <Content Include="Support\fckeditor\editor\wsc\w.html" />
+    <Content Include="Support\fckeditor\fckconfig.js" />
+    <Content Include="Support\fckeditor\fckeditor.js" />
+    <Content Include="Support\fckeditor\fckstyles.xml" />
+    <Content Include="Support\fckeditor\fcktemplates.xml" />
+    <Content Include="Support\fckeditor\license.txt" />
+    <Content Include="Support\JsCalendar\cal.gif" />
+    <Content Include="Support\JsCalendar\calendar-blue.css" />
+    <Content Include="Support\JsCalendar\calendar-blue2.css" />
+    <Content Include="Support\JsCalendar\calendar-brown.css" />
+    <Content Include="Support\JsCalendar\calendar-green.css" />
+    <Content Include="Support\JsCalendar\calendar-setup.js" />
+    <Content Include="Support\JsCalendar\calendar-setup_stripped.js" />
+    <Content Include="Support\JsCalendar\calendar-system.css" />
+    <Content Include="Support\JsCalendar\calendar-tas.css" />
+    <Content Include="Support\JsCalendar\calendar-win2k-1.css" />
+    <Content Include="Support\JsCalendar\calendar-win2k-2.css" />
+    <Content Include="Support\JsCalendar\calendar-win2k-cold-1.css" />
+    <Content Include="Support\JsCalendar\calendar-win2k-cold-2.css" />
+    <Content Include="Support\JsCalendar\calendar.js" />
+    <Content Include="Support\JsCalendar\calendar_stripped.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-af.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-br.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-ca.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-cs-win.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-da.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-de.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-du.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-el.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-en.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-es.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-fi.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-fr.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-hr-utf8.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-hr.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-hu.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-it.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-jp.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-ko-utf8.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-ko.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-lt-utf8.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-lt.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-nl.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-no.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-pl-utf8.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-pl.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-pt.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-ro.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-ru.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-si.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-sk.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-sp.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-sv.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-tr.js" />
+    <Content Include="Support\JsCalendar\lang\calendar-zh.js" />
+    <Content Include="Web.config" />
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.it.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Controls.Resources.Strings.it.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.nl.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Controls.Resources.Strings.nl.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Controls.Resources.Strings.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.sv-SE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Controls.Resources.Strings.sv-SE.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.ValidationMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.ValidationMessages.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.ValidationMessages.nl.resx">
+      <SubType>Designer</SubType>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.ValidationMessages.nl.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Enums.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Enums.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Enums.nl.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Enums.nl.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Manager.GlobalResources.nl.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Manager.GlobalResources.nl.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Cuyahoga.Web.Manager.GlobalResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Cuyahoga.Web.Manager.GlobalResources.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Admin\Controls\AdminTemplate.ascx.resx">
+      <DependentUpon>AdminTemplate.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Controls\Footer.ascx.resx">
+      <DependentUpon>Footer.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Controls\Header.ascx.resx">
+      <DependentUpon>Header.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Controls\Navigation.ascx.resx">
+      <DependentUpon>Navigation.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SiteAliasEdit.aspx.resx">
+      <DependentUpon>SiteAliasEdit.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\TemplateEdit.aspx.resx">
+      <DependentUpon>TemplateEdit.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\TemplatePreview.aspx.resx">
+      <DependentUpon>TemplatePreview.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditProfile.ascx.resx">
+      <DependentUpon>EditProfile.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ModuleAdminHeader.ascx.resx">
+      <DependentUpon>ModuleAdminHeader.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ModuleAdminTemplate.ascx.resx">
+      <DependentUpon>ModuleAdminTemplate.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\HierarchicalMenu.ascx.resx">
+      <DependentUpon>HierarchicalMenu.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\NavigationLevelTwo.ascx.resx">
+      <DependentUpon>NavigationLevelTwo.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\NavigationLevelZeroOne.ascx.resx">
+      <DependentUpon>NavigationLevelZeroOne.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Register.ascx.resx">
+      <DependentUpon>Register.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ResetPassword.ascx.resx">
+      <DependentUpon>ResetPassword.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewProfile.ascx.resx">
+      <DependentUpon>ViewProfile.ascx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Error.aspx.resx">
+      <DependentUpon>Error.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global.asax.resx">
+      <DependentUpon>Global.asax.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Install\Install.aspx.resx">
+      <DependentUpon>Install.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Install\Sorry.aspx.resx">
+      <DependentUpon>Sorry.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Install\Upgrade.aspx.resx">
+      <DependentUpon>Upgrade.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.aspx.resx">
+      <DependentUpon>Login.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.aspx.resx">
+      <DependentUpon>Profile.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rss.aspx.resx">
+      <DependentUpon>Rss.aspx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Config\facilities.config" />
+    <Content Include="Config\properties.config" />
+    <Content Include="Config\services.config" />
+    <Content Include="Config\logging.config" />
+    <Content Include="App_Browsers\CSSFriendlyAdapters.browser" />
+    <None Include="App_Browsers\form._browser" />
+    <None Include="Cuyahoga.Web.build" />
+    <None Include="Install\Core\Database\mssql2000\0.8.2.sql" />
+    <None Include="Install\Core\Database\mssql2000\0.9.0.sql" />
+    <None Include="Install\Core\Database\mssql2000\0.9.1.sql" />
+    <None Include="Install\Core\Database\mssql2000\1.0.0.sql" />
+    <None Include="Install\Core\Database\mssql2000\1.5.1.sql" />
+    <None Include="Install\Core\Database\mssql2000\1.5.2.sql" />
+    <None Include="Install\Core\Database\mssql2000\install.sql" />
+    <None Include="Install\Core\Database\mysql\0.8.2.sql" />
+    <None Include="Install\Core\Database\mysql\0.9.0.sql" />
+    <None Include="Install\Core\Database\mysql\0.9.1.sql" />
+    <None Include="Install\Core\Database\mysql\1.0.0.sql" />
+    <None Include="Install\Core\Database\mysql\1.5.1.sql" />
+    <None Include="Install\Core\Database\mysql\1.5.2.sql" />
+    <None Include="Install\Core\Database\mysql\install.sql" />
+    <None Include="Install\Core\Database\postgresql\0.8.2.sql" />
+    <None Include="Install\Core\Database\postgresql\0.9.0.sql" />
+    <None Include="Install\Core\Database\postgresql\0.9.1.sql" />
+    <None Include="Install\Core\Database\postgresql\1.0.0.sql" />
+    <None Include="Install\Core\Database\postgresql\1.5.2.sql" />
+    <None Include="Install\Core\Database\postgresql\install.sql" />
+    <None Include="Install\Modules\Database\mssql2000\0.8.2.sql" />
+    <None Include="Install\Modules\Database\mssql2000\0.9.0.sql" />
+    <None Include="Install\Modules\Database\mssql2000\0.9.1.sql" />
+    <None Include="Install\Modules\Database\mssql2000\1.0.0.sql" />
+    <None Include="Install\Modules\Database\mssql2000\1.5.1.sql" />
+    <None Include="Install\Modules\Database\mssql2000\1.5.2.sql" />
+    <None Include="Install\Modules\Database\mssql2000\2.0.0.sql" />
+    <None Include="Install\Modules\Database\mssql2000\install.sql" />
+    <None Include="Install\Modules\Database\mysql\0.8.2.sql" />
+    <None Include="Install\Modules\Database\mysql\0.9.0.sql" />
+    <None Include="Install\Modules\Database\mysql\0.9.1.sql" />
+    <None Include="Install\Modules\Database\mysql\1.0.0.sql" />
+    <None Include="Install\Modules\Database\mysql\1.5.1.sql" />
+    <None Include="Install\Modules\Database\mysql\1.5.2.sql" />
+    <None Include="Install\Modules\Database\mysql\install.sql" />
+    <None Include="Install\Modules\Database\postgresql\0.8.2.sql" />
+    <None Include="Install\Modules\Database\postgresql\0.9.0.sql" />
+    <None Include="Install\Modules\Database\postgresql\0.9.1.sql" />
+    <None Include="Install\Modules\Database\postgresql\1.0.0.sql" />
+    <None Include="Install\Core\Database\postgresql\1.5.1.sql" />
+    <None Include="Install\Modules\Database\postgresql\1.5.1.sql" />
+    <None Include="Install\Modules\Database\postgresql\1.5.2.sql" />
+    <None Include="Install\Modules\Database\postgresql\install.sql" />
+    <None Include="Install\Web.config" />
+    <None Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
+    <None Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
+    <None Include="Support\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
+    <Content Include="Support\fckeditor\editor\filemanager\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\Images\Login\" />
+    <Folder Include="Images\" />
+    <Folder Include="Modules\" />
+    <Folder Include="SiteData\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>xcopy /s /y "$(SolutionDir)"lib\NHibernate.Caches.SysCache.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\NHibernate.ByteCode.Castle.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Antlr3.Runtime.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Castle.Facilities.AutomaticTransactionManagement.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Castle.Facilities.NHibernateIntegration.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Castle.Components.Validator.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Castle.Facilities.Logging.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\Castle.Services.Logging.Log4netIntegration.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\SEOViewStateAdapter.dll "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)"lib\CSSFriendly.dll "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl></IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

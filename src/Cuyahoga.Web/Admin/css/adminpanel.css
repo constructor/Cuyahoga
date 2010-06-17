@@ -1,0 +1,99 @@
+.editorcontextmenu
+{
+    position: absolute;
+    right: 0;
+    z-index: 900;
+}
+
+.editorcontextmenu:hover
+{
+    cursor: pointer;
+}
+
+.modulewrapper
+{
+    position: relative;
+    overflow: auto;
+}
+
+.moduletools
+{
+    position: absolute;
+    right: 32px;
+    width: 128px;
+    height: 128px;
+    overflow: visible;
+    z-index: 1000;
+    vertical-align: top;
+    display: none;
+    background-image: url(/admin/images/edit-panel.png);
+    margin: 0;
+    padding: 10px;
+}
+
+.moduletitle
+{
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    line-height: 12px;
+    height: 12px;
+    font-size: small;
+    padding: 0 8px;
+}
+
+.moduletools span
+{
+    display: none;
+    visibility: hidden;
+}
+
+.moduletools a
+{
+    position: relative;
+    display: block;
+    float: left;
+    overflow: visible;
+    top: -6px;
+}
+
+.moduletools a img
+{
+    border-style: none;
+}
+
+.moduletools a[id*="editcontent"]
+{
+    background-image: url(/admin/Images/edit-up.png);
+    height: 32px;
+    width: 128px;
+}
+
+.moduletools a[id*="editcontent"]:hover
+{
+    background-image: url(/admin/Images/edit-over.png);
+}
+
+.moduletools a[id*="sectionproperties"]
+{
+    background-image: url(/admin/Images/section-up.png);
+    height: 32px;
+    width: 128px;
+}
+
+.moduletools a[id*="sectionproperties"]:hover
+{
+    background-image: url(/admin/Images/section-over.png);
+}
+
+.moduletools a[id*="pageproperties"]
+{
+    background-image: url(/admin/Images/page-up.png);
+    height: 32px;
+    width: 128px;
+}
+
+.moduletools a[id*="pageproperties"]:hover
+{
+    background-image: url(/admin/Images/page-over.png);
+}

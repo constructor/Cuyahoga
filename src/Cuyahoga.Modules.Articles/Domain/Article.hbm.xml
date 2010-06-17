@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<joined-subclass name="Cuyahoga.Modules.Articles.Domain.Article, Cuyahoga.Modules.Articles"
+					 extends="Cuyahoga.Core.Domain.ContentItem, Cuyahoga.Core"
+					 table="cm_article">
+		<key column="contentitemid" />
+		<property name="Content" column="content" type="StringClob" />
+	</joined-subclass>
+</hibernate-mapping>

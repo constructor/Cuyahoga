@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionNotAllowedException" xml:space="preserve">
+    <value>You are not allowed to perform the requested action.</value>
+  </data>
+  <data name="AuthenticationException" xml:space="preserve">
+    <value>An error occured while authenticating the user.</value>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CuyahogaSiteManagerLabel" xml:space="preserve">
+    <value>Cuyahoga Site Manager</value>
+  </data>
+  <data name="DashboardPageTitle" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="EmptyUsernameOrPassword" xml:space="preserve">
+    <value>The username or password may not be empty.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid password. Make sure it has at least 5 characters.</value>
+  </data>
+  <data name="InvalidUsernamePassword" xml:space="preserve">
+    <value>Invalid username-password combination.</value>
+  </data>
+  <data name="LoggedInAsLabel" xml:space="preserve">
+    <value>Logged in as</value>
+  </data>
+  <data name="LoginButtonLabel" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginPageTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogoutButtonLabel" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="ManageFilesPageTitle" xml:space="preserve">
+    <value>Manage files</value>
+  </data>
+  <data name="ManagePagesPageTitle" xml:space="preserve">
+    <value>Manage pages</value>
+  </data>
+  <data name="ManagerMenuDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="ManagerMenuFiles" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="ManagerMenuPages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="ManagerMenuServer" xml:space="preserve">
+    <value>Server settings</value>
+  </data>
+  <data name="ManagerMenuSite" xml:space="preserve">
+    <value>Site settings</value>
+  </data>
+  <data name="ManagerMenuUsers" xml:space="preserve">
+    <value>Users and roles</value>
+  </data>
+  <data name="ManageSitePageTitle" xml:space="preserve">
+    <value>Manage site</value>
+  </data>
+  <data name="ManageUsersPageTitle" xml:space="preserve">
+    <value>Manage users</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="SiteLabel" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="TasksLabel" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="UserNullException" xml:space="preserve">
+    <value>The current user is not a valid authenticated Cuyahoga user</value>
+  </data>
+  <data name="CreateUserLabel" xml:space="preserve">
+    <value>Create user</value>
+  </data>
+  <data name="EditLabel" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="FilterButtonLabel" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="IsActiveLabel" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="LastLoginfromLabel" xml:space="preserve">
+    <value>Last login from</value>
+  </data>
+  <data name="LastLoginLabel" xml:space="preserve">
+    <value>Last login</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoUsersFound" xml:space="preserve">
+    <value>No user(s) found</value>
+  </data>
+  <data name="OptionAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="RoleLabel" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="GlobalSearchLabel" xml:space="preserve">
+    <value>Search in all sites</value>
+  </data>
+  <data name="ConfirmPasswordLabel" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="EditUserPageTitle" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="FirstNameLabel" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="GeneralLabel" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="ManageRolesPageTitle" xml:space="preserve">
+    <value>Manage roles</value>
+  </data>
+  <data name="NewUserPageTitle" xml:space="preserve">
+    <value>Add new user</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="RolesLabel" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="SaveButtonLabel" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>Time zone</value>
+  </data>
+  <data name="WebsiteLabel" xml:space="preserve">
+    <value>Web site</value>
+  </data>
+  <data name="ChangePasswordLabel" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="PasswordChangedMessage" xml:space="preserve">
+    <value>The password is changed successfully.</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="DeleteButtonLabel" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UserDeletedMessage" xml:space="preserve">
+    <value>The user {0} is deleted successfully.</value>
+  </data>
+  <data name="DeleteYourselfNotAllowedException" xml:space="preserve">
+    <value>You can't delete yourself.</value>
+  </data>
+  <data name="UserCreatedMessage" xml:space="preserve">
+    <value>The user {0} is created successfully.</value>
+  </data>
+  <data name="UserUpdatedMessage" xml:space="preserve">
+    <value>The user {0} is updated successfully.</value>
+  </data>
+  <data name="ModelValidationErrorMessage" xml:space="preserve">
+    <value>Some errors have occured:</value>
+  </data>
+  <data name="CreateRoleLabel" xml:space="preserve">
+    <value>Create new role</value>
+  </data>
+  <data name="EditRolePageTitle" xml:space="preserve">
+    <value>Edit role</value>
+  </data>
+  <data name="IsGlobalLabel" xml:space="preserve">
+    <value>Is global</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewRolePageTitle" xml:space="preserve">
+    <value>Create a new role</value>
+  </data>
+  <data name="NoRolesFound" xml:space="preserve">
+    <value>No role(s) found</value>
+  </data>
+  <data name="RightsLabel" xml:space="preserve">
+    <value>Rights</value>
+  </data>
+  <data name="RoleCreatedMessage" xml:space="preserve">
+    <value>The role {0} is created successfully.</value>
+  </data>
+  <data name="RoleDeletedMessage" xml:space="preserve">
+    <value>The role {0} is deleted successfully.</value>
+  </data>
+  <data name="RoleUpdatedMessage" xml:space="preserve">
+    <value>The role {0} is updated successfully.</value>
+  </data>
+  <data name="UsersLabel" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="ManagerMenuRoles" xml:space="preserve">
+    <value>Manage roles</value>
+  </data>
+  <data name="ManagerMenuTemplates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="ManageTemplatesPageTitle" xml:space="preserve">
+    <value>Manage templates</value>
+  </data>
+  <data name="CreateSiteLabel" xml:space="preserve">
+    <value>Create new site</value>
+  </data>
+  <data name="DefaultCultureLabel" xml:space="preserve">
+    <value>Default culture</value>
+  </data>
+  <data name="DefaultRoleLabel" xml:space="preserve">
+    <value>Default role for authenticated users</value>
+  </data>
+  <data name="DefaultsLabel" xml:space="preserve">
+    <value>Defaults</value>
+  </data>
+  <data name="NewSitePageTitle" xml:space="preserve">
+    <value>Create a new site</value>
+  </data>
+  <data name="SiteUrlLabel" xml:space="preserve">
+    <value>Site url</value>
+  </data>
+  <data name="UseFriendlyUrlsLabel" xml:space="preserve">
+    <value>Use friendly urls</value>
+  </data>
+  <data name="WebmasterEmailLabel" xml:space="preserve">
+    <value>Webmaster email</value>
+  </data>
+  <data name="CopyTemplatesLabel" xml:space="preserve">
+    <value>Copy templates</value>
+  </data>
+  <data name="TemplatesLabel" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="JumpToSiteAdminLabel" xml:space="preserve">
+    <value>Click here to go to the administration of the site</value>
+  </data>
+  <data name="NewSiteSuccessPageTitle" xml:space="preserve">
+    <value>The new site was created successfully.</value>
+  </data>
+  <data name="NewSiteWarningText" xml:space="preserve">
+    <value>Note that the url of the new site must be accesible. Verify that the physical directory of the url points to the Cuyahoga installation.</value>
+  </data>
+  <data name="DefaultMetaDescriptionLabel" xml:space="preserve">
+    <value>Default meta description</value>
+  </data>
+  <data name="DefaultMetaKeywordsLabel" xml:space="preserve">
+    <value>Default meta keywords</value>
+  </data>
+  <data name="DefaultPlaceholderLabel" xml:space="preserve">
+    <value>Default placeholder in the default template</value>
+  </data>
+  <data name="DefaultTemplateLabel" xml:space="preserve">
+    <value>Default template</value>
+  </data>
+  <data name="SiteUpdatedMessage" xml:space="preserve">
+    <value>The site is updated successfully.</value>
+  </data>
+  <data name="BasePathLabel" xml:space="preserve">
+    <value>Base path</value>
+  </data>
+  <data name="CssLabel" xml:space="preserve">
+    <value>Css</value>
+  </data>
+  <data name="EditTemplatePageTitle" xml:space="preserve">
+    <value>Edit template</value>
+  </data>
+  <data name="NoTemplatesFound" xml:space="preserve">
+    <value>No templates found</value>
+  </data>
+  <data name="RegisterTemplateLabel" xml:space="preserve">
+    <value>Register new template</value>
+  </data>
+  <data name="RegisterTemplatePageTitle" xml:space="preserve">
+    <value>Register new template</value>
+  </data>
+  <data name="TemplateControlLabel" xml:space="preserve">
+    <value>Template control</value>
+  </data>
+  <data name="TemplateCreatedMessage" xml:space="preserve">
+    <value>The template {0} is created successfully.</value>
+  </data>
+  <data name="TemplateDeletedMessage" xml:space="preserve">
+    <value>The template {0} is deleted successfully.</value>
+  </data>
+  <data name="TemplateUpdatedMessage" xml:space="preserve">
+    <value>The template {0} is updated successfully.</value>
+  </data>
+  <data name="InvalidAscxLocationException" xml:space="preserve">
+    <value>Invalid .ascx file location in package. Make sure the .ascx files are in the root of the package.</value>
+  </data>
+  <data name="InvalidCssLocationException" xml:space="preserve">
+    <value>Invalid .css file location in package. Make sure the .css files are in the 'css' subdirectory.</value>
+  </data>
+  <data name="InvalidDirectoryInPackageFoundException" xml:space="preserve">
+    <value>Invalid directory found in package. Only 'Images' and 'Css' are allowed.</value>
+  </data>
+  <data name="InvalidExtensionFoundException" xml:space="preserve">
+    <value>Invalid file extension found in package.</value>
+  </data>
+  <data name="InvalidZipFileMessage" xml:space="preserve">
+    <value>The file is not a valid .zip archive</value>
+  </data>
+  <data name="NoFileUploadedMessage" xml:space="preserve">
+    <value>No file was uploaded.</value>
+  </data>
+  <data name="TemplatesUploadedMessage" xml:space="preserve">
+    <value>The template files are uploaded. You can now register one or more new templates based on the files.</value>
+  </data>
+  <data name="UploadNewTemplateFilesHint" xml:space="preserve">
+    <value>You can upload a set of template files, packaged as a .zip file. The name of the .zip file becomes the directory name. Make sure that the template control (.ascx) is in the root of the package and images and stylesheets are in the 'Images' and 'Css' directories.</value>
+  </data>
+  <data name="UploadNewTemplateFilesLabel" xml:space="preserve">
+    <value>Upload new template files</value>
+  </data>
+  <data name="ViewLabel" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ViewTemplatePageTitle" xml:space="preserve">
+    <value>View template</value>
+  </data>
+  <data name="SelectLabel" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="CopyButtonLabel" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CultureLabel" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="LastModifiedLabel" xml:space="preserve">
+    <value>Last modified</value>
+  </data>
+  <data name="LinkTargetLabel" xml:space="preserve">
+    <value>Link target</value>
+  </data>
+  <data name="LinkTitleLabel" xml:space="preserve">
+    <value>Link title</value>
+  </data>
+  <data name="LinkUrlLabel" xml:space="preserve">
+    <value>Link url</value>
+  </data>
+  <data name="MoveButtonLabel" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="MoveOrCopyPageDialogText" xml:space="preserve">
+    <value>Do you want to move this page under a new parent? Alternatively, you can also make a copy of the page. This will copy the page properties and sections. Note that this will not copy the actual content.</value>
+  </data>
+  <data name="MoveOrCopyPageDialogTitle" xml:space="preserve">
+    <value>Move or copy page</value>
+  </data>
+  <data name="PageTitleLabel" xml:space="preserve">
+    <value>Page title</value>
+  </data>
+  <data name="PageUrlLabel" xml:space="preserve">
+    <value>Page url</value>
+  </data>
+  <data name="ShowInNavigationLabel" xml:space="preserve">
+    <value>Show in navigation</value>
+  </data>
+  <data name="TemplateLabel" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="LinkPropertiesLabel" xml:space="preserve">
+    <value>Link properties</value>
+  </data>
+  <data name="LinkPropertiesUpdatedMessage" xml:space="preserve">
+    <value>The link properties are updated.</value>
+  </data>
+  <data name="PageCopiedMessage" xml:space="preserve">
+    <value>The page is copied successfully.</value>
+  </data>
+  <data name="PageMovedMessage" xml:space="preserve">
+    <value>The page is moved successfully.</value>
+  </data>
+  <data name="PageOrderUpdatedMessage" xml:space="preserve">
+    <value>The order of de pages is updated.</value>
+  </data>
+  <data name="PagePropertiesLabel" xml:space="preserve">
+    <value>Page properties</value>
+  </data>
+  <data name="PagePropertiesUpdatedMessage" xml:space="preserve">
+    <value>The page properties are updated.</value>
+  </data>
+  <data name="CreateButtonLabel" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="DeleteLinkLabel" xml:space="preserve">
+    <value>Delete the current link</value>
+  </data>
+  <data name="DeletePageLabel" xml:space="preserve">
+    <value>Delete the current page</value>
+  </data>
+  <data name="NewChildLinkLabel" xml:space="preserve">
+    <value>Create a new link below the current page</value>
+  </data>
+  <data name="NewChildPageLabel" xml:space="preserve">
+    <value>Create a new page below the current page</value>
+  </data>
+  <data name="NewRootPageLabel" xml:space="preserve">
+    <value>Create a new top-level page</value>
+  </data>
+  <data name="LinkCreatedMessage" xml:space="preserve">
+    <value>The link {0} was created successfully.</value>
+  </data>
+  <data name="LinkDeletedMessage" xml:space="preserve">
+    <value>The link {0} was deleted successfully.</value>
+  </data>
+  <data name="PageCreatedMessage" xml:space="preserve">
+    <value>The page {0} was created successfully. You can now choose a template and add content.</value>
+  </data>
+  <data name="PageDeletedMessage" xml:space="preserve">
+    <value>The page {0} was deleted successfully.</value>
+  </data>
+  <data name="ChooseTemplateOption" xml:space="preserve">
+    <value>Choose a template</value>
+  </data>
+  <data name="DesignPagePageTitle" xml:space="preserve">
+    <value>Layout of page '{0}'</value>
+  </data>
+  <data name="AddSectionDialogTitle" xml:space="preserve">
+    <value>Add section to page</value>
+  </data>
+  <data name="TemplateSetMessage" xml:space="preserve">
+    <value>The template was successfully connected to the page.</value>
+  </data>
+  <data name="CreateSectionLabel" xml:space="preserve">
+    <value>Create section</value>
+  </data>
+  <data name="SectionCreatedMessage" xml:space="preserve">
+    <value>The section {0} is created successfully.</value>
+  </data>
+  <data name="SectionsArrangedMessage" xml:space="preserve">
+    <value>Sections arranged for placeholder {0}.</value>
+  </data>
+  <data name="AvailableModulesLabel" xml:space="preserve">
+    <value>Available modules</value>
+  </data>
+  <data name="AvailableModulesHint" xml:space="preserve">
+    <value>Pick a module from the list below and drag it to a content placeholder in the template to create a new section.</value>
+  </data>
+  <data name="CloseLabel" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="DeleteSectionBoxHint" xml:space="preserve">
+    <value>Drop a section in this box to remove it from the page</value>
+  </data>
+  <data name="DeleteSectionConfirmLabel" xml:space="preserve">
+    <value>Yes, delete section</value>
+  </data>
+  <data name="DetachSectionConfirmLabel" xml:space="preserve">
+    <value>Just detach the section from the page</value>
+  </data>
+  <data name="EditContentDialogTitle" xml:space="preserve">
+    <value>Edit content</value>
+  </data>
+  <data name="EditContentLabel" xml:space="preserve">
+    <value>Edit content</value>
+  </data>
+  <data name="RemoveSectionDialogTitle" xml:space="preserve">
+    <value>Remove or detach section from page</value>
+  </data>
+  <data name="RemoveSectionLabel" xml:space="preserve">
+    <value>Remove section</value>
+  </data>
+  <data name="SectionDeletedMessage" xml:space="preserve">
+    <value>The section {0} is successfully deleted.</value>
+  </data>
+  <data name="SectionDetachedMessage" xml:space="preserve">
+    <value>The section {0} is successfully detached from this page.</value>
+  </data>
+  <data name="SectionPropertiesDialogTitle" xml:space="preserve">
+    <value>Section properties</value>
+  </data>
+  <data name="SectionPropertiesLabel" xml:space="preserve">
+    <value>Section properties</value>
+  </data>
+  <data name="SectionPropertiesUpdatedMessage" xml:space="preserve">
+    <value>Section properties are saved successfully.</value>
+  </data>
+  <data name="AddSectionLabel" xml:space="preserve">
+    <value>Add section to page</value>
+  </data>
+  <data name="BackToPageListLabel" xml:space="preserve">
+    <value>Back to page list</value>
+  </data>
+  <data name="DesignCurrentPageLabel" xml:space="preserve">
+    <value>Layout of the current page</value>
+  </data>
+  <data name="EditRolesLabel" xml:space="preserve">
+    <value>Roles that are allowed to edit the content</value>
+  </data>
+  <data name="ManagePermissionsLabel" xml:space="preserve">
+    <value>Manage permissions</value>
+  </data>
+  <data name="ViewRolesLabel" xml:space="preserve">
+    <value>Roles that are allowed to view the content</value>
+  </data>
+  <data name="PropagateToChildPagesLabel" xml:space="preserve">
+    <value>Propagate to child pages</value>
+  </data>
+  <data name="PropagateToChildSectionsLabel" xml:space="preserve">
+    <value>Propagate to sections on the page</value>
+  </data>
+  <data name="PropagatePermissionsLabel" xml:space="preserve">
+    <value>Propagate permissions</value>
+  </data>
+  <data name="SectionConnectionsLabel" xml:space="preserve">
+    <value>Outbound connections</value>
+  </data>
+  <data name="SelectedSectionLabel" xml:space="preserve">
+    <value>Selected section</value>
+  </data>
+  <data name="SectionPermissionsLabel" xml:space="preserve">
+    <value>Section permissions</value>
+  </data>
+  <data name="PermissionsUpdatedMessage" xml:space="preserve">
+    <value>Permissions for {0} are updated successfully.</value>
+  </data>
+  <data name="DeleteSectionChoiceLabel" xml:space="preserve">
+    <value>Do you want to delete the section or only detach it from the page?</value>
+  </data>
+  <data name="ManageContentPageTitle" xml:space="preserve">
+    <value>Manage page content on '{0}'</value>
+  </data>
+  <data name="ManageContentCurrentPageLabel" xml:space="preserve">
+    <value>Manage content current page</value>
+  </data>
+  <data name="ManagerMenuCategories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="ManagerMenuSharedContent" xml:space="preserve">
+    <value>Shared content</value>
+  </data>
+  <data name="CreateCategoryLabel" xml:space="preserve">
+    <value>Create new category</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ManageCategoriesPageTitle" xml:space="preserve">
+    <value>Manage categories</value>
+  </data>
+  <data name="ManagerMenuContent" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="NoneLabel" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ParentCategoryLabel" xml:space="preserve">
+    <value>Parent category</value>
+  </data>
+  <data name="CategoryCreatedMessage" xml:space="preserve">
+    <value>The category {0} is created successfully.</value>
+  </data>
+  <data name="CategoryDeletedMessage" xml:space="preserve">
+    <value>The category {0} is deleted successfully.</value>
+  </data>
+  <data name="CategoryHasChildCategoriesException" xml:space="preserve">
+    <value>Can't delete the category because it has child categories.</value>
+  </data>
+  <data name="CategoryHasContentItemsException" xml:space="preserve">
+    <value>Can't delete the category because it contains content items.</value>
+  </data>
+  <data name="CategoryUpdatedMessage" xml:space="preserve">
+    <value>The category {0} is updated successfully.</value>
+  </data>
+  <data name="EditCategoryPageTitle" xml:space="preserve">
+    <value>Edit category</value>
+  </data>
+  <data name="NewCategoryPageTitle" xml:space="preserve">
+    <value>Create a new category</value>
+  </data>
+  <data name="CategoriesLabel" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="OkLabel" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="CommentsLabel" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="AuthorLabel" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="CommentLabel" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CurrentDirectoryLabel" xml:space="preserve">
+    <value>Current directory</value>
+  </data>
+  <data name="PathLabel" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="CopySelectedItemsTo" xml:space="preserve">
+    <value>Copy selected items to</value>
+  </data>
+  <data name="CreateDirectoryLabel" xml:space="preserve">
+    <value>Create a new directory</value>
+  </data>
+  <data name="DateModifiedLabel" xml:space="preserve">
+    <value>Date Modified</value>
+  </data>
+  <data name="DeleteSelectedItems" xml:space="preserve">
+    <value>Delete selected items</value>
+  </data>
+  <data name="DirectoryCreatedMessage" xml:space="preserve">
+    <value>The directory {0} is created successfully.</value>
+  </data>
+  <data name="FilesDirectoriesCopiedMessage" xml:space="preserve">
+    <value>The files and/or directories are copied to {0}.</value>
+  </data>
+  <data name="FilesDirectoriesDeletedMessage" xml:space="preserve">
+    <value>The files and/or directories are deleted successfully.</value>
+  </data>
+  <data name="FilesDirectoriesMovedMessage" xml:space="preserve">
+    <value>The files and/or directories are moved to {0}.</value>
+  </data>
+  <data name="MoveSelectedItemsTo" xml:space="preserve">
+    <value>Move selected items to</value>
+  </data>
+  <data name="SizeLabel" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="WithSelectedItemsDo" xml:space="preserve">
+    <value>With the selected items do</value>
+  </data>
+  <data name="BrowseButtonLabel" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="FileUploadSuccessMessage" xml:space="preserve">
+    <value>The file is saved on the server as {0}.</value>
+  </data>
+  <data name="UploadButtonLabel" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UploadFilesLabel" xml:space="preserve">
+    <value>Upload files</value>
+  </data>
+  <data name="CurrentIndexProperties" xml:space="preserve">
+    <value>Properties full-text index for current site</value>
+  </data>
+  <data name="FullTextIndexDirectoryLabel" xml:space="preserve">
+    <value>Directory index files</value>
+  </data>
+  <data name="FullTextIndexRebuildMessage" xml:space="preserve">
+    <value>The full-text index was rebuilt successfully.</value>
+  </data>
+  <data name="IndexSizeLabel" xml:space="preserve">
+    <value>Number of documents in index</value>
+  </data>
+  <data name="RebuildFullTextIndexLabel" xml:space="preserve">
+    <value>Rebuild full-text index</value>
+  </data>
+  <data name="RebuildFullTextIndexPageTitle" xml:space="preserve">
+    <value>Full Text index</value>
+  </data>
+  <data name="ManagerMenuModules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="ActionsLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ActivationStatusLabel" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AssemblyLabel" xml:space="preserve">
+    <value>Assembly</value>
+  </data>
+  <data name="InactiveStatus" xml:space="preserve">
+    <value>Not active</value>
+  </data>
+  <data name="InstallationStatusLabel" xml:space="preserve">
+    <value>Installation status</value>
+  </data>
+  <data name="LoadOnStartupLabel" xml:space="preserve">
+    <value>Load on startup</value>
+  </data>
+  <data name="ManageModulesPageTitle" xml:space="preserve">
+    <value>Manage modules</value>
+  </data>
+  <data name="InstalledStatus" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="InstalledUpgradeStatus" xml:space="preserve">
+    <value>Installed (upgrade available)</value>
+  </data>
+  <data name="InstallLabel" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="ModuleActivatedMessage" xml:space="preserve">
+    <value>The module {0} was activated successfully.</value>
+  </data>
+  <data name="ModuleDeactivatedMessage" xml:space="preserve">
+    <value>The module {0} was deactivated successfully and will unload at the next application restart. </value>
+  </data>
+  <data name="ModuleInstallConfirmation" xml:space="preserve">
+    <value>Are you sure you want to install this module?</value>
+  </data>
+  <data name="ModuleInstalledAndActivatedMessage" xml:space="preserve">
+    <value>The module {0} was installed and activated successfully.</value>
+  </data>
+  <data name="ModuleUninstallConfirmation" xml:space="preserve">
+    <value>Are you sure you want to uninstall this module?</value>
+  </data>
+  <data name="ModuleUninstalledMessage" xml:space="preserve">
+    <value>The module {0} was uninstalled successfully.</value>
+  </data>
+  <data name="ModuleUpgradeConfirmation" xml:space="preserve">
+    <value>Are you sure you want to upgrade this module?</value>
+  </data>
+  <data name="ModuleUpgradedMessage" xml:space="preserve">
+    <value>The module {0} was upgraded successfully.</value>
+  </data>
+  <data name="UninstalledStatus" xml:space="preserve">
+    <value>Not installed</value>
+  </data>
+  <data name="UninstallLabel" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="UpgradeLabel" xml:space="preserve">
+    <value>Upgrade</value>
+  </data>
+  <data name="UninstallModuleForbiddenBecauseOfRelatedSectionsMessage" xml:space="preserve">
+    <value>The module cannot be uninstalled because it is used in the following sections</value>
+  </data>
+  <data name="EditLayoutLabel" xml:space="preserve">
+    <value>Edit layout</value>
+  </data>
+  <data name="AttachedToLabel" xml:space="preserve">
+    <value>Attached to</value>
+  </data>
+  <data name="ManageSharedContentPageTitle" xml:space="preserve">
+    <value>Manage shared content</value>
+  </data>
+  <data name="ModuleTypeLabel" xml:space="preserve">
+    <value>Module type</value>
+  </data>
+  <data name="SectionNameLabel" xml:space="preserve">
+    <value>Section name</value>
+  </data>
+  <data name="AttachSectionToTemplatesPageTitle" xml:space="preserve">
+    <value>Attach section '{0}' to template(s)</value>
+  </data>
+  <data name="AttachToTemplateLabel" xml:space="preserve">
+    <value>Attach to template(s)</value>
+  </data>
+  <data name="BackLabel" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="CreateSharedSectionLabel" xml:space="preserve">
+    <value>Create shared section</value>
+  </data>
+  <data name="IsAttachedLabel" xml:space="preserve">
+    <value>Is attached</value>
+  </data>
+  <data name="MoveSectionToPageLabel" xml:space="preserve">
+    <value>Move to page</value>
+  </data>
+  <data name="NewSharedSectionPageTitle" xml:space="preserve">
+    <value>New shared section</value>
+  </data>
+  <data name="PlaceholderLabel" xml:space="preserve">
+    <value>Placeholder</value>
+  </data>
+  <data name="SectionAttachedMessage" xml:space="preserve">
+    <value>Section is attached or detached to template(s) succesfully.</value>
+  </data>
+  <data name="SelectModuleTypeLabel" xml:space="preserve">
+    <value>Select module type</value>
+  </data>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ConnectionDeletedMessage" xml:space="preserve">
+    <value>Connection for action {0} is removed successfully.</value>
+  </data>
+  <data name="PageLabel" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="SectionLabel" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="AddConnectionLabel" xml:space="preserve">
+    <value>Add connection</value>
+  </data>
+  <data name="NewConnectionPageTitle" xml:space="preserve">
+    <value>New connection for '{0}'</value>
+  </data>
+  <data name="ConnectionAddedMessage" xml:space="preserve">
+    <value>Connection for action {0} was added succesfully.</value>
+  </data>
+  <data name="ConnectToLabel" xml:space="preserve">
+    <value>Connect to section</value>
+  </data>
+  <data name="SelectActionOption" xml:space="preserve">
+    <value>Select action</value>
+  </data>
+</root>
