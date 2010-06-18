@@ -31,7 +31,6 @@
                 </div>
             </div>
             <div id="footer">
-                <asp:image runat="server" AlternateText="Standards and Attainments" ImageUrl="/Templates/Novodevelopments/Images/footer-badges.gif" />
                 <p>Copyright &copy; 2010 <a href="#">Company Name</a></p>
             </div>
         </form>
