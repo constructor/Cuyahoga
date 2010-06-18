@@ -18,7 +18,6 @@ namespace Cuyahoga.Web.Admin
         /// </summary>
         /// 
 
-        private Site _activeSite;
         private User _currentUser;
 
         /// <summary>
@@ -38,15 +37,15 @@ namespace Cuyahoga.Web.Admin
                 if (base.ActiveSite.Id == -1)
                 {
                     // Create a new site instance
-                    //this._activeSite = new Site();
+                    //base.ActiveSite = new Site();
                     this.btnDelete.Visible = false;
                     this.hplNewAlias.Visible = false;
                 }
                 else
                 {
                     // Get site data
-                    //this._activeSite = base.SiteService.GetSiteById(Int32.Parse(Context.Request.QueryString["SiteId"]));
-                    this._activeSite = base.ActiveSite;
+                    //base.ActiveSite = base.SiteService.GetSiteById(Int32.Parse(Context.Request.QueryString["SiteId"]));
+                    base.ActiveSite = base.ActiveSite;
                     this.btnDelete.Visible = true;
                     this.btnDelete.Attributes.Add("onclick", "return confirm('Do you wish to permanently delete a site and all its folders?')");
                 }
@@ -56,7 +55,7 @@ namespace Cuyahoga.Web.Admin
                     BindTemplates();
                     BindCultures();
                     BindRoles();
-                    if (this._activeSite.Id > 0)
+                    if (base.ActiveSite.Id > 0)
                     {
                         BindAliases();
                     }
@@ -66,19 +65,19 @@ namespace Cuyahoga.Web.Admin
 
         private void BindSiteControls()
         {
-            this.txtName.Text = this._activeSite.Name;
-            this.txtSiteUrl.Text = this._activeSite.SiteUrl;
-            this.txtWebmasterEmail.Text = this._activeSite.WebmasterEmail;
-            this.chkUseFriendlyUrls.Checked = this._activeSite.UseFriendlyUrls;
+            this.txtName.Text = base.ActiveSite.Name;
+            this.txtSiteUrl.Text = base.ActiveSite.SiteUrl;
+            this.txtWebmasterEmail.Text = base.ActiveSite.WebmasterEmail;
+            this.chkUseFriendlyUrls.Checked = base.ActiveSite.UseFriendlyUrls;
 
-            if (this._activeSite.DefaultTemplate != null) 
-                this.ddlTemplates.SelectedValue = this._activeSite.DefaultTemplate.Id.ToString();
+            if (base.ActiveSite.DefaultTemplate != null) 
+                this.ddlTemplates.SelectedValue = base.ActiveSite.DefaultTemplate.Id.ToString();
 
-            if(this._activeSite.DefaultPlaceholder != null)
-                this.ddlPlaceholders.SelectedValue = this._activeSite.DefaultPlaceholder;
+            if(base.ActiveSite.DefaultPlaceholder != null)
+                this.ddlPlaceholders.SelectedValue = base.ActiveSite.DefaultPlaceholder;
 
-            this.txtMetaDescription.Text = this._activeSite.MetaDescription;
-            this.txtMetaKeywords.Text = this._activeSite.MetaKeywords;
+            this.txtMetaDescription.Text = base.ActiveSite.MetaDescription;
+            this.txtMetaKeywords.Text = base.ActiveSite.MetaKeywords;
         }
 
         private void BindTemplates()
@@ -87,7 +86,7 @@ namespace Cuyahoga.Web.Admin
             {
                 IList templates;
 
-                if (this.ActiveSite != null)
+                if (this.ActiveSite != null && this.ActiveSite.Id > 0)
                 {
                     int activeSiteID = this.ActiveSite.Id;
                     Cuyahoga.Core.Domain.Site CurrentSite = this.SiteService.GetSiteById(this.ActiveSite.Id);
@@ -115,11 +114,11 @@ namespace Cuyahoga.Web.Admin
 
                 this.ddlTemplates.DataBind();
 
-                if (this._activeSite.DefaultTemplate != null)
+                if (base.ActiveSite.DefaultTemplate != null)
                 {
-                    if (ddlTemplates.Items.FindByValue(this._activeSite.DefaultTemplate.Id.ToString()) != null)
+                    if (ddlTemplates.Items.FindByValue(base.ActiveSite.DefaultTemplate.Id.ToString()) != null)
                     {
-                        ddlTemplates.Items.FindByValue(this._activeSite.DefaultTemplate.Id.ToString()).Selected = true;
+                        ddlTemplates.Items.FindByValue(base.ActiveSite.DefaultTemplate.Id.ToString()).Selected = true;
                     }
                     BindPlaceholders();
                 }
@@ -142,9 +141,9 @@ namespace Cuyahoga.Web.Admin
                     this.ddlPlaceholders.DataValueField = "Key";
                     this.ddlPlaceholders.DataTextField = "Key";
                     this.ddlPlaceholders.DataBind();
-                    if (this._activeSite.DefaultPlaceholder != null && this._activeSite.DefaultPlaceholder != String.Empty)
+                    if (base.ActiveSite.DefaultPlaceholder != null && base.ActiveSite.DefaultPlaceholder != String.Empty)
                     {
-                        this.ddlPlaceholders.Items.FindByValue(this._activeSite.DefaultPlaceholder).Selected = true;
+                        this.ddlPlaceholders.Items.FindByValue(base.ActiveSite.DefaultPlaceholder).Selected = true;
                     }
                 }
                 catch (Exception ex)
@@ -164,12 +163,12 @@ namespace Cuyahoga.Web.Admin
             this.ddlCultures.DataValueField = "Key";
             this.ddlCultures.DataTextField = "Value";
             this.ddlCultures.DataBind();
-            if (this._activeSite.DefaultCulture != null)
+            if (base.ActiveSite.DefaultCulture != null)
             {
-                ListItem li = ddlCultures.Items.FindByValue(this._activeSite.DefaultCulture);
+                ListItem li = ddlCultures.Items.FindByValue(base.ActiveSite.DefaultCulture);
                 if (li != null)
                 {
-                    ddlCultures.Items.FindByValue(this._activeSite.DefaultCulture).Selected = true;
+                    ddlCultures.Items.FindByValue(base.ActiveSite.DefaultCulture).Selected = true;
                 }
             }
         }
@@ -180,17 +179,17 @@ namespace Cuyahoga.Web.Admin
             this.ddlRoles.DataValueField = "Id";
             this.ddlRoles.DataTextField = "Name";
             this.ddlRoles.DataBind();
-            if (this._activeSite.DefaultRole != null)
+            if (base.ActiveSite.DefaultRole != null)
             {
-                ddlRoles.Items.FindByValue(this._activeSite.DefaultRole.Id.ToString()).Selected = true;
+                ddlRoles.Items.FindByValue(base.ActiveSite.DefaultRole.Id.ToString()).Selected = true;
             }
         }
 
         private void BindAliases()
         {
-            this.rptAliases.DataSource = base.SiteService.GetSiteAliasesBySite(this._activeSite);
+            this.rptAliases.DataSource = base.SiteService.GetSiteAliasesBySite(base.ActiveSite);
             this.rptAliases.DataBind();
-            this.hplNewAlias.NavigateUrl = String.Format("~/Admin/SiteAliasEdit.aspx?SiteId={0}&SiteAliasId=-1", this._activeSite.Id);
+            this.hplNewAlias.NavigateUrl = String.Format("~/Admin/SiteAliasEdit.aspx?SiteId={0}&SiteAliasId=-1", base.ActiveSite.Id);
         }
 
         protected void BtnSaveClick(object sender, EventArgs e)
@@ -199,53 +198,53 @@ namespace Cuyahoga.Web.Admin
             {
                 if (this.IsValid)
                 {
-                    this._activeSite.Name = txtName.Text;
-                    this._activeSite.SiteUrl = txtSiteUrl.Text;
-                    this._activeSite.WebmasterEmail = txtWebmasterEmail.Text;
-                    this._activeSite.UseFriendlyUrls = this.chkUseFriendlyUrls.Checked;
+                    base.ActiveSite.Name = txtName.Text;
+                    base.ActiveSite.SiteUrl = txtSiteUrl.Text;
+                    base.ActiveSite.WebmasterEmail = txtWebmasterEmail.Text;
+                    base.ActiveSite.UseFriendlyUrls = this.chkUseFriendlyUrls.Checked;
 
                     if (this.ddlTemplates.SelectedValue != "-1")
                     {
                         int templateId = Int32.Parse(this.ddlTemplates.SelectedValue);
                         Template template = TemplateService.GetTemplateById(templateId);
-                        this._activeSite.DefaultTemplate = template;
+                        base.ActiveSite.DefaultTemplate = template;
                         if (this.ddlPlaceholders.SelectedIndex > -1)
                         {
-                            this._activeSite.DefaultPlaceholder = this.ddlPlaceholders.SelectedValue;
+                            base.ActiveSite.DefaultPlaceholder = this.ddlPlaceholders.SelectedValue;
                         }
                     }
                     //else if (this.ddlTemplates.SelectedValue == "-1")
                     //{
-                    //    this._activeSite.DefaultTemplate = null;
-                    //    this._activeSite.DefaultPlaceholder = null;
+                    //    base.ActiveSite.DefaultTemplate = null;
+                    //    base.ActiveSite.DefaultPlaceholder = null;
                     //}
 
-                    this._activeSite.DefaultCulture = this.ddlCultures.SelectedValue;
+                    base.ActiveSite.DefaultCulture = this.ddlCultures.SelectedValue;
 
                     int defaultRoleId = Int32.Parse(this.ddlRoles.SelectedValue);
 
-                    this._activeSite.DefaultRole = UserService.GetRoleById(defaultRoleId);
+                    base.ActiveSite.DefaultRole = UserService.GetRoleById(defaultRoleId);
 
-                    this._activeSite.MetaDescription = this.txtMetaDescription.Text.Trim().Length > 0
+                    base.ActiveSite.MetaDescription = this.txtMetaDescription.Text.Trim().Length > 0
                         ? this.txtMetaDescription.Text.Trim()
                         : null;
 
-                    this._activeSite.MetaKeywords = this.txtMetaKeywords.Text.Trim().Length > 0
+                    base.ActiveSite.MetaKeywords = this.txtMetaKeywords.Text.Trim().Length > 0
                         ? this.txtMetaKeywords.Text.Trim()
                         : null;
 
                     try
                     {
-                        if (this._activeSite.Id > 0)
+                        if (base.ActiveSite.Id > 0)
                         {
-                            base.SiteService.SaveSite(this._activeSite);
+                            base.SiteService.SaveSite(base.ActiveSite);
                             ShowMessage("Site saved.");
                         }
                         else
                         {
                             //Custom Added
                             string systemTemplatePath = Server.MapPath(Config.GetConfiguration()["TemplateDir"]);
-                            this.SiteService.CreateSite(this._activeSite, Server.MapPath("~/SiteData"), TemplateService.GetUnassignedTemplates(), systemTemplatePath);
+                            this.SiteService.CreateSite(base.ActiveSite, Server.MapPath("~/SiteData"), TemplateService.GetUnassignedTemplates(), systemTemplatePath);
                             Response.Redirect("Default.aspx?message=Site created successfully.");
                             //ShowMessage("Site created.");
                         }
@@ -269,12 +268,12 @@ namespace Cuyahoga.Web.Admin
 
         protected void BtnDeleteClick(object sender, EventArgs e)
         {
-            if (!this._currentUser.Sites.Contains(this._activeSite))
+            if (!this._currentUser.Sites.Contains(base.ActiveSite))
             {
                 try
                 {
-                    Cuyahoga.Core.Domain.Site siteToDelete = this._activeSite;
-                    this._activeSite = null;
+                    Cuyahoga.Core.Domain.Site siteToDelete = base.ActiveSite;
+                    base.ActiveSite = null;
 
                     //Get the SiteData Folder before the site is deleted
                     string siteDataFolder = System.Web.HttpContext.Current.Server.MapPath(siteToDelete.SiteDataDirectory);
@@ -317,7 +316,7 @@ namespace Cuyahoga.Web.Admin
             HyperLink hplEdit = e.Item.FindControl("hplEdit") as HyperLink;
             if (hplEdit != null)
             {
-                hplEdit.NavigateUrl = String.Format("~/Admin/SiteAliasEdit.aspx?SiteId={0}&SiteAliasId={1}", this._activeSite.Id, sa.Id);
+                hplEdit.NavigateUrl = String.Format("~/Admin/SiteAliasEdit.aspx?SiteId={0}&SiteAliasId={1}", base.ActiveSite.Id, sa.Id);
             }
             Label lblEntryNode = e.Item.FindControl("lblEntryNode") as Label;
             if (lblEntryNode != null)
