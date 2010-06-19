@@ -44,7 +44,8 @@ namespace Cuyahoga.Core.Service
 			// TODO: get rid of this solution as soon as possible!
 			this._kernel.AddComponent("core.legacysessionfactory", typeof(SessionFactory));
 			SessionFactory cuyahogaSessionFactory = this._kernel[typeof(SessionFactory)] as SessionFactory;
-			// We can't auto-wire the ISessionFactory via the constructor because it's
+			
+            // We can't auto-wire the ISessionFactory via the constructor because it's
 			// impossible to remove the old ISessonFactory from the container after a rebuild.
 			cuyahogaSessionFactory.ExternalInitialize(this._kernel[typeof(ISessionFactory)] as ISessionFactory);
 			cuyahogaSessionFactory.SessionFactoryRebuilt += new EventHandler(cuyahogaSessionFactory_SessionFactoryRebuilt);

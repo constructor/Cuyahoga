@@ -32,27 +32,11 @@ namespace Cuyahoga.Core.Service.Search
 
 		#region ISearchService Members
 
-		public void UpdateContent(SearchContent searchContent)
-		{
-			using (IndexBuilder indexBuilder = CreateIndexBuilder())
-			{
-				indexBuilder.UpdateContent(searchContent);
-			}
-		}
-
 		public void AddContent(SearchContent searchContent)
 		{
 			using (IndexBuilder indexBuilder = CreateIndexBuilder())
 			{
 				indexBuilder.AddContent(searchContent);
-			}
-		}
-
-		public void DeleteContent(SearchContent searchContent)
-		{
-			using (IndexBuilder indexBuilder = CreateIndexBuilder())
-			{
-				indexBuilder.DeleteContent(searchContent);
 			}
 		}
 
@@ -75,6 +59,7 @@ namespace Cuyahoga.Core.Service.Search
 			}
 		}
 
+
 		public void UpdateContent(IContentItem contentItem)
 		{
 			using (IndexBuilder indexBuilder = CreateIndexBuilder())
@@ -83,6 +68,26 @@ namespace Cuyahoga.Core.Service.Search
 			}
 		}
 
+        public void UpdateContent(IList<SearchContent> searchContents)
+        {
+            using (IndexBuilder indexBuilder = CreateIndexBuilder())
+            {
+                foreach (SearchContent searchContent in searchContents)
+                {
+                    indexBuilder.UpdateContent(searchContent);
+                }
+            }
+        }
+        
+        public void UpdateContent(SearchContent searchContent)
+        {
+            using (IndexBuilder indexBuilder = CreateIndexBuilder())
+            {
+                indexBuilder.UpdateContent(searchContent);
+            }
+        }
+
+
 		public void DeleteContent(IContentItem contentItem)
 		{
 			using (IndexBuilder indexBuilder = CreateIndexBuilder())
@@ -90,6 +95,15 @@ namespace Cuyahoga.Core.Service.Search
 				indexBuilder.DeleteContent(contentItem);
 			}
 		}
+
+        public void DeleteContent(SearchContent searchContent)
+        {
+            using (IndexBuilder indexBuilder = CreateIndexBuilder())
+            {
+                indexBuilder.DeleteContent(searchContent);
+            }
+        }
+
 
 		public SearchResultCollection FindContent(string queryText, int pageIndex, int pageSize)
 		{
@@ -210,8 +224,13 @@ namespace Cuyahoga.Core.Service.Search
 
 		private string GetIndexDirectory()
 		{
+            // This is where the site index folder is retrieved
+            // see line 50 CuyahogaPage.cs. The cuyahogaContext.PhysicalSiteDataDirectory
+            // is set from the site url. Therefore it is fixed to that site.
+            // We need to have access to selected site id (int) or something in the 
+            // CuyahogaContext/elsewhere so we can get the correct index path.
 			ICuyahogaContext cuyahogaContext = this._cuyahogaContextProvider.GetContext();
-			return Path.Combine(cuyahogaContext.PhysicalSiteDataDirectory, "index");
+            return Path.Combine(cuyahogaContext.PhysicalSiteDataDirectory, "index");
 		}
 
 	}

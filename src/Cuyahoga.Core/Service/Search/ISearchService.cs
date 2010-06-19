@@ -8,14 +8,17 @@ namespace Cuyahoga.Core.Service.Search
 {
 	public interface ISearchService
 	{
-		void UpdateContent(SearchContent searchContent);
+
 		void AddContent(SearchContent searchContent);
-		void DeleteContent(SearchContent searchContent);
 		void AddContent(IList<SearchContent> searchContents);
+        void AddContent(IContentItem contentItem);
 
 		void UpdateContent(IContentItem contentItem);
-		void AddContent(IContentItem contentItem);
+        void UpdateContent(IList<SearchContent> searchContents);
+        void UpdateContent(SearchContent searchContent);
+
 		void DeleteContent(IContentItem contentItem);
+        void DeleteContent(SearchContent searchContent);
 
 		SearchResultCollection FindContent(string queryText, int pageIndex, int pageSize);
 		SearchResultCollection FindContent(string queryText, IList<string> categoryNames, int pageIndex, int pageSize);

@@ -22,7 +22,8 @@ namespace Cuyahoga.Web.Components
 	public class ModuleLoader
 	{
 		private static ILog log = LogManager.GetLogger(typeof(ModuleLoader));
-		private IKernel _kernel;
+		
+        private IKernel _kernel;
 		private SessionFactoryHelper _sessionFactoryHelper;
 		private IModuleTypeService _moduleServie;
 		//static object for thread synchronisation

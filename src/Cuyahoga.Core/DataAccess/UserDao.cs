@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -97,9 +98,10 @@ namespace Cuyahoga.Core.DataAccess
 			if (searchString.Length > 0)
 			{
 				ISession session = this._sessionManager.OpenSession();
-
-				string hql = "from User u where u.UserName like ? order by u.UserName ";
-				return session.Find(hql, searchString + "%", NHibernateUtil.String);
+                string hql = "from User u where u.UserName like :username order by u.UserName ";
+                IQuery query = session.CreateQuery(hql);
+                query.SetString("username", string.Concat(searchString, "%"));
+                return query.List();
 			}
 			else
 			{
@@ -164,34 +166,33 @@ namespace Cuyahoga.Core.DataAccess
             return q.List<Section>();
         }
 
-        //TODO: check why this throws an ADO Exeption (NHibernate bug?)
+        ////TODO: check why this throws an ADO Exeption (NHibernate bug?)
         //public IList<Section> GetViewableSectionsByRoles(IList<Role> roles)
         //{
         //    string hql = "select s from Section s join s.SectionPermissions as sp where sp.Role in :roles and sp.ViewAllowed = 1";
         //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-        //    q.SetParameterList("roles", roles);
+        //    q.SetParameterList("roles", roles as ICollection);
         //    return q.List<Section>();
         //}
 
-        public IList<Section> GetViewableSectionsByAccessLevel(AccessLevel accessLevel)
-        {
-            int permission = (int)accessLevel;
+        //public IList<Section> GetViewableSectionsByAccessLevel(AccessLevel accessLevel)
+        //{
+        //    int permission = (int)accessLevel;
+        //    string hql = "select s from Section s join s.SectionPermissions sp, Role r " +
+        //                 "where r.PermissionLevel = :permission and r.Id = sp.Role.Id and sp.ViewAllowed = 1";
+        //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
+        //    q.SetInt32("permission", permission);
+        //    return q.List<Section>();
+        //}
 
-            string hql = "select s from Section s join s.SectionPermissions sp, Role r "+
-                "where r.PermissionLevel = :permission and r.Id = sp.Role.Id and sp.ViewAllowed = 1";
-            IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-            q.SetInt32("permission", permission);
-            return q.List<Section>();
-        }
-
-		//public IList<Role> GetRolesByAccessLevel(AccessLevel accessLevel)
-		//{
-		//    int permission = (int)accessLevel;
-		//    string hql = "select r from Role r where r.PermissionLevel = :permission";
-		//    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-		//    q.SetInt32("permission", permission);
-		//    return q.List<Role>();
-		//}
+        //public IList<Role> GetRolesByAccessLevel(AccessLevel accessLevel)
+        //{
+        //    int permission = (int)accessLevel;
+        //    string hql = "select r from Role r where r.PermissionLevel = :permission";
+        //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
+        //    q.SetInt32("permission", permission);
+        //    return q.List<Role>();
+        //}
 
 		public IList<Role> GetRolesByRightName(string rightName)
 		{
@@ -232,10 +233,17 @@ namespace Cuyahoga.Core.DataAccess
             //IList<User> siteUsers = GetUsersBySiteID(site.Id);
             foreach (User u in site.Users)
             {
-                session.Delete(u);
+                if (u.Sites != null && u.Sites.Count > 1)
+                {
+                    u.Sites.Remove(site);
+                }
+                else
+                {
+                    session.Delete(u);
+                }
             }
 
-            //Need to find a better way to handle large numbers of users
+            //Need to find a better way to handle large numbers of users?
             //
             //ISession session = this._sessionManager.OpenSession();
 

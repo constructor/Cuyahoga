@@ -62,21 +62,21 @@ namespace Cuyahoga.Core.DataAccess
         /// <param name="user"></param>
         IList<Section> GetViewableSectionsByUser(User user);
 
-        // IList<Section> GetViewableSectionsByRoles(IList<Role> roles);
+        //IList<Section> GetViewableSectionsByRoles(IList<Role> roles);
 
-        /// <summary>
-        /// Get all sections that the supplied access level grants read access for
-        /// </summary>
-        /// <param name="accessLevel"></param>
-        /// <returns></returns>
-        IList<Section> GetViewableSectionsByAccessLevel(AccessLevel accessLevel);
+        ///// <summary>
+        ///// Get all sections that the supplied access level grants read access for
+        ///// </summary>
+        ///// <param name="accessLevel"></param>
+        ///// <returns></returns>
+        //IList<Section> GetViewableSectionsByAccessLevel(AccessLevel accessLevel);
 
 
-        /// <summary>
-        /// Get all roles that are mapped to the given <see cref="AccessLevel"/>
-        /// </summary>
-        /// <param name="accessLevel"></param>
-        /// <returns></returns>
+        ///// <summary>
+        ///// Get all roles that are mapped to the given <see cref="AccessLevel"/>
+        ///// </summary>
+        ///// <param name="accessLevel"></param>
+        ///// <returns></returns>
         //IList<Role> GetRolesByAccessLevel(AccessLevel accessLevel);
 
 		/// <summary>

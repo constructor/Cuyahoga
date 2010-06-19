@@ -16,7 +16,8 @@ namespace Cuyahoga.Web.Components
 	public class UrlRewriter
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(UrlRewriter));
-		private HttpContext _currentContext;
+		
+        private HttpContext _currentContext;
 
 		/// <summary>
 		/// Constructor.

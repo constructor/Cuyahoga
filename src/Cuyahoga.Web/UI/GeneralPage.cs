@@ -34,7 +34,7 @@ namespace Cuyahoga.Web.UI
 		/// <summary>
 		/// The page title.
 		/// </summary>
-		public string Title
+		new public string Title
 		{
 			get { return this._title; }
 			set 

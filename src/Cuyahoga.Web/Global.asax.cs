@@ -13,7 +13,8 @@ namespace Cuyahoga.Web
 	public class Global : HttpApplication, IContainerAccessor
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(Global));
-		private static readonly string ERROR_PAGE_LOCATION = "~/Error.aspx";
+		
+        private static readonly string ERROR_PAGE_LOCATION = "~/Error.aspx";
 		private static readonly AspNetHostingPermissionLevel TrustLevel = GetCurrentTrustLevel();
 
 		/// <summary>

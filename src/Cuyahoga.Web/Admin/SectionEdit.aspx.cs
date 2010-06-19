@@ -46,6 +46,7 @@ namespace Cuyahoga.Web.Admin
         protected void LoadSection()
         {
             _activeSection = base.ActiveSection;
+
             //if (Context.Request.QueryString["SectionId"] != null)
             //{
             //    if (Int32.Parse(Context.Request.QueryString["SectionId"]) == -1)

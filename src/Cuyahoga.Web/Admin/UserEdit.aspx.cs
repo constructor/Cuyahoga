@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -106,28 +108,28 @@ namespace Cuyahoga.Web.Admin
         protected void BindRoles()
 		{
 			//IList roles = base.CoreRepository.GetAll(typeof(Role), "PermissionLevel");
-            IList roles = base.UserService.GetAllRoles();
-            FilterAnonymousRoles(roles);
+            IList<Role> roles = base.UserService.GetAllRoles().Cast<Role>().ToList();
+            //FilterAnonymousRoles(roles);
 			this.rptRoles.ItemDataBound += new RepeaterItemEventHandler(RptRolesItemDataBound);
-			this.rptRoles.DataSource = roles;
+            this.rptRoles.DataSource = roles.Where(x => x.Name != "Anonymous User");
 			this.rptRoles.DataBind();
 		}
 
-		/// <summary>
-		/// Filter the anonymous roles from the list.
-		/// </summary>
-        protected void FilterAnonymousRoles(IList roles)
-		{
-			int roleCount = roles.Count;
-			for (int i = roleCount -1; i >= 0; i--)
-			{
-				Role role = (Role)roles[i];
-				if (role.PermissionLevel == (int)AccessLevel.Anonymous)
-				{
-					roles.Remove(role);
-				}
-			}
-		}
+        ///// <summary>
+        ///// Filter the anonymous roles from the list.
+        ///// </summary>
+        //protected void FilterAnonymousRoles(IList roles)
+        //{
+        //    int roleCount = roles.Count;
+        //    for (int i = roleCount - 1; i >= 0; i--)
+        //    {
+        //        Role role = (Role)roles[i];
+        //        if (role.PermissionLevel == (int)AccessLevel.Anonymous)
+        //        {
+        //            roles.Remove(role);
+        //        }
+        //    }
+        //}
 
         protected void SetRoles()
 		{

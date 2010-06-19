@@ -103,7 +103,7 @@ go
 CREATE TABLE cuyahoga_role(
 roleid int identity(1,1) NOT NULL CONSTRAINT PK_role PRIMARY KEY,
 name nvarchar(50) NOT NULL,
-permissionlevel int DEFAULT 1 NOT NULL,
+/*permissionlevel int DEFAULT 1 NOT NULL,*/
 isglobal bit NOT NULL DEFAULT 1,
 inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL,
@@ -557,13 +557,18 @@ SET IDENTITY_INSERT cuyahoga_role ON
 
 GO
 
-
+/*
 INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, permissionlevel, isglobal) VALUES (1, 'Administrator', '2004-01-04 16:33:42.255', '2004-09-19 17:08:47.248', 14, 1)
 INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, permissionlevel, isglobal) VALUES (2, 'Site Administrator', '2004-01-04 16:33:42.255', '2004-09-19 17:08:47.248', 14, 1)
 INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, permissionlevel, isglobal) VALUES (3, 'Editor', '2004-01-04 16:34:25.669', '2004-06-25 00:59:08.256', 6, 1)
 INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, permissionlevel, isglobal) VALUES (4, 'Authenticated User', '2004-01-04 16:34:50.271', '2004-06-25 00:59:02.822', 2, 1)
 INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, permissionlevel, isglobal) VALUES (5, 'Anonymous User', '2004-01-04 16:35:10.766', '2004-07-16 21:18:09.017', 1, 1)
-
+*/
+INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, isglobal) VALUES (1, 'Administrator', '2004-01-04 16:33:42.255', '2004-09-19 17:08:47.248', 1)
+INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, isglobal) VALUES (2, 'Site Administrator', '2004-01-04 16:33:42.255', '2004-09-19 17:08:47.248', 1)
+INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, isglobal) VALUES (3, 'Editor', '2004-01-04 16:34:25.669', '2004-06-25 00:59:08.256', 1)
+INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, isglobal) VALUES (4, 'Authenticated User', '2004-01-04 16:34:50.271', '2004-06-25 00:59:02.822', 1)
+INSERT INTO cuyahoga_role (roleid, name, inserttimestamp, updatetimestamp, isglobal) VALUES (5, 'Anonymous User', '2004-01-04 16:35:10.766', '2004-07-16 21:18:09.017', 1)
 GO
 
 SET IDENTITY_INSERT cuyahoga_role OFF

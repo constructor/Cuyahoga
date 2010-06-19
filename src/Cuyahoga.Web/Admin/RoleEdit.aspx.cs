@@ -118,8 +118,10 @@ namespace Cuyahoga.Web.Admin
                 // Can't delete the Administrator role and the Anonymous role (which has a 
                 // PermissionLevel of 1).
                 // TODO: add an extra flag to determine if a role is a system role.
-                if (this._activeRole.Name == Config.GetConfiguration()["AdministratorRole"]
-                    || this._activeRole.PermissionLevel == 1)
+                //if (this._activeRole.Name == Config.GetConfiguration()["AdministratorRole"]
+                //    || this._activeRole.PermissionLevel == 1)
+
+                if (this._activeRole.Name == "AdministratorRole" || this._activeRole.Name == "Anonymous User")
                 {
                     ShowError("You can't delete the Administrator Role or the Anonymous Role.");
                 }

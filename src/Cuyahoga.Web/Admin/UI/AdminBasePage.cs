@@ -9,7 +9,6 @@ using Cuyahoga.Core.Service.Files;
 using Cuyahoga.Web.Components;
 using Cuyahoga.Web.UI;
 
-
 namespace Cuyahoga.Web.Admin.UI
 {
 	/// <summary>
@@ -148,6 +147,10 @@ namespace Cuyahoga.Web.Admin.UI
 						this._activeSite = this._activeNode.Site;
 					}
 				}
+                else
+                {
+                    this._activeSection = new Section();
+                }
 			}
 			if (Context.Request.QueryString["NodeId"] != null && this._activeNode == null)
 			{
@@ -157,6 +160,10 @@ namespace Cuyahoga.Web.Admin.UI
 					this._activeNode = this._nodeService.GetNodeById(nodeId);
 					this._activeSite = this._activeNode.Site;
 				}
+                else
+                {
+                    this._activeNode = new Node();
+                }
 			}
 			if (Context.Request.QueryString["SiteId"] != null && this._activeSite == null)
 			{

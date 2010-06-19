@@ -16,6 +16,7 @@ namespace Cuyahoga.Web.Admin
     public partial class RebuildIndex : AdminBasePage
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(RebuildIndex));
+        
         private IModuleTypeService _moduleTypeService;
         private ISearchService _searchService;
         private IContentItemService<ContentItem> _contentItemService;
@@ -89,6 +90,21 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
+        protected void BuildIndexByCurrentSite()
+        {
+            foreach (Node node in base.ActiveSite.RootNodes)
+            {
+                try
+                {
+                    BuildIndexByNode(node);
+                }
+                catch (Exception ex)
+                {
+                    log.Error(String.Format("Indexing contents of Node {0} - {1} failed.", node.Id, node.Title), ex);
+                }
+            }
+        }
+
         protected void BuildIndexByNode(Node node)
         {
             foreach (Section section in node.Sections)
@@ -101,7 +117,7 @@ namespace Cuyahoga.Web.Admin
                     {
                         if (contentItem is ISearchableContent)
                         {
-                            this._searchService.AddContent(contentItem);
+                            this._searchService.UpdateContent(contentItem);
                         }
                     }
                 }
@@ -109,7 +125,6 @@ namespace Cuyahoga.Web.Admin
                 {
                     log.Error(String.Format("Indexing ContentItems of Section {0} - {1} failed.", section.Id, section.Title), ex);
                 }
-
 
                 //handle SearchContents
                 ModuleBase module = null;
@@ -128,7 +143,7 @@ namespace Cuyahoga.Web.Admin
                     try
                     {
                         List<SearchContent> searchContents = new List<SearchContent>(searchableModule.GetAllSearchableContent());
-                        this._searchService.AddContent(searchContents);
+                        this._searchService.UpdateContent(searchContents);
                     }
                     catch (Exception ex)
                     {
@@ -140,6 +155,11 @@ namespace Cuyahoga.Web.Admin
             {
                 BuildIndexByNode(childNode);
             }
+        }
+
+        protected void btnRebuild_Click(object sender, EventArgs e)
+        {
+            BuildIndexByCurrentSite();
         }
 
     }

@@ -26,7 +26,8 @@ namespace Cuyahoga.Web.HttpHandlers
 	public class SitemapHandler : IHttpHandler, IRequiresSessionState
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof (SitemapHandler));
-		private string _baseSiteURL = "";
+		
+        private string _baseSiteURL = "";
 		private IWindsorContainer _container;
 
 		private double _defaultPagePriority = 0.5;

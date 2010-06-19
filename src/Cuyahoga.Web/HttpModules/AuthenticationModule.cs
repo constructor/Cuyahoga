@@ -56,13 +56,12 @@ namespace Cuyahoga.Web.HttpModules
         {
             try
             {
-                User user =
-                    this.authenticationService.AuthenticateUser(username, password, HttpContext.Current.Request.UserHostAddress);
+                User user = this.authenticationService.AuthenticateUser(username, password, HttpContext.Current.Request.UserHostAddress);
                 if (user != null)
                 {
                     if (!user.IsActive)
                     {
-                        throw new AccessForbiddenException("The account is disabled.");
+                        throw new AccessForbiddenException("This user account is disabled.");
                     }
                     // Create the authentication ticket
                     HttpContext.Current.User = user;

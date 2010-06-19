@@ -269,21 +269,23 @@ namespace Cuyahoga.Web.Admin
             {
                 IList rootNodes = base.CoreRepository.GetRootNodes(this.ActiveNode.Site);
                 this.ActiveNode.CalculateNewPosition(rootNodes);
+
                 // Add node to the parent node's ChildNodes first
                 if (this.ActiveNode.ParentNode != null)
                 {
                     this.ActiveNode.ParentNode.ChildNodes.Add(this.ActiveNode);
                 }
                 base.CoreRepository.SaveObject(this.ActiveNode);
+
                 //TODO: Move all redirects out of try/catch blocks...
-                try
-                {
+                //try
+                //{
                     Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node created sucessfully", this.ActiveNode.Id));
-                }
-                catch (ThreadAbortException ex)
-                {
-                    //this will usually happen 
-                }
+                //}
+                //catch (ThreadAbortException ex)
+                //{
+                //    //this will usually happen 
+                //}
             }
         }
 

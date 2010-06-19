@@ -2,6 +2,7 @@ using System;
 using System.Web;
 
 using Cuyahoga.Core.Service;
+using Cuyahoga.Core.Service.SiteStructure;
 using Cuyahoga.Core.Domain;
 using Cuyahoga.Web.UI;
 using Cuyahoga.Web.Util;
@@ -18,8 +19,10 @@ namespace Cuyahoga.Web.Admin
 			if (Context.Request.QueryString["TemplateId"] != null)
 			{
 				int templateId = Int32.Parse(Context.Request.QueryString["TemplateId"]);
-				CoreRepository cr = (CoreRepository)HttpContext.Current.Items["CoreRepository"];
-				Template template = (Template)cr.GetObjectById(typeof(Template), templateId);
+				//CoreRepository cr = (CoreRepository)HttpContext.Current.Items["CoreRepository"];
+				//Template template = (Template)cr.GetObjectById(typeof(Template), templateId);
+                ITemplateService templateService = Cuyahoga.Core.Util.IoC.Resolve<ITemplateService>();
+                Template template = templateService.GetTemplateById(templateId);
 				BaseTemplate templateControl = (BaseTemplate)this.LoadControl(UrlHelper.GetApplicationPath() + template.Path);
 				string css = UrlHelper.GetApplicationPath() + template.BasePath + "/Css/" + template.Css;
 				templateControl.RenderCssLinks(new string[1] {css});

@@ -17,7 +17,8 @@ namespace Cuyahoga.Web.UI
 	public class CuyahogaPage : System.Web.UI.Page, ICuyahogaPage
 	{
 		private static readonly ILog logger = LogManager.GetLogger(typeof (CuyahogaPage));
-		private IWindsorContainer _container;
+		
+        private IWindsorContainer _container;
 
 		/// <summary>
 		/// A reference to the Windsor container that can be used as a Service Locator for service classes.

@@ -32,35 +32,33 @@ namespace Cuyahoga.Web.Admin
         {
             base.Title = "Edit site";
 
-            //if (Context.Request.QueryString["SiteId"] != null)
-            //{
-                if (base.ActiveSite.Id == -1)
+            if (base.ActiveSite.Id == -1)
+            {
+                // Create a new site instance
+                //base.ActiveSite = new Site();
+                this.btnDelete.Visible = false;
+                this.hplNewAlias.Visible = false;
+            }
+            else
+            {
+                // Get site data
+                //base.ActiveSite = base.SiteService.GetSiteById(Int32.Parse(Context.Request.QueryString["SiteId"]));
+                base.ActiveSite = base.ActiveSite;
+                this.btnDelete.Visible = true;
+                this.btnDelete.Attributes.Add("onclick", "return confirm('Do you wish to permanently delete a site and all its folders?')");
+            }
+            if (!this.IsPostBack)
+            {
+                BindSiteControls();
+                BindTemplates();
+                BindCultures();
+                BindRoles();
+                if (base.ActiveSite.Id > 0)
                 {
-                    // Create a new site instance
-                    //base.ActiveSite = new Site();
-                    this.btnDelete.Visible = false;
-                    this.hplNewAlias.Visible = false;
+                    BindAliases();
                 }
-                else
-                {
-                    // Get site data
-                    //base.ActiveSite = base.SiteService.GetSiteById(Int32.Parse(Context.Request.QueryString["SiteId"]));
-                    base.ActiveSite = base.ActiveSite;
-                    this.btnDelete.Visible = true;
-                    this.btnDelete.Attributes.Add("onclick", "return confirm('Do you wish to permanently delete a site and all its folders?')");
-                }
-                if (!this.IsPostBack)
-                {
-                    BindSiteControls();
-                    BindTemplates();
-                    BindCultures();
-                    BindRoles();
-                    if (base.ActiveSite.Id > 0)
-                    {
-                        BindAliases();
-                    }
-                }
-            //}
+            }
+
         }
 
         private void BindSiteControls()

@@ -86,6 +86,7 @@ namespace Cuyahoga.Web.Admin.Controls
                 hplUsers.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplSections.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplCategories.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
+                hplRebuild.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
             }
             else 
             {
