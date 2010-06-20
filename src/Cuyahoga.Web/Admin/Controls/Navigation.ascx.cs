@@ -92,6 +92,7 @@ namespace Cuyahoga.Web.Admin.Controls
             {
                 hplSections.Visible = false;
                 hplCategories.Visible = false;
+                hplRebuild.Visible = false;
             }
 
             if (CurrentUser.IsInRole("Site Administrator"))//If user is admin of a specific site (not admin of all sites)
