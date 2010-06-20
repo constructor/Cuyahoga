@@ -21,6 +21,9 @@ namespace Cuyahoga.Web.Admin
         private ISearchService _searchService;
         private IContentItemService<ContentItem> _contentItemService;
 
+        private Cuyahoga.Core.Service.ICuyahogaContextProvider _cuyahogaContextProvider;
+        private Cuyahoga.Core.ICuyahogaContext _cuyahogaContext;
+
 		/// <summary>
 		/// Constructor.
 		/// </summary>
@@ -28,11 +31,14 @@ namespace Cuyahoga.Web.Admin
 		{
             this._moduleTypeService = Container.Resolve<IModuleTypeService>();
             this._searchService = Container.Resolve<ISearchService>();
-            this._contentItemService = Container.Resolve<IContentItemService<ContentItem>>(); 
-		}
+            this._contentItemService = Container.Resolve<IContentItemService<ContentItem>>();
+
+            this._cuyahogaContext = Cuyahoga.Core.Util.IoC.Container.Resolve<Cuyahoga.Core.ICuyahogaContext>();
+            this._cuyahogaContextProvider = Cuyahoga.Core.Util.IoC.Container.Resolve<Cuyahoga.Core.Service.ICuyahogaContextProvider>();
+        }
 	
 		protected void Page_Load(object sender, System.EventArgs e)
-		{
+        {
 			this.Title = "Rebuild fulltext index";
 			if (! this.IsPostBack)
 			{
@@ -43,7 +49,7 @@ namespace Cuyahoga.Web.Admin
 			}
 			else
 			{
-				BuildIndex();
+				//BuildIndex();
 				this.lblMessage.Visible = true;
 			}
 		}

@@ -178,6 +178,11 @@ namespace Cuyahoga.Web.Admin.UI
                 }
 			}
 
+            //Context stuff
+            ICuyahogaContext cuyahogaContext = Container.Resolve<ICuyahogaContext>();
+            cuyahogaContext.SelectedSiteId = ActiveSite != null ? ActiveSite.Id : -1;
+
+
 			// Now, we're here we could check authorization as well.
 			// if (! ((User)this.User.Identity).IsInRole("Administrator"))//.HasPermission(AccessLevel.Administrator))
             if (!((User)this.User.Identity).HasRight(Rights.AccessAdmin))//.HasPermission(AccessLevel.Administrator))

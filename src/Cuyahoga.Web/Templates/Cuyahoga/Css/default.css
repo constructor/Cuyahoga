@@ -524,7 +524,7 @@ a:hover, #links li a
     background-color: #329494;
 }
 
-#Menu_Main li:hover a 
+#Menu_Main li:hover > a 
 {
     color: #fff;
 }

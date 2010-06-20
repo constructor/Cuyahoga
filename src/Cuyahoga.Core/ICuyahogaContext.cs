@@ -20,6 +20,11 @@ namespace Cuyahoga.Core
 		/// </summary>
 		string PhysicalSiteDataDirectory { get; set; }
 
+        /// <summary>
+        /// Gets or sets the physical site data directory.
+        /// </summary>
+        int SelectedSiteId { get; set; }
+
 		/// <summary>
 		/// Set the Cuyahoga user for the current context.
 		/// </summary>

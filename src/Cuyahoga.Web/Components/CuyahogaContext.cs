@@ -15,7 +15,8 @@ namespace Cuyahoga.Web.Components
 	{
 		private Site _currentSite;
 		private User _currentUser;
-		private string _physicalSiteDataDirectory;
+        private int _selectedSiteId;
+        private string _physicalSiteDataDirectory;
 
 		/// <summary>
 		/// The Cuyahoga user for the current request.
@@ -41,6 +42,15 @@ namespace Cuyahoga.Web.Components
 			get { return this._physicalSiteDataDirectory; }
 			set { this._physicalSiteDataDirectory = value; }
 		}
+
+        /// <summary>
+        /// Gets or sets the selected site Id.
+        /// </summary>
+        public int SelectedSiteId
+        {
+            get { return this._selectedSiteId; }
+            set { this._selectedSiteId = value; }
+        }
 
 		/// <summary>
 		/// Gets the current ICuyahoga context.

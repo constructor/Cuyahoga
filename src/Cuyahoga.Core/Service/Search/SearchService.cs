@@ -143,6 +143,11 @@ namespace Cuyahoga.Core.Service.Search
 				Logger.Error(string.Format("Invalid query: {0}", queryText), ex);
 				throw new SearchException("Invalid search query", ex);
 			}
+            catch (FileNotFoundException ex)
+            {
+                Logger.Error(string.Format("Could not perform the search: {0}", queryText), ex);
+                throw new SearchException("Could not perform the search. Please check the site has been indexed.", ex);
+            }
 		}
 
 		public SearchIndexProperties GetIndexProperties()
@@ -224,13 +229,27 @@ namespace Cuyahoga.Core.Service.Search
 
 		private string GetIndexDirectory()
 		{
-            // This is where the site index folder is retrieved
-            // see line 50 CuyahogaPage.cs. The cuyahogaContext.PhysicalSiteDataDirectory
-            // is set from the site url. Therefore it is fixed to that site.
-            // We need to have access to selected site id (int) or something in the 
-            // CuyahogaContext/elsewhere so we can get the correct index path.
+            // Added SelectedSiteId to CuyahogaContext to it can be used in services
+            // SearchService uses this to get the correct index folder
+
 			ICuyahogaContext cuyahogaContext = this._cuyahogaContextProvider.GetContext();
-            return Path.Combine(cuyahogaContext.PhysicalSiteDataDirectory, "index");
+            // ICuyahogaContext cuyahogaContext = Cuyahoga.Core.Util.IoC.Container.Resolve<ICuyahogaContext>();
+
+            // If you are in the admin and you have selected a site it will override 
+            // the CurrentSite (derived from the url being used) value for indexing.
+            // Not the best way to to this.
+            string siteIndexDir = string.Empty;
+            if (cuyahogaContext.SelectedSiteId > 0)
+            {
+                siteIndexDir = string.Format("{0}SiteData\\{1}\\index", System.Web.HttpContext.Current.Server.MapPath("~/"), cuyahogaContext.SelectedSiteId);
+            }
+            else 
+            {
+                siteIndexDir = string.Format("{0}SiteData\\{1}\\index", System.Web.HttpContext.Current.Server.MapPath("~/"), cuyahogaContext.CurrentSite.Id);
+            }
+            
+            return siteIndexDir;
+            //return Path.Combine(cuyahogaContext.PhysicalSiteDataDirectory, "index");
 		}
 
 	}
