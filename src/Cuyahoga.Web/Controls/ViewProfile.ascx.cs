@@ -9,6 +9,8 @@ namespace Cuyahoga.Web.Controls
 
 	using Cuyahoga.Core.Domain;
 	using Cuyahoga.Core.Service;
+    using Cuyahoga.Core.Util;
+    using Cuyahoga.Core.Service.Membership;
 	using Cuyahoga.Web.UI;
 
 	/// <summary>
@@ -16,6 +18,8 @@ namespace Cuyahoga.Web.Controls
 	/// </summary>
 	public class ViewProfile : LocalizedUserControl
 	{
+        private IUserService _userService;
+
 		private int _userId;
 
 		protected System.Web.UI.WebControls.Literal litTitle;
@@ -36,14 +40,18 @@ namespace Cuyahoga.Web.Controls
 		}
 
 		private void Page_Load(object sender, System.EventArgs e)
-		{
+        {
+            _userService = IoC.Resolve<IUserService>();
+
 			if (this.Page is GeneralPage && this._userId > 0)
 			{
 				GeneralPage page = (GeneralPage)this.Page;
 				try
 				{
-					User user = (User)page.CoreRepository.GetObjectById(typeof(User), this._userId);
-					this.litTitle.Text = String.Format(GetTextFromFile("VIEWPROFILETITLE"), user.UserName);
+					//User user = (User)page.CoreRepository.GetObjectById(typeof(User), this._userId);
+                    User user = _userService.GetUserById(this._userId);
+					                    
+                    this.litTitle.Text = String.Format(GetTextFromFile("VIEWPROFILETITLE"), user.UserName);
 					BindUser(user);
 					if (! this.IsPostBack)
 					{

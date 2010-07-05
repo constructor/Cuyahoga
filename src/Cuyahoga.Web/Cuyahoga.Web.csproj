@@ -505,9 +505,6 @@
     <Compile Include="UI\PageEngine.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Util\ContainerAccessorUtil.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Util\Email.cs">
       <SubType>Code</SubType>
     </Compile>

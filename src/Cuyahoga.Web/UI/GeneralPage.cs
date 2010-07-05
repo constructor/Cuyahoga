@@ -21,7 +21,7 @@ namespace Cuyahoga.Web.UI
 		private PlaceHolder _contentPlaceHolder;
 		private Site _currentSite;
 		private string _title;
-		private CoreRepository _coreRepository;
+		//private CoreRepository _coreRepository;
 
 		/// <summary>
 		/// The GeneralPage only utilizes one placeholder. This property exposes that property to inherited pages.
@@ -47,20 +47,20 @@ namespace Cuyahoga.Web.UI
 			}
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public CoreRepository CoreRepository
-		{
-			get { return this._coreRepository; }
-		}
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public CoreRepository CoreRepository
+        //{
+        //    get { return this._coreRepository; }
+        //}
 
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
 		public GeneralPage()
 		{
-			this._coreRepository = HttpContext.Current.Items["CoreRepository"] as CoreRepository;
+			//this._coreRepository = HttpContext.Current.Items["CoreRepository"] as CoreRepository;
 		}
 
 		protected override void OnInit(EventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using Castle.Windsor;
 using Cuyahoga.Core.Domain;
+using Cuyahoga.Core.Util;
 using Cuyahoga.Web.Components;
 using Cuyahoga.Web.Util;
 using log4net;
@@ -57,7 +58,7 @@ namespace Cuyahoga.Web.HttpModules
 			List<ModuleBase> loadedModules = HttpContext.Current.Items["LoadedModules"] as List<ModuleBase>;
 			if (loadedModules != null)
 			{
-				IWindsorContainer container = ContainerAccessorUtil.GetContainer();
+                IWindsorContainer container = IoC.Container;
 
 				foreach (ModuleBase module in loadedModules)
 				{

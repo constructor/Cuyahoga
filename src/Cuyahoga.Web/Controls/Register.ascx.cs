@@ -9,13 +9,17 @@ namespace Cuyahoga.Web.Controls
 
 	using Cuyahoga.Core.Domain;
 	using Cuyahoga.Core.Service;
+    using Cuyahoga.Core.Service.Membership;
+    using Cuyahoga.Core.Util;
 	using Cuyahoga.Web.UI;
 
 	/// <summary>
 	///		Summary description for Register.
 	/// </summary>
 	public class Register : LocalizedUserControl
-	{
+    {
+        private IUserService _userService;
+
 		private GeneralPage _page;
 
 		protected System.Web.UI.WebControls.TextBox txtUsername;
@@ -30,7 +34,9 @@ namespace Cuyahoga.Web.Controls
 		protected System.Web.UI.WebControls.Panel pnlConfirmation;
 
 		private void Page_Load(object sender, System.EventArgs e)
-		{
+        {
+            _userService = IoC.Resolve<IUserService>();
+
 			if (! this.IsPostBack)
 			{
 				// Databind is required to bind the localized resources.
@@ -69,7 +75,8 @@ namespace Cuyahoga.Web.Controls
 			if (this.Page.IsValid)
 			{
 				// Check if username already exists.
-				if (this._page.CoreRepository.FindUsersByUsername(this.txtUsername.Text).Count > 0)
+				//if (this._page.CoreRepository.FindUsersByUsername(this.txtUsername.Text).Count > 0)
+                if (_userService.FindUsersByUsername(this.txtUsername.Text).Count > 0)
 				{
 					this.lblError.Text = String.Format(GetTextFromFile("USEREXISTS"), this.txtUsername.Text);
 					this.lblError.Visible = true;
@@ -85,7 +92,9 @@ namespace Cuyahoga.Web.Controls
 					string newPassword = user.GeneratePassword();
 					// Add the default role from the current site.
 					user.Roles.Add(site.DefaultRole);
-					this._page.CoreRepository.SaveObject(user);
+
+					//this._page.CoreRepository.SaveObject(user);
+                    _userService.CreateUser(user);
 					
 					// Send email
 					string subject = GetTextFromFile("REGISTEREMAILSUBJECT").Replace("{site}", site.Name);
@@ -102,7 +111,9 @@ namespace Cuyahoga.Web.Controls
 					catch
 					{
 						// delete user when sending email fails.
-						this._page.CoreRepository.DeleteObject(user);
+						//this._page.CoreRepository.DeleteObject(user);
+                        _userService.DeleteUser(user);
+
 						this.lblError.Text = GetTextFromFile("REGISTEREMAILERROR");
 						this.lblError.Visible = true;
 					}					

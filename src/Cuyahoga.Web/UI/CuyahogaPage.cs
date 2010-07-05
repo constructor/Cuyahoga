@@ -33,7 +33,7 @@ namespace Cuyahoga.Web.UI
 		/// </summary>
 		public CuyahogaPage()
 		{
-			this._container = ContainerAccessorUtil.GetContainer();
+            this._container = IoC.Container;
 		}
 
 		protected override void OnInit(EventArgs e)

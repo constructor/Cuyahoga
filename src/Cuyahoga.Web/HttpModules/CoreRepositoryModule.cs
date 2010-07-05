@@ -4,6 +4,7 @@ using System.Web;
 using Castle.Windsor;
 
 using Cuyahoga.Core.Service;
+using Cuyahoga.Core.Util;
 using Cuyahoga.Web.Components;
 using Cuyahoga.Web.Util;
 
@@ -34,7 +35,7 @@ namespace Cuyahoga.Web.HttpModules
 		private void Context_BeginRequest(object sender, EventArgs e)
 		{
 			// Get the adapter for the 1.0 CoreRepository and store it in the HttpContext.Items collection.
-			IWindsorContainer container = ContainerAccessorUtil.GetContainer();
+            IWindsorContainer container = IoC.Container;
 			CoreRepository cr = (CoreRepository)container["corerepositoryadapter"];
 			HttpContext.Current.Items.Add("CoreRepository", cr);
 		}

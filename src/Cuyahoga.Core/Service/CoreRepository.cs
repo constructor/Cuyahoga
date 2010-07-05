@@ -15,7 +15,7 @@ namespace Cuyahoga.Core.Service
 	/// should be split up into several classes, but we'll start with one
 	/// repository for all core classes.
 	/// </summary>
-	[Obsolete("The functionality of the CoreRepository is replaced by several decoupled services.")]
+	//[Obsolete("The functionality of the CoreRepository is replaced by several decoupled services.")]
 	public class CoreRepository
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(CoreRepository));

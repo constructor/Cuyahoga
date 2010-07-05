@@ -7,6 +7,8 @@ namespace Cuyahoga.Web.Controls
 	using System.Web.UI.WebControls;
 	using System.Web.UI.HtmlControls;
 
+    using Cuyahoga.Core.Util;
+    using Cuyahoga.Core.Service.Membership;
 	using Cuyahoga.Core.Domain;
 	using Cuyahoga.Core.Service;
 	using Cuyahoga.Web.UI;
@@ -15,7 +17,9 @@ namespace Cuyahoga.Web.Controls
 	///		Summary description for ResetPassword.
 	/// </summary>
 	public class ResetPassword : LocalizedUserControl
-	{
+    {
+        private IUserService _userService;
+
 		private GeneralPage _page;
 
 		protected System.Web.UI.WebControls.Label lblError;
@@ -30,7 +34,9 @@ namespace Cuyahoga.Web.Controls
 		protected System.Web.UI.WebControls.Panel pnlConfirmation;
 
 		private void Page_Load(object sender, System.EventArgs e)
-		{
+        {
+            _userService = IoC.Resolve<IUserService>();
+
 			if (! this.IsPostBack)
 			{
 				// Databind is required to bind the localized resources.
@@ -69,7 +75,9 @@ namespace Cuyahoga.Web.Controls
 			if (this.Page.IsValid)
 			{
 				// Check if the username and email combination exists.
-				User user = this._page.CoreRepository.GetUserByUsernameAndEmail(this.txtUsername.Text, this.txtEmail.Text);
+				//User user = this._page.CoreRepository.GetUserByUsernameAndEmail(this.txtUsername.Text, this.txtEmail.Text);
+                User user = _userService.GetUserByUsernameAndEmail(this.txtUsername.Text, this.txtEmail.Text);
+
 				if (user == null)
 				{
 					this.lblError.Text = GetTextFromFile("RESETUSERERROR");
@@ -81,7 +89,9 @@ namespace Cuyahoga.Web.Controls
 					// OK, reset password
 					string prevPassword = user.Password;
 					string newPassword = user.GeneratePassword();
-					this._page.CoreRepository.SaveObject(user);
+					
+                    //this._page.CoreRepository.SaveObject(user);
+                    _userService.UpdateUser(user);
 					
 					// Send email
 					string subject = GetTextFromFile("RESETEMAILSUBJECT").Replace("{site}", site.Name);

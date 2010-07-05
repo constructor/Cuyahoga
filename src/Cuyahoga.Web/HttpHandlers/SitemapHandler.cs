@@ -108,7 +108,7 @@ namespace Cuyahoga.Web.HttpHandlers
 						Config.GetConfiguration()["SitemapHandler:defaultPageUpdateFrequency"];
 				}
 
-				_container = ContainerAccessorUtil.GetContainer();
+                _container = IoC.Container;
 				_siteService = Container.Resolve<ISiteService>();
                 _nodeService = Container.Resolve<INodeService>();
 

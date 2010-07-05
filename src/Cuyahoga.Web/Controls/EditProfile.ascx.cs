@@ -10,6 +10,7 @@ namespace Cuyahoga.Web.Controls
 
 	using Cuyahoga.Core.Domain;
 	using Cuyahoga.Core.Service;
+    using Cuyahoga.Core.Service.Membership;
 	using Cuyahoga.Core.Util;
 	using Cuyahoga.Web.UI;
 
@@ -18,6 +19,8 @@ namespace Cuyahoga.Web.Controls
 	/// </summary>
 	public class EditProfile : LocalizedUserControl
 	{
+        private IUserService _userService;
+
 		private const string USER_CACHE_PREFIX = "User_";
 		private GeneralPage _page;
 
@@ -43,6 +46,8 @@ namespace Cuyahoga.Web.Controls
 
 		private void Page_Load(object sender, System.EventArgs e)
 		{
+            _userService = IoC.Resolve<IUserService>();
+
 			if (! Context.User.Identity.IsAuthenticated)
 			{
 				ShowMessage(base.GetTextFromFile("NOTAUTHENTICATED"));
@@ -130,8 +135,8 @@ namespace Cuyahoga.Web.Controls
 
 				try
 				{
-					// Save user
-					this._page.CoreRepository.UpdateObject(currentUser);
+                    //this._page.CoreRepository.UpdateObject(currentUser);
+                    _userService.UpdateUser(currentUser);
 					// Remove old user from the cache
 					HttpContext.Current.Cache.Remove(USER_CACHE_PREFIX + currentUser.Id.ToString());
 					ShowMessage(GetTextFromFile("EDITPROFILECONFIRMATION"));
@@ -169,7 +174,8 @@ namespace Cuyahoga.Web.Controls
 				}
 				currentUser.Password = User.HashPassword(this.txtNewPassword.Text);
 				// Save user
-				this._page.CoreRepository.UpdateObject(currentUser);
+				//this._page.CoreRepository.UpdateObject(currentUser);
+                _userService.UpdateUser(currentUser);
 				// Remove old user from the cache
 				HttpContext.Current.Cache.Remove(USER_CACHE_PREFIX + currentUser.Id.ToString());
 				ShowMessage(GetTextFromFile("EDITPASSWORDCONFIRMATION"));

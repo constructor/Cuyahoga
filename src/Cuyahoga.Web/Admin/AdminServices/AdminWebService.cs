@@ -4,6 +4,7 @@ using System.Web.Services;
 
 using Castle.Windsor;
 using Cuyahoga.Web.Util;
+using Cuyahoga.Core.Util;
 
 using Cuyahoga.Core.Service;
 using Cuyahoga.Core.Service.SiteStructure;
@@ -17,7 +18,7 @@ namespace Cuyahoga.Web.Admin.AdminServices
         #region Constructor
         public AdminWebService()
             {
-                this._cuyahogaContainer = ContainerAccessorUtil.GetContainer();
+                this._cuyahogaContainer = IoC.Container;
                 this._siteService = CuyahogaContainer.Resolve<ISiteService>();
                 this._nodeService = CuyahogaContainer.Resolve<INodeService>();
                 this._userService = CuyahogaContainer.Resolve<IUserService>();

@@ -26,7 +26,8 @@ namespace Cuyahoga.Web.Util
 		/// <param name="section"></param>
 		public static void UpdateIndexFromSection(Section section)
 		{
-            CuyahogaContainer container =  ContainerAccessorUtil.GetContainer();
+            CuyahogaContainer container = IoC.Container as CuyahogaContainer;
+
 			// Get ModuleLoader from the container. This needs to happen explicit here because
 			// this is a static method
             ModuleLoader moduleLoader = container.Resolve<ModuleLoader>();
