@@ -94,10 +94,6 @@
     <OutputPath>bin\Core\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Castle.Components.Validator.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Castle.Core.dll</HintPath>
@@ -424,20 +420,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Util\UrlUtil.cs" />
-    <Compile Include="Validation\CachedLocalizedValidatorRegistry.cs" />
     <Compile Include="Util\CommonUtils.cs" />
-    <Compile Include="Validation\CastleModelValidator.cs" />
-    <Compile Include="Validation\CuyDateTimeValidator.cs" />
-    <Compile Include="Validation\IBrowserValidatorProvider.cs" />
-    <Compile Include="Validation\ILocalizedValidatorRegistry.cs" />
-    <Compile Include="Validation\IModelValidator.cs" />
-    <Compile Include="Validation\ModelValidators\FileResourceModelValidator.cs" />
-    <Compile Include="Validation\ModelValidators\RoleModelValidator.cs" />
-    <Compile Include="Validation\ModelValidators\SectionModelValidator.cs" />
-    <Compile Include="Validation\ModelValidators\UserModelValidator.cs" />
-    <Compile Include="Validation\BrowserValidationEngine.cs" />
-    <Compile Include="Validation\CuyValidateDateTimeAttribute.cs" />
-    <Compile Include="Validation\ValidationEngineAccessor.cs" />
     <EmbeddedResource Include="Domain\CustomMenu.hbm.xml" />
     <EmbeddedResource Include="Domain\ModuleType.hbm.xml" />
     <EmbeddedResource Include="Domain\Node.hbm.xml" />
@@ -476,9 +459,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\Comment.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\Workflow\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
-using Castle.Components.Validator;
 
 namespace Cuyahoga.Core.Domain
 {
@@ -49,8 +48,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Title (string)
 		/// </summary>
-		[ValidateNonEmpty("NodeTitleValidatorNonEmpty")]
-		[ValidateLength(1, 255, "NodeTitleValidatorLength")]
 		public virtual string Title
 		{
 			get { return this._title; }
@@ -60,7 +57,6 @@ namespace Cuyahoga.Core.Domain
         /// <summary>
         /// Property Title for SEO (string)
         /// </summary>
-        [ValidateLength(1, 255, "NodeTitleValidatorLength")]
         public virtual string TitleSEO
         {
             get { return this._titleSEO; }
@@ -70,8 +66,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property ShortDescription (string)
 		/// </summary>
-		[ValidateNonEmpty("NodeShortDescriptionValidatorNonEmpty")]
-		[ValidateLength(1, 255, "NodeShortDescriptionValidatorLength")]
 		public virtual string ShortDescription
 		{
 			get { return this._shortDescription; }
@@ -90,7 +84,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Culture (string)
 		/// </summary>
-		[ValidateNonEmpty("NodeCultureValidatorNonEmpty")]
 		public virtual string Culture
 		{
 			get { return this._culture; }
@@ -109,8 +102,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Link to external url.
 		/// </summary>
-		[ValidateLength(1, 255, "NodeLinkUrlValidatorLength")]
-		[ValidateRegExp(@"^http(s)*://(\w[.\w]*)(:\d+)*(/\w[.\w]*)*", "NodeLinkUrlValidatorPattern")]
 		public virtual string LinkUrl
 		{
 			get { return this._linkUrl; }
@@ -145,7 +136,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// List of keywords for the page.
 		/// </summary>
-		[ValidateLength(1, 500, "MetaKeywordsValidatorLength")]
 		public virtual string MetaKeywords
 		{
 			get { return this._metaKeywords; }
@@ -155,7 +145,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Description of the page.
 		/// </summary>
-		[ValidateLength(1, 500, "MetaDescriptionValidatorLength")]
 		public virtual string MetaDescription
 		{
 			get { return this._metaDescription; }
@@ -201,7 +190,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Site (Site)
 		/// </summary>
-		[ValidateNonEmpty]
 		public virtual Site Site
 		{
 			get { return this._site; }

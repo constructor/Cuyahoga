@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Collections;
-using Castle.Components.Validator;
 
 namespace Cuyahoga.Core.Domain
 {
@@ -51,8 +50,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Title (string)
 		/// </summary>
-		[ValidateNonEmpty("SectionTitleValidatorNonEmpty")]
-		[ValidateLength(1, 100, "SectionTitleValidatorLength")]
 		public virtual string Title
 		{
 			get { return this._title; }
@@ -62,7 +59,6 @@ namespace Cuyahoga.Core.Domain
         /// <summary>
         /// Property CSSClass (string)
         /// </summary>
-        [ValidateLength(1, 100, "SectionTitleValidatorLength")]
         public virtual string CSSClass
         {
             get { return this._cssclass; }
@@ -108,7 +104,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Module
 		/// </summary>
-		[ValidateNonEmpty]
 		public virtual ModuleType ModuleType
 		{
 			get { return this._moduleType; }

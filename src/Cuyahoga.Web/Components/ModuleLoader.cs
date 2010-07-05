@@ -9,7 +9,6 @@ using Cuyahoga.Core;
 using Cuyahoga.Core.Domain;
 using Cuyahoga.Core.Service;
 using Cuyahoga.Core.Service.SiteStructure;
-using Cuyahoga.Core.Validation;
 using log4net;
 using UrlHelper=Cuyahoga.Web.Util.UrlHelper;
 
@@ -209,11 +208,6 @@ namespace Cuyahoga.Web.Components
 					HttpContext.Current.Application.UnLock();
 				}
 				
-				// Register model validators for modules
-				this._kernel.Register(AllTypes
-				                      	.Of<IModelValidator>()
-				                      	.FromAssembly(moduleTypeType.Assembly)
-				                      	.Configure(c => c.LifeStyle.Transient));
 			}
 			finally
 			{

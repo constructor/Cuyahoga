@@ -166,34 +166,6 @@ namespace Cuyahoga.Core.DataAccess
             return q.List<Section>();
         }
 
-        ////TODO: check why this throws an ADO Exeption (NHibernate bug?)
-        //public IList<Section> GetViewableSectionsByRoles(IList<Role> roles)
-        //{
-        //    string hql = "select s from Section s join s.SectionPermissions as sp where sp.Role in :roles and sp.ViewAllowed = 1";
-        //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-        //    q.SetParameterList("roles", roles as ICollection);
-        //    return q.List<Section>();
-        //}
-
-        //public IList<Section> GetViewableSectionsByAccessLevel(AccessLevel accessLevel)
-        //{
-        //    int permission = (int)accessLevel;
-        //    string hql = "select s from Section s join s.SectionPermissions sp, Role r " +
-        //                 "where r.PermissionLevel = :permission and r.Id = sp.Role.Id and sp.ViewAllowed = 1";
-        //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-        //    q.SetInt32("permission", permission);
-        //    return q.List<Section>();
-        //}
-
-        //public IList<Role> GetRolesByAccessLevel(AccessLevel accessLevel)
-        //{
-        //    int permission = (int)accessLevel;
-        //    string hql = "select r from Role r where r.PermissionLevel = :permission";
-        //    IQuery q = this._sessionManager.OpenSession().CreateQuery(hql);
-        //    q.SetInt32("permission", permission);
-        //    return q.List<Role>();
-        //}
-
 		public IList<Role> GetRolesByRightName(string rightName)
 		{
 			string hql = "select r from Role r join r.Rights right where right.Name = :rightName";

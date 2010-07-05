@@ -37,7 +37,6 @@ namespace Cuyahoga.Core.DataAccess
 			return query.List<Category>();
         }
 
-
         #region Classic admin methods
 
             /// <summary>

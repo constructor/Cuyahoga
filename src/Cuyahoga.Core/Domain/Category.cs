@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
-using Castle.Components.Validator;
 
 namespace Cuyahoga.Core.Domain
 {
@@ -63,8 +62,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// The category name
 		/// </summary>
-		[ValidateNonEmpty("CategoryNameValidatorNonEmpty")]
-		[ValidateLength(1, 100, "CategoryNameValidatorLength")]
 		public virtual string Name
 		{
 			get { return this._name; }
@@ -74,14 +71,12 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// A description of the category
 		/// </summary>
-		[ValidateLength(1, 255, "CategoryDescriptionValidatorLength")]
 		public virtual string Description
 		{
 			get { return this._description; }
 			set { this._description = value; }
 		}
 
-		[ValidateNonEmpty("CategorySiteValidatorNonEmpty")]
 		public virtual Site Site
 		{
 			get { return this._site; }

@@ -144,12 +144,7 @@ namespace Cuyahoga.Core.DataAccess
 		}
 
 
-
-
-
-
-
-		[Transaction(TransactionMode.Requires)]
+        [Transaction(TransactionMode.Requires)]
 		public virtual void SaveOrUpdateObject(object obj)
 		{
 			ISession session = this._sessionManager.OpenSession();
@@ -177,12 +172,7 @@ namespace Cuyahoga.Core.DataAccess
 			session.Delete(obj);
 		}
 
-
-
-
-
-
-
+        
 		public void MarkForDeletion(object obj)
 		{
 			ISession session = this._sessionManager.OpenSession();

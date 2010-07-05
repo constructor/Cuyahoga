@@ -25,31 +25,6 @@ namespace Cuyahoga.Core.Domain
 		Right
 	}
 
-    ///// <summary>
-    ///// 
-    ///// </summary>
-    //[Obsolete("Replaced by the Right class. These values are also stored in the database for compatibility.")]
-    //[Flags]
-    //public enum AccessLevel
-    //{
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    Anonymous = 1,
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    Authenticated = 2,
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    Editor = 4,
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    Administrator = 8
-    //}
-
 	/// <summary>
 	/// The target window of a link.
 	/// </summary>

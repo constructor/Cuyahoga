@@ -21,8 +21,7 @@ namespace Cuyahoga.Core.Domain
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public ContentItemPermission()
-            : base()
+        public ContentItemPermission() : base()
         {
         }
     }

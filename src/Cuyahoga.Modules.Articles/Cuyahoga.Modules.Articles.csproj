@@ -96,7 +96,6 @@
     </Compile>
     <Compile Include="Domain\Article.cs" />
     <Compile Include="ArticleModule.cs" />
-    <Compile Include="Domain\ArticleModelValidator.cs" />
     <Compile Include="Web\AdminArticles.aspx.cs">
       <DependentUpon>AdminArticles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

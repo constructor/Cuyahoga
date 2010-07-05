@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Castle.Components.Validator;
 
 namespace Cuyahoga.Core.Domain
 {
@@ -42,8 +41,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property Name (string)
 		/// </summary>
-		[ValidateNonEmpty("SiteNameValidatorNonEmpty")]
-		[ValidateLength(1, 100, "SiteNameValidatorLength")]
 		public virtual string Name
 		{
 			get { return this._name; }
@@ -53,9 +50,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property SiteUrl (string)
 		/// </summary>
-		[ValidateNonEmpty("SiteUrlValidatorNonEmpty")]
-		[ValidateLength(12, 100, "SiteUrlValidatorLength")]
-		[ValidateRegExp(@"^http(s)*://(\w[.\w]*)(:\d+)*(/\w[.\w]*)*", "SiteUrlValidatorPattern")]
 		public virtual string SiteUrl
 		{
 			get { return this._siteUrl; }
@@ -65,7 +59,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property DefaultCulture (string)
 		/// </summary>
-		[ValidateNonEmpty("DefaultCultureValidatorNonEmpty")]
 		public virtual string DefaultCulture
 		{
 			get { return this._defaultCulture; }
@@ -84,7 +77,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// The default role for registered users.
 		/// </summary>
-		[ValidateNonEmpty("DefaultRoleValidatorNonEmpty")]
 		public virtual Role DefaultRole
 		{
 			get { return this._defaultRole; }
@@ -94,7 +86,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property DefaultPlaceholder (string)
 		/// </summary>
-		[ValidateLength(0, 100, "PlaceholderValidatorLength")]
 		public virtual string DefaultPlaceholder
 		{
 			get { return this._defaultPlaceholder; }
@@ -104,9 +95,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Property WebmasterEmail (string)
 		/// </summary>
-		[ValidateNonEmpty("EmailValidatorNonEmpty")]
-		[ValidateLength(1, 100, "EmailValidatorLength")]
-		[ValidateEmail("EmailValidatorEmail")]
 		public virtual string WebmasterEmail
 		{
 			get { return this._webmasterEmail; }
@@ -125,7 +113,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// List of global keywords for the site.
 		/// </summary>
-		[ValidateLength(0, 500, "MetaKeywordsValidatorLength")]
 		public virtual string MetaKeywords
 		{
 			get { return this._metaKeywords; }
@@ -135,7 +122,6 @@ namespace Cuyahoga.Core.Domain
 		/// <summary>
 		/// Global description for the site.
 		/// </summary>
-		[ValidateLength(0, 500, "MetaDescriptionValidatorLength")]
 		public virtual string MetaDescription
 		{
 			get { return this._metaDescription; }

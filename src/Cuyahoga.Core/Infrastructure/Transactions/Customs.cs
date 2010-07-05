@@ -40,7 +40,7 @@ namespace Cuyahoga.Core.Infrastructure.Transactions
                         // If you are getting IOException deleting directories that are open 
                         // in Explorer, add a sleep(0) to give Explorer a chance to release 
                         // the directory handle.
-                        System.Threading.Thread.Sleep(0);
+                        //System.Threading.Thread.Sleep(0);
 
                         if (d.Exists)
                             d.Delete(true);

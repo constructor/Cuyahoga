@@ -6,8 +6,6 @@ using Castle.MicroKernel.Registration;
 using Cuyahoga.Core;
 using Cuyahoga.Core.Service;
 using Cuyahoga.Core.Util;
-using Cuyahoga.Core.Validation;
-using Cuyahoga.Core.Validation.ModelValidators;
 using log4net;
 
 namespace Cuyahoga.Web.Components
@@ -47,9 +45,6 @@ namespace Cuyahoga.Web.Components
 
 				// Windsor controller builder
 				//ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
-
-				// Validators
-				//RegisterValidatorComponents(container);
 			}
 			catch (Exception ex)
 			{

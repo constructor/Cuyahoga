@@ -177,7 +177,6 @@
     </Compile>
     <Compile Include="Search\Search.ascx.cs">
       <DependentUpon>Search.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Search\Search.ascx.designer.cs">
       <DependentUpon>Search.ascx</DependentUpon>
