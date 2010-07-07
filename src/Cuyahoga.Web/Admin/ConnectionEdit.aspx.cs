@@ -72,7 +72,8 @@ namespace Cuyahoga.Web.Admin
 
             var compatibleModuleTypes = new ArrayList();
             // Get all ModuleTypes.
-            IList moduleTypes = CoreRepository.GetAll(typeof (ModuleType));
+            IList moduleTypes = ModuleTypeService.GetAllModuleTypes().ToList();
+
             foreach (ModuleType mt in moduleTypes)
             {
                 string assemblyQualifiedName = mt.ClassName + ", " + mt.AssemblyName;
@@ -97,7 +98,8 @@ namespace Cuyahoga.Web.Admin
             if (compatibleModuleTypes.Count > 0)
             {
                 // Retrieve all sections that have the compatible ModuleTypes
-                IList compatibleSections = CoreRepository.GetSectionsByModuleTypes(compatibleModuleTypes);
+                IList compatibleSections = base.SectionService.GetSectionsByModuleTypes(compatibleModuleTypes);
+
                 if (compatibleSections.Count > 0)
                 {
                     pnlTo.Visible = true;
@@ -146,13 +148,11 @@ namespace Cuyahoga.Web.Admin
         protected void BtnSaveClick(object sender, EventArgs e)
         {
             int sectionid = Int32.Parse(ddlSectionTo.SelectedValue);
-            _activeSection.Connections[ddlAction.SelectedValue] =
-                CoreRepository.GetObjectById(typeof (Section), sectionid) as Section;
+            _activeSection.Connections[ddlAction.SelectedValue] = SectionService.GetSectionById(sectionid);
 
             try
             {
-                CoreRepository.UpdateObject(_activeSection);
-
+                SectionService.UpdateSection(_activeSection);
                 RedirectToSectionEdit();
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -11,7 +12,9 @@ using Cuyahoga.Web.Admin.UI;
 using Cuyahoga.Web.UI;
 using Cuyahoga.Web.Util;
 
+using Cuyahoga.Core.Util;
 using Cuyahoga.Core.Service.Membership;
+using Cuyahoga.Core.DataAccess;
 
 namespace Cuyahoga.Web.Admin
 {
@@ -21,9 +24,12 @@ namespace Cuyahoga.Web.Admin
 
         private Section _activeSection = null;
         private IList _availableModuleTypes;
+        private ICommonDao _commonDao;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            _commonDao = IoC.Resolve<ICommonDao>();
+
             LoadSection();
 
             this.Title = "Edit section";
@@ -47,29 +53,7 @@ namespace Cuyahoga.Web.Admin
         {
             _activeSection = base.ActiveSection;
 
-            //if (Context.Request.QueryString["SectionId"] != null)
-            //{
-            //    if (Int32.Parse(Context.Request.QueryString["SectionId"]) == -1)
-            //    {
-            //        // Create a new section instance
-            //        this._activeSection = new Section();
-            //        this._activeSection.Node = this.ActiveNode;
-            //        this._activeSection.Site = this.ActiveSite;
-            //        if (!this.IsPostBack)
-            //        {
-            //            this._activeSection.CopyRolesFromNode();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        // Get section data
-            //        this._activeSection = (Section)base.CoreRepository.GetObjectById(typeof(Section),
-            //            Int32.Parse(Context.Request.QueryString["SectionId"]));
-            //    }
-            //}
-            // Preload available ModuleTypes because we might need them to display the CustomSettings
-            // of the first ModuleType if none is selected (when adding a brand new Section).
-            this._availableModuleTypes = base.CoreRepository.GetAll(typeof(ModuleType), "Name");
+            this._availableModuleTypes = ModuleTypeService.GetAllModuleTypes().ToList();
             // Create the controls for the ModuleType-specific settings.
             CreateCustomSettings();
         }
@@ -88,7 +72,7 @@ namespace Cuyahoga.Web.Admin
                 // The user has selected a ModuleType. Fetch that one from the database and
                 // create the settings.
                 int moduleTypeId = Int32.Parse(Context.Request.Form[this.ddlModule.UniqueID]);
-                mt = (ModuleType)base.CoreRepository.GetObjectById(typeof(ModuleType), moduleTypeId);
+                mt = ModuleTypeService.GetModuleById(moduleTypeId);
             }
             else
             {
@@ -257,7 +241,6 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindRoles()
         {
-            //IList roles = base.CoreRepository.GetAll(typeof(Role), "PermissionLevel");
             IList roles = base.UserService.GetAllRoles();
             this.rptRoles.ItemDataBound += new RepeaterItemEventHandler(RptRolesItemDataBound);
             this.rptRoles.DataSource = roles;
@@ -268,12 +251,10 @@ namespace Cuyahoga.Web.Admin
         {
             if (this._activeSection.Id > 0)
             {
-                //base.CoreRepository.UpdateObject(this._activeSection);
                 this.SectionService.UpdateSection(this._activeSection);
             }
             else
             {
-                //base.CoreRepository.SaveObject(this._activeSection);
                 this.SectionService.SaveSection(this._activeSection);
             }
         }
@@ -346,7 +327,9 @@ namespace Cuyahoga.Web.Admin
                 {
                     SectionPermission sp = new SectionPermission();
                     sp.Section = this._activeSection;
-                    sp.Role = (Role)base.CoreRepository.GetObjectById(typeof(Role), (int)ViewState[ri.ClientID]);
+                    
+                    sp.Role = UserService.GetRoleById((int)ViewState[ri.ClientID]);
+                   
                     sp.ViewAllowed = chkView.Checked;
                     sp.EditAllowed = chkEdit.Checked;
                     this._activeSection.SectionPermissions.Add(sp);
@@ -388,8 +371,7 @@ namespace Cuyahoga.Web.Admin
                     }
                     if (this.ddlModule.Visible)
                     {
-                        this._activeSection.ModuleType = (ModuleType)CoreRepository.GetObjectById(
-                            typeof(ModuleType), Int32.Parse(this.ddlModule.SelectedValue));
+                        this._activeSection.ModuleType = ModuleTypeService.GetModuleById(Int32.Parse(this.ddlModule.SelectedValue));
                     }
                     this._activeSection.PlaceholderId = this.ddlPlaceholder.SelectedValue;
                     this._activeSection.CacheDuration = Int32.Parse(this.txtCacheDuration.Text);
@@ -414,11 +396,10 @@ namespace Cuyahoga.Web.Admin
                         this._activeSection.ChangeAndUpdatePositionsAfterPlaceholderChange(oldPlaceholderId, oldPosition, true);
 
                     // Save the active section
-                    //SaveSection();
                     this.SectionService.SaveSection(this._activeSection);
 
                     // Clear cached sections.
-                    base.CoreRepository.ClearCollectionCache("Cuyahoga.Core.Domain.Node.Sections");
+                    _commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.Sections");
 
                     ShowMessage("Section saved.");
                 }
@@ -475,7 +456,7 @@ namespace Cuyahoga.Web.Admin
                 try
                 {
                     this._activeSection.Connections.Remove(actionName);
-                    base.CoreRepository.UpdateObject(this._activeSection);
+                    SectionService.UpdateSection(this._activeSection);
                 }
                 catch (Exception ex)
                 {

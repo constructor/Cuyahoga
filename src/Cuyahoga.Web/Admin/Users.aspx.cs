@@ -54,7 +54,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void GetUserData()
 		{
-			this.rptUsers.DataSource = base.CoreRepository.FindUsersByUsername(this.txtUsername.Text);
+            this.rptUsers.DataSource = UserService.FindUsersByUsername(this.txtUsername.Text);
 		}
 
         protected void BtnFindClick(object sender, System.EventArgs e)
@@ -64,8 +64,6 @@ namespace Cuyahoga.Web.Admin
 
         protected void PgrUsersPageChanged(object sender, Cuyahoga.ServerControls.PageChangedEventArgs e)
 		{
-			//this.pgrUsers.CurrentPageIndex = e.CurrentPage;
-			//BindUsers();
 			this.rptUsers.DataBind();
 		}
 

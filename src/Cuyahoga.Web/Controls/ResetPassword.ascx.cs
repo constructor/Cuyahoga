@@ -75,7 +75,6 @@ namespace Cuyahoga.Web.Controls
 			if (this.Page.IsValid)
 			{
 				// Check if the username and email combination exists.
-				//User user = this._page.CoreRepository.GetUserByUsernameAndEmail(this.txtUsername.Text, this.txtEmail.Text);
                 User user = _userService.GetUserByUsernameAndEmail(this.txtUsername.Text, this.txtEmail.Text);
 
 				if (user == null)
@@ -89,8 +88,7 @@ namespace Cuyahoga.Web.Controls
 					// OK, reset password
 					string prevPassword = user.Password;
 					string newPassword = user.GeneratePassword();
-					
-                    //this._page.CoreRepository.SaveObject(user);
+
                     _userService.UpdateUser(user);
 					
 					// Send email

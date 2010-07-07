@@ -47,7 +47,7 @@ namespace Cuyahoga.Web.UI
 		/// <summary>
 		/// The page title as shown in the title bar of the browser.
 		/// </summary>
-		public string Title
+		new public string Title
 		{
 			get { return _title; }
 			set { _title = value; }
@@ -65,7 +65,7 @@ namespace Cuyahoga.Web.UI
 		/// <summary>
 		/// Property for the template control. This property can be used for finding other controls.
 		/// </summary>
-		public UserControl TemplateControl
+		new public UserControl TemplateControl
 		{
 			get
 			{
@@ -102,17 +102,6 @@ namespace Cuyahoga.Web.UI
 				{
 					return null;
 				}
-			}
-		}
-
-		/// <summary>
-		/// The core repository for persisting Cuyahoga objects.
-		/// </summary>
-		public CoreRepository CoreRepository
-		{
-			get
-			{
-				return HttpContext.Current.Items["CoreRepository"] as CoreRepository;
 			}
 		}
 

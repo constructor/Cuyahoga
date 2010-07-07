@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Castle.Services.Transaction;
@@ -64,6 +65,11 @@ namespace Cuyahoga.Core.Service.SiteStructure
 		{
 			return this._siteStructureDao.GetSectionsByModuleType(moduleType);
 		}
+
+        public IList GetSectionsByModuleTypes(IList moduleTypes)
+        {
+            return this._siteStructureDao.GetSectionsByModuleTypes(moduleTypes);
+        }
 
 		public IList<Section> GetSectionsByModuleTypeAndSite(ModuleType moduleType, Site site)
 		{

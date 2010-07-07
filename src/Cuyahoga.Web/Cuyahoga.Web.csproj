@@ -90,10 +90,6 @@
       <Project>{C64DAA00-AAB1-4AC7-ADE2-119B53B9666A}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Castle.Components.Validator.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Castle.Core.dll</HintPath>
@@ -200,13 +196,6 @@
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\MenuEdit.aspx.cs">
-      <DependentUpon>MenuEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\MenuEdit.aspx.designer.cs">
-      <DependentUpon>MenuEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Modules.aspx.cs">
       <DependentUpon>Modules.aspx</DependentUpon>
@@ -411,18 +400,6 @@
       <DependentUpon>ModuleAdminTemplate.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\Navigation\HierarchicalMenu.ascx.cs">
-      <DependentUpon>HierarchicalMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\Navigation\NavigationLevelTwo.ascx.cs">
-      <DependentUpon>NavigationLevelTwo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\Navigation\NavigationLevelZeroOne.ascx.cs">
-      <DependentUpon>NavigationLevelZeroOne.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Controls\Register.ascx.cs">
       <DependentUpon>Register.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,9 +421,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HttpModules\AuthenticationModule.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HttpModules\CoreRepositoryModule.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Install\Install.aspx.cs">
@@ -542,9 +516,6 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="Admin\js\adminpanel.js" />
-    <Content Include="Admin\MenuEdit.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="Admin\Modules.aspx">
       <SubType>Form</SubType>
     </Content>
@@ -607,13 +578,6 @@
     <Content Include="Controls\ModuleAdminTemplate.ascx">
       <SubType>UserControl</SubType>
     </Content>
-    <Content Include="Controls\Navigation\HierarchicalMenu.ascx" />
-    <Content Include="Controls\Navigation\NavigationLevelTwo.ascx">
-      <SubType>UserControl</SubType>
-    </Content>
-    <Content Include="Controls\Navigation\NavigationLevelZeroOne.ascx">
-      <SubType>UserControl</SubType>
-    </Content>
     <Content Include="Controls\Register.ascx">
       <SubType>UserControl</SubType>
     </Content>
@@ -653,7 +617,7 @@
     <Content Include="Rss.aspx">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="Web.config" />
+    <None Include="Web.config" />
     <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.it.resx">
       <SubType>Designer</SubType>
       <Generator>GlobalResourceProxyGenerator</Generator>
@@ -742,18 +706,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ModuleAdminTemplate.ascx.resx">
       <DependentUpon>ModuleAdminTemplate.ascx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Navigation\HierarchicalMenu.ascx.resx">
-      <DependentUpon>HierarchicalMenu.ascx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Navigation\NavigationLevelTwo.ascx.resx">
-      <DependentUpon>NavigationLevelTwo.ascx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Navigation\NavigationLevelZeroOne.ascx.resx">
-      <DependentUpon>NavigationLevelZeroOne.ascx.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Register.ascx.resx">

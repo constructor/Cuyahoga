@@ -16,7 +16,6 @@ namespace Cuyahoga.Web.Components
 		{
 			RegisterFacilities();
 			RegisterServices();
-			ConfigureLegacySessionFactory();
 		}
 
 		private void RegisterFacilities()
@@ -26,19 +25,10 @@ namespace Cuyahoga.Web.Components
 		private void RegisterServices()
 		{
 			// The core services are registrated via services.config
-			
 			// Utility services
 			AddComponent("web.moduleloader", typeof(ModuleLoader));
 			AddComponent("core.sessionfactoryhelper", typeof(SessionFactoryHelper));
-
-			// Legacy
-			AddComponent("corerepositoryadapter", typeof(CoreRepositoryAdapter));
 		}
 
-		private void ConfigureLegacySessionFactory()
-		{
-			SessionFactoryHelper sessionFactoryHelper = this.Resolve<SessionFactoryHelper>();
-			sessionFactoryHelper.ConfigureLegacySessionFactory();
-		}
 	}
 }

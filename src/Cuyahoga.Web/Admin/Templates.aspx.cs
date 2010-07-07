@@ -25,9 +25,6 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindTemplates()
         {
-            //this.rptTemplates.DataSource = base.CoreRepository.GetAll(typeof(Template), "BasePath", "Name");
-            //this.rptTemplates.DataBind();
-
             //Get only templates for dropdown selected site (Custom) Replaces above
             Int32 selectedsiteid = Convert.ToInt32(ddlSites.SelectedValue);
             if (selectedsiteid > 0)

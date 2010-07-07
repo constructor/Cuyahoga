@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
 using Cuyahoga.Core.Domain;
+using Cuyahoga.Core.Service.Membership;
+using Cuyahoga.Core.Util;
 using Cuyahoga.Web.UI;
 
 namespace Cuyahoga.Modules.Downloads.Web
@@ -20,6 +22,7 @@ namespace Cuyahoga.Modules.Downloads.Web
 		private DownloadsModule _downloadsModule;
 		private int _fileId;
 		private FileResource _file;
+        private IUserService _userService;
 
 		protected System.Web.UI.WebControls.Button btnSave;
 		protected System.Web.UI.WebControls.Button btnDelete;
@@ -36,6 +39,8 @@ namespace Cuyahoga.Modules.Downloads.Web
 	
 		private void Page_Load(object sender, System.EventArgs e)
 		{
+            _userService = IoC.Resolve<IUserService>();
+
 			// The base page has already created the module, we only have to cast it here to the right type.
 			this._downloadsModule = base.Module as DownloadsModule;
 			
@@ -118,7 +123,8 @@ namespace Cuyahoga.Modules.Downloads.Web
 				if (chkRole.Checked)
 				{
 					int roleId = (int)this.ViewState[ri.ClientID];
-					Role role = (Role)base.CoreRepository.GetObjectById(typeof(Role), roleId);
+                    Role role = _userService.GetRoleById(roleId);
+
                     this._file.ContentItemPermissions.Add(new ContentItemPermission { ContentItem = this._file, Role = role, ViewAllowed = chkRole.Checked });
 					//this._file.AllowedRoles.Add(role);
 				}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
@@ -23,7 +24,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindSections()
         {
-            this.rptSections.DataSource = base.CoreRepository.GetUnconnectedSections();
+            this.rptSections.DataSource = SectionService.GetUnconnectedSections();
             this.rptSections.DataBind();
         }
 
@@ -38,10 +39,10 @@ namespace Cuyahoga.Web.Admin
             Section section = e.Item.DataItem as Section;
             if (section != null)
             {
-                IList templates = this.CoreRepository.GetTemplatesBySection(section);
+                IList templates = SectionService.GetTemplatesBySection(section).ToList();
+
                 HyperLink hplEdit = (HyperLink)e.Item.FindControl("hplEdit");
                 hplEdit.NavigateUrl = (this.ActiveSite != null) ? String.Format("~/Admin/SectionEdit.aspx?SiteId={0}&SectionId={1}", this.ActiveSite.Id.ToString(), section.Id) : String.Format("~/Admin/SectionEdit.aspx?SectionId={0}", section.Id);
-
 
                 LinkButton lbtDelete = (LinkButton)e.Item.FindControl("lbtDelete");
                 HyperLink hplAttachTemplate = (HyperLink)e.Item.FindControl("hplAttachTemplate");
@@ -73,7 +74,7 @@ namespace Cuyahoga.Web.Admin
         protected void rptSections_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             int sectionId = Int32.Parse(e.CommandArgument.ToString());
-            Section section = (Section)base.CoreRepository.GetObjectById(typeof(Section), sectionId);
+            Section section = SectionService.GetSectionById(sectionId);
 
             if (e.CommandName == "Delete")
             {
@@ -84,7 +85,8 @@ namespace Cuyahoga.Web.Admin
                     module.DeleteModuleContent();
 
                     // Remove from all template sections
-                    IList templates = this.CoreRepository.GetTemplatesBySection(section);
+                    IList templates = SectionService.GetTemplatesBySection(section).ToList();
+
                     foreach (Template template in templates)
                     {
                         string attachedPlaceholderId = null;
@@ -97,11 +99,11 @@ namespace Cuyahoga.Web.Admin
                             }
                         }
                         template.Sections.Remove(attachedPlaceholderId);
-                        base.CoreRepository.UpdateObject(template);
+                        TemplateService.SaveTemplate(template);
                     }
 
                     // Now delete the Section.
-                    base.CoreRepository.DeleteObject(section);
+                    SectionService.DeleteSection(section, module);
                 }
                 catch (Exception ex)
                 {

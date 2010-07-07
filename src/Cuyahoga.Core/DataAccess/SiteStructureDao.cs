@@ -138,28 +138,6 @@ namespace Cuyahoga.Core.DataAccess
 			return q.List();
 		}
 
-		public IList GetMenusByRootNode(Node rootNode)
-		{
-			ISession session = this._sessionManager.OpenSession();
-
-			string hql = "from CustomMenu m where m.RootNode.Id = :rootNodeId";
-			IQuery q = session.CreateQuery(hql);
-			q.SetInt32("rootNodeId", rootNode.Id);
-			q.SetCacheable(true);
-			q.SetCacheRegion("Menus");
-			return q.List();
-		}
-
-		public IList GetMenusByParticipatingNode(Node node)
-		{
-			ISession session = this._sessionManager.OpenSession();
-
-			string hql = "select m from CustomMenu m join m.Nodes n where n.Id = :nodeId";
-			IQuery q = session.CreateQuery(hql);
-			q.SetInt32("nodeId", node.Id);
-			return q.List();
-		}
-
 		public IList<Section> GetSortedSectionsByNode(Node node)
 		{
 			ISession session = this._sessionManager.OpenSession();

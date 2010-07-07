@@ -79,7 +79,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void BuildIndexBySites()
         {
-            IList sites = base.CoreRepository.GetAll(typeof(Site));
+            IList sites = SiteService.GetAllSites();
             foreach (Site site in sites)
             {
                 foreach (Node node in site.RootNodes)

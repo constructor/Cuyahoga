@@ -23,8 +23,7 @@ namespace Cuyahoga.Web.Admin
             if (Context.Request.QueryString["SectionId"] != null)
             {
                 // Get section data
-                this._activeSection = (Section)base.CoreRepository.GetObjectById(typeof(Section),
-                    Int32.Parse(Context.Request.QueryString["SectionId"]));
+                this._activeSection = SectionService.GetSectionById(Int32.Parse(Context.Request.QueryString["SectionId"]));
             }
             if (!this.IsPostBack)
             {
@@ -35,13 +34,11 @@ namespace Cuyahoga.Web.Admin
             {
                 if (this.ddlSites.SelectedIndex > -1)
                 {
-                    this._selectedSite = (Site)base.CoreRepository.GetObjectById(typeof(Site)
-                        , Int32.Parse(this.ddlSites.SelectedValue));
+                    this._selectedSite = SiteService.GetSiteById(Int32.Parse(this.ddlSites.SelectedValue));
                 }
                 if (this.lbxAvailableNodes.SelectedIndex > -1)
                 {
-                    this._selectedNode = (Node)base.CoreRepository.GetObjectById(typeof(Node)
-                        , Int32.Parse(this.lbxAvailableNodes.SelectedValue));
+                    this._selectedNode =  NodeService.GetNodeById(Int32.Parse(this.lbxAvailableNodes.SelectedValue));
                 }
             }
         }
@@ -57,7 +54,8 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindSites()
         {
-            IList sites = base.CoreRepository.GetAll(typeof(Site));
+            IList sites = SiteService.GetAllSites();
+
             foreach (Site site in sites)
             {
                 if (this._selectedSite == null)
@@ -76,7 +74,7 @@ namespace Cuyahoga.Web.Admin
             {
                 this.lbxAvailableNodes.Visible = true;
                 this.lbxAvailableNodes.Items.Clear();
-                IList<Node> rootNodes = base.CoreRepository.GetRootNodes(this._selectedSite) as IList<Node>;
+                IList<Node> rootNodes = NodeService.GetNodesBySite(this._selectedSite) as IList<Node>;
                 AddAvailableNodes(rootNodes);
             }
             this.btnSave.Enabled = false;
@@ -167,7 +165,7 @@ namespace Cuyahoga.Web.Admin
 
             try
             {
-                base.CoreRepository.UpdateObject(this._activeSection);
+                SectionService.UpdateSection(this._activeSection);
                 // Update the full text index to make sure that the content can be found.
                 SearchHelper.UpdateIndexFromSection(this._activeSection);
 

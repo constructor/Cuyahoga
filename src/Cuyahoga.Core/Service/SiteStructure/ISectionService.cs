@@ -51,6 +51,13 @@ namespace Cuyahoga.Core.Service.SiteStructure
 		/// <returns></returns>
 		IList<Section> GetSectionsByModuleType(ModuleType moduleType);
 
+        /// <summary>
+        /// Get all sections that are related to the given module types.
+        /// </summary>
+        /// <param name="moduleTypes"></param>
+        /// <returns></returns>
+        IList GetSectionsByModuleTypes(IList moduleTypes);
+
 		/// <summary>
 		/// Get all sections that are related to the given module type and site.
 		/// </summary>

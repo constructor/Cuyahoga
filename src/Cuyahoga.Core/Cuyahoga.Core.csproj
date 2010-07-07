@@ -137,6 +137,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -204,22 +205,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\Transactions\WebActivityManager.cs" />
-    <Compile Include="Service\Content\AuditContentDecorator.cs" />
-    <Compile Include="Service\Content\CommentService.cs" />
-    <Compile Include="Service\Content\ContentItemQuerySettings.cs" />
-    <Compile Include="Service\Content\Enumerations.cs" />
-    <Compile Include="Service\Content\ICommentService.cs" />
-    <Compile Include="Service\CuyahogaContextProvider.cs" />
-    <Compile Include="Service\Files\FileManagerService.cs" />
-    <Compile Include="Service\Files\IFileManagerService.cs" />
-    <Compile Include="Service\ICuyahogaContextProvider.cs" />
-    <Compile Include="Service\Membership\SystemRoles.cs" />
-    <Compile Include="Service\Search\IFilterTextExtractor.cs" />
-    <Compile Include="Service\Search\ITextExtractor.cs" />
-    <Compile Include="Service\Search\NativeTextExtractor.cs" />
-    <Compile Include="Service\Search\SearchDecorator.cs" />
-    <Compile Include="Service\Search\SearchIndexProperties.cs" />
-    <Compile Include="Service\Versioning\VersioningDecorator.cs" />
     <Compile Include="Domain\Category.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -227,9 +212,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\ContentItemPermission.cs" />
-    <Compile Include="Domain\CustomMenu.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Domain\Enumerations.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -302,101 +284,67 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\Content\AbstractContentItemServiceDecorator.cs" />
+    <Compile Include="Service\Content\AuditContentDecorator.cs" />
     <Compile Include="Service\Content\CategoryService.cs" />
-    <Compile Include="Service\Content\ContentItemService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\Content\CommentService.cs" />
+    <Compile Include="Service\Content\ContentItemQuerySettings.cs" />
+    <Compile Include="Service\Content\ContentItemService.cs" />
+    <Compile Include="Service\Content\Enumerations.cs" />
     <Compile Include="Service\Content\ICategoryService.cs" />
-    <Compile Include="Service\Content\IContentItemService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\CoreRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\CoreRepositoryAdapter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\DatabaseInstaller.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\Content\ICommentService.cs" />
+    <Compile Include="Service\Content\IContentItemService.cs" />
+    <Compile Include="Service\CuyahogaContextProvider.cs" />
+    <Compile Include="Service\DatabaseInstaller.cs" />
     <Compile Include="Service\Email\DefaultEmailService.cs" />
     <Compile Include="Service\Email\IEmailSender.cs" />
     <Compile Include="Service\Email\IEmailService.cs" />
     <Compile Include="Service\Email\IEmailTemplateEngine.cs" />
     <Compile Include="Service\Email\SimpleEmailTemplateEngine.cs" />
     <Compile Include="Service\Email\SmtpNet2EmailSender.cs" />
-    <Compile Include="Service\Files\FileResourceService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Files\IFileResourceService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Files\IFileService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Files\StreamUtil.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Files\TransactionalFileService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\Files\FileManagerService.cs" />
+    <Compile Include="Service\Files\FileResourceService.cs" />
+    <Compile Include="Service\Files\IFileManagerService.cs" />
+    <Compile Include="Service\Files\IFileResourceService.cs" />
+    <Compile Include="Service\Files\IFileService.cs" />
+    <Compile Include="Service\Files\StreamUtil.cs" />
+    <Compile Include="Service\Files\TransactionalFileService.cs" />
+    <Compile Include="Service\ICuyahogaContextProvider.cs" />
     <Compile Include="Service\Membership\CuyahogaPermissionAttribute.cs" />
-    <Compile Include="Service\Membership\DefaultAuthenticationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Membership\DefaultUserService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Membership\IAuthenticationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\Membership\IUserService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\Membership\DefaultAuthenticationService.cs" />
+    <Compile Include="Service\Membership\DefaultUserService.cs" />
+    <Compile Include="Service\Membership\IAuthenticationService.cs" />
+    <Compile Include="Service\Membership\IUserService.cs" />
     <Compile Include="Service\Membership\Rights.cs" />
+    <Compile Include="Service\Membership\SystemRoles.cs" />
     <Compile Include="Service\Search\CustomSearchField.cs" />
+    <Compile Include="Service\Search\IFilterTextExtractor.cs" />
     <Compile Include="Service\Search\IndexBuilder.cs" />
     <Compile Include="Service\Search\IndexQuery.cs" />
     <Compile Include="Service\Search\ISearchableContent.cs" />
     <Compile Include="Service\Search\ISearchService.cs" />
+    <Compile Include="Service\Search\ITextExtractor.cs" />
+    <Compile Include="Service\Search\NativeTextExtractor.cs" />
+    <Compile Include="Service\Search\SearchDecorator.cs" />
+    <Compile Include="Service\Search\SearchIndexProperties.cs" />
     <Compile Include="Service\Search\SearchResult.cs" />
     <Compile Include="Service\Search\SearchResultCollection.cs" />
     <Compile Include="Service\Search\SearchService.cs" />
-    <Compile Include="Service\SessionFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SessionFactoryHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\SessionFactory.cs" />
+    <Compile Include="Service\SessionFactoryHelper.cs" />
     <Compile Include="Service\SiteStructure\IModuleTypeService.cs" />
-    <Compile Include="Service\SiteStructure\INodeService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\ISectionService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\ISiteService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\ITemplateService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\SiteStructure\INodeService.cs" />
+    <Compile Include="Service\SiteStructure\ISectionService.cs" />
+    <Compile Include="Service\SiteStructure\ISiteService.cs" />
+    <Compile Include="Service\SiteStructure\ITemplateService.cs" />
     <Compile Include="Service\SiteStructure\ModuleTypeService.cs" />
-    <Compile Include="Service\SiteStructure\NodeService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\SectionService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\SiteService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\SiteStructure\TemplateService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Service\SiteStructure\NodeService.cs" />
+    <Compile Include="Service\SiteStructure\SectionService.cs" />
+    <Compile Include="Service\SiteStructure\SiteService.cs" />
+    <Compile Include="Service\SiteStructure\TemplateService.cs" />
     <Compile Include="Service\Versioning\IVersionableContent.cs" />
     <Compile Include="Service\Versioning\IVersioningService.cs" />
     <Compile Include="Service\Versioning\VersionEntry.cs" />
+    <Compile Include="Service\Versioning\VersioningDecorator.cs" />
     <Compile Include="Service\Versioning\VersioningService.cs" />
     <Compile Include="Util\Config.cs">
       <SubType>Code</SubType>
@@ -421,7 +369,6 @@
     </Compile>
     <Compile Include="Util\UrlUtil.cs" />
     <Compile Include="Util\CommonUtils.cs" />
-    <EmbeddedResource Include="Domain\CustomMenu.hbm.xml" />
     <EmbeddedResource Include="Domain\ModuleType.hbm.xml" />
     <EmbeddedResource Include="Domain\Node.hbm.xml" />
     <EmbeddedResource Include="Domain\Role.hbm.xml" />

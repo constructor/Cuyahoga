@@ -74,13 +74,6 @@ namespace Cuyahoga.Core.Service.SiteStructure
 		void DeleteNode(Node node);
 
 		/// <summary>
-		/// Get all menu items by a given root node.
-		/// </summary>
-		/// <param name="rootNode"></param>
-		/// <returns></returns>
-		IList GetMenusByRootNode(Node rootNode);
-
-		/// <summary>
 		/// Sort child nodes of a node with the given id.
 		/// </summary>
 		/// <param name="parentNodeId">The Id of the node to sort the children of.</param>

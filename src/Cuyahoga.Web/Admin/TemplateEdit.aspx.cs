@@ -79,7 +79,7 @@ namespace Cuyahoga.Web.Admin
         {
             this.txtName.Text = this._activeTemplate.Name;
             this.txtBasePath.Text = this._activeTemplate.BasePath;
-            this.btnDelete.Visible = (this._activeTemplate.Id > 0 && base.CoreRepository.GetNodesByTemplate(this._activeTemplate).Count <= 0);
+            this.btnDelete.Visible = (this._activeTemplate.Id > 0 && NodeService.GetNodesByTemplate(this._activeTemplate).Count <= 0);
             this.btnDelete.Attributes.Add("onclick", "return confirm('Are you sure?')");
         }
 
@@ -195,12 +195,12 @@ namespace Cuyahoga.Web.Admin
             {
                 if (this._activeTemplate.Id == -1)
                 {
-                    base.CoreRepository.SaveObject(this._activeTemplate);
+                    TemplateService.SaveTemplate(this._activeTemplate);
                     Context.Response.Redirect("Templates.aspx");
                 }
                 else
                 {
-                    base.CoreRepository.UpdateObject(this._activeTemplate);
+                    TemplateService.SaveTemplate(this._activeTemplate);
                     ShowMessage("Template saved");
                 }
             }
@@ -249,8 +249,7 @@ namespace Cuyahoga.Web.Admin
                 {
                     //Custom Added: Selete Tempate Folder
                     Directory.Delete(Server.MapPath("~/" + this._activeTemplate.BasePath), true);
-
-                    base.CoreRepository.DeleteObject(this._activeTemplate);
+                    TemplateService.DeleteTemplate(this._activeTemplate);
                     Context.Response.Redirect("Templates.aspx");
                 }
                 catch (Exception ex)
@@ -321,7 +320,7 @@ namespace Cuyahoga.Web.Admin
 
                 try
                 {
-                    base.CoreRepository.UpdateObject(this._activeTemplate);
+                    TemplateService.SaveTemplate(this._activeTemplate);
                     ShowMessage(String.Format("Section in Placeholder {0} detached", placeholder));
                     BindPlaceholders();
                 }

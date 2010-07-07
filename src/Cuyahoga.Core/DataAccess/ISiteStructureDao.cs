@@ -62,20 +62,6 @@ namespace Cuyahoga.Core.DataAccess
 		IList GetNodesByTemplate(Template template);
 
 		/// <summary>
-		/// Get all menus that are underneath a given root node.
-		/// </summary>
-		/// <param name="rootNode"></param>
-		/// <returns></returns>
-		IList GetMenusByRootNode(Node rootNode);
-
-		/// <summary>
-		/// Get all menus where the given node participates in.
-		/// </summary>
-		/// <param name="node"></param>
-		/// <returns></returns>
-		IList GetMenusByParticipatingNode(Node node);
-
-		/// <summary>
 		/// Get all sections that belong to a given node, sorted by placeholder and position.
 		/// </summary>
 		/// <param name="node"></param>

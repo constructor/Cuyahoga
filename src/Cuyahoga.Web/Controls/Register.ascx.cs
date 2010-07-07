@@ -75,7 +75,6 @@ namespace Cuyahoga.Web.Controls
 			if (this.Page.IsValid)
 			{
 				// Check if username already exists.
-				//if (this._page.CoreRepository.FindUsersByUsername(this.txtUsername.Text).Count > 0)
                 if (_userService.FindUsersByUsername(this.txtUsername.Text).Count > 0)
 				{
 					this.lblError.Text = String.Format(GetTextFromFile("USEREXISTS"), this.txtUsername.Text);
@@ -93,7 +92,6 @@ namespace Cuyahoga.Web.Controls
 					// Add the default role from the current site.
 					user.Roles.Add(site.DefaultRole);
 
-					//this._page.CoreRepository.SaveObject(user);
                     _userService.CreateUser(user);
 					
 					// Send email
@@ -111,7 +109,6 @@ namespace Cuyahoga.Web.Controls
 					catch
 					{
 						// delete user when sending email fails.
-						//this._page.CoreRepository.DeleteObject(user);
                         _userService.DeleteUser(user);
 
 						this.lblError.Text = GetTextFromFile("REGISTEREMAILERROR");

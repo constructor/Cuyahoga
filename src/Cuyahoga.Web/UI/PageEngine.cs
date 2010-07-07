@@ -72,7 +72,7 @@ namespace Cuyahoga.Web.UI
 		/// <summary>
 		/// Property TemplateControl (BaseTemplate)
 		/// </summary>
-		public BaseTemplate TemplateControl
+		new public BaseTemplate TemplateControl
 		{
 			get { return this._templateControl; }
 			set { this._templateControl = value; }
@@ -251,7 +251,7 @@ namespace Cuyahoga.Web.UI
 				if (this._shouldLoadContent)
 				{
 					LoadContent();
-					LoadMenus();
+					//LoadMenus();
 				}
 			}
 			base.OnInit(e);
@@ -382,55 +382,6 @@ namespace Cuyahoga.Web.UI
 			BaseModuleControl ctrl = (BaseModuleControl)this.LoadControl(UrlHelper.GetApplicationPath() + module.CurrentViewControlPath);
 			ctrl.Module = module;
 			return ctrl;
-		}
-
-		private void LoadMenus()
-		{
-			IList menus = this._nodeService.GetMenusByRootNode(this._rootNode);
-			foreach (CustomMenu menu in menus)
-			{
-				PlaceHolder plc = this._templateControl.Containers[menu.Placeholder] as PlaceHolder;
-				if (plc != null)
-				{
-					// rabol: [#CUY-57] fix.
-					Control menuControlList = GetMenuControls(menu);
-					if(menuControlList != null)
-					{
-						plc.Controls.Add(menuControlList);
-					}
-				}
-			}
-		}
-
-		private Control GetMenuControls(CustomMenu menu)
-		{
-			if (menu.Nodes.Count > 0)
-			{
-				// The menu is just a simple <ul> list.
-				HtmlGenericControl listControl = new HtmlGenericControl("ul");
-				foreach (Node node in menu.Nodes)
-				{
-					if (node.ViewAllowed(this.CuyahogaUser))
-					{
-						HtmlGenericControl listItem = new HtmlGenericControl("li");
-						HyperLink hpl = new HyperLink();
-						hpl.NavigateUrl = UrlHelper.GetUrlFromNode(node);
-						UrlHelper.SetHyperLinkTarget(hpl, node);
-						hpl.Text = node.Title;
-						listItem.Controls.Add(hpl);
-						listControl.Controls.Add(listItem);
-						if (node.Id == this.ActiveNode.Id)
-						{
-							hpl.CssClass = "selected";
-						}
-					}
-				}
-				return listControl;
-			}
-			else
-			{
-				return null;
-			}
 		}
 
 		private void InsertStylesheets()

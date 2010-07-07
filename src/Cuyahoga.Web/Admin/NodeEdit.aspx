@@ -138,35 +138,6 @@
                 </tr>
             </table>
         </asp:Panel>
-        <asp:Panel ID="pnlMenus" runat="server" CssClass="group" Visible="False">
-            <h4>Menus</h4>
-            <em>You're editing a root node, so you can also attach on or more custom menu's.</em>
-            <table class="tbl">
-                <asp:Repeater ID="rptMenus" OnItemDataBound="rptMenus_ItemDataBound" runat="server">
-                    <HeaderTemplate>
-                        <tr>
-                            <th>Menu</th>
-                            <th>Placeholder</th>
-                            <th>Actions</th>
-                        </tr>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                                <%# DataBinder.Eval(Container.DataItem, "Name") %>
-                            </td>
-                            <td>
-                                <%# DataBinder.Eval(Container.DataItem, "Placeholder") %>
-                            </td>
-                            <td>
-                                <asp:HyperLink ID="hplEditMenu" runat="server">Edit</asp:HyperLink>
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </table>
-            <asp:HyperLink ID="hplNewMenu" runat="server">Add menu</asp:HyperLink>
-        </asp:Panel>
         <asp:Panel ID="pnlSections" runat="server" CssClass="group">
             <h4>Sections</h4>
             <table class="tbl">

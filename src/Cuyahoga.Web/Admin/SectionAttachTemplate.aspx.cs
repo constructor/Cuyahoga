@@ -30,7 +30,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindTemplates()
         {
-            this.rptTemplates.DataSource = base.CoreRepository.GetAll(typeof(Template), "Name");
+            this.rptTemplates.DataSource = TemplateService.GetAllTemplates();
             this.rptTemplates.DataBind();
         }
 
@@ -97,7 +97,8 @@ namespace Cuyahoga.Web.Admin
             {
                 foreach (RepeaterItem ri in this.rptTemplates.Items)
                 {
-                    Template template = (Template)base.CoreRepository.GetObjectById(typeof(Template), (int)this.ViewState[ri.ClientID]);
+                    Template template = TemplateService.GetTemplateById((int)this.ViewState[ri.ClientID]);
+
                     CheckBox chkAttached = ri.FindControl("chkAttached") as CheckBox;
                     DropDownList ddlPlaceHolders = ri.FindControl("ddlPlaceHolders") as DropDownList;
                     string selectedPlaceholderId = ddlPlaceHolders.SelectedValue;
@@ -129,7 +130,7 @@ namespace Cuyahoga.Web.Admin
                             template.Sections.Remove(attachedPlaceholderId);
                         }
                     }
-                    base.CoreRepository.UpdateObject(template);
+                    TemplateService.SaveTemplate(template);
                 }
                 Context.Response.Redirect("~/Admin/Sections.aspx");
             }

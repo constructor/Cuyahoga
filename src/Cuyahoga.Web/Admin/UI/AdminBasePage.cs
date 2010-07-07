@@ -22,6 +22,7 @@ namespace Cuyahoga.Web.Admin.UI
 		private ISiteService _siteService;
         private IUserService _userService;
 		private INodeService _nodeService;
+        private IModuleTypeService _moduleTypeService;
 		private ISectionService _sectionService;
         private ITemplateService _templateService;
 		private ModuleLoader _moduleLoader;
@@ -87,6 +88,14 @@ namespace Cuyahoga.Web.Admin.UI
 			get { return this._nodeService; }
 		}
 
+        /// <summary>
+        /// ModuleTypeService
+        /// </summary>
+        public IModuleTypeService ModuleTypeService
+        {
+            get { return this._moduleTypeService; }
+        }
+
 		/// <summary>
 		/// Section service
 		/// </summary>
@@ -122,6 +131,7 @@ namespace Cuyahoga.Web.Admin.UI
             this._userService = Container.Resolve<IUserService>();
 			this._nodeService = Container.Resolve<INodeService>();
 			this._sectionService = Container.Resolve<ISectionService>();
+            this._moduleTypeService = Container.Resolve<IModuleTypeService>();
 			this._moduleLoader = Container.Resolve<ModuleLoader>();
             this._templateService = Container.Resolve<ITemplateService>();
             this._fileService = Container.Resolve<IFileService>();

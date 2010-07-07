@@ -145,7 +145,7 @@ namespace Cuyahoga.Web.Admin
                     {
                         newPosition = this.DestinationNode.ChildNodes.Count;
                     }
-
+                    
                     SourceNode.ParentNode.ChildNodes.Remove(SourceNode);
                     ReOrderNodePositions(SourceNode.ParentNode.ChildNodes, SourceNode.Position);
                     SourceNode.ParentNode = this.DestinationNode;
@@ -155,8 +155,7 @@ namespace Cuyahoga.Web.Admin
                     }
 
                     SourceNode.Position = newPosition;
-
-                    this.CoreRepository.FlushSession();
+                    CommonDao.Flush();
 
                     string Details = "Node '" + this.SourceNode.Title + "' has been paste to '" + this.DestinationNode.Title + "'";
 
@@ -204,14 +203,15 @@ namespace Cuyahoga.Web.Admin
 
                 try
                 {
-                    this.CoreRepository.ClearQueryCache("Nodes");
+                    CommonDao.RemoveQueryFromCache("Nodes");
+
                     this.SourceNode.Move(rootNodes, npm);
                     //this.NodeService.SaveNode(this.SourceNode);
 
-                    this.CoreRepository.FlushSession();
+                    CommonDao.Flush();
 
                     if (npm == NodePositionMovement.Left || npm == NodePositionMovement.Right)
-                    this.CoreRepository.ClearCollectionCache("Cuyahoga.Core.Domain.Node.ChildNodes");
+                    CommonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.ChildNodes");
 
                     string Details = "Node '" + this.SourceNode.Title + "' has been moved " + direction;
 
@@ -236,7 +236,7 @@ namespace Cuyahoga.Web.Admin
             public ReturnObject DeleteNode(int sourceSiteId, int sourceNodeId, bool showAll)
             {
                 this.ShowAll = showAll;
-                this.CoreRepository.ClearQueryCache("Nodes");
+                CommonDao.RemoveQueryFromCache("Nodes");
 
                 this.SourceNode = this.NodeService.GetNodeById(sourceNodeId);
 
@@ -246,7 +246,7 @@ namespace Cuyahoga.Web.Admin
                 try
                 {
                     this.NodeService.DeleteNode(this.SourceNode);
-                    this.CoreRepository.FlushSession();
+                    CommonDao.Flush();
 
                     string Details = "Node '" + this.SourceNode.Title + "' of site '" + this.SourceNode.Site.Name +"' has been deleted.";
 
@@ -277,11 +277,11 @@ namespace Cuyahoga.Web.Admin
 
                 try
                 {
-                    this.CoreRepository.ClearQueryCache("Nodes");
+                    CommonDao.RemoveQueryFromCache("Nodes");
                     Node node = NodeService.CopyNode(this.SourceNode.Id, this.DestinationNode.Id);
 
-                    this.CoreRepository.FlushSession();
-                    this.CoreRepository.ClearCollectionCache("Cuyahoga.Core.Domain.Node.ChildNodes");
+                    CommonDao.Flush();
+                    CommonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.ChildNodes");
 
                     string Details = "A copy of node '" + this.SourceNode.Title + "' has been made at node '" + this.DestinationNode.Title + "'.";
 
@@ -352,17 +352,8 @@ namespace Cuyahoga.Web.Admin
 
                     //nodeTarget.Sections.Add(newsection);
 
-                    CoreRepository.SaveObject(newsection);
+                    SectionService.SaveSection(newsection);
 
-                    //foreach (SectionPermission sp in section.SectionPermissions)
-                    //{
-                    //    SectionPermission secperm = new SectionPermission();
-                    //    secperm.Role = sp.Role;
-                    //    secperm.Section = newsection;
-                    //    secperm.EditAllowed = sp.EditAllowed;
-                    //    secperm.ViewAllowed = sp.ViewAllowed;
-                    //    newsection.SectionPermissions.Add(secperm);
-                    //}
                 }
             }
 

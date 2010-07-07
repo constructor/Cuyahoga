@@ -107,29 +107,11 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindRoles()
 		{
-			//IList roles = base.CoreRepository.GetAll(typeof(Role), "PermissionLevel");
             IList<Role> roles = base.UserService.GetAllRoles().Cast<Role>().ToList();
-            //FilterAnonymousRoles(roles);
 			this.rptRoles.ItemDataBound += new RepeaterItemEventHandler(RptRolesItemDataBound);
             this.rptRoles.DataSource = roles.Where(x => x.Name != "Anonymous User");
 			this.rptRoles.DataBind();
 		}
-
-        ///// <summary>
-        ///// Filter the anonymous roles from the list.
-        ///// </summary>
-        //protected void FilterAnonymousRoles(IList roles)
-        //{
-        //    int roleCount = roles.Count;
-        //    for (int i = roleCount - 1; i >= 0; i--)
-        //    {
-        //        Role role = (Role)roles[i];
-        //        if (role.PermissionLevel == (int)AccessLevel.Anonymous)
-        //        {
-        //            roles.Remove(role);
-        //        }
-        //    }
-        //}
 
         protected void SetRoles()
 		{
@@ -143,7 +125,7 @@ namespace Cuyahoga.Web.Admin
 				if (chkRole.Checked)
 				{
 					int roleId = (int)this.ViewState[ri.ClientID];
-					Role role = (Role)base.CoreRepository.GetObjectById(typeof(Role), roleId);
+                    Role role = UserService.GetRoleById(roleId);
 					this._activeUser.Roles.Add(role);
 				}
 			}
@@ -165,12 +147,12 @@ namespace Cuyahoga.Web.Admin
 				SetRoles();
 				if (this._activeUser.Id == -1)
 				{
-					base.CoreRepository.SaveObject(this._activeUser);
+                    UserService.CreateUser(this._activeUser);
 					Context.Response.Redirect("UserEdit.aspx?UserId=" + this._activeUser.Id + "&message=User created successfully");
 				}
 				else
 				{
-					base.CoreRepository.UpdateObject(this._activeUser);
+                    UserService.UpdateUser(this._activeUser);
 					ShowMessage("User saved");
 				}
 			}
@@ -294,7 +276,7 @@ namespace Cuyahoga.Web.Admin
 					{
 						try
 						{
-							base.CoreRepository.DeleteObject(this._activeUser);
+                            UserService.DeleteUser(this._activeUser);
 							Context.Response.Redirect("Users.aspx");
 						}
 						catch (Exception ex)

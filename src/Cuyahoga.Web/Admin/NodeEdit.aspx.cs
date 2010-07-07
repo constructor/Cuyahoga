@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,6 +9,7 @@ using System.Web.UI.WebControls;
 using Cuyahoga.Web.Admin.UI;
 using Cuyahoga.Core.Domain;
 using Cuyahoga.Core.Service.Membership;
+using Cuyahoga.Core.DataAccess;
 using Cuyahoga.Core.Util;
 using Cuyahoga.Web.UI;
 using Cuyahoga.Web.Util;
@@ -18,9 +20,12 @@ namespace Cuyahoga.Web.Admin
     public partial class NodeEdit : AdminBasePage
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(NodeEdit));
+        private ICommonDao _commonDao;
 
         private void Page_Load(object sender, EventArgs e)
         {
+            _commonDao = IoC.Resolve<ICommonDao>();
+
             this.Title = "Edit node";
 
             // Note: ActiveNode is handled primarily by the AdminBasePage because other pages use it.
@@ -34,7 +39,8 @@ namespace Cuyahoga.Web.Admin
                 if (Context.Request.QueryString["ParentNodeId"] != null)
                 {
                     int parentNodeId = Int32.Parse(Context.Request.QueryString["ParentNodeId"]);
-                    this.ActiveNode.ParentNode = (Node)base.CoreRepository.GetObjectById(typeof(Node), parentNodeId);
+                    this.ActiveNode.ParentNode = NodeService.GetNodeById(parentNodeId);
+
                     // Copy Site property from parent.
                     this.ActiveNode.Site = this.ActiveNode.ParentNode.Site;
 
@@ -50,7 +56,8 @@ namespace Cuyahoga.Web.Admin
                 else if (Context.Request.QueryString["SiteId"] != null)
                 {
                     int siteId = Int32.Parse(Context.Request.QueryString["SiteId"]);
-                    this.ActiveNode.Site = (Site)base.CoreRepository.GetObjectById(typeof(Site), siteId);
+                    
+                    this.ActiveNode.Site = SiteService.GetSiteById(siteId);
 
                     // Set defaults inheriting from site
                     this.ActiveNode.Culture = this.ActiveNode.Site.DefaultCulture;
@@ -76,7 +83,7 @@ namespace Cuyahoga.Web.Admin
                         BindSections();
                         if (this.ActiveNode.IsRootNode)
                         {
-                            BindMenus();
+                            //BindMenus();
                         }
                     }
                     BindCultures();
@@ -116,7 +123,7 @@ namespace Cuyahoga.Web.Admin
             {
                 this.chkLink.Checked = true;
                 this.pnlLink.Visible = true;
-                this.pnlMenus.Visible = false;
+                //this.pnlMenus.Visible = false;
                 this.pnlTemplate.Visible = false;
                 this.pnlSections.Visible = false;
                 this.txtLinkUrl.Text = this.ActiveNode.LinkUrl;
@@ -170,7 +177,6 @@ namespace Cuyahoga.Web.Admin
             else
             {
                 //Get all of the template (the legacy way)
-                //templates = base.CoreRepository.GetAll(typeof(Template), "Name");
                 templates = this.TemplateService.GetAllTemplates();
             }
 
@@ -194,17 +200,10 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
-        private void BindMenus()
-        {
-            this.pnlMenus.Visible = true;
-            this.rptMenus.DataSource = base.CoreRepository.GetMenusByRootNode(this.ActiveNode);
-            this.rptMenus.DataBind();
-            this.hplNewMenu.NavigateUrl = String.Format("~/Admin/MenuEdit.aspx?MenuId=-1&NodeId={0}", this.ActiveNode.Id);
-        }
-
         private void BindSections()
         {
-            IList<Section> sortedSections = base.CoreRepository.GetSortedSectionsByNode(this.ActiveNode) as IList<Section>;
+            IList<Section> sortedSections = SectionService.GetSortedSectionsByNode(this.ActiveNode);
+
             // Synchronize sections, otherwise we'll have two collections with the same Sections
             this.ActiveNode.Sections = sortedSections;
             this.rptSections.DataSource = sortedSections;
@@ -219,7 +218,6 @@ namespace Cuyahoga.Web.Admin
 
         private void BindRoles()
         {
-            //IList roles = base.CoreRepository.GetAll(typeof(Role), "PermissionLevel");
             IList roles = base.UserService.GetAllRoles();
             this.rptRoles.ItemDataBound += rptRoles_ItemDataBound;
             this.rptRoles.DataSource = roles;
@@ -231,7 +229,7 @@ namespace Cuyahoga.Web.Admin
             if (this.ddlTemplates.Visible && this.ddlTemplates.SelectedValue != "-1")
             {
                 int templateId = Int32.Parse(this.ddlTemplates.SelectedValue);
-                this.ActiveNode.Template = (Template)base.CoreRepository.GetObjectById(typeof(Template), templateId);
+                this.ActiveNode.Template = TemplateService.GetTemplateById(templateId);
             }
         }
 
@@ -247,7 +245,8 @@ namespace Cuyahoga.Web.Admin
                 {
                     NodePermission np = new NodePermission();
                     np.Node = this.ActiveNode;
-                    np.Role = (Role)base.CoreRepository.GetObjectById(typeof(Role), (int)ViewState[ri.ClientID]);
+                    np.Role = UserService.GetRoleById((int)ViewState[ri.ClientID]);
+
                     np.ViewAllowed = chkView.Checked;
                     np.EditAllowed = chkEdit.Checked;
                     this.ActiveNode.NodePermissions.Add(np);
@@ -257,17 +256,16 @@ namespace Cuyahoga.Web.Admin
 
         private void SaveNode()
         {
-            base.CoreRepository.ClearQueryCache("Nodes");
+            _commonDao.RemoveQueryFromCache("Nodes");
 
             if (this.ActiveNode.Id > 0)
             {
-                base.CoreRepository.UpdateNode(this.ActiveNode
-                    , this.chkPropagateToChildNodes.Checked
-                    , this.chkPropagateToSections.Checked);
+                NodeService.UpdateNode(this.ActiveNode, this.chkPropagateToChildNodes.Checked, this.chkPropagateToSections.Checked);
             }
             else
             {
-                IList rootNodes = base.CoreRepository.GetRootNodes(this.ActiveNode.Site);
+                IList rootNodes = NodeService.GetRootNodes(this.ActiveNode.Site).ToList();
+
                 this.ActiveNode.CalculateNewPosition(rootNodes);
 
                 // Add node to the parent node's ChildNodes first
@@ -275,36 +273,30 @@ namespace Cuyahoga.Web.Admin
                 {
                     this.ActiveNode.ParentNode.ChildNodes.Add(this.ActiveNode);
                 }
-                base.CoreRepository.SaveObject(this.ActiveNode);
-
-                //TODO: Move all redirects out of try/catch blocks...
-                //try
-                //{
-                    Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node created sucessfully", this.ActiveNode.Id));
-                //}
-                //catch (ThreadAbortException ex)
-                //{
-                //    //this will usually happen 
-                //}
+                NodeService.SaveNode(this.ActiveNode);
+                Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node created sucessfully", this.ActiveNode.Id));
             }
         }
 
         private void MoveSections()
         {
             int sectionId = Int32.Parse(Context.Request.QueryString["SectionId"]);
-            Section section = (Section)base.CoreRepository.GetObjectById(typeof(Section), sectionId);
+            Section section = SectionService.GetSectionById(sectionId);
+
             section.Node = this.ActiveNode;
             if (Context.Request.QueryString["Action"] == "MoveUp")
             {
                 section.MoveUp();
-                base.CoreRepository.FlushSession();
+                _commonDao.Flush();
+
                 // reset sections, so they will be refreshed from the database when required.
                 this.ActiveNode.ResetSections();
             }
             else if (Context.Request.QueryString["Action"] == "MoveDown")
             {
                 section.MoveDown();
-                base.CoreRepository.FlushSession();
+                _commonDao.Flush();
+
                 // reset sections, so they will be refreshed from the database when required.
                 this.ActiveNode.ResetSections();
             }
@@ -329,11 +321,12 @@ namespace Cuyahoga.Web.Admin
 
         private void MoveNode(NodePositionMovement npm)
         {
-            base.CoreRepository.ClearQueryCache("Nodes");
+            _commonDao.RemoveQueryFromCache("Nodes");
+            IList<Node> rootNodes = NodeService.GetRootNodes(this.ActiveNode.Site);
 
-            IList<Node> rootNodes = base.CoreRepository.GetRootNodes(this.ActiveNode.Site) as IList<Node>;
             this.ActiveNode.Move(rootNodes, npm);
-            this.CoreRepository.FlushSession();
+            _commonDao.Flush();
+
             Context.Response.Redirect(Context.Request.RawUrl);
         }
 
@@ -420,7 +413,7 @@ namespace Cuyahoga.Web.Admin
             {
                 try
                 {
-                    base.CoreRepository.ClearQueryCache("Nodes");
+                    _commonDao.RemoveQueryFromCache("Nodes");
 
                     bool hasParentNode = (this.ActiveNode.ParentNode != null);
                     if (hasParentNode)
@@ -429,10 +422,11 @@ namespace Cuyahoga.Web.Admin
                     }
                     else
                     {
-                        IList rootNodes = base.CoreRepository.GetRootNodes(this.ActiveNode.Site);
+                        IList rootNodes = NodeService.GetRootNodes(this.ActiveNode.Site).ToList();
                         rootNodes.Remove(this.ActiveNode);
                     }
-                    base.CoreRepository.DeleteNode(this.ActiveNode);
+                    NodeService.DeleteNode(this.ActiveNode);
+
                     // Reset the position of the 'neighbour' nodes.
                     if (this.ActiveNode.Level == 0)
                     {
@@ -442,7 +436,8 @@ namespace Cuyahoga.Web.Admin
                     {
                         this.ActiveNode.ReOrderNodePositions(this.ActiveNode.ParentNode.ChildNodes, this.ActiveNode.Position);
                     }
-                    base.CoreRepository.FlushSession();
+                    _commonDao.Flush();
+
                     if (hasParentNode)
                     {
                         Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}", this.ActiveNode.ParentNode.Id));
@@ -581,22 +576,12 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
-        protected void rptMenus_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            CustomMenu menu = e.Item.DataItem as CustomMenu;
-            if (menu != null)
-            {
-                HyperLink hplEdit = e.Item.FindControl("hplEditMenu") as HyperLink;
-                hplEdit.NavigateUrl = String.Format("~/Admin/MenuEdit.aspx?MenuId={0}&NodeId={1}", menu.Id, this.ActiveNode.Id);
-            }
-        }
-
         protected void rptSections_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Delete" || e.CommandName == "Detach")
             {
                 int sectionId = Int32.Parse(e.CommandArgument.ToString());
-                Section section = (Section)base.CoreRepository.GetObjectById(typeof(Section), sectionId);
+                Section section = SectionService.GetSectionById(sectionId);
 
                 if (e.CommandName == "Delete")
                 {
@@ -611,8 +596,8 @@ namespace Cuyahoga.Web.Admin
                         section.ChangeAndUpdatePositionsAfterPlaceholderChange(section.PlaceholderId, section.Position, false);
                         // Now delete the Section.
                         this.ActiveNode.Sections.Remove(section);
-                        //SectionService.DeleteSection(section, module);
-                        base.CoreRepository.DeleteObject(section);
+
+                        SectionService.DeleteSection(section, module);
                     }
                     catch (Exception ex)
                     {
@@ -631,7 +616,8 @@ namespace Cuyahoga.Web.Admin
                         this.ActiveNode.Sections.Remove(section);
                         section.Node = null;
                         section.PlaceholderId = null;
-                        base.CoreRepository.UpdateObject(section);
+
+                        SectionService.UpdateSection(section);
                         // Update search index to make sure the content of detached sections doesn't 
                         // show up in a search.
                         SearchHelper.UpdateIndexFromSection(section);
@@ -649,7 +635,6 @@ namespace Cuyahoga.Web.Admin
         protected void chkLink_CheckedChanged(object sender, EventArgs e)
         {
             this.pnlLink.Visible = this.chkLink.Checked;
-            this.pnlMenus.Visible = !this.chkLink.Checked;
             this.pnlTemplate.Visible = !this.chkLink.Checked;
             this.pnlSections.Visible = !this.chkLink.Checked;
         }
@@ -704,16 +689,17 @@ namespace Cuyahoga.Web.Admin
                     node.NodePermissions.Add(npNew);
                 }
 
-                IList rootNodes = base.CoreRepository.GetRootNodes(node.Site);
+                IList rootNodes = NodeService.GetRootNodes(node.Site).ToList();
+
                 node.CalculateNewPosition(rootNodes);
                 ActiveNode.ChildNodes.Add(node);
 
-                base.CoreRepository.SaveObject(node);
+                NodeService.SaveNode(node);
 
                 CopySectionsFromNode(ActiveNode, node);
 
-                base.CoreRepository.ClearQueryCache("Nodes");
-                base.CoreRepository.ClearCollectionCache("Cuyahoga.Core.Domain.Node.ChildNodes");
+                _commonDao.RemoveQueryFromCache("Nodes");
+                _commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.ChildNodes");
 
                 Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node has been duplicated.", node.Id));
 
@@ -760,7 +746,7 @@ namespace Cuyahoga.Web.Admin
                 newsection.CopyRolesFromNode();
                 newsection.CalculateNewPosition();
 
-                base.CoreRepository.SaveObject(newsection);
+                SectionService.SaveSection(newsection);
 
             }
         }

@@ -284,33 +284,6 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.Button btnApplyToAll;
         
         /// <summary>
-        /// pnlMenus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMenus;
-        
-        /// <summary>
-        /// rptMenus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMenus;
-        
-        /// <summary>
-        /// hplNewMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hplNewMenu;
-        
-        /// <summary>
         /// pnlSections control.
         /// </summary>
         /// <remarks>

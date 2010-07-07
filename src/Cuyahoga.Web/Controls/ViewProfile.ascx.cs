@@ -48,7 +48,6 @@ namespace Cuyahoga.Web.Controls
 				GeneralPage page = (GeneralPage)this.Page;
 				try
 				{
-					//User user = (User)page.CoreRepository.GetObjectById(typeof(User), this._userId);
                     User user = _userService.GetUserById(this._userId);
 					                    
                     this.litTitle.Text = String.Format(GetTextFromFile("VIEWPROFILETITLE"), user.UserName);

@@ -16,7 +16,8 @@ namespace Cuyahoga.Core.Util
         
 		public static NameValueCollection GetConfiguration()
 		{
-			return (NameValueCollection)ConfigurationSettings.GetConfig("CuyahogaSettings");
+			//return (NameValueCollection)ConfigurationSettings.GetConfig("CuyahogaSettings");
+            return (NameValueCollection)ConfigurationManager.GetSection("CuyahogaSettings");
 		}
 	}
 

@@ -4,6 +4,7 @@ using Cuyahoga.Core;
 using Cuyahoga.Core.Domain;
 using Cuyahoga.Core.Search;
 using Cuyahoga.Core.Service.Search;
+using Cuyahoga.Core.Service.SiteStructure;
 using Cuyahoga.Core.Util;
 using Cuyahoga.Web.Components;
 
@@ -19,7 +20,8 @@ namespace Cuyahoga.Web.UI
 		private ModuleBase _module;
 		private ModuleLoader _moduleLoader;
         private ISearchService _searchService;
-
+        private ISectionService _sectionService;
+        private INodeService _nodeService;
 
 		/// <summary>
 		/// Property Node (Node)
@@ -57,6 +59,8 @@ namespace Cuyahoga.Web.UI
 
 			this._moduleLoader = Container.Resolve<ModuleLoader>();
             this._searchService = Container.Resolve<ISearchService>();
+            this._sectionService = Container.Resolve<ISectionService>();
+            this._nodeService = Container.Resolve<INodeService>();
 		}
 
 		#region Register Javascript and CSS
@@ -91,9 +95,11 @@ namespace Cuyahoga.Web.UI
 			try
 			{
 				int nodeId = Int32.Parse(Context.Request.QueryString["NodeId"]);
-				this._node = (Node)base.CoreRepository.GetObjectById(typeof(Node), nodeId);
-				int sectionId = Int32.Parse(Context.Request.QueryString["SectionId"]);
-				this._section = (Section)base.CoreRepository.GetObjectById(typeof(Section), sectionId);
+                this._node = _nodeService.GetNodeById(nodeId);
+				
+                int sectionId = Int32.Parse(Context.Request.QueryString["SectionId"]);
+                this._section = _sectionService.GetSectionById(sectionId);
+
 				this._module = this._moduleLoader.GetModuleFromSection(this._section);
 
                 //Put SiteId in a session so the FCKEditor pop up can get it (Custom hack)

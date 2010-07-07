@@ -20,7 +20,6 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindRoles()
         {
-            //this.rptRoles.DataSource = base.CoreRepository.GetAll(typeof(Role), "PermissionLevel");
             this.rptRoles.DataSource = base.UserService.GetAllRoles();
             this.rptRoles.DataBind();
         }

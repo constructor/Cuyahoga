@@ -19,8 +19,6 @@ namespace Cuyahoga.Web.Admin
 			if (Context.Request.QueryString["TemplateId"] != null)
 			{
 				int templateId = Int32.Parse(Context.Request.QueryString["TemplateId"]);
-				//CoreRepository cr = (CoreRepository)HttpContext.Current.Items["CoreRepository"];
-				//Template template = (Template)cr.GetObjectById(typeof(Template), templateId);
                 ITemplateService templateService = Cuyahoga.Core.Util.IoC.Resolve<ITemplateService>();
                 Template template = templateService.GetTemplateById(templateId);
 				BaseTemplate templateControl = (BaseTemplate)this.LoadControl(UrlHelper.GetApplicationPath() + template.Path);

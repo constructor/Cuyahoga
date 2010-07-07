@@ -94,7 +94,6 @@ namespace Cuyahoga.Web.Admin
                 else
                 {
                     templates = this.TemplateService.GetUnassignedTemplates() as IList;
-                    //templates = base.CoreRepository.GetAll(typeof(Template), "Name");
                     ddlTemplates.Enabled = true;
                     ddlPlaceholders.Enabled = true;
                 }

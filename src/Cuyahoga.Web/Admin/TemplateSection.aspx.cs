@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 
 using Cuyahoga.Core.Domain;
@@ -17,8 +18,7 @@ namespace Cuyahoga.Web.Admin
             if (Context.Request.QueryString["TemplateId"] != null
                 && Context.Request.QueryString["Placeholder"] != null)
             {
-                this._activeTemplate = (Template)base.CoreRepository.GetObjectById(typeof(Template)
-                    , Int32.Parse(Context.Request.QueryString["TemplateId"]));
+                this._activeTemplate = TemplateService.GetTemplateById(Int32.Parse(Context.Request.QueryString["TemplateId"]));
                 this._activePlaceholder = Context.Request.QueryString["Placeholder"];
 
                 if (!this.IsPostBack)
@@ -41,7 +41,8 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindSections()
         {
-            IList unconnectedSections = base.CoreRepository.GetUnconnectedSections();
+            IList unconnectedSections = SectionService.GetUnconnectedSections().ToList();
+
             if (unconnectedSections.Count > 0)
             {
                 this.ddlSections.DataSource = unconnectedSections;
@@ -58,11 +59,13 @@ namespace Cuyahoga.Web.Admin
         protected void BtnAttachClick(object sender, System.EventArgs e)
         {
             int selectedSectionId = Int32.Parse(this.ddlSections.SelectedValue);
-            Section section = (Section)base.CoreRepository.GetObjectById(typeof(Section), selectedSectionId);
+            Section section = SectionService.GetSectionById(selectedSectionId);
+
             this._activeTemplate.Sections[this._activePlaceholder] = section;
             try
             {
-                base.CoreRepository.UpdateObject(this._activeTemplate);
+                TemplateService.SaveTemplate(this._activeTemplate);
+
                 Context.Response.Redirect("~/Admin/TemplateEdit.aspx?TemplateId=" + this._activeTemplate.Id);
             }
             catch (Exception ex)

@@ -23,7 +23,6 @@ namespace Cuyahoga.Web.Admin
                 }
                 else
                 {
-                    //this._activeRole = (Role)base.CoreRepository.GetObjectById(typeof(Role), Int32.Parse(Context.Request.QueryString["RoleId"]));
                     this._activeRole = base.UserService.GetRoleById(Int32.Parse(Context.Request.QueryString["RoleId"]));
                 }
 
@@ -74,12 +73,12 @@ namespace Cuyahoga.Web.Admin
             {
                 if (this._activeRole.Id == -1)
                 {
-                    base.CoreRepository.SaveObject(this._activeRole);
+                    UserService.CreateRole(this._activeRole, this.ActiveSite);
                     Context.Response.Redirect("Roles.aspx");
                 }
                 else
                 {
-                    base.CoreRepository.UpdateObject(this._activeRole);
+                    UserService.UpdateRole(this._activeRole, this.ActiveSite);
                     ShowMessage("Role saved");
                 }
             }
@@ -115,12 +114,6 @@ namespace Cuyahoga.Web.Admin
         {
             if (this._activeRole.Id > 0)
             {
-                // Can't delete the Administrator role and the Anonymous role (which has a 
-                // PermissionLevel of 1).
-                // TODO: add an extra flag to determine if a role is a system role.
-                //if (this._activeRole.Name == Config.GetConfiguration()["AdministratorRole"]
-                //    || this._activeRole.PermissionLevel == 1)
-
                 if (this._activeRole.Name == "AdministratorRole" || this._activeRole.Name == "Anonymous User")
                 {
                     ShowError("You can't delete the Administrator Role or the Anonymous Role.");
@@ -129,7 +122,7 @@ namespace Cuyahoga.Web.Admin
                 {
                     try
                     {
-                        base.CoreRepository.DeleteObject(this._activeRole);
+                        UserService.DeleteRole(this._activeRole);
                         Context.Response.Redirect("Roles.aspx");
                     }
                     catch (Exception ex)

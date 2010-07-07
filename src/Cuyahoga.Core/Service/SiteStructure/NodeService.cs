@@ -61,11 +61,6 @@ namespace Cuyahoga.Core.Service.SiteStructure
                 return _siteStructureDao.GetNodesBySite(site);
             }
 
-		    public IList GetMenusByRootNode(Node rootNode)
-		    {
-			    return this._siteStructureDao.GetMenusByRootNode(rootNode);
-		    }
-
 		    [Transaction(TransactionMode.RequiresNew)]
 		    public void SaveNode(Node node)
 		    {
@@ -115,29 +110,6 @@ namespace Cuyahoga.Core.Service.SiteStructure
 			    }
 			    containingCollection.Remove(node);
 			    ReOrderNodePositions(containingCollection);
-
-			    // Remove node from menu's
-			    IList menus = this._siteStructureDao.GetMenusByParticipatingNode(node);
-			    foreach (CustomMenu menu in menus)
-			    {
-				    // HACK: due to a bug with proxies IList.Remove(object) always removes the first object in
-				    // the list. Also IList.IndexOf always returns 0. Therefore, we'll loop through the collection
-				    // and find the right index. Btw, when turning off proxies everything works fine.
-				    int positionFound = -1;
-				    for (int i = 0; i < menu.Nodes.Count; i++)
-				    {
-					    if (((Node)menu.Nodes[i]).Id == node.Id)
-					    {
-						    positionFound = i;
-						    break;
-					    }
-				    }
-				    if (positionFound > -1)
-				    {
-					    menu.Nodes.RemoveAt(positionFound);
-				    }
-				    this._commonDao.SaveOrUpdateObject(menu);
-			    }
 
 			    this._commonDao.DeleteObject(node);
 		    }

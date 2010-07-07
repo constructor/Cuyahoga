@@ -135,7 +135,6 @@ namespace Cuyahoga.Web.Controls
 
 				try
 				{
-                    //this._page.CoreRepository.UpdateObject(currentUser);
                     _userService.UpdateUser(currentUser);
 					// Remove old user from the cache
 					HttpContext.Current.Cache.Remove(USER_CACHE_PREFIX + currentUser.Id.ToString());
@@ -174,7 +173,6 @@ namespace Cuyahoga.Web.Controls
 				}
 				currentUser.Password = User.HashPassword(this.txtNewPassword.Text);
 				// Save user
-				//this._page.CoreRepository.UpdateObject(currentUser);
                 _userService.UpdateUser(currentUser);
 				// Remove old user from the cache
 				HttpContext.Current.Cache.Remove(USER_CACHE_PREFIX + currentUser.Id.ToString());
