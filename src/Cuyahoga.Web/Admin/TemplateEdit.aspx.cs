@@ -356,7 +356,7 @@ namespace Cuyahoga.Web.Admin
                                 newTemplate.Sections.Add(entry.Key, entry.Value);
                             }
                         }
-                        catch (Exception ex)
+                        catch
                         {
                             //log.Error("An unexpected error occured while creating a new site.", ex);
                             //throw;

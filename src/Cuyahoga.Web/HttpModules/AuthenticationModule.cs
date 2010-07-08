@@ -74,7 +74,7 @@ namespace Cuyahoga.Web.HttpModules
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 //throw new Exception(String.Format("Unable to log in user '{0}': " + ex.Message, username), ex);
                 return false;

@@ -42,7 +42,8 @@ namespace Cuyahoga.Web.Admin
 			this.Title = "Rebuild fulltext index";
 			if (! this.IsPostBack)
 			{
-				this.btnRebuild.Attributes.Add("onclick", "this.disabled='true';document.getElementById('pleasewait').style.display = 'block';" + GetPostBackEventReference(btnRebuild).ToString());
+				//this.btnRebuild.Attributes.Add("onclick", "this.disabled='true';document.getElementById('pleasewait').style.display = 'block';" + GetPostBackEventReference(btnRebuild).ToString());
+                this.btnRebuild.Attributes.Add("onclick", "this.disabled='true';document.getElementById('pleasewait').style.display = 'block';" + ClientScript.GetPostBackEventReference(btnRebuild, string.Empty).ToString());
 				// Make sure all modules are loaded when we enter this page. We can't have a changing
 				// module configuration while rebuilding the full-text index.
                 EnsureModulesAreLoaded();

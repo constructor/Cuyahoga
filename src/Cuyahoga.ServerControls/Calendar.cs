@@ -205,15 +205,18 @@ namespace Cuyahoga.ServerControls
 			base.OnPreRender (e);
 
 			string themeCss = GetClientCssImport(String.Format("calendar-{0}.css", this.Theme.ToString().Replace("_", "-")));
-			Page.RegisterClientScriptBlock("calendarcss", themeCss);
+            Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "calendarcss", themeCss, false);
+
             string calendarScripts = "";
 			calendarScripts += GetClientScriptInclude("calendar.js");
 			calendarScripts += GetClientScriptInclude("calendar-setup.js");
-			string languageFile = String.Format("lang/calendar-{0}.js", this.Language.ToString());
+			
+            string languageFile = String.Format("lang/calendar-{0}.js", this.Language.ToString());
 			calendarScripts += GetClientScriptInclude(languageFile);
-			Page.RegisterClientScriptBlock("calendarscripts", calendarScripts);
+            Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "calendarscripts", calendarScripts, false);
+            
             string setupScript = GetCalendarSetupScript(this._dateTextBox.ClientID, GetFormatString(), this.ClientID);
-			Page.RegisterStartupScript(this.ClientID + "script", setupScript);
+            Page.ClientScript.RegisterStartupScript(typeof(Page), this.ClientID + "script", setupScript, false);
 		}
 
 		private void SetLanguage()
