@@ -9,7 +9,6 @@
 </head>
 <body>
 <form id="t" method="post" runat="server">
-<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div id="menu">
         <asp:PlaceHolder ID="Navigation_Main" runat="server"></asp:PlaceHolder>
     </div>

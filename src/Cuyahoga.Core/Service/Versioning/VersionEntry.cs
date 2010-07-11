@@ -8,8 +8,9 @@ namespace Cuyahoga.Core.Service.Versioning
 {
     public class VersionEntry
     {
-       // protected long id;
+        //protected long id;
 		//protected string entryType;
+
         protected string entryKey;
         protected string entryValue;
 		protected int validFromVersion;
@@ -34,6 +35,8 @@ namespace Cuyahoga.Core.Service.Versioning
 		/// <summary>
 		/// The entries key, e.g. Article.Comment[0].Text
 		/// </summary>
+
+
         public virtual string EntryKey
         {
             get { return this.entryKey; }

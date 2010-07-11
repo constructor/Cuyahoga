@@ -9,32 +9,30 @@ namespace Cuyahoga.Core.Service.Versioning
 {
     public class VersioningService<T> : IVersioningService<T> where T : IContentItem
     {
+
         #region IVersioningService<T> Members
+            public T CreateNewVersion(T entity)
+            {
+                //1 transform entity to VersionEntry list according to versioningInfo
 
-        public T CreateNewVersion(T entity)
-        {
-            //1 transform entity to VersionEntry list according to versioningInfo
+                //2 load the last version
 
-            //2 load the last version
+                //3 compare versions
 
-            //3 compare versions
+                //4 save diff
+                return entity;
+            }
 
-            //4 save diff
-            return entity;
-    
-        }
+            public T SetToVersion(T entity, string version)
+            {
 
-        public T SetToVersion(T entity, string version)
-        {
+                return entity;
+            }
 
-            return entity;
-        }
-
-        public void DeleteVersion(T entity, string version)
-        {
-            
-        }
-
+            public void DeleteVersion(T entity, string version)
+            {
+                
+            }
         #endregion
 
      

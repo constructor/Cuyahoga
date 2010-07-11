@@ -1,6 +1,5 @@
 using System;
-using System.Web.Mail;
-
+using System.Net.Mail;
 using Cuyahoga.Core.Util;
 
 namespace Cuyahoga.Web.Util
@@ -23,22 +22,14 @@ namespace Cuyahoga.Web.Util
 		/// <param name="body"></param>
 		public static void Send(string to, string from, string subject, string body)
 		{
-			//MailMessage message = new MailMessage();
-            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-
-            //message.From = from;
-			message.From = new System.Net.Mail.MailAddress(from);
-			//message.To = to;
+            MailMessage message = new MailMessage();
+			message.From = new MailAddress(from);
             message.To.Add(to);
 			message.Subject = subject;
-			//message.BodyFormat = MailFormat.Text;
             message.IsBodyHtml = false;
 			message.Body = body;
 
-			//SmtpMail.SmtpServer = Config.GetConfiguration()["SMTPServer"];
-			//SmtpMail.Send(message);
-
-            System.Net.Mail.SmtpClient smtpClient = new System.Net.Mail.SmtpClient();
+            SmtpClient smtpClient = new SmtpClient();
             smtpClient.Host = Config.GetConfiguration()["SMTPServer"];
             smtpClient.Send(message);
 		}

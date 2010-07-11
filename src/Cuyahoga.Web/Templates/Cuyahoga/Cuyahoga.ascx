@@ -1,5 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Inherits="Cuyahoga.Web.UI.BaseTemplate" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<%@ Control Language="c#" AutoEventWireup="false" Inherits="Cuyahoga.Web.UI.BaseTemplate" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title><asp:Literal ID="PageTitle" runat="server"></asp:Literal></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -9,7 +8,6 @@
     </head>
     <body>
         <form id="t" method="post" runat="server">
-            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
             <div id="header"><div id="banner"></div></div>
             <div id="menu">
                 <asp:PlaceHolder ID="Navigation_Main" runat="server"></asp:PlaceHolder>

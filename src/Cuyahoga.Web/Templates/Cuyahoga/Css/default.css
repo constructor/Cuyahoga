@@ -215,7 +215,6 @@ code
     position: relative;
     width: 85%;
     min-width: 760px;
-    overflow: auto;
     margin: 0 auto 20px;
 }
 
@@ -223,14 +222,14 @@ code
 {
     position: relative;
     background-position: left bottom;
-    min-height: 192px;
+    min-height: 256px;
     border-right-style: solid;
     border-left-style: solid;
     border-right-width: 5px;
     border-left-width: 5px;
     border-right-color: #329494;
     border-left-color: #329494;
-    overflow: auto;
+    overflow: inherit;
     background: url(../images/img04.jpg) repeat-x left bottom;
     padding: 20px 10px 10px;
 }

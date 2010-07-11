@@ -127,8 +127,7 @@ namespace Cuyahoga.Web.UI
 			}
 
 			// Optional indexing event handlers
-			if (this._module is ISearchable
-				&& Boolean.Parse(Config.GetConfiguration()["InstantIndexing"]))
+			if (this._module is ISearchable && Boolean.Parse(Config.GetConfiguration()["InstantIndexing"]))
 			{
 				ISearchable searchableModule = (ISearchable)this._module;
 				searchableModule.ContentCreated += new IndexEventHandler(searchableModule_ContentCreated);
