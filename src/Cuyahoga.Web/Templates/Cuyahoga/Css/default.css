@@ -215,6 +215,7 @@ code
     position: relative;
     width: 85%;
     min-width: 760px;
+    min-height: 256px;
     margin: 0 auto 20px;
 }
 
@@ -222,7 +223,7 @@ code
 {
     position: relative;
     background-position: left bottom;
-    min-height: 256px;
+    min-height: 360px;
     border-right-style: solid;
     border-left-style: solid;
     border-right-width: 5px;

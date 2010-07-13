@@ -59,9 +59,9 @@ namespace Cuyahoga.Modules.Downloads.Web
 			{
 				// It is possible that a new file is already uploaded and in the database. The
 				// tempFileId parameter in the viewstate should indicate this.
-				if (ViewState["tempFileId"] != null)
+                if (ViewState["tempFileId"] != null)
 				{
-					int tempFileId = (int)ViewState["tempFileId"];
+					int tempFileId = int.Parse(ViewState["tempFileId"].ToString());
 					this._file = this._downloadsModule.GetFileById(tempFileId);
 				}
 				else
@@ -184,7 +184,8 @@ namespace Cuyahoga.Modules.Downloads.Web
 					{
 						// This appears to be a new file. Store the id of the file in the viewstate
 						// so the file can be deleted if the user decides to cancel.
-						ViewState["tempFileId"] = this._file.Id;
+                        ViewState.Add("tempFileId", this._file.Id);
+						//ViewState["tempFileId"] = this._file.Id;
 					}
 					BindFile();
 				}

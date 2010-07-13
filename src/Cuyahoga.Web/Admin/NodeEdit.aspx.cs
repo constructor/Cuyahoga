@@ -211,7 +211,7 @@ namespace Cuyahoga.Web.Admin
             if (this.ActiveNode.Id > 0 && this.ActiveNode.Template != null)
             {
                 // Also enable add section link
-                this.hplNewSection.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SectionId=-1&NodeId={0}", this.ActiveNode.Id);
+                this.hplNewSection.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SiteId={0}&SectionId=-1&NodeId={1}", this.ActiveSite.Id, this.ActiveNode.Id);
                 this.hplNewSection.Visible = true;
             }
         }
@@ -509,7 +509,7 @@ namespace Cuyahoga.Web.Admin
 
                 // HACK: as long as ~/ doesn't work properly in mono we have to use a relative path from the Controls
                 // directory due to the template construction.
-                hplEdit.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SectionId={0}&NodeId={1}", section.Id, this.ActiveNode.Id);
+                hplEdit.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SiteId={0}&SectionId={1}&NodeId={2}", this.ActiveSite.Id, section.Id, this.ActiveNode.Id);
                 if (section.CanMoveUp())
                 {
                     HyperLink hplSectionUp = (HyperLink)e.Item.FindControl("hplSectionUp");

@@ -1,8 +1,13 @@
-﻿<%@ Control Language="c#" AutoEventWireup="false" Inherits="Cuyahoga.Web.UI.BaseTemplate" %><%@ Register TagPrefix="uc1" TagName="navigation" Src="~/Controls/Navigation/HierarchicalMenu.ascx" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-&nbsp;<html xmlns="http://www.w3.org/1999/xhtml"><head><title><asp:literal id="PageTitle" runat="server"></asp:literal></title><meta http-equiv="content-type" content="text/html; charset=utf-8" /><script src="<% =String.Format("{0}Templates/CityLights/js/jquery-1.4.1.min.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString()) %>" type="text/javascript"></script><script src="<% =String.Format("{0}Templates/CityLights/js/jquery.droppy.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString()) %>" type="text/javascript"></script><script src="<% =String.Format("{0}Templates/CityLights/js/page.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString()) %>" type="text/javascript"></script><asp:literal id="MetaTags" runat="server" />
-    <asp:literal id="Stylesheets" runat="server" />
-    <asp:literal id="JavaScripts" runat="server" />
-</head>
+﻿<%@ Control Language="c#" AutoEventWireup="false" Inherits="Cuyahoga.Web.UI.BaseTemplate" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><asp:Literal ID="PageTitle" runat="server"></asp:Literal></title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <asp:Literal ID="MetaTags" runat="server" />
+        <asp:Literal ID="Stylesheets" runat="server" />
+        <asp:Literal ID="JavaScripts" runat="server" />
+    </head>
 <body>
 <form id="t" method="post" runat="server">
     <div id="header">

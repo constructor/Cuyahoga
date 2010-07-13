@@ -14,7 +14,7 @@
 							<td style="width: 100px">File</td>
 							<td><asp:panel id="pnlFileName" runat="server" visible="True">
 									<asp:textbox id="txtFile" runat="server" width="300px" enabled="False"></asp:textbox>
-									<asp:requiredfieldvalidator id="rfvFile" runat="server" errormessage="File is required" display="Dynamic" cssclass="validator" controltovalidate="txtFile" enableclientscript="False"></asp:requiredfieldvalidator>
+									<asp:requiredfieldvalidator id="rfvFile" runat="server" errormessage="File is required" display="Dynamic" cssclass="validator" controltovalidate="txtFile" enableclientscript="True"></asp:requiredfieldvalidator>
 								</asp:panel><input id="filUpload" style="width: 300px" type="file" runat="server">
 								<asp:button id="btnUpload" runat="server" causesvalidation="False" text="Upload"></asp:button>
 							</td>

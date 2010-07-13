@@ -21,7 +21,6 @@ namespace Cuyahoga.Web.Admin
 
     public partial class SectionEdit : AdminBasePage
     {
-
         private Section _activeSection = null;
         private IList _availableModuleTypes;
         private ICommonDao _commonDao;

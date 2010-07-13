@@ -239,7 +239,8 @@ namespace Cuyahoga.Modules.Downloads
         public virtual void DeleteFile(FileResource file)
         {
             // Delete physical file.
-            string physicalFilePath = file.PhysicalFilePath;
+            //string physicalFilePath = file.PhysicalFilePath;
+            string physicalFilePath = System.IO.Path.Combine(file.PhysicalFilePath, file.FileName);
             this._fileService.DeleteFile(physicalFilePath);
             // Delete meta information.
             ISession session = this._sessionManager.OpenSession();

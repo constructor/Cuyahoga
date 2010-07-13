@@ -39,20 +39,17 @@ namespace Cuyahoga.Web.Admin.Controls
                 _page.ActiveNode = _page.NodeService.GetNodeById(nodeId);
             }
 
-			if (this._page.ActiveSection != null)
+            if (this._page.ActiveSection != null && this._page.ActiveSection.Id > 0)
 			{
 				this.hplSite.NavigateUrl = Util.UrlHelper.GetFullUrlFromSectionViaSite(this._page.ActiveSection);
 			}
-			else if (this._page.ActiveNode != null)
+			else if (this._page.ActiveNode != null && this._page.ActiveNode.Id > 0)
 			{
 				this.hplSite.NavigateUrl = Util.UrlHelper.GetFullUrlFromNodeViaSite(this._page.ActiveNode);
 			}
-            else if (this._page.ActiveSite != null)
+            else if (this._page.ActiveSite != null && this._page.ActiveSite.Id > 0)
             {
-                if (this._page.ActiveSite.Id > 0)
-                {
-                    this.hplSite.NavigateUrl = this._page.ActiveSite.SiteUrl;
-                }
+                this.hplSite.NavigateUrl = this._page.ActiveSite.SiteUrl;
             }
             else
             {

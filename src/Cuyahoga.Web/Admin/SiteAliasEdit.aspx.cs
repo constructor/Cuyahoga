@@ -10,7 +10,7 @@ namespace Cuyahoga.Web.Admin
 	/// <summary>
 	/// Summary description for SiteAliasEdit.
 	/// </summary>
-	public class SiteAliasEdit : AdminBasePage
+	public partial class SiteAliasEdit : AdminBasePage
 	{
 		private SiteAlias _activeSiteAlias;
 
