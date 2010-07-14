@@ -18,7 +18,9 @@
             
             <label>Webmaster email</label>
             <asp:textbox id="txtWebmasterEmail" runat="server" maxlength="100" width="300px"></asp:textbox>
-            <asp:requiredfieldvalidator id="rfvWebmasterEmail" runat="server" errormessage="Webmaster email is required" cssclass="validator" display="Dynamic" controltovalidate="txtWebmasterEmail" enableclientscript="False"></asp:requiredfieldvalidator><hr />
+            <asp:requiredfieldvalidator id="rfvWebmasterEmail" runat="server" errormessage="Webmaster email is required" cssclass="validator" display="Dynamic" controltovalidate="txtWebmasterEmail" enableclientscript="False"></asp:requiredfieldvalidator>
+            <asp:RegularExpressionValidator ID="rexvWebmasterEmail" runat="server" cssclass="validator" display="Dynamic" controltovalidate="txtWebmasterEmail" ValidationExpression="^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$" ErrorMessage="A valid email address is required" EnableClientScript="true"></asp:RegularExpressionValidator>
+            <hr />
             
             <label>Use friendly url's</label>
             <asp:checkbox id="chkUseFriendlyUrls" runat="server"></asp:checkbox>

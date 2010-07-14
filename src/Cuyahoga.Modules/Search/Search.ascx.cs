@@ -83,26 +83,28 @@ namespace Cuyahoga.Modules.Search
 		
 
 		#region Web Form Designer generated code
-		override protected void OnInit(EventArgs e)
-		{
-			//
-			// CODEGEN: This call is required by the ASP.NET Web Form Designer.
-			//
-			InitializeComponent();
-			base.OnInit(e);
-		}
-		
-		/// <summary>
-		///		Required method for Designer support - do not modify
-		///		the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.rptResults.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.rptResults_ItemDataBound);
-			this.pgrResults.PageChanged += new Cuyahoga.ServerControls.PageChangedEventHandler(this.pgrResults_PageChanged);
+		    override protected void OnInit(EventArgs e)
+		    {
+			    //
+			    // CODEGEN: This call is required by the ASP.NET Web Form Designer.
+			    //
+			    InitializeComponent();
+			    base.OnInit(e);
+		    }
+    		
+		    /// <summary>
+		    ///		Required method for Designer support - do not modify
+		    ///		the contents of this method with the code editor.
+		    /// </summary>
+		    private void InitializeComponent()
+		    {
+			    this.rptResults.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.rptResults_ItemDataBound);
+			    this.pgrResults.PageChanged += new Cuyahoga.ServerControls.PageChangedEventHandler(this.pgrResults_PageChanged);
 
-		}
+		    }
 		#endregion
+
+
 
 		protected void btnSearch_Click(object sender, System.EventArgs e)
 		{

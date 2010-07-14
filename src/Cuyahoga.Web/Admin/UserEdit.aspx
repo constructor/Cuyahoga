@@ -42,9 +42,7 @@
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><asp:textbox id="txtEmail" runat="server" width="200px"></asp:textbox><asp:requiredfieldvalidator id="rfvEmail" runat="server" controltovalidate="txtEmail" enableclientscript="False"
-								display="Dynamic" cssclass="validator" errormessage="Email is required"></asp:requiredfieldvalidator><asp:regularexpressionvalidator id="revEmail" runat="server" controltovalidate="txtEmail" enableclientscript="False"
-								display="Dynamic" cssclass="validator" errormessage="Invalid email" validationexpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:regularexpressionvalidator></td>
+						<td><asp:textbox id="txtEmail" runat="server" width="200px"></asp:textbox><asp:requiredfieldvalidator id="rfvEmail" runat="server" controltovalidate="txtEmail" enableclientscript="False" display="Dynamic" cssclass="validator" errormessage="Email is required"></asp:requiredfieldvalidator><asp:RegularExpressionValidator ID="rexvWebmasterEmail" runat="server" cssclass="validator" display="Dynamic" controltovalidate="txtEmail" ValidationExpression="^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$" ErrorMessage="A valid email address is required" EnableClientScript="true"></asp:RegularExpressionValidator></td>
 					</tr>
                     <tr>
 						<td>Website</td>

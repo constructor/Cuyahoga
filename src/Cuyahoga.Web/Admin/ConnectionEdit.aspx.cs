@@ -135,17 +135,17 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
-        protected void BtnBackClick(object sender, EventArgs e)
-        {
-            RedirectToSectionEdit();
-        }
-
-        protected void DdlActionSelectedIndexChanged(object sender, EventArgs e)
+        protected void DdlAction_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindCompatibleSections();
         }
 
-        protected void BtnSaveClick(object sender, EventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            RedirectToSectionEdit();
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             int sectionid = Int32.Parse(ddlSectionTo.SelectedValue);
             _activeSection.Connections[ddlAction.SelectedValue] = SectionService.GetSectionById(sectionid);

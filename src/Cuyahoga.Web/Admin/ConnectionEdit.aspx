@@ -17,8 +17,8 @@
 						<td><asp:label id="lblModuleType" runat="server"></asp:label></td>
 					</tr>
 					<tr>
-						<td>Action</td>
-						<td><asp:dropdownlist id="ddlAction" runat="server" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged" autopostback="True"></asp:dropdownlist></td>
+					    <td>Action</td>
+						<td><asp:dropdownlist id="ddlAction" runat="server" OnSelectedIndexChanged="DdlAction_SelectedIndexChanged" autopostback="True"></asp:dropdownlist></td>
 					</tr>
 				</table>
 			</div>

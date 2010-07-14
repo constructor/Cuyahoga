@@ -80,7 +80,7 @@ namespace Cuyahoga.Web.Admin.Controls
 
             BuildNodeTree();
 
-            if (!Page.IsPostBack && Request.QueryString["SiteId"] != null)
+            if (!Page.IsPostBack && Request.QueryString["SiteId"] != null && Request.QueryString["SiteId"] != "-1")
             {
                 hplTemplates.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplUsers.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
