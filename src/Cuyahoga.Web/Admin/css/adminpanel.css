@@ -26,7 +26,7 @@
     z-index: 1000;
     vertical-align: top;
     display: none;
-    background-image: url(/admin/images/edit-panel.png);
+    background-image: url(../images/edit-panel.png);
     margin: 0;
     padding: 10px;
 }
@@ -64,36 +64,36 @@
 
 .moduletools a[id*="editcontent"]
 {
-    background-image: url(/admin/Images/edit-up.png);
+    background-image: url(../Images/edit-up.png);
     height: 32px;
     width: 128px;
 }
 
 .moduletools a[id*="editcontent"]:hover
 {
-    background-image: url(/admin/Images/edit-over.png);
+    background-image: url(../Images/edit-over.png);
 }
 
 .moduletools a[id*="sectionproperties"]
 {
-    background-image: url(/admin/Images/section-up.png);
+    background-image: url(../Images/section-up.png);
     height: 32px;
     width: 128px;
 }
 
 .moduletools a[id*="sectionproperties"]:hover
 {
-    background-image: url(/admin/Images/section-over.png);
+    background-image: url(../Images/section-over.png);
 }
 
 .moduletools a[id*="pageproperties"]
 {
-    background-image: url(/admin/Images/page-up.png);
+    background-image: url(../Images/page-up.png);
     height: 32px;
     width: 128px;
 }
 
 .moduletools a[id*="pageproperties"]:hover
 {
-    background-image: url(/admin/Images/page-over.png);
+    background-image: url(../Images/page-over.png);
 }

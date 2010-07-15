@@ -568,6 +568,7 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="Admin\Web.config" />
+    <Content Include="Css\UI.css" />
     <Content Include="Login.aspx" />
     <Content Include="Controls\EditProfile.ascx">
       <SubType>UserControl</SubType>
@@ -834,7 +835,7 @@ xcopy /s /y "$(SolutionDir)"lib\CSSFriendly.dll "$(TargetDir)"</PostBuildEvent>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl></IISUrl>
+          <IISUrl>http://localhost</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

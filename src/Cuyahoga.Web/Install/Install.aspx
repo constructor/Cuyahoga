@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Install</title>
-		<link rel="stylesheet" href="../Admin/Css/Admin.css" type="text/css" />
+		<link rel="stylesheet" href="../Css/UI.css" type="text/css" />
 	</head>
 	<body>
 		<form id="Form1" method="post" runat="server">

@@ -1,0 +1,486 @@
+body
+{
+    background-image: url(../Images/Login/Login-Background.gif);
+    background-position: top;
+    background-repeat: repeat-x;
+    margin: 0;
+    position: relative;
+}
+
+form
+{
+    border: 0;
+    padding: 0;
+}
+
+#messages
+{
+    background-color: #366;
+    height: 24px;
+    position: relative;
+    width: 100%;
+}
+
+#messages p
+{
+    color: #fff;
+    font-weight: 700;
+    margin: 0 0 0 8px;
+    padding: 4px;
+}
+
+.adminwrapper
+{
+    min-width: 780px;
+    position: relative;
+    width: 100%;
+}
+
+fieldset
+{
+    border: 2px solid #AAA;
+    margin: 10px 0 20px;
+    padding: 8px;
+}
+
+fieldset legend
+{
+    background: #FFF;
+    border-left-color: #AAA;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: #AAA;
+    border-right-style: solid;
+    border-right-width: 1px;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 8px;
+    white-space: nowrap;
+}
+
+input, textarea, select, .group, fieldset
+{
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+label
+{
+    display: inline-block;
+    float: left;
+    margin-right: 4px;
+    padding: 6px;
+    position: relative;
+    width: 164px;
+}
+
+label[for*="chk"]
+{
+    display: block;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 256px;
+}
+
+input[id*="chkPropagate"]
+{
+    float: left;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 32px;
+}
+
+hr
+{
+    border: 0;
+    border-top: 1px solid #EEE;
+    height: 0;
+}
+
+input[type*="checkbox"]
+{
+    border: 1px !important;
+}
+
+input[type*="submit"]
+{
+    background-color: #FFF;
+    border: 1px solid #999;
+    color: #666;
+    font-weight: 700;
+    padding: 6px;
+}
+
+input[type*="submit"][name*="Save"]:hover
+{
+    background-color: #393;
+    border: 1px solid #393;
+    color: #fff;
+}
+
+input[type*="submit"][name*="Duplicate"]:hover
+{
+    background-color: #639;
+    border: 1px solid #639;
+    color: #fff;
+}
+
+input[type*="submit"][name*="New"]:hover
+{
+    background-color: #f60;
+    border: 1px solid #c30;
+    color: #FFF;
+}
+
+input, select, textarea
+{
+    border: 1px solid #AAA;
+    color: #333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 6px;
+}
+
+.tblarge
+{
+    width: 50%;
+}
+
+p, div
+{
+    color: #333;
+    font-family: Arial, Helvetica;
+    font-size: small;
+}
+
+h1
+{
+    background-color: #fff;
+    border-bottom-color: #399;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    color: #366;
+    font-family: Arial, Helvetica;
+    font-size: large;
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+
+a
+{
+    color: #33C;
+}
+
+.group
+{
+    border: 2px solid #AAA;
+    margin: 10px 0 20px;
+    padding: 8px;
+    position: relative;
+}
+
+.group > table
+{
+    margin-top: 16px;
+}
+
+.group h4
+{
+    background: #FFF;
+    border-left-color: #AAA;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: #AAA;
+    border-right-style: solid;
+    border-right-width: 1px;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 8px;
+    position: absolute;
+    top: -7px;
+    white-space: nowrap;
+}
+
+.group h5
+{
+    color: #666;
+    font-size: 100%;
+    margin: 0;
+    padding: 0 4px 0 2px;
+}
+
+.group td
+{
+    font-size: small;
+    line-height: 21px;
+    vertical-align: top;
+}
+
+.group ul
+{
+    margin: 0;
+    padding: 2px;
+}
+
+.group li
+{
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+}
+
+.messagebox
+{
+    background-color: #EEE;
+    border: solid 1px #CCC;
+    color: #060;
+    font-weight: 700;
+    padding: 4px;
+}
+
+.errorbox
+{
+    background-color: #EEE;
+    border: solid 1px #CCC;
+    color: #C00;
+    font-weight: 700;
+    padding: 4px;
+}
+
+#adminwrapper
+{
+    min-width: 1000px;
+    width: 100%;
+}
+
+#contentpane
+{
+    float: right;
+    min-width: 720px;
+    position: relative;
+    width: 72%;
+}
+
+#pad
+{
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    background-color: #fff;
+    border: 2px #999 solid;
+    border-radius: 12px;
+    margin: 8px 4px;
+    padding: 16px;
+}
+
+#moduleadminpane
+{
+    background-color: #FFF;
+    margin: 10px;
+    padding: 10px;
+}
+
+.center
+{
+    text-align: center;
+}
+
+#loginarea
+{
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+    border: 2px solid #666;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 192px;
+    width: 358px;
+}
+
+#login
+{
+    background-repeat: no-repeat;
+    height: 256px;
+    padding-top: 8px;
+    text-align: left;
+    width: 358px;
+}
+
+#login #lblError
+{
+    display: block;
+    float: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    padding-left: 32px;
+    position: relative;
+}
+
+#login #cuyahoga
+{
+    background-image: url(../Images/Logo.gif);
+    border-style: none;
+    height: 48px;
+    margin-left: 52px;
+    margin-top: 24px;
+    width: 242px;
+}
+
+#login label
+{
+    color: #666;
+    display: block;
+    float: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: 700;
+    height: 26px;
+    padding: 14px 0 0 40px;
+    position: relative;
+    width: 88px;
+}
+
+.loginerror
+{
+    clear: right;
+    color: red;
+    display: block;
+    float: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    height: 30px;
+    padding-left: 32px;
+    padding-top: 12px;
+    position: relative;
+    width: 128px;
+}
+
+#login input
+{
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border: 2px solid #666;
+    color: #666;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    height: 20px;
+    line-height: 24px;
+    margin: 2px 0;
+    padding: 8px;
+    width: 150px;
+}
+
+#login input:focus, #login input:hover
+{
+    background-color: #ffc;
+}
+
+#login .btnLogin
+{
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    font-weight: 700;
+    height: 38px;
+    margin: 8px 58px 0 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    width: 72px;
+}
+
+#login .btnLogin:hover
+{
+    background-color: #666;
+    color: #fff;
+}
+
+#login h3
+{
+    background-color: #006;
+    color: #FFF;
+    display: block;
+    font-size: medium;
+    font-weight: 700;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+}
+
+.AspNet-CheckBoxList ul
+{
+    margin: 0;
+    padding: 0;
+    width: 256px;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item
+{
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 4px 0;
+    position: relative;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item:hover
+{
+    background-color: #f60;
+    color: #fff;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item input
+{
+    float: left;
+    margin: 0 8px;
+    position: relative;
+}
+
+.AspNet-RadioButtonList ul
+{
+    list-style: none;
+    padding: 0;
+}
+
+input:hover, select:hover, textarea:hover, input:focus, select:focus, textarea:focus, table.tbl tr:hover
+{
+    background-color: #FFC;
+}
+
+input[type*="submit"]:hover, table.tbl tr td a:hover
+{
+    background-color: #F60;
+    border: 1px solid #F60;
+    color: #FFF;
+}
+
+input[type*="submit"][name*="Cancel"]:hover, table.tbl tr td a[id*="Detach"]:hover
+{
+    background-color: #666;
+    border: 1px solid #666;
+    color: #FFF;
+}
+
+input[type*="submit"][name*="Delete"]:hover, input[type*="submit"][name*="Rebuild"]:hover, table.tbl tr td a[id*="Delete"]:hover, table.tbl tr td a[id*="Uninstall"]:hover
+{
+    background-color: red;
+    border: 1px solid red;
+    color: #FFF;
+}
+
+.hidden, #headertitle span
+{
+    display: none;
+    visibility: hidden;
+}
+
+

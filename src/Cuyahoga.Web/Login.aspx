@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="Admin/Css/Admin.css"/>
+		<link rel="stylesheet" type="text/css" href="Css/UI.css"/>
 		<!--[if IE 6]>
         <link href="Admin/Css/AdminIE6.css" type="text/css" rel="stylesheet">
         <![endif]-->
