@@ -405,6 +405,9 @@ namespace Cuyahoga.Web.Admin
 
             private HtmlGenericControl CreateDisplaySite(Site site)
             {
+                string imgFolder = UrlHelper.GetSiteUrl() + "/Admin/Images/";
+                string adminUrl = UrlHelper.GetSiteUrl() + "/Admin/";
+
                 HtmlGenericControl container = new HtmlGenericControl("div");
                 container.Attributes.Add("class", "sitepanel");
                 container.Attributes.Add("id", "site" + site.Id.ToString());
@@ -418,14 +421,14 @@ namespace Cuyahoga.Web.Admin
 
                 siteul.Controls.Add(siteli);
                 Image img = new Image();
-                img.ImageUrl = "Images/site.png";
+                img.ImageUrl = imgFolder + "site.png";
                 img.ImageAlign = ImageAlign.Left;
                 img.AlternateText = "Site";
                 siteli.Controls.Add(img);
 
                 HyperLink hpl = new HyperLink();
                 hpl.Text = String.Format("{0}", site.SiteUrl);
-                hpl.NavigateUrl = String.Format("SiteEdit.aspx?SiteId={0}", site.Id.ToString());
+                hpl.NavigateUrl = String.Format("{0}SiteEdit.aspx?SiteId={1}", adminUrl, site.Id.ToString());
                 hpl.CssClass = "nodeLink";
                 siteli.Controls.Add(hpl);
 
@@ -470,23 +473,25 @@ namespace Cuyahoga.Web.Admin
             private Control CreateDisplayNode(Node node)
             {
                 string nodeText;
+                string adminUrl = UrlHelper.GetSiteUrl() + "/Admin/";
+                string imgFolder = UrlHelper.GetSiteUrl() + "/Admin/Images/";
                 string imgUrl;
                 // Display root nodes with their culture.
                 if (node.Level == 0)
                 {
                     nodeText = node.Title + " (" + node.Culture + ")";
-                    imgUrl = "Images/sitepage-home.png";
+                    imgUrl = imgFolder + "sitepage-home.png";
                 }
                 else
                 {
                     nodeText = node.Title;
                     if (node.ShowInNavigation)
                     {
-                        imgUrl = "Images/sitepage-smaller.png";
+                        imgUrl = imgFolder + "sitepage-smaller.png";
                     }
                     else
                     {
-                        imgUrl = "Images/sitepage-disabled-smaller.png";
+                        imgUrl = imgFolder + "sitepage-disabled-smaller.png";
                     }
                 }
 
@@ -520,7 +525,7 @@ namespace Cuyahoga.Web.Admin
                 {
                     HyperLink hpl = new HyperLink();
                     hpl.Text = nodeText;
-                    hpl.NavigateUrl = String.Format("NodeEdit.aspx?SiteId={0}&NodeId={1}", node.Site.Id.ToString(), node.Id.ToString());
+                    hpl.NavigateUrl = String.Format("{0}NodeEdit.aspx?SiteId={1}&NodeId={2}", adminUrl, node.Site.Id.ToString(), node.Id.ToString());
                     hpl.CssClass = "nodeLink";
                     nodeli.Controls.Add(hpl);
                 }
@@ -537,16 +542,19 @@ namespace Cuyahoga.Web.Admin
 
             private Control CreateNewChildNodeControl(HtmlGenericControl container)
             {
+                string adminUrl = UrlHelper.GetSiteUrl() + "/Admin/";
+                string imgFolder = UrlHelper.GetSiteUrl() + "/Admin/Images/";
+
                 if (this.ActiveNode != null)
                 {
                     Image img = new Image();
-                    img.ImageUrl = "Images/sitepage-new.png";
+                    img.ImageUrl = imgFolder + "sitepage-new.png";
                     img.ImageAlign = ImageAlign.Left;
                     img.AlternateText = "New child node";
                     container.Controls.Add(img);
                     HyperLink hpl = new HyperLink();
                     hpl.Text = "Add child node";
-                    hpl.NavigateUrl = String.Format("NodeEdit.aspx?NodeId=-1&ParentNodeId={0}", _activeNode.Id);
+                    hpl.NavigateUrl = String.Format("{0}NodeEdit.aspx?NodeId=-1&ParentNodeId={1}", adminUrl, _activeNode.Id);
                     hpl.CssClass = "navLink";
                     container.Controls.Add(hpl);
                 }
@@ -555,8 +563,10 @@ namespace Cuyahoga.Web.Admin
 
             private Control CreateNewNodeControl(Site site, HtmlGenericControl container)
             {
+                string imgFolder = UrlHelper.GetSiteUrl() + "/Admin/Images/";
+
                 Image img = new Image();
-                img.ImageUrl = "Images/sitepage-new-home.png";
+                img.ImageUrl = imgFolder + "sitepage-new-home.png";
                 img.ImageAlign = ImageAlign.Left;
                 img.AlternateText = "New Node";
                 container.Controls.Add(img);

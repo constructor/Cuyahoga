@@ -1,15 +1,10 @@
 <%@ Page language="c#" Codebehind="Profile.aspx.cs" AutoEventWireup="false" Inherits="Cuyahoga.Web.Profile" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
 <html>
 	<head>
 		<title>Profile</title>
-		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
-		<meta content="C#" name="CODE_LANGUAGE">
-		<meta content="JavaScript" name="vs_defaultClientScript">
-		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
 	</head>
-	<body ms_positioning="FlowLayout">
+	<body>
 		<form id="Form1" method="post" runat="server"><asp:panel id="pnlControl" runat="server" cssclass="section"></asp:panel></form>
-
 	</body>
 </html>

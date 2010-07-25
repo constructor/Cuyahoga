@@ -42,8 +42,9 @@ namespace Cuyahoga.Web.Admin
             // as new ModuleType candidates.
             foreach (DirectoryInfo di in moduleDirectories)
             {
-                // Skip hidden directories.
-                bool shouldAdd = (di.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden;
+                // Skip hidden directories (and obj folders)
+                bool shouldAdd = (di.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden && 
+                                    di.Name != "obj";
                 foreach (ModuleType moduleType in availableModules)
                 {
                     if (moduleType.Name == di.Name)

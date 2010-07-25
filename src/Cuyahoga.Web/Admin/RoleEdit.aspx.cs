@@ -99,14 +99,14 @@ namespace Cuyahoga.Web.Admin
             {
                 this._activeRole.Name = txtName.Text;
                 SetPermissions();
-                //if (this._activeRole.Rights.Count == 0)
-                //{
-                //    ShowError("Please select one or more Right(s)");
-                //}
-                //else
-                //{
+                if (this._activeRole.Rights.Count == 0)
+                {
+                    ShowError("Please select one or more Right(s)");
+                }
+                else
+                {
                     SaveRole();
-                //}
+                }
             }
         }
 

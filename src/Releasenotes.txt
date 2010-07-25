@@ -1,5 +1,22 @@
 Cuyahoga release notes
 ===========================================================================
+1.7.0 - 2010-xx-xx
+===========================================================================
+New features:
+
+SEO Node title added
+CSS Class on node added (for node level styles)
+CSS Class for sections added (if no value then the class remains 'section'as previous Cuyahoga versions)
+Templates and all files are now in their own site specific folders
+Template management now has ability to copy templates to site folder
+Templates specification now has 'fckstyles.xml' and 'editor_{cssfile}.css'. These enable template specific CSS, editor templates and other fckeditor features/functions to be specified on a template per template basis.
+New roles and rights
+Categories admin
+Categories (and subs) can be added also in Articles module
+
+Formalise and add more...
+
+===========================================================================
 1.5.0 - 2007-02-11
 ===========================================================================
 Cuyahoga 1.5.0 is the first release that is completely for the .NET 2.0 

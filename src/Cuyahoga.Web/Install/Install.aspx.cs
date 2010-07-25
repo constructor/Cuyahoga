@@ -216,6 +216,11 @@ namespace Cuyahoga.Web.Install
     			
 			        string systemTemplatePath = Server.MapPath(Config.GetConfiguration()["TemplateDir"]);
 			        this._siteService.CreateSite(site, Server.MapPath("~/SiteData"), this._commonDao.GetAll<Template>(), systemTemplatePath);
+
+                    //Assign admin user to site
+                    adminUser.Sites.Add(site);
+                    this._commonDao.SaveObject(adminUser);
+
                 #endregion
 
                 #region Region for Templates

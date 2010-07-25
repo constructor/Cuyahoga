@@ -43,9 +43,10 @@ namespace Cuyahoga.Web.Admin
             {
                 // Get site data
                 //base.ActiveSite = base.SiteService.GetSiteById(Int32.Parse(Context.Request.QueryString["SiteId"]));
-                base.ActiveSite = base.ActiveSite;
+                //base.ActiveSite = base.ActiveSite;
                 this.btnDelete.Visible = true;
                 this.btnDelete.Attributes.Add("onclick", "return confirm('Do you wish to permanently delete a site and all its folders?')");
+                hplAddTemplate.NavigateUrl = String.Format("~/Admin/TemplateEdit.aspx?TemplateId=-1&SiteId={0}", base.ActiveSite.Id );
             }
             if (!this.IsPostBack)
             {
@@ -179,6 +180,10 @@ namespace Cuyahoga.Web.Admin
             if (base.ActiveSite.DefaultRole != null)
             {
                 ddlRoles.Items.FindByValue(base.ActiveSite.DefaultRole.Id.ToString()).Selected = true;
+            }
+            else if(base.ActiveSite.Id < 1)
+            {
+                ddlRoles.Items.FindByText("Authenticated User").Selected = true;
             }
         }
 

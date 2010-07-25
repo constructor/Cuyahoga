@@ -84,6 +84,7 @@ namespace Cuyahoga.Web.Admin.Controls
             {
                 hplTemplates.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplUsers.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
+                hplRoles.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplSections.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplCategories.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
                 hplRebuild.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
@@ -91,6 +92,7 @@ namespace Cuyahoga.Web.Admin.Controls
             else 
             {
                 hplSections.Visible = false;
+                hplRoles.Visible = false;
                 hplCategories.Visible = false;
                 hplRebuild.Visible = false;
             }

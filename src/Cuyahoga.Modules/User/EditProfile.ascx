@@ -1,9 +1,9 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="EditProfile.ascx.cs" Inherits="Cuyahoga.Modules.User.EditProfile"  %>
 <h1><%= GetText("EDITPROFILETITLE") %></h1>
 <asp:panel id="pnlEdit" runat="server">
-	<br/>
+	<p>
 	<asp:label id="lblError" runat="server" visible="False" cssclass="error" enableviewstate="False"></asp:label>
-	<br/>
+	<p/>
 	<fieldset>
 	    <legend>Edit Profile Information</legend>
 	    <div class="padding">
@@ -29,7 +29,7 @@
             <asp:Label ID="lblddlTimeZone" AssociatedControlID="ddlTimeZone" runat="server"><%= GetText("TIMEZONE") %></asp:Label>
 		    <asp:dropdownlist id="ddlTimeZone" CssClass="selectlarge" runat="server"></asp:dropdownlist>
             <hr />
-		    <asp:Button id=btnSave runat="server" text='<%# GetText("SAVEPROFILE") %>' onclick="btnSave_Click"></asp:Button>
+		    <asp:Button id="btnSave" runat="server" text='<%# GetText("SAVEPROFILE") %>' onclick="btnSave_Click"></asp:Button>
 	        <br/>
         </div>
     </fieldset>

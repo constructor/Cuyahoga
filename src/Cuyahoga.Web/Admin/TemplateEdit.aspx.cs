@@ -116,37 +116,41 @@ namespace Cuyahoga.Web.Admin
         protected void BindCss()
         {
             this.ddlCss.Items.Clear();
-
-            string physicalCssDir = Context.Server.MapPath(
-                UrlHelper.GetApplicationPath() + this._activeTemplate.BasePath + "/Css");
-            DirectoryInfo dir = new DirectoryInfo(physicalCssDir);
-            if (dir.Exists)
+            if (!String.IsNullOrEmpty(this._activeTemplate.BasePath))
             {
-                FileInfo[] cssSheets = dir.GetFiles("*.css");
-                if (cssSheets.Length == 0 && this.IsPostBack)
+                string physicalCssDir = Context.Server.MapPath(
+                    UrlHelper.GetApplicationPath() + this._activeTemplate.BasePath + "/Css");
+
+                DirectoryInfo dir = new DirectoryInfo(physicalCssDir);
+
+                if (dir.Exists)
                 {
-                    this.lblCssWarning.Visible = true;
-                    this.lblCssWarning.Text = "No stylesheet files found at the [base path]/Css location.";
+                    FileInfo[] cssSheets = dir.GetFiles("*.css");
+                    if (cssSheets.Length == 0 && this.IsPostBack)
+                    {
+                        this.lblCssWarning.Visible = true;
+                        this.lblCssWarning.Text = "No stylesheet files found at the [base path]/Css location.";
+                    }
+                    else
+                    {
+                        foreach (FileInfo css in cssSheets)
+                        {
+                            this.ddlCss.Items.Add(css.Name);
+                        }
+                        ListItem li = this.ddlCss.Items.FindByValue(this._activeTemplate.Css);
+                        if (li != null)
+                        {
+                            li.Selected = true;
+                        }
+                    }
                 }
                 else
                 {
-                    foreach (FileInfo css in cssSheets)
+                    if (Page.IsPostBack)
                     {
-                        this.ddlCss.Items.Add(css.Name);
+                        this.lblCssWarning.Visible = true;
+                        this.lblCssWarning.Text = "The location for the stylesheets ([base path]/Css) could not be found.";
                     }
-                    ListItem li = this.ddlCss.Items.FindByValue(this._activeTemplate.Css);
-                    if (li != null)
-                    {
-                        li.Selected = true;
-                    }
-                }
-            }
-            else
-            {
-                if (Page.IsPostBack)
-                {
-                    this.lblCssWarning.Visible = true;
-                    this.lblCssWarning.Text = "The location for the stylesheets ([base path]/Css) could not be found.";
                 }
             }
         }

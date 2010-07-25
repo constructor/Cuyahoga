@@ -30,7 +30,7 @@
 		<legend>Defaults</legend>
 			<label>Template</label>
             <asp:DropDownList ID="ddlTemplates" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DdlTemplatesSelectedIndexChanged"></asp:DropDownList>
-            <asp:HyperLink ID="hlAddTemplate" NavigateUrl="~/Admin/TemplateEdit.aspx?TemplateId=-1" runat="server">Add Template</asp:HyperLink><hr />
+            <asp:HyperLink ID="hplAddTemplate" runat="server">Add Template</asp:HyperLink><hr />
             
 			<label>Placeholder</label>
 			<asp:dropdownlist id="ddlPlaceholders" runat="server"></asp:dropdownlist><em>(this is the placeholder where the content of general pages is inserted)</em><hr />

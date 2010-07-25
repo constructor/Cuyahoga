@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -208,13 +209,14 @@ namespace Cuyahoga.Modules.Menu.Web
                         lstItem.Controls.Add(hpl);
 
                         //Custom - add css class for home if exists
-                        if (!string.IsNullOrEmpty(base.PageEngine.RootNode.CSSClass))
+                        bool homeselected = base.PageEngine.ActiveNode.Id == base.PageEngine.RootNode.Id;
+                        if (!string.IsNullOrEmpty(base.PageEngine.RootNode.CSSClass) && homeselected)
                         {
                             lstItem.Attributes.Add("class", "selected " + base.PageEngine.RootNode.CSSClass);
                         }
-                        else
+                        else if (homeselected)
                         {
-                            lstItem.Attributes.Add("class", base.PageEngine.RootNode.CSSClass);
+                            lstItem.Attributes.Add("class", "selected");
                         }
 
                         List.Controls.Add(lstItem);
@@ -254,7 +256,7 @@ namespace Cuyahoga.Modules.Menu.Web
                                 }
                                 else 
                                 {
-                                    lstItem.Attributes.Add("class", node.CSSClass);
+                                    lstItem.Attributes.Add("class", "selected");
                                 }
                             }
                             else 

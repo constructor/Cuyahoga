@@ -213,6 +213,7 @@ code
 #contentwrapper
 {
     position: relative;
+    overflow: auto;
     width: 85%;
     min-width: 760px;
     min-height: 256px;
@@ -518,6 +519,18 @@ a:hover, #links li a
 
 #Menu_Main .selected a, #Menu_Main a:hover
 {
+    background-color: #329494;
+    color: #FFF;
+}
+
+#Menu_Main .selected .selected a
+{
+    background-color: #FFF;
+}
+
+#Menu_Main .selected .selected a:hover
+{
+    background-color: #329494;
     color: #FFF;
 }
 

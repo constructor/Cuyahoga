@@ -15,7 +15,17 @@ namespace Cuyahoga.Web.Admin
             if (!this.IsPostBack)
             {
                 BindRoles();
+
+                if (Request.QueryString["SiteId"] != null && Request.QueryString["SiteId"] != "-1")
+                {
+                    btnNew.Enabled = true;
+                }
+                else
+                {
+                    btnNew.Enabled = false;
+                }
             }
+
         }
 
         protected void BindRoles()
@@ -54,7 +64,9 @@ namespace Cuyahoga.Web.Admin
 
         protected void BtnNewClick(object sender, EventArgs e)
         {
-            Context.Response.Redirect("RoleEdit.aspx?RoleId=-1");
+            string redirectUrl = String.Format("~/Admin/RoleEdit.aspx?RoleId=-1&SiteId={0}", this.ActiveSite.Id);
+            Response.Redirect(redirectUrl);
+            //Context.Response.Redirect("RoleEdit.aspx?RoleId=-1");
         }
 
     }

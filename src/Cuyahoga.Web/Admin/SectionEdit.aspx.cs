@@ -326,8 +326,8 @@ namespace Cuyahoga.Web.Admin
                 {
                     SectionPermission sp = new SectionPermission();
                     sp.Section = this._activeSection;
-                    
-                    sp.Role = UserService.GetRoleById((int)ViewState[ri.ClientID]);
+                    int rcid = (int)ViewState[ri.ClientID];
+                    sp.Role = UserService.GetRoleById(rcid);
                    
                     sp.ViewAllowed = chkView.Checked;
                     sp.EditAllowed = chkEdit.Checked;
@@ -425,17 +425,32 @@ namespace Cuyahoga.Web.Admin
         protected void RptRolesItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             Role role = e.Item.DataItem as Role;
-            if (role != null)
+
+            CheckBox chkView = (CheckBox)e.Item.FindControl("chkViewAllowed");
+            CheckBox chkEdit = (CheckBox)e.Item.FindControl("chkEditAllowed");
+
+            if (role != null & this._activeSection.Id != -1)
             {
-                CheckBox chkView = (CheckBox)e.Item.FindControl("chkViewAllowed");
                 chkView.Checked = this._activeSection.ViewAllowed(role);
-                CheckBox chkEdit = (CheckBox)e.Item.FindControl("chkEditAllowed");
                 
-                //if (role.HasPermission(AccessLevel.Editor) || role.HasPermission(AccessLevel.Administrator))
-                //if (role.Name == "Editor" || role.Name == "Administrator")
                 if (role.HasRight(Rights.ManageSections))
                 {
                     chkEdit.Checked = this._activeSection.EditAllowed(role);
+                }
+                else
+                {
+                    chkEdit.Visible = false;
+                }
+                // Add RoleId to the ViewState with the ClientID of the repeateritem as key.
+                this.ViewState[e.Item.ClientID] = role.Id;
+            }
+            else if (role != null && this._activeSection.Id == -1)
+            {
+                chkView.Checked = true;
+
+                if (role.HasRight(Rights.ManageSections))
+                {
+                    chkEdit.Checked = role.HasRight(Rights.EditSections);
                 }
                 else
                 {

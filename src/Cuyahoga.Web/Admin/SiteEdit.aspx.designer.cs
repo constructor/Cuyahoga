@@ -104,13 +104,13 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlTemplates;
         
         /// <summary>
-        /// hlAddTemplate control.
+        /// hplAddTemplate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlAddTemplate;
+        protected global::System.Web.UI.WebControls.HyperLink hplAddTemplate;
         
         /// <summary>
         /// ddlPlaceholders control.

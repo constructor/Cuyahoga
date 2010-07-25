@@ -104,6 +104,7 @@ namespace Cuyahoga.Modules.StaticHtml
 			{
 				SaveStaticHtml();
 				ShowMessage("Content saved.");
+                Response.Redirect(UrlHelper.GetFullUrlFromSection(this.Section));
 			}
 			catch (Exception ex)
 			{

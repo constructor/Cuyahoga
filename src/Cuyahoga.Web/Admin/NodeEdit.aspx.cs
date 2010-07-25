@@ -382,7 +382,7 @@ namespace Cuyahoga.Web.Admin
         protected void btnNew_Click(object sender, EventArgs e)
         {
             // Create an url with NodeId -1 and the Id of the current node as ParentId
-            string url = String.Format("NodeEdit.aspx?NodeId=-1&ParentNodeId={0}", this.ActiveNode.Id);
+            string url = String.Format("NodeEdit.aspx?NodeId=-1&ParentNodeId={0}&SiteId={1}", this.ActiveNode.Id, this.ActiveSite.Id);
             // Redirect to the new url
             Context.Response.Redirect(url);
         }
@@ -667,7 +667,7 @@ namespace Cuyahoga.Web.Admin
 
                 Node node = new Node();
                 node.ParentNode = ActiveNode.ParentNode;
-                node.Site = ActiveNode.Site;
+                node.Site = this.ActiveSite;
                 node.Title = "Copy of " + ActiveNode.Title;
                 node.Template = ActiveNode.Template;
                 node.Culture = ActiveNode.Culture;
@@ -722,7 +722,7 @@ namespace Cuyahoga.Web.Admin
                 Section newsection = new Section();
 
                 newsection.Node = nodeTarget;
-
+                newsection.Site = this.ActiveSite;
                 newsection.CacheDuration = section.CacheDuration;
 
                 foreach (KeyValuePair<string, Section> entry in section.Connections)
