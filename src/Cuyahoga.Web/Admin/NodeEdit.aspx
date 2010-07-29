@@ -185,34 +185,37 @@
         </asp:Panel>
         <div class="group">
             <h4>Authorization</h4>
-                <table class="tbl">
-                    <asp:Repeater ID="rptRoles" runat="server">
-                        <HeaderTemplate>
-                            <tr>
-                                <th>Role</th>
-                                <th>View allowed</th>
-                                <th>Edit allowed</th>
-                            </tr>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <tr>
-                                <td>
-                                    <%# DataBinder.Eval(Container.DataItem, "Name") %>
-                                </td>
-                                <td style="text-align: center">
-                                    <asp:CheckBox ID="chkViewAllowed" runat="server"></asp:CheckBox>
-                                </td>
-                                <td style="text-align: center">
-                                    <asp:CheckBox ID="chkEditAllowed" runat="server"></asp:CheckBox>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </table>
-                <br />
-                <asp:CheckBox ID="chkPropagateToSections" runat="server" Text="Propagate security settings to sections"></asp:CheckBox>
-                <asp:CheckBox ID="chkPropagateToChildNodes" runat="server" Text="Propagate security settings to child nodes"></asp:CheckBox>
-                <br />
+            <table class="tbl">
+                <asp:Repeater ID="rptRoles" runat="server">
+                    <HeaderTemplate>
+                        <tr>
+                            <th>Role</th>
+                            <th>View allowed</th>
+                            <th>Edit allowed</th>
+                        </tr>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, "Name") %>
+                            </td>
+                            <td style="text-align: center">
+                                <asp:CheckBox ID="chkViewAllowed" runat="server"></asp:CheckBox>
+                            </td>
+                            <td style="text-align: center">
+                                <asp:CheckBox ID="chkEditAllowed" runat="server"></asp:CheckBox>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>
+            <br />
+            <asp:Label id="lblPropagateToSections" AssociatedControlId="chkPropagateToSections" Text="Propagate security settings to sections" runat="server" />
+            <asp:CheckBox ID="chkPropagateToSections" runat="server"></asp:CheckBox>
+            <br />
+            <asp:Label id="lblPropagateToChildNodes" AssociatedControlId="chkPropagateToChildNodes" Text="Propagate security settings to child nodes" runat="server" />
+            <asp:CheckBox ID="chkPropagateToChildNodes" runat="server"></asp:CheckBox>
+            <br />
         </div>
         <div class="group">
             <asp:Button ID="btnSave" OnClick="btnSave_Click" runat="server" Text="Save"></asp:Button>

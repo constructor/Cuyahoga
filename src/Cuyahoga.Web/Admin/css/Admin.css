@@ -125,11 +125,12 @@ input, textarea, select, .group, fieldset
 label
 {
     display: inline-block;
-    float: left;
+    /*float: left;*/
     margin-right: 4px;
-    padding: 6px;
+    padding: 0 6px 0 6px;
     position: relative;
     width: 164px;
+    height: 16px;
 }
 
 label[for*="chk"]
@@ -139,6 +140,7 @@ label[for*="chk"]
     padding: 0;
     position: relative;
     width: 256px;
+    float: left;
 }
 
 input[id*="chkPropagate"]
@@ -160,6 +162,10 @@ hr
 input[type*="checkbox"]
 {
     border: 1px !important;
+    border: 1px solid #ccc;
+    margin: 0;
+    height: 16px;
+    width: 16px;
 }
 
 input[type*="submit"]
@@ -673,7 +679,6 @@ table.tbl tr td a[id*="Install"]:hover
 {
     -moz-border-radius: 16px;
     -webkit-border-radius: 16px;
-    border-radius: 16px;
     border: 2px solid #666;
     display: block;
     margin-left: auto;
@@ -754,7 +759,6 @@ table.tbl tr td a[id*="Install"]:hover
 {
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-    border-radius: 8px;
     border: 2px solid #666;
     color: #666;
     font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -815,7 +819,6 @@ table.tbl tr td a[id*="Install"]:hover
 {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    border-radius: 6px;
     display: block;
     float: left;
     margin: 0;
@@ -894,7 +897,6 @@ table.tbl tr td a, table.tbl tr td a[id*="Edit"], table.tbl tr td a[id*="Detach"
 {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    border-radius: 6px;
     background-color: #FFF;
     border: 1px solid #999;
     color: #999;

@@ -27,6 +27,11 @@ namespace Cuyahoga.Web.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Turn off hplLookup: The templates now require 
+            //a site to get the SiteData folder for css, js, and asset access.
+            //Preview does not send a siteid to facilitate this. Needs fixing.
+            hplLookup.Visible = false;
+
             _commonDao = IoC.Resolve<ICommonDao>();
 
             LoadSection();

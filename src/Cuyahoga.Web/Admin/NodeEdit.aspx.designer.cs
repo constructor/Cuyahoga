@@ -320,6 +320,15 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.Repeater rptRoles;
         
         /// <summary>
+        /// lblPropagateToSections control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPropagateToSections;
+        
+        /// <summary>
         /// chkPropagateToSections control.
         /// </summary>
         /// <remarks>
@@ -327,6 +336,15 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkPropagateToSections;
+        
+        /// <summary>
+        /// lblPropagateToChildNodes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPropagateToChildNodes;
         
         /// <summary>
         /// chkPropagateToChildNodes control.
