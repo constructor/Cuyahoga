@@ -103,7 +103,7 @@ namespace Cuyahoga.Web.UI
 				this._module = this._moduleLoader.GetModuleFromSection(this._section);
 
                 //Put SiteId in a session so the FCKEditor pop up can get it (Custom hack)
-                Session["SiteId"] = this._node.Site.Id;
+                //Session["SiteId"] = this._node.Site.Id;
 
                 //Init Folders
                 //ClientFoldersInit((Cuyahoga.Web.Util.UrlHelper.GetApplicationPath() + "SiteData/"), this._node.Site.Id);
@@ -141,11 +141,19 @@ namespace Cuyahoga.Web.UI
 
             //For multi-site
             string userFilesPath = Cuyahoga.Web.Util.UrlHelper.GetApplicationPath() + "SiteData/" + this._node.Site.Id.ToString();
+            string userFilesAbsolutePath = Server.MapPath("~/SiteData/") + this._node.Site.Id.ToString();
 
 			if (userFilesPath != null && HttpContext.Current.Application["FCKeditor:UserFilesPath"] == null)
 			{
 				HttpContext.Current.Application.Lock();
 				HttpContext.Current.Application["FCKeditor:UserFilesPath"] = ResolveUrl(userFilesPath);
+				HttpContext.Current.Application.UnLock();
+			}
+
+            if (userFilesAbsolutePath != null && HttpContext.Current.Application["FCKeditor:UserFilesAbsolutePath"] == null)
+			{
+				HttpContext.Current.Application.Lock();
+                HttpContext.Current.Application["FCKeditor:UserFilesAbsolutePath"] = userFilesAbsolutePath;
 				HttpContext.Current.Application.UnLock();
 			}
 

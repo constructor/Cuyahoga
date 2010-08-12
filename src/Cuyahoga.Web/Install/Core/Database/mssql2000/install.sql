@@ -257,7 +257,7 @@ GO
 CREATE TABLE cuyahoga_sectionsetting(
 sectionsettingid int identity(1,1) NOT NULL CONSTRAINT PK_sectionsetting PRIMARY KEY,
 sectionid int NOT NULL,
-name nvarchar(50) NOT NULL,
+name nvarchar(100) NOT NULL,
 value nvarchar(100) NULL)
 GO
 

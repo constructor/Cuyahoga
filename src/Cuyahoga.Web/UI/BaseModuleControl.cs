@@ -138,17 +138,19 @@ namespace Cuyahoga.Web.UI
                     {
                         if (this._module.Section.Node != null)
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}\"><span>Edit</span></a>"
+                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Edit</span></a>"
                                                        , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
                                                        , this._module.Section.Node.Id
-                                                       , this._module.Section.Id));
+                                                       , this._module.Section.Id
+                                                       , this._module.Section.Site.Id));
                         }
                         else
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}\"><span>Edit</span></a>"
+                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Edit</span></a>"
                                                        , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
                                                        , this.PageEngine.ActiveNode.Id
-                                                       , this._module.Section.Id));
+                                                       , this._module.Section.Id
+                                                       , this._module.Section.Site.Id));
                         }
                     }
                     if (this._cuyahogaUser.HasRight(Rights.AccessAdmin))//.HasPermission(AccessLevel.Administrator))
@@ -157,21 +159,24 @@ namespace Cuyahoga.Web.UI
                         {
                             writer.Write(
                                 String.Format(
-                                    "&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?NodeId={1}&amp;SectionId={2}\"><span>Section Properties</span></a>"
+                                    "&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Section Properties</span></a>"
                                     , UrlHelper.GetApplicationPath()
                                     , this._module.Section.Node.Id
-                                    , this._module.Section.Id));
+                                    , this._module.Section.Id
+                                    , this._module.Section.Site.Id));
                             writer.Write(
                                 String.Format(
-                                    "&nbsp;<a id=\"pageproperties\" href=\"{0}Admin/NodeEdit.aspx?NodeId={1}\"><span>Page Properties</span></a>"
+                                    "&nbsp;<a id=\"pageproperties\" href=\"{0}Admin/NodeEdit.aspx?NodeId={1}&amp;SiteId={2}\"><span>Page Properties</span></a>"
                                     , UrlHelper.GetApplicationPath()
-                                    , this._module.Section.Node.Id));
+                                    , this._module.Section.Node.Id
+                                    , this._module.Section.Site.Id));
                         }
                         else
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?SectionId={1}\"><span>Section Properties</span></a>"
+                            writer.Write(String.Format("&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?SectionId={1}&amp;SiteId={2}\"><span>Section Properties</span></a>"
                                                        , UrlHelper.GetApplicationPath()
-                                                       , this._module.Section.Id));
+                                                       , this._module.Section.Id
+                                                       , this._module.Section.Site.Id));
                         }
                     }
                 }

@@ -669,6 +669,19 @@ namespace Cuyahoga.Web.Admin
                 node.ParentNode = ActiveNode.ParentNode;
                 node.Site = this.ActiveSite;
                 node.Title = "Copy of " + ActiveNode.Title;
+
+                //Custom: Check for existing copies and rename accordingly
+                if (node.ParentNode.ChildNodes.Count > 0)
+                {
+                    foreach (Node n in node.ParentNode.ChildNodes)
+                    {
+                        if (node.Title == n.Title)
+                        {
+                            node.Title = "Copy of " + n.Title;
+                        }
+                    }
+                }
+
                 node.Template = ActiveNode.Template;
                 node.Culture = ActiveNode.Culture;
                 node.LinkUrl = ActiveNode.LinkUrl;

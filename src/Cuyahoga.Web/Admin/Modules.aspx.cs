@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Cuyahoga.Core.Domain;
 using Cuyahoga.Core.Service;
+using Cuyahoga.Core.Service.Files;
 using Cuyahoga.Core.Service.SiteStructure;
 using Cuyahoga.Web.Admin.UI;
 
@@ -14,10 +15,12 @@ namespace Cuyahoga.Web.Admin
     public partial class Modules : AdminBasePage
     {
         private IModuleTypeService _moduleTypeService;
+        private IFileService _fileService;
 
         public Modules() 
         {
             this._moduleTypeService = this.Container.Resolve<IModuleTypeService>();
+            this._fileService = this.Container.Resolve<IFileService>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -88,6 +91,10 @@ namespace Cuyahoga.Web.Admin
                 LinkButton lbtUninstall = e.Item.FindControl("lbtUninstall") as LinkButton;
                 lbtUninstall.Visible = canUninstall;
                 lbtUninstall.Attributes.Add("onclick", "return confirm('Uninstall this module?')");
+                LinkButton lbtDelete = e.Item.FindControl("lbtDelete") as LinkButton;
+                lbtDelete.Attributes.Add("onclick", "return confirm('Delete this module folder and contents?')");
+                lbtDelete.Visible = canInstall;
+                
 
                 CheckBox chkBox = e.Item.FindControl("chkBoxActivation") as CheckBox;
                 if (canInstall)
@@ -157,6 +164,15 @@ namespace Cuyahoga.Web.Admin
                     case "uninstall":
                         dbInstaller.Uninstall();
                         break;
+                    case "delete":
+                        string moduleFolder = Server.MapPath("~/Modules/" + moduleName);
+                        string dllFile = string.Format("{0}Cuyahoga.Modules.{1}.dll", Server.MapPath("~/bin/"), moduleName);
+                        // Maybe add to a service and use a transaction
+                        if (Directory.Exists(moduleFolder))
+                            _fileService.DeleteDirectory(moduleFolder);
+                        if (File.Exists(dllFile)) 
+                        _fileService.DeleteFile(dllFile);
+                        break;
                 }
 
                 // Rebind modules
@@ -200,6 +216,44 @@ namespace Cuyahoga.Web.Admin
             {
                 if (mt != null) ShowError("Loading failed for " + mt.Name + ".<br/>" + ex.Message);
                 else ShowError("Loading failed for module.<br/>" + ex.Message);
+            }
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFile theFile = Context.Request.Files[0];
+                string filename = uplUploadModule.FileName;
+                if (!filename.EndsWith(".zip"))
+                {
+                    throw new Exception("Invalid file");
+                }
+
+                string filePath = Path.Combine(Server.MapPath("~/Modules"), filename);
+
+                try
+                {
+                    try
+                    {
+                        _moduleTypeService.ExtractModulePackage(filePath, theFile.InputStream);
+                        litMessages.Text = "Module uploaded and unpacked.";
+                    }
+                    catch ( Exception ex )
+                    {
+                        litMessages.Text = "The uploaded file does not seem to be a valid Cuyahoga module pack. The error was: " + ex.Message;
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    litMessages.Text = "Could not upload module pack." + ex.Message;
+                }
+                this.BindModules();
+            }
+            else
+            {
+                litMessages.Text = "No file was uploaded, something must have went wrong!";
             }
         }
     }

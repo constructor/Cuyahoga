@@ -571,6 +571,19 @@ namespace Cuyahoga.Core.Domain
 			Node newNode = new Node();
 			newNode.Site = this.Site;
 			newNode.Title = "Copy of " + this.Title;
+
+            //Custom: Check for existing copies and rename accordingly
+            if (parentNode.ChildNodes.Count > 0)
+            {
+                foreach (Node n in parentNode.ChildNodes)
+                {
+                    if (newNode.Title == n.Title)
+                    {
+                        newNode.Title = "Copy of " + n.Title;
+                    }
+                }
+            }
+
 			newNode.ParentNode = parentNode;
 			newNode.CreateShortDescription();
 			newNode.Culture = parentNode.Culture;

@@ -26,7 +26,7 @@ h2
 h3
 {
     letter-spacing: 2px;
-    font-size: 12px;
+    font-size: small;
 }
 
 p, blockquote, ul, ol
@@ -38,12 +38,7 @@ p, blockquote, ul, ol
 blockquote
 {
     padding-left: 20px;
-    background: url(../images/img05.gif) repeat-y;
-}
-
-a
-{
-    color: #329494;
+    background: url(../images/blockquote-gackground.gif) repeat-y;
 }
 
 a img
@@ -151,7 +146,7 @@ code
     position: relative;
     display: block;
     text-decoration: none;
-    font: bold 12px "Trebuchet MS" , Arial, Helvetica, sans-serif;
+    font: bold small "Trebuchet MS" , Arial, Helvetica, sans-serif;
     color: #329494;
     background: none;
     padding: 17px 15px 15px;
@@ -179,13 +174,7 @@ code
     position: relative;
     height: 50px;
     float: left;
-    background-image: url(../Images/menu-item-over.gif);
     background-repeat: repeat-x;
-}
-
-#Menu_Main .selected > ul a
-{
-    color: #329494;
 }
 
 #Menu_Main li ul li
@@ -221,9 +210,10 @@ code
 #contentwrapper
 {
     position: relative;
+    overflow: auto;
     width: 85%;
     min-width: 760px;
-    overflow: auto;
+    min-height: 256px;
     margin: 0 auto 20px;
 }
 
@@ -231,15 +221,15 @@ code
 {
     position: relative;
     background-position: left bottom;
-    min-height: 192px;
+    min-height: 360px;
     border-right-style: solid;
     border-left-style: solid;
     border-right-width: 5px;
     border-left-width: 5px;
     border-right-color: #329494;
     border-left-color: #329494;
-    overflow: auto;
-    background: url(../images/img04.jpg) repeat-x left bottom;
+    overflow: inherit;
+    background: url(../images/content-background.jpg) repeat-x left bottom;
     padding: 20px 10px 10px;
 }
 
@@ -277,7 +267,7 @@ code
 
 #links li li
 {
-    background: url(../images/img06.gif) repeat-x left bottom;
+    background: url(../images/links-background.gif) repeat-x left bottom;
     padding: 7px 10px;
 }
 
@@ -329,6 +319,9 @@ fieldset
 {
     border: 1px solid #CCC;
     display: block;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     margin: 15px 0 5px;
 }
 
@@ -353,6 +346,9 @@ fieldset legend
 {
     display: block;
     border: 2px solid #DDD;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     margin-bottom: 8px;
     background-color: #FFF;
     padding: 8px;
@@ -378,6 +374,9 @@ fieldset .labeltext
     margin-top: 4px;
     border: 1px solid #CCC;
     color: #333;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 6px;
 }
 
@@ -388,6 +387,9 @@ fieldset input[type*="text"]
     margin-top: 2px;
     margin-bottom: 2px;
     color: #333;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 6px;
 }
 
@@ -399,6 +401,9 @@ fieldset input[type*="text"][class*="small"]
     margin-bottom: 2px;
     margin-right: 2px;
     color: #333;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 6px;
 }
 
@@ -408,6 +413,9 @@ fieldset input[type*="password"]
     margin-top: 2px;
     margin-bottom: 2px;
     color: #333;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 6px;
 }
 
@@ -417,6 +425,9 @@ fieldset textarea
     overflow: auto;
     color: #333;
     margin-bottom: 2px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 6px;
 }
 
@@ -446,6 +457,9 @@ fieldset input[type*="submit"]
     margin-top: 8px;
     margin-bottom: 8px;
     margin-right: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     padding: 3px;
 }
 
@@ -500,13 +514,20 @@ a:hover, #links li a
     text-decoration: none;
 }
 
-#Menu_Main li:hover > ul, #Menu_Main li ul li:hover > a
-{
-    color: #fff;
-}
-
 #Menu_Main .selected a, #Menu_Main a:hover
 {
+    background-color: #329494;
+    color: #FFF;
+}
+
+#Menu_Main .selected .selected a
+{
+    background-color: #FFF;
+}
+
+#Menu_Main .selected .selected a:hover
+{
+    background-color: #329494;
     color: #FFF;
 }
 
@@ -522,11 +543,6 @@ a:hover, #links li a
     background-color: #329494;
 }
 
-#Menu_Main li:hover > a 
-{
-    color: #fff;
-}
-
 div[id*="Login"] input[type*="text"], div[id*="Login"] input[type*="password"]
 {
     border: 1px #CCC solid;
@@ -538,4 +554,14 @@ div[id*="Login"] input[type*="text"], div[id*="Login"] input[type*="password"]
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+a, #Menu_Main .selected > ul a
+{
+    color: #329494;
+}
+
+#Menu_Main li:hover > ul, #Menu_Main li ul li:hover > a, #Menu_Main li:hover > a
+{
+    color: #fff;
 }

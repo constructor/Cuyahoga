@@ -14,7 +14,8 @@
                     <asp:requiredfieldvalidator id="rfvTitle" runat="server" cssclass="validator" display="Dynamic" errormessage="The title is required" enableclientscript="False" controltovalidate="txtTitle"></asp:requiredfieldvalidator>
                     <hr />
                     <asp:Label ID="SummaryLabel" AssociatedControlID="txtSummary" runat="server" Text="Summary"></asp:Label>
-					<asp:textbox id="txtSummary" runat="server" width="70%" Rows="2" textmode="MultiLine"></asp:textbox>
+					<asp:textbox id="txtSummary" runat="server" width="70%" Rows="2" textmode="MultiLine"></asp:textbox> <asp:RegularExpressionValidator ID="revSummary" runat="server" ControlToValidate="txtSummary" Display="Dynamic" ErrorMessage="250 character limit"
+                    ValidationExpression="[\s\S]{1,250}"></asp:RegularExpressionValidator>
                     <hr />
                     <fckeditorv2:fckeditor id="fckContent" runat="server" height="320px" width="100%"></fckeditorv2:fckeditor></td>
 					<hr />
@@ -29,6 +30,21 @@
 				</div>
 				<p><asp:button id="btnSave" runat="server" text="Save" onclick="btnSave_Click"></asp:button><asp:button id="btnDelete" runat="server" text="Delete" visible="False" onclick="btnDelete_Click"></asp:button><input id="btnCancel" type="button" value="Cancel" runat="server"></p>
 			</div>
+			
+			<script type="text/javascript">
+			    /*Limit chars in multiline textarea*/
+			    $(document).ready(function() {
+			        $('input[id*=Title],textarea[id*=Summary]').keyup(function() {
+			            var max = 250;
+			            if ($(this).val().length > max) {
+			                $(this).val($(this).val().substr(0, max));
+			            }
+
+			            /*$(this).parent().find('.charsRemaining').html('You have ' + (max - $(this).val().length) + ' characters remaining');*/
+			        });
+			    });
+            </script>
+            
 		</form>
 	</body>
 </html>

@@ -155,6 +155,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\OAuth\OAuthBase.cs" />
     <Compile Include="Communication\ModuleAction.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -329,7 +330,6 @@
     <Compile Include="Service\Search\SearchResult.cs" />
     <Compile Include="Service\Search\SearchResultCollection.cs" />
     <Compile Include="Service\Search\SearchService.cs" />
-    <Compile Include="Service\SessionFactory.cs" />
     <Compile Include="Service\SessionFactoryHelper.cs" />
     <Compile Include="Service\SiteStructure\IModuleTypeService.cs" />
     <Compile Include="Service\SiteStructure\INodeService.cs" />

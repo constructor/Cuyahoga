@@ -32,7 +32,6 @@ namespace Cuyahoga.Web
 			get { return TrustLevel; }
 		}
 
-
         protected void Application_Start(Object sender, EventArgs e)
         {
             // Initialize log4net 

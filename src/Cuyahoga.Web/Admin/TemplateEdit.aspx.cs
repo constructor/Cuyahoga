@@ -457,7 +457,7 @@ namespace Cuyahoga.Web.Admin
                 }
                 catch (Exception ex)
                 {
-                    litMessages.Text = "Could not upload template pack. " + ex.Message;
+                    litMessages.Text = "The uploaded file does not seem to be a valid Cuyahoga template pack. The error was:  " + ex.Message;
                 }
 
             }

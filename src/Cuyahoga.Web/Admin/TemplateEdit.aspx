@@ -13,7 +13,7 @@
     <div class="group">
         <h4>Upload Template</h4>
         <p><asp:Literal ID="litMessages" runat="server" Text=""/></p>
-        <asp:Label ID="lblUploadTemaple" AssociatedControlID="uplUploadTemplate" Text="Upload Template Pack (.zip)" runat="server"></asp:Label>
+        <asp:Label ID="lblUploadTemaple" AssociatedControlID="uplUploadTemplate" Text="Upload Template Pack(.zip)" runat="server"></asp:Label>
         <asp:FileUpload ID="uplUploadTemplate" runat="server" />
         <asp:Button ID="btnUpload" runat="server" Text="Upload Template Pack" onclick="BtnUploadClick" ValidationGroup="uploader" CausesValidation="true" />
         <asp:RequiredFieldValidator ID="uplUploadTemplateValidator" runat="server" ErrorMessage="Zip file is required" CssClass="validator" EnableClientScript="True" ValidationGroup="uploader" ControlToValidate="uplUploadTemplate"></asp:RequiredFieldValidator>

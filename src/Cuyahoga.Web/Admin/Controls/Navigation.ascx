@@ -48,5 +48,5 @@
 <div class="navsection">
 <%--<asp:image imageurl="../Images/PanelLeftEnd.gif" runat="server" imagealign="left" id="Image1" alternatetext="FullText index"></asp:image>
 	<h3>Categories</h3>--%>
-	<asp:HyperLink ID="hplCategories" CssClass="navLink" NavigateUrl="../Categories.aspx" runat="server">Manage categories</asp:HyperLink>
+	<asp:HyperLink ID="hplCategories" CssClass="navLink" NavigateUrl="../Categories.aspx" runat="server">Categories</asp:HyperLink>
 </div>

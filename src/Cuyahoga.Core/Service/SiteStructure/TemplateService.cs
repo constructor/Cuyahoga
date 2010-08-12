@@ -79,50 +79,136 @@ namespace Cuyahoga.Core.Service.SiteStructure
 		[Transaction(TransactionMode.RequiresNew)]
 		public void ExtractTemplatePackage(string packageFilePath, Stream packageStream)
 		{
-			
+            ZipFile templatesArchive = new ZipFile(packageStream);
+
 			// The template dir is the name of the zip package by convention.
 			string templateDir = Path.GetFileNameWithoutExtension(packageFilePath);
 			string physicalTemplatesDirectory = Path.GetDirectoryName(packageFilePath);
 			string physicalTargetTemplateDir = Path.Combine(physicalTemplatesDirectory, templateDir);
 
-			if (! Directory.Exists(physicalTargetTemplateDir))
-			{
-				this._fileService.CreateDirectory(physicalTargetTemplateDir);
-			}
-			// Extract
-			ZipFile templatesArchive = new ZipFile(packageStream);
-			foreach (ZipEntry zipEntry in templatesArchive)
-			{
-				if (zipEntry.IsDirectory)
-				{
-					if (! AllowedDirectories.Contains(zipEntry.Name.ToLower()))
-					{
-						throw new InvalidPackageException("InvalidDirectoryInPackageFoundException");
-					}
-					this._fileService.CreateDirectory(Path.Combine(physicalTargetTemplateDir, zipEntry.Name.Replace("/", String.Empty)));
-				}
-				if (zipEntry.IsFile)
-				{
-					string targetFilePath = Path.Combine(physicalTargetTemplateDir, zipEntry.Name);
-					string extension = Path.GetExtension(targetFilePath);
-					// Check allowed extensions.
-					if (! AllowedExtensions.Contains(extension))
-					{
-						throw new InvalidPackageException("InvalidExtensionFoundException");
-					}
-					// ascx controls should be in the root of the template dir
-					if (extension == ".ascx" && ! (Path.GetDirectoryName(targetFilePath).EndsWith(templateDir)))
-					{
-						throw new InvalidPackageException("InvalidAscxLocationException");
-					}
-					// css files should be in the css subdirectory
-					if (extension == ".css" && !(Path.GetDirectoryName(targetFilePath).ToLower().EndsWith(@"\css")))
-					{
-						throw new InvalidPackageException("InvalidCssLocationException");
-					}
-					this._fileService.WriteFile(targetFilePath, templatesArchive.GetInputStream(zipEntry));
-				}
-			}
+            bool templateValid = false;
+
+            bool invalidDirectories = false;
+            bool invalidExtension = false;
+            bool invalidAscx = false;
+            bool deprecatedControls = false;
+            bool invalidCss = false;
+            bool validfckstyles = false;
+
+            // Do simple validation tests first
+            foreach (ZipEntry zipEntry in templatesArchive)
+            {
+                if (zipEntry.IsDirectory)
+                {
+                    if (!AllowedDirectories.Contains(zipEntry.Name.ToLower()))
+                    {
+                        invalidDirectories = true;
+                    }
+                }
+                if (zipEntry.IsFile)
+                {
+                    string targetFilePath = Path.Combine(physicalTargetTemplateDir, zipEntry.Name);
+                    string extension = Path.GetExtension(targetFilePath);
+                    // Check allowed extensions.
+                    if (!AllowedExtensions.Contains(extension))
+                    {
+                        invalidExtension = true;
+                    }
+                    // ascx controls should be in the root of the template dir
+                    if (extension == ".ascx")
+                    {
+                        if (!(Path.GetDirectoryName(targetFilePath).EndsWith(templateDir)))
+                        {
+                            invalidAscx = true;
+                        }
+
+                        //Check for deprecated controls
+                        System.IO.StreamReader sr = new System.IO.StreamReader(templatesArchive.GetInputStream(zipEntry));
+                        string input = null;
+                        while ((input = sr.ReadLine()) != null)
+                        {
+                            if (input.Contains("~/Controls/Navigation/NavigationLevelZeroOne.ascx")
+                                || input.Contains("~/Controls/Navigation/NavigationLevelTwo.ascx")
+                                || input.Contains("<uc1:navigation")
+                                || input.Contains("<uc2:subnavigation")
+                                )
+                            {
+                                deprecatedControls = true;
+                                break;
+                            }
+                        }
+                    }
+                    // css files should be in the css subdirectory
+                    if (extension == ".css" && !(Path.GetDirectoryName(targetFilePath).ToLower().EndsWith(@"\css")))
+                    {
+                        invalidCss = true;
+                    }
+                    // fckstyles.xml file should be in the css subdirectory
+                    if (Path.GetFileName(zipEntry.Name).ToLower() == "fckstyles.xml" && (Path.GetDirectoryName(targetFilePath).ToLower().EndsWith(@"\css")))
+                    {
+                        validfckstyles = true;
+                    }
+
+                }
+            }
+
+            //Evaluate tests
+            templateValid = (!invalidDirectories
+                && !invalidExtension
+                && !invalidAscx
+                && !deprecatedControls
+                && !invalidCss
+                && validfckstyles);
+
+            // Extract template if tests passed
+            if (templateValid)
+            {
+                if (!Directory.Exists(physicalTargetTemplateDir))
+                {
+                    this._fileService.CreateDirectory(physicalTargetTemplateDir);
+                }
+                foreach (ZipEntry zipEntry in templatesArchive)
+                {
+                    if (zipEntry.IsDirectory)
+                    {
+                        this._fileService.CreateDirectory(Path.Combine(physicalTargetTemplateDir, zipEntry.Name.Replace("/", String.Empty)));
+                    }
+                    if (zipEntry.IsFile)
+                    {
+                        string targetFilePath = Path.Combine(physicalTargetTemplateDir, zipEntry.Name);
+                        string extension = Path.GetExtension(targetFilePath);
+                        this._fileService.WriteFile(targetFilePath, templatesArchive.GetInputStream(zipEntry));
+                    }
+                }
+            }
+            else 
+            {
+                if (invalidDirectories)
+                {
+                    throw new InvalidPackageException("InvalidDirectoryInPackageFoundException");
+                }
+                if (invalidExtension)
+                {
+                    throw new InvalidPackageException("InvalidAscxLocationException");
+                }
+                if (invalidAscx)
+                {
+                    throw new InvalidPackageException("InvalidAscxLocationException");
+                }
+                if (deprecatedControls)
+                {
+                    throw new InvalidPackageException("ContainsDeprecatedNavigationControlsException");
+                }
+                if (invalidCss)
+                {
+                    throw new InvalidPackageException("InvalidCssLocationException");
+                }
+                if (!validfckstyles)
+                {
+                    throw new InvalidPackageException("NoValidFckStylesException");
+                }
+            }
+
 		}
 
 		[Transaction(TransactionMode.Requires)]

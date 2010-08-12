@@ -278,6 +278,4 @@ namespace Cuyahoga.Core.Infrastructure.Transactions
 		}
 	}
 
-
-
 }

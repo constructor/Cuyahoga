@@ -9,7 +9,6 @@
 				<h1>Article management</h1>
                     <div id="catagoryfilers" class="group">
                     <h4>Article Filtering</h4>
-                    
                     </div>
 				    <div id="categories" class="group">
 				        <h4>Articles</h4>

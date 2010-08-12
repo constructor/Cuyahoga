@@ -90,7 +90,6 @@ namespace Cuyahoga.Web.Admin
                     int activeSiteID = this.ActiveSite.Id;
                     Cuyahoga.Core.Domain.Site CurrentSite = this.SiteService.GetSiteById(this.ActiveSite.Id);
                     templates = this.TemplateService.GetAllTemplatesBySite(CurrentSite) as IList;
-                    //templates = this.TemplateService.GetAllTemplates();
                 }
                 else
                 {

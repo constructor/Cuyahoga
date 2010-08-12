@@ -1,7 +1,7 @@
 body
 {
-    background: #FFF url(../images/img01.jpg) repeat-x;
-    font: normal 11px Tahoma, Arial, Helvetica, sans-serif;
+    background: #FFF url(../images/header-background.jpg) repeat-x;
+    font: normal small Tahoma, Arial, Helvetica, sans-serif;
     color: #666;
     margin: 0;
     padding: 0;
@@ -28,7 +28,7 @@ h2
 h3
 {
     letter-spacing: 2px;
-    font-size: 12px;
+    font-size: small;
 }
 
 p, blockquote, ul, ol
@@ -40,7 +40,7 @@ p, blockquote, ul, ol
 blockquote
 {
     padding-left: 20px;
-    background: url(../images/img05.gif) repeat-y;
+    background: url(../images/blockquote-gackground.gif) repeat-y;
 }
 
 a img
@@ -148,7 +148,7 @@ code
     position: relative;
     display: block;
     text-decoration: none;
-    font: bold 12px "Trebuchet MS" , Arial, Helvetica, sans-serif;
+    font: bold small "Trebuchet MS" , Arial, Helvetica, sans-serif;
     color: #329494;
     background: none;
     padding: 17px 15px 15px;
@@ -176,7 +176,6 @@ code
     position: relative;
     height: 50px;
     float: left;
-    background-image: url(../Images/menu-item-over.gif);
     background-repeat: repeat-x;
 }
 
@@ -232,7 +231,7 @@ code
     border-right-color: #329494;
     border-left-color: #329494;
     overflow: inherit;
-    background: url(../images/img04.jpg) repeat-x left bottom;
+    background: url(../images/content-background.jpg) repeat-x left bottom;
     padding: 20px 10px 10px;
 }
 
@@ -270,7 +269,7 @@ code
 
 #links li li
 {
-    background: url(../images/img06.gif) repeat-x left bottom;
+    background: url(../images/links-background.gif) repeat-x left bottom;
     padding: 7px 10px;
 }
 

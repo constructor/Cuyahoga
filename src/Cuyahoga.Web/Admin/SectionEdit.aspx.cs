@@ -223,7 +223,7 @@ namespace Cuyahoga.Web.Admin
                     this.pnlConnections.Visible = true;
                     this.rptConnections.DataSource = this._activeSection.Connections;
                     this.rptConnections.DataBind();
-                    if (this._activeSection.Connections.Count < actionProvider.GetOutboundActions().Count)
+                    if (this._activeSection.Connections.Count < actionProvider.GetOutboundActions().Count && this._activeSection.Node != null)
                     {
                         this.hplNewConnection.Visible = true;
                         if (this.ActiveNode != null)

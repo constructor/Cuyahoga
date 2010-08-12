@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using Cuyahoga.Core.Domain;
 
 namespace Cuyahoga.Core.Service.SiteStructure
@@ -50,5 +51,12 @@ namespace Cuyahoga.Core.Service.SiteStructure
         /// </summary>
         /// <param name="moduleType"></param>
         void DeleteModuleType(ModuleType moduleType);
+
+        /// <summary>
+        /// Extract the package file in the modules directory.
+        /// </summary>
+        /// <param name="packageFilePath"></param>
+        /// <param name="packageStream"></param>
+        void ExtractModulePackage(string packageFilePath, Stream packageStream);
     }
 }

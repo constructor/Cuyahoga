@@ -13,6 +13,16 @@ namespace Cuyahoga.Web.Util
 		{
 		}
 
+        /// <summary>
+        /// GetApplicationPath returns the current site path and ensures that it allways ends with a "/".
+        /// </summary>
+        /// <returns></returns>
+        public static string GetSiteDataPath(System.Web.UI.Page page)
+        {
+            Cuyahoga.Web.UI.PageEngine pe = page as Cuyahoga.Web.UI.PageEngine;
+            return Text.EnsureTrailingSlash(GetApplicationPath() + "SiteData/" + pe.ActiveNode.Site.Id.ToString() + "/");
+        }
+
 		/// <summary>
 		/// GetApplicationPath returns the base application path and ensures that it allways ends with a "/".
 		/// </summary>

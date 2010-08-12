@@ -77,6 +77,15 @@ namespace Cuyahoga.Modules.Articles.Web {
         protected global::System.Web.UI.WebControls.TextBox txtSummary;
         
         /// <summary>
+        /// revSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revSummary;
+        
+        /// <summary>
         /// fckContent control.
         /// </summary>
         /// <remarks>

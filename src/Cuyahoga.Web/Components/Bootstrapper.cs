@@ -10,7 +10,6 @@ using log4net;
 
 namespace Cuyahoga.Web.Components
 {
-
 	/// <summary>
 	/// Responsible for initializing the Cuyahoga application.
 	/// </summary>

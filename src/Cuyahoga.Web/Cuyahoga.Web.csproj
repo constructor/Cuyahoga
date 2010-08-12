@@ -808,7 +808,7 @@
     <Folder Include="Admin\Images\Login\" />
     <Folder Include="Images\" />
     <Folder Include="Modules\" />
-    <Folder Include="SiteData\" />
+    <Folder Include="SiteData\1\" />
     <Folder Include="Support\" />
     <Folder Include="Templates\" />
   </ItemGroup>

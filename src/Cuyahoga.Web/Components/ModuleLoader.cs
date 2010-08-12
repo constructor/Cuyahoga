@@ -10,7 +10,7 @@ using Cuyahoga.Core.Domain;
 using Cuyahoga.Core.Service;
 using Cuyahoga.Core.Service.SiteStructure;
 using log4net;
-using UrlHelper=Cuyahoga.Web.Util.UrlHelper;
+using Cuyahoga.Web.Util;
 
 
 namespace Cuyahoga.Web.Components

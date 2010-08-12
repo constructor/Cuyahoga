@@ -1,917 +1,1201 @@
-body
-{
-    background-image: url(../Images/Login/Login-Background.gif);
-    background-position: top;
-    background-repeat: repeat-x;
-    margin: 0;
-    position: relative;
-}
-
-form
-{
-    border: 0;
-    padding: 0;
-}
-
-#messages
-{
-    background-color: #366;
-    height: 24px;
-    position: relative;
-    width: 100%;
-}
-
-#messages p
-{
-    color: #fff;
-    font-weight: 700;
-    margin: 0 0 0 8px;
-    padding: 4px;
-}
-
-.admincontext
-{
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    background-color: #FFF;
-    border: 2px solid #399;
-    border-radius: 8px;
-    display: none;
-    float: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    margin: 0 1em 1em;
-    padding: 4px;
-    position: absolute;
-    z-index: 99999;
-}
-
-.admincontext ul
-{
-    margin: 0 1em;
-    padding: 0;
-}
-
-.admincontext li
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #FFF;
-    border: 0;
-    border-radius: 6px;
-    color: #399;
-    list-style-type: none;
-    margin-bottom: 1px;
-    padding: 3px;
-    width: 100px;
-}
-
-.admincontext li:hover
-{
-    background-color: #399;
-    color: #FFF;
-}
-
-.admincontext li a
-{
-    color: #366;
-    display: block;
-    font-size: small;
-    padding-left: 4px;
-    text-decoration: none;
-}
-
-.admincontext li:hover > a
-{
-    color: #FFF;
-}
-
-.adminwrapper
-{
-    min-width: 780px;
-    position: relative;
-    width: 100%;
-}
-
-fieldset
-{
-    border: 2px solid #AAA;
-    margin: 10px 0 20px;
-    padding: 8px;
-}
-
-fieldset legend
-{
-    background: #FFF;
-    border-left-color: #AAA;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-color: #AAA;
-    border-right-style: solid;
-    border-right-width: 1px;
-    color: #333;
-    font-weight: 700;
-    margin: 0;
-    padding: 0 8px;
-    white-space: nowrap;
-}
-
-input, textarea, select, .group, fieldset
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-}
-
-label
-{
-    display: inline-block;
-    /*float: left;*/
-    margin-right: 4px;
-    padding: 0 6px 0 6px;
-    position: relative;
-    width: 164px;
-    height: 16px;
-}
-
-label[for*="chk"]
-{
-    display: block;
-    overflow: auto;
-    padding: 0;
-    position: relative;
-    width: 256px;
-    float: left;
+body {
+background-image:url(../Images/Login/Login-Background.gif);
+background-position:top;
+background-repeat:repeat-x;
+position:relative;
+margin:0;
+}
+
+form {
+border:0;
+padding:0;
+}
+
+#messages {
+background-color:#366;
+height:24px;
+position:relative;
+width:100%;
+}
+
+#messages p {
+color:#fff;
+font-weight:700;
+margin:0 0 0 8px;
+padding:4px;
+}
+
+.admincontext {
+-moz-border-radius:8px;
+-webkit-border-radius:8px;
+background-color:#FFF;
+border:2px solid #399;
+border-radius:8px;
+display:none;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+position:absolute;
+z-index:99999;
+margin:0 1em 1em;
+padding:4px;
 }
 
-input[id*="chkPropagate"]
-{
-    float: left;
-    overflow: auto;
-    padding: 0;
-    position: relative;
-    width: 32px;
-}
-
-hr
-{
-    border: 0;
-    border-top: 1px solid #EEE;
-    height: 0;
-}
+.admincontext ul {
+margin:0 1em;
+padding:0;
+}
 
-input[type*="checkbox"]
-{
-    border: 1px !important;
-    border: 1px solid #ccc;
-    margin: 0;
-    height: 16px;
-    width: 16px;
+.admincontext li {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#FFF;
+border:0;
+border-radius:6px;
+color:#399;
+list-style-type:none;
+margin-bottom:1px;
+width:100px;
+padding:3px;
 }
 
-input[type*="submit"]
-{
-    background-color: #FFF;
-    border: 1px solid #999;
-    color: #666;
-    font-weight: 700;
-    padding: 6px;
-}
-
-input[type*="submit"][name*="Save"]:hover
-{
-    background-color: #393;
-    border: 1px solid #393;
-    color: #fff;
+.admincontext li:hover {
+background-color:#399;
+color:#FFF;
 }
 
-input[type*="submit"][name*="Duplicate"]:hover
-{
-    background-color: #639;
-    border: 1px solid #639;
-    color: #fff;
+.admincontext li a {
+color:#366;
+display:block;
+font-size:small;
+padding-left:4px;
+text-decoration:none;
 }
 
-input[type*="submit"][name*="New"]:hover
-{
-    background-color: #f60;
-    border: 1px solid #c30;
-    color: #FFF;
+.admincontext li:hover > a {
+color:#FFF;
 }
 
-input, select, textarea
-{
-    border: 1px solid #AAA;
-    color: #333;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: small;
-    margin-left: 1px;
-    margin-right: 1px;
-    padding: 6px;
+.adminwrapper {
+min-width:780px;
+position:relative;
+width:100%;
 }
 
-.tblarge
-{
-    width: 50%;
-}
-
-.arrowup:hover
-{
-    background-image: url(../Images/ArrowUp-Over.gif);
+fieldset {
+border:2px solid #AAA;
+margin:10px 0 20px;
+padding:8px;
 }
 
-.arrowdown:hover
-{
-    background-image: url(../Images/Arrowdown-Over.gif);
+fieldset legend {
+background:#FFF;
+border-left-color:#AAA;
+border-left-style:solid;
+border-left-width:1px;
+border-right-color:#AAA;
+border-right-style:solid;
+border-right-width:1px;
+color:#333;
+font-weight:700;
+white-space:nowrap;
+margin:0;
+padding:0 8px;
 }
 
-.arrowleft:hover
-{
-    background-image: url(../Images/Arrowleft-Over.gif);
+label {
+display:inline-block;
+float:left;
+margin-right:4px;
+position:relative;
+width:164px;
+padding:6px;
 }
 
-.arrowright:hover
-{
-    background-image: url(../Images/Arrowright-Over.gif);
+label[for*="chk"] {
+display:block;
+overflow:auto;
+position:relative;
+width:256px;
+padding:0;
 }
 
-p, div
-{
-    color: #333;
-    font-family: Arial, Helvetica;
-    font-size: small;
-}
-
-h1
-{
-    background-color: #fff;
-    border-bottom-color: #399;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    color: #366;
-    font-family: Arial, Helvetica;
-    font-size: large;
-    font-weight: 700;
-    padding-bottom: 4px;
-}
-
-a
-{
-    color: #33C;
+input[id*="chkPropagate"] {
+float:left;
+overflow:auto;
+position:relative;
+width:32px;
+padding:0;
 }
 
-.navsection
-{
-    margin: 2px;
-    overflow: hidden;
-    padding: 0 2px 2px;
+hr {
+border:0;
+border-top:1px solid #EEE;
+height:0;
 }
 
-.nodeLink, .navLink
-{
-    border: 1px solid #fff;
-    color: #666;
-    display: block;
-    font-size: small;
-    height: 24px;
-    margin: 0;
-    padding: 8px 4px 0 28px;
-    text-decoration: none;
+input[type*="checkbox"] {
+border:1px!important;
 }
 
-.site .nodeLink
-{
-    height: 24px;
+input[type*="submit"] {
+background-color:#FFF;
+border:1px solid #999;
+color:#666;
+font-weight:700;
+padding:6px;
 }
 
-.sitepanel > img, .site > img, .rootnode > img, .newsite img
-{
-    padding: 2px 0 0;
-}
-
-.navsection a:hover
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #ffc;
-    border: 1px solid #699;
-    border-radius: 6px;
+input[type*="submit"][name*="Save"]:hover {
+background-color:#393;
+border:1px solid #393;
+color:#fff;
 }
 
-.navsection .showall
-{
-    color: #666;
-    font-size: small;
-    margin: 0;
-    padding: 0 0 0 4px;
-    width: auto;
+input[type*="submit"][name*="Duplicate"]:hover {
+background-color:#639;
+border:1px solid #639;
+color:#fff;
 }
 
-.sitepanel
-{
-    border-left: 2px solid #fff;
-    margin-bottom: 12px;
-    overflow: hidden;
-    padding-left: 4px;
-    position: relative;
+input[type*="submit"][name*="New"]:hover {
+background-color:#f60;
+border:1px solid #c30;
+color:#FFF;
 }
 
-#collapseallcontrol
-{
-    clear: both;
-}
-
-#collapseallcontrol label
-{
-    color: #666;
-    padding: 0 0 0 4px;
-    width: 40px;
-}
-
-#collapseallcontrol a
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #699;
-    border: 1px solid #366;
-    border-radius: 6px;
-    color: #fff;
-    display: inline;
-    margin: 0;
-    padding: 0 6px;
-    text-decoration: none;
-}
-
-.sitepanel ul
-{
-    border-left: 2px solid #fff;
-    list-style: none;
-    list-style-position: outside;
-    margin-bottom: 12px;
-    position: relative;
-}
-
-.sitepanel ul li
-{
-    position: relative;
+input,select,textarea {
+border:1px solid #AAA;
+color:#333;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+margin-left:1px;
+margin-right:1px;
+padding:6px;
 }
 
-.site
-{
-    font-weight: 700;
-    padding: 2px;
+.tblarge {
+width:50%;
 }
 
-.node
-{
-    width: 93%;
-}
-
-.node img
-{
-    padding: 6px 0 0;
-    position: relative;
+.arrowup:hover {
+background-image:url(../Images/ArrowUp-Over.gif);
 }
-
-.nodeActive
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #399;
-    border: 1px solid #366;
-    border-radius: 6px;
-    color: #fff;
-    cursor: pointer;
-    display: block;
-    font-size: small;
-    height: 24px;
-    margin: 0;
-    padding: 8px 4px 0 28px;
-    text-decoration: none;
+
+.arrowdown:hover {
+background-image:url(../Images/Arrowdown-Over.gif);
+}
+
+.arrowleft:hover {
+background-image:url(../Images/Arrowleft-Over.gif);
+}
+
+.arrowright:hover {
+background-image:url(../Images/Arrowright-Over.gif);
+}
+
+p,div {
+color:#333;
+font-family:Arial, Helvetica;
+font-size:small;
+}
+
+h1 {
+background-color:#fff;
+border-bottom-color:#399;
+border-bottom-style:solid;
+border-bottom-width:4px;
+color:#366;
+font-family:Arial, Helvetica;
+font-size:large;
+font-weight:700;
+padding-bottom:4px;
+}
+
+a {
+color:#33C;
+}
+
+.navsection {
+overflow:hidden;
+margin:2px;
+padding:0 2px 2px;
+}
+
+.nodeLink,.navLink {
+border:1px solid #fff;
+color:#666;
+display:block;
+font-size:small;
+height:24px;
+text-decoration:none;
+margin:0;
+padding:8px 4px 0 28px;
+}
+
+.site .nodeLink {
+height:24px;
+}
+
+.sitepanel > img,.site > img,.rootnode > img,.newsite img {
+padding:2px 0 0;
+}
+
+.navsection a:hover {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#ffc;
+border:1px solid #699;
+border-radius:6px;
+}
+
+.navsection .showall {
+color:#666;
+font-size:small;
+width:auto;
+margin:0;
+padding:0 0 0 4px;
+}
+
+.sitepanel {
+border-left:2px solid #fff;
+margin-bottom:12px;
+overflow:hidden;
+padding-left:4px;
+position:relative;
+}
+
+#collapseallcontrol {
+clear:both;
+}
+
+#collapseallcontrol label {
+color:#666;
+width:40px;
+padding:0 0 0 4px;
+}
+
+#collapseallcontrol a {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#699;
+border:1px solid #366;
+border-radius:6px;
+color:#fff;
+display:inline;
+text-decoration:none;
+margin:0;
+padding:0 6px;
+}
+
+.sitepanel ul {
+border-left:2px solid #fff;
+list-style:none;
+list-style-position:outside;
+margin-bottom:12px;
+position:relative;
+}
+
+.sitepanel ul li {
+position:relative;
+}
+
+.site {
+font-weight:700;
+padding:2px;
+}
+
+.node {
+width:93%;
+}
+
+.node img {
+position:relative;
+padding:6px 0 0;
+}
+
+.nodeActive {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#399;
+border:1px solid #366;
+border-radius:6px;
+color:#fff;
+cursor:pointer;
+display:block;
+font-size:small;
+height:24px;
+text-decoration:none;
+margin:0;
+padding:8px 4px 0 28px;
+}
+
+.nodeActive:hover {
+color:#366;
+}
+
+.group {
+border:2px solid #AAA;
+position:relative;
+margin:10px 0 20px;
+padding:8px;
+}
+
+.group > table {
+margin-top:16px;
+}
+
+.group h4 {
+background:#FFF;
+border-left-color:#AAA;
+border-left-style:solid;
+border-left-width:1px;
+border-right-color:#AAA;
+border-right-style:solid;
+border-right-width:1px;
+color:#333;
+font-weight:700;
+position:absolute;
+top:-7px;
+white-space:nowrap;
+margin:0;
+padding:0 8px;
+}
+
+.group h5 {
+color:#666;
+font-size:100%;
+margin:0;
+padding:0 4px 0 2px;
+}
+
+.group td {
+font-size:small;
+line-height:21px;
+vertical-align:top;
+}
+
+.group ul {
+margin:0;
+padding:2px;
+}
+
+.group li {
+display:inline;
+list-style-type:none;
+margin:0;
+}
+
+.validator {
+color:#C00;
+}
+
+.messagebox {
+background-color:#EEE;
+border:solid 1px #CCC;
+color:#060;
+font-weight:700;
+padding:4px;
+}
+
+.errorbox {
+background-color:#EEE;
+border:solid 1px #CCC;
+color:#C00;
+font-weight:700;
+padding:4px;
+}
+
+.pager {
+font-size:120%;
+}
+
+.pager a {
+margin-left:5px;
+margin-right:5px;
+}
+
+.pager a:hover {
+background-color:#ffa;
+}
+
+table.tbl {
+border-collapse:collapse;
+color:#333;
+visibility:visible;
+}
+
+table.tbl th {
+background-color:#EEE;
+border-bottom:solid 1px #CCC;
+border-right:solid 1px #CCC;
+color:#333;
+font-size:small;
+font-weight:700;
+padding:4px 8px;
+}
+
+table.tbl td {
+border-bottom:1px solid #EEE;
+font-size:small;
+padding:4px;
+}
+
+table.tbl a {
+padding-left:5px;
+padding-right:5px;
+}
+
+table.tbl tr {
+height:32px;
+}
+
+table.tbl tr td a[id*="Edit"]:hover {
+background-color:#393;
+border:1px solid #393;
+color:#FFF;
+}
+
+table.tbl tr td a[id*="Install"]:hover {
+background-color:#0A0;
+border:1px solid #0A0;
+color:#FFF;
+}
+
+#header {
+background-color:#FFF;
+background-image:url(../Images/PoweredByMain.gif);
+background-position:right;
+background-repeat:no-repeat;
+height:72px;
+padding:5px;
+}
+
+#headertitle {
+background-image:url(../Images/Logo-AdminMain.gif);
+background-repeat:no-repeat;
+color:#036;
+float:left;
+font-size:medium;
+height:64px;
+width:272px;
+padding:5px;
+}
+
+#headeruser {
+float:right;
+width:200px;
+}
+
+#subheader {
+background-color:#3cc;
+color:#fff;
+font-weight:700;
+position:relative;
+text-align:right;
+width:100%;
+padding:4px 0;
+}
+
+#subheader a {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#699;
+border:1px solid #366;
+border-radius:6px;
+color:#fff;
+text-decoration:none;
+padding:0 6px;
+}
+
+#adminwrapper {
+min-width:1000px;
+width:100%;
+}
+
+#menupane {
+float:left;
+min-width:280px;
+position:relative;
+width:28%;
+}
+
+#menupane h3 {
+-moz-border-radius:16px;
+-webkit-border-radius:16px;
+border:3px solid #399;
+border-radius:16px;
+color:#366;
+font-size:small;
+height:24px;
+min-width:156px;
+width:90%;
+margin:0;
+padding:8px 0 0 12px;
+}
+
+#contentpane {
+float:right;
+min-width:720px;
+position:relative;
+width:72%;
+}
+
+#menumodal {
+background-image:url(/Images/50%alpha.png);
+display:none;
+height:100%;
+position:absolute;
+text-align:center;
+width:100%;
+z-index:9999;
+}
+
+#menumodal #progress {
+background-image:url(/Images/progress-ani.gif);
+height:66px;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+top:30%;
+width:66px;
+}
+
+#pad {
+-moz-border-radius:12px;
+-webkit-border-radius:12px;
+background-color:#fff;
+border:2px #999 solid;
+border-radius:12px;
+margin:8px 4px;
+padding:16px;
+}
+
+#moduleadminpane {
+border:1px solid #999;
+background-color:#FFF;
+margin:10px;
+padding:8px;
+}
+
+.center {
+text-align:center;
+}
+
+#loginarea {
+-moz-border-radius:16px;
+-webkit-border-radius:16px;
+border:2px solid #666;
+display:block;
+margin-left:auto;
+margin-right:auto;
+margin-top:192px;
+width:358px;
+}
+
+#login {
+background-repeat:no-repeat;
+height:256px;
+padding-top:8px;
+text-align:left;
+width:358px;
+}
+
+#poweredby {
+background-image:url(../Images/PoweredBy.gif);
+display:block;
+height:80px;
+margin-left:auto;
+margin-right:auto;
+width:282px;
+}
+
+#login #lblError {
+display:block;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+padding-left:32px;
+position:relative;
+}
+
+#login #cuyahoga {
+background-image:url(../Images/Login/Logo.gif);
+height:48px;
+margin-left:52px;
+margin-top:24px;
+width:242px;
+border-style:none;
+}
+
+#login label {
+color:#666;
+display:block;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:700;
+height:26px;
+position:relative;
+width:88px;
+padding:14px 0 0 40px;
+}
+
+.loginerror {
+clear:right;
+color:red;
+display:block;
+float:left;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+height:30px;
+padding-left:32px;
+padding-top:12px;
+position:relative;
+width:128px;
+}
+
+#login input {
+-moz-border-radius:8px;
+-webkit-border-radius:8px;
+border:2px solid #666;
+color:#666;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+height:20px;
+line-height:24px;
+width:150px;
+margin:2px 0;
+padding:8px;
+}
+
+#login input:focus,#login input:hover {
+background-color:#ffc;
+}
+
+#login .btnLogin {
+background-position:0 0;
+background-repeat:no-repeat;
+display:block;
+float:right;
+font-weight:700;
+height:38px;
+overflow:auto;
+position:relative;
+width:72px;
+margin:8px 58px 0 0;
+padding:0;
+}
+
+#login .btnLogin:hover {
+background-color:#666;
+color:#fff;
+}
+
+#login h3 {
+background-color:#006;
+color:#FFF;
+display:block;
+font-size:medium;
+font-weight:700;
+text-align:center;
+margin:0;
+padding:4px;
+}
+
+.AspNet-CheckBoxList ul {
+width:256px;
+margin:0;
+padding:0;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+display:block;
+float:left;
+position:relative;
+margin:0;
+padding:4px 0;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item:hover {
+background-color:#f60;
+color:#fff;
+}
+
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item input {
+float:left;
+position:relative;
+margin:0 8px;
+}
+
+.AspNet-RadioButtonList ul {
+list-style:none;
+padding:0;
 }
 
-.nodeActive:hover
-{
-    color: #366;
+.admincontext .disabled,#login #cuyahoga span {
+display:none;
 }
 
-.group
-{
-    border: 2px solid #AAA;
-    margin: 10px 0 20px;
-    padding: 8px;
-    position: relative;
+input[type*="submit"]:hover,table.tbl tr td a:hover {
+background-color:#F60;
+border:1px solid #F60;
+color:#FFF;
 }
 
-.group > table
-{
-    margin-top: 16px;
+input[type*="submit"][name*="Cancel"]:hover,table.tbl tr td a[id*="Detach"]:hover {
+background-color:#666;
+border:1px solid #666;
+color:#FFF;
 }
 
-.group h4
-{
-    background: #FFF;
-    border-left-color: #AAA;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-color: #AAA;
-    border-right-style: solid;
-    border-right-width: 1px;
-    color: #333;
-    font-weight: 700;
-    margin: 0;
-    padding: 0 8px;
-    position: absolute;
-    top: -7px;
-    white-space: nowrap;
+input[type*="submit"][name*="Delete"]:hover,input[type*="submit"][name*="Rebuild"]:hover,table.tbl tr td a[id*="Delete"]:hover,table.tbl tr td a[id*="Uninstall"]:hover {
+background-color:red;
+border:1px solid red;
+color:#FFF;
 }
 
-.group h5
-{
-    color: #666;
-    font-size: 100%;
-    margin: 0;
-    padding: 0 4px 0 2px;
+.sitepanel:hover,.treeview:hover {
+border-left:2px solid #3cc;
 }
 
-.group td
-{
-    font-size: small;
-    line-height: 21px;
-    vertical-align: top;
+#collapseallcontrol a:hover,#subheader a:hover {
+background-color:#e6f7f7;
+color:#366;
 }
 
-.group ul
-{
-    margin: 0;
-    padding: 2px;
+table.tbl tr td a,table.tbl tr td a[id*="Edit"],table.tbl tr td a[id*="Detach"],table.tbl tr td a[id*="Delete"],table.tbl tr td a[id*="Uninstall"],table.tbl tr td a[id*="Install"] {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background-color:#FFF;
+border:1px solid #999;
+color:#999;
+font-weight:700;
+text-decoration:none;
+margin:4px;
+padding:4px;
 }
 
-.group li
-{
-    display: inline;
-    list-style-type: none;
-    margin: 0;
+.AspNet-CheckBoxList .AspNet-CheckBoxList-Item label,.AspNet-RadioButtonList ul li label {
+display:block;
+float:left;
+position:relative;
+width:220px;
+margin:0;
+padding:0;
 }
 
-.validator
-{
-    color: #C00;
+.AdminContentPad {
+padding:16px;
 }
 
-.messagebox
-{
-    background-color: #EEE;
-    border: solid 1px #CCC;
-    color: #060;
-    font-weight: 700;
-    padding: 4px;
+
+/*Module admin styles*/
+
+.panel60,.panel40 {
+-moz-border-radius:8px;
+-webkit-border-radius:8px;
+border-radius:8px;
+}
+
+.panel60 {
+position:relative;
+border:1px solid #CCC;
+min-width:550px;
+width:60%;
+margin-bottom:16px;
+padding:8px;
+}
+
+.panel40 {
+position:relative;
+border:1px solid #CCC;
+min-width:550px;
+width:40%;
+margin-bottom:16px;
+padding:8px;
+}
+
+#moduleadminpane fieldset {
+border:1px solid #CCC;
+padding:8px;
+}
+
+#moduleadminpane .AspNet-GridView table {
+width:100%;
+border:none 0;
+}
+
+#moduleadminpane .AspNet-GridView table th {
+font-size:small;
+font-weight:700;
+color:#FFF;
+background-color:#CCC;
+text-align:left;
+padding:2px;
+}
+
+#moduleadminpane .AspNet-GridView table tbody tr {
+background-color:#FFF;
+font-size:small;
+font-weight:400;
+color:#666;
+text-align:left;
+padding:2px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Alternate {
+background-color:#EFEFEF;
+font-size:small;
+font-weight:400;
+color:#666;
+text-align:left;
+padding:2px;
 }
 
-.errorbox
-{
-    background-color: #EEE;
-    border: solid 1px #CCC;
-    color: #C00;
-    font-weight: 700;
-    padding: 4px;
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected {
+background-color:#F60;
+font-size:small;
+font-weight:400;
+color:#FFF;
+text-align:left;
+padding:2px;
 }
 
-.pager
-{
-    font-size: 120%;
+#moduleadminpane .AspNet-GridView table tbody td {
+font-size:small;
+font-weight:400;
+color:#666;
+text-align:left;
 }
 
-.pager a
-{
-    margin-left: 5px;
-    margin-right: 5px;
+#moduleadminpane .AspNet-GridView a[id*="btnSelect"] {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#CCC;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
 }
 
-.pager a:hover
-{
-    background-color: #ffa;
+#moduleadminpane .AspNet-GridView a[id*="btnSelect"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#F60;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
 }
-
-table.tbl
-{
-    border-collapse: collapse;
-    color: #333;
-    visibility: visible;
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnSelect"] {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #FFF;
+background-color:#F60;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnSelect"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #FF6;
+background-color:#F60;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
 }
 
-table.tbl th
-{
-    background-color: #EEE;
-    border-bottom: solid 1px #CCC;
-    border-right: solid 1px #CCC;
-    color: #333;
-    font-size: small;
-    font-weight: 700;
-    padding: 4px 8px;
+#moduleadminpane .AspNet-GridView a[id*="btnEdit"] {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#6C3;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
 }
 
-table.tbl td
-{
-    border-bottom: 1px solid #EEE;
-    font-size: small;
-    padding: 4px;
-}
-
-table.tbl a
-{
-    padding-left: 5px;
-    padding-right: 5px;
-}
+#moduleadminpane .AspNet-GridView a[id*="btnEdit"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#390;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnEdit"] {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #6C3;
+background-color:#6C3;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
 
-table.tbl tr
-{
-    height: 32px;
-}
-
-table.tbl tr td a[id*="Edit"]:hover
-{
-    background-color: #393;
-    border: 1px solid #393;
-    color: #FFF;
-}
-
-table.tbl tr td a[id*="Install"]:hover
-{
-    background-color: #0A0;
-    border: 1px solid #0A0;
-    color: #FFF;
-}
-
-#header
-{
-    background-color: #FFF;
-    background-image: url(../Images/PoweredByMain.gif);
-    background-position: right;
-    background-repeat: no-repeat;
-    height: 72px;
-    padding: 5px;
-}
-
-#headertitle
-{
-    background-image: url(../Images/Logo-AdminMain.gif);
-    background-repeat: no-repeat;
-    color: #036;
-    float: left;
-    font-size: medium;
-    height: 64px;
-    padding: 5px;
-    width: 272px;
-}
-
-#headeruser
-{
-    float: right;
-    width: 200px;
-}
-
-#subheader
-{
-    background-color: #3cc;
-    color: #fff;
-    font-weight: 700;
-    padding: 4px 0;
-    position: relative;
-    text-align: right;
-    width: 100%;
-}
-
-#subheader a
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #699;
-    border: 1px solid #366;
-    border-radius: 6px;
-    color: #fff;
-    padding: 0 6px;
-    text-decoration: none;
-}
-
-#adminwrapper
-{
-    min-width: 1000px;
-    width: 100%;
-}
-
-#menupane
-{
-    float: left;
-    min-width: 280px;
-    position: relative;
-    width: 28%;
-}
-
-#menupane h3
-{
-    -moz-border-radius: 16px;
-    -webkit-border-radius: 16px;
-    border: 3px solid #399;
-    border-radius: 16px;
-    color: #366;
-    font-size: small;
-    height: 24px;
-    margin: 0;
-    min-width: 156px;
-    padding: 8px 0 0 12px;
-    width: 90%;
-}
-
-#contentpane
-{
-    float: right;
-    min-width: 720px;
-    position: relative;
-    width: 72%;
-}
-
-#menumodal
-{
-    background-image: url(/Images/50%alpha.png);
-    display: none;
-    height: 100%;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    z-index: 9999;
-}
-
-#menumodal #progress
-{
-    background-image: url(/Images/progress-ani.gif);
-    height: 66px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 30%;
-    width: 66px;
-}
-
-#pad
-{
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    background-color: #fff;
-    border: 2px #999 solid;
-    border-radius: 12px;
-    margin: 8px 4px;
-    padding: 16px;
-}
-
-#moduleadminpane
-{
-    background-color: #FFF;
-    margin: 10px;
-    padding: 10px;
-}
-
-.center
-{
-    text-align: center;
-}
-
-#loginarea
-{
-    -moz-border-radius: 16px;
-    -webkit-border-radius: 16px;
-    border: 2px solid #666;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 192px;
-    width: 358px;
-}
-
-#login
-{
-    background-repeat: no-repeat;
-    height: 256px;
-    padding-top: 8px;
-    text-align: left;
-    width: 358px;
-}
-
-#poweredby
-{
-    background-image: url(../Images/PoweredBy.gif);
-    display: block;
-    height: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 282px;
-}
-
-#login #lblError
-{
-    display: block;
-    float: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: small;
-    padding-left: 32px;
-    position: relative;
-}
-
-#login #cuyahoga
-{
-    background-image: url(../Images/Login/Logo.gif);
-    border-style: none;
-    height: 48px;
-    margin-left: 52px;
-    margin-top: 24px;
-    width: 242px;
-}
-
-#login label
-{
-    color: #666;
-    display: block;
-    float: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: small;
-    font-weight: 700;
-    height: 26px;
-    padding: 14px 0 0 40px;
-    position: relative;
-    width: 88px;
-}
-
-.loginerror
-{
-    clear: right;
-    color: red;
-    display: block;
-    float: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: small;
-    height: 30px;
-    padding-left: 32px;
-    padding-top: 12px;
-    position: relative;
-    width: 128px;
-}
-
-#login input
-{
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border: 2px solid #666;
-    color: #666;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: small;
-    height: 20px;
-    line-height: 24px;
-    margin: 2px 0;
-    padding: 8px;
-    width: 150px;
-}
-
-#login input:focus, #login input:hover
-{
-    background-color: #ffc;
-}
-
-#login .btnLogin
-{
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    display: block;
-    float: right;
-    font-weight: 700;
-    height: 38px;
-    margin: 8px 58px 0 0;
-    overflow: auto;
-    padding: 0;
-    position: relative;
-    width: 72px;
-}
-
-#login .btnLogin:hover
-{
-    background-color: #666;
-    color: #fff;
-}
-
-#login h3
-{
-    background-color: #006;
-    color: #FFF;
-    display: block;
-    font-size: medium;
-    font-weight: 700;
-    margin: 0;
-    padding: 4px;
-    text-align: center;
-}
-
-.AspNet-CheckBoxList ul
-{
-    margin: 0;
-    padding: 0;
-    width: 256px;
-}
-
-.AspNet-CheckBoxList .AspNet-CheckBoxList-Item
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    display: block;
-    float: left;
-    margin: 0;
-    padding: 4px 0;
-    position: relative;
-}
-
-.AspNet-CheckBoxList .AspNet-CheckBoxList-Item:hover
-{
-    background-color: #f60;
-    color: #fff;
-}
-
-.AspNet-CheckBoxList .AspNet-CheckBoxList-Item input
-{
-    float: left;
-    margin: 0 8px;
-    position: relative;
-}
-
-.AspNet-RadioButtonList ul
-{
-    list-style: none;
-    padding: 0;
-}
-
-.admincontext .disabled, #login #cuyahoga span
-{
-    display: none;
-}
-
-input:hover, select:hover, textarea:hover, input:focus, select:focus, textarea:focus, table.tbl tr:hover
-{
-    background-color: #FFC;
-}
-
-input[type*="submit"]:hover, table.tbl tr td a:hover
-{
-    background-color: #F60;
-    border: 1px solid #F60;
-    color: #FFF;
-}
-
-input[type*="submit"][name*="Cancel"]:hover, table.tbl tr td a[id*="Detach"]:hover
-{
-    background-color: #666;
-    border: 1px solid #666;
-    color: #FFF;
-}
-
-input[type*="submit"][name*="Delete"]:hover, input[type*="submit"][name*="Rebuild"]:hover, table.tbl tr td a[id*="Delete"]:hover, table.tbl tr td a[id*="Uninstall"]:hover
-{
-    background-color: red;
-    border: 1px solid red;
-    color: #FFF;
-}
-
-.hidden, #headertitle span
-{
-    display: none;
-    visibility: hidden;
-}
-
-.sitepanel:hover, .treeview:hover
-{
-    border-left: 2px solid #3cc;
-}
-
-#collapseallcontrol a:hover, #subheader a:hover
-{
-    background-color: #e6f7f7;
-    color: #366;
-}
-
-table.tbl tr td a, table.tbl tr td a[id*="Edit"], table.tbl tr td a[id*="Detach"], table.tbl tr td a[id*="Delete"], table.tbl tr td a[id*="Uninstall"], table.tbl tr td a[id*="Install"]
-{
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    background-color: #FFF;
-    border: 1px solid #999;
-    color: #999;
-    font-weight: 700;
-    margin: 4px;
-    padding: 4px;
-    text-decoration: none;
-}
-
-.AspNet-CheckBoxList .AspNet-CheckBoxList-Item label, .AspNet-RadioButtonList ul li label
-{
-    display: block;
-    float: left;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 220px;
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnEdit"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #390;
+background-color:#390;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnUpdate"] {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#B55BB5;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnUpdate"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#9B379B;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnUpdate"] {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #B55BB5;
+background-color:#B55BB5;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnUpdate"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #9B379B;
+background-color:#9B379B;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnCancel"] {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#AAA;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnCancel"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#999;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnCancel"] {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #AAA;
+background-color:#AAA;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnCancel"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #999;
+background-color:#999;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnDelete"] {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:red;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView a[id*="btnDelete"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:0;
+background-color:#A00;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnDelete"] {
+display:block;
+width:auto;
+height:auto;
+border:1px solid red;
+background-color:red;
+color:#FFF;
+font-size:small;
+font-weight:700;
+text-align:center;
+margin-bottom:1px;
+margin-top:1px;
+padding:4px;
+}
+
+#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnDelete"]:hover {
+display:block;
+width:auto;
+height:auto;
+border:1px solid #A00;
+background-color:#A00;
+color:#FFF;
+font-size:small;
+font-weight:700;
+padding:4px;
+}
+
+#moduleadminpane fieldset .validator {
+color:red;
+}
+
+#moduleadminpane fieldset legend {
+margin-bottom:16px;
+border:1px solid #CCC;
+font-size:small;
+font-weight:700;
+color:#666;
+padding:4px;
+}
+
+#moduleadminpane fieldset label {
+position:relative;
+display:inline-block;
+width:128px;
+font-size:small;
+font-weight:700;
+color:#666;
+padding:6px;
+}
+
+#moduleadminpane fieldset input[type*="checkbox"] {
+width:16px;
+height:16px;
+border:0;
+}
+
+#moduleadminpane fieldset .SubmitButton {
+margin-top:8px;
+border:1px solid #CCC;
+background-color:#EEE;
+color:#666;
+float:right;
+}
+
+#moduleadminpane fieldset .SubmitButton:hover {
+margin-top:8px;
+border:1px solid #CCC;
+background-color:#DDD;
+color:#666;
+float:right;
+}
+
+input,textarea,select,.group,fieldset,legend,#moduleadminpane .AspNet-GridView a[id*="btnSelect"],#moduleadminpane .AspNet-GridView a[id*="btnEdit"],#moduleadminpane .AspNet-GridView a[id*="btnUpdate"],#moduleadminpane .AspNet-GridView a[id*="btnCancel"],#moduleadminpane .AspNet-GridView a[id*="btnDelete"] {
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+border-radius:6px;
+}
+
+input:hover,select:hover,textarea:hover,input:focus,select:focus,textarea:focus,table.tbl tr:hover,#moduleadminpane .AspNet-GridView table tbody tr:hover {
+background-color:#FFC;
+}
+
+.hidden,#headertitle span,#moduleadminpane .hidden {
+display:none;
+visibility:hidden;
 }

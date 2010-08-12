@@ -38,7 +38,7 @@
 		}
 		else
 		{
-			return (cuyahogaUser.IsInRole("Administrator") || cuyahogaUser.IsInRole("Editor"));
+			return (cuyahogaUser.IsInRole("Administrator") || cuyahogaUser.IsInRole("Site Administrator") || cuyahogaUser.IsInRole("Editor"));
 		}
 	}
  
@@ -48,13 +48,15 @@
 		Enabled = CheckAuthentication();
 
 		// URL path to user files.
-        UserFilesPath = Cuyahoga.Web.Util.UrlHelper.GetApplicationPath() + "SiteData/" + Session["SiteId"].ToString();
+        //UserFilesPath = Cuyahoga.Web.Util.UrlHelper.GetApplicationPath() + "SiteData/" + Session["SiteId"].ToString();
+        UserFilesPath = Cuyahoga.Web.Util.UrlHelper.GetApplicationPath() + "SiteData/" + HttpContext.Current.Application["FCKeditor:UserFilesPath"].ToString();
 
 		// The connector tries to resolve the above UserFilesPath automatically.
 		// Use the following setting it you prefer to explicitely specify the
 		// absolute path. Examples: 'C:\\MySite\\userfiles\\' or '/root/mysite/userfiles/'.
 		// Attention: The above 'UserFilesPath' URL must point to the same directory.
-        UserFilesAbsolutePath = Server.MapPath("~/SiteData/") + Session["SiteId"].ToString();
+        //UserFilesAbsolutePath = Server.MapPath("~/SiteData/") + Session["SiteId"].ToString();
+        UserFilesAbsolutePath = HttpContext.Current.Application["FCKeditor:UserFilesAbsolutePath"].ToString();
 
 		// Due to security issues with Apache modules, it is recommended to leave the
 		// following setting enabled.

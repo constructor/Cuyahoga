@@ -45,7 +45,6 @@ namespace Cuyahoga.Modules.Articles.Web
             //To ADD template styles in editor DropDown List
             fckContent.StylesXmlPath = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/css/fckstyles.xml";
 
-
 			this._articleModule = base.Module as ArticleModule;
 			this.btnCancel.Attributes.Add("onclick", String.Format("document.location.href='AdminArticles.aspx{0}'", base.GetBaseQueryString()));
 
@@ -68,6 +67,7 @@ namespace Cuyahoga.Modules.Articles.Web
 					this.btnDelete.Attributes.Add("onclick", "return confirm('Are you sure?');");
 				}
 			}
+
 		}
 
 		private void BindCategories()
