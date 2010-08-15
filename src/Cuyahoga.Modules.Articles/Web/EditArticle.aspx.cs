@@ -22,6 +22,7 @@ using Cuyahoga.Modules.Articles.Domain;
 
 namespace Cuyahoga.Modules.Articles.Web
 {
+
 	/// <summary>
 	/// Summary description for EditArticle.
 	/// </summary>
@@ -267,5 +268,6 @@ namespace Cuyahoga.Modules.Articles.Web
 				ShowError("No article found to delete");
 			}
 		}
+
 	}
 }

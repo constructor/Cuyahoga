@@ -34,9 +34,13 @@ namespace Cuyahoga.Modules.Articles.Web
 			if (! this.IsPostBack)
 			{
 				//this.rptArticles.DataSource = this._articleModule.GetArticleList();
-                this.rptArticles.DataSource = this._articleModule.GetFullArticleList();
+                //this.rptArticles.DataSource = this._articleModule._GetFullArticleList();
+                this.rptArticles.DataSource = this._articleModule._contentItemService.FindContentItemsBySite(this._articleModule.Section.Site);
 				this.rptArticles.DataBind();
-			}
+
+                this.ddlArticleFilter.DataSource = this._articleModule._categoryService.GetAllCategories(this._articleModule.Section.Site);
+                this.ddlArticleFilter.DataBind();
+            }
 		}
 
         protected string GetArtacleCatagories(string articleid) 
@@ -51,25 +55,25 @@ namespace Cuyahoga.Modules.Articles.Web
         }
 
 		#region Web Form Designer generated code
-		override protected void OnInit(EventArgs e)
-		{
-			//
-			// CODEGEN: This call is required by the ASP.NET Web Form Designer.
-			//
-			InitializeComponent();
-			base.OnInit(e);
-		}
-		
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{    
-			this.rptArticles.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.rptArticles_ItemDataBound);
-			this.pgrArticles.PageChanged += new Cuyahoga.ServerControls.PageChangedEventHandler(this.pgrArticles_PageChanged);
+		    override protected void OnInit(EventArgs e)
+		    {
+			    //
+			    // CODEGEN: This call is required by the ASP.NET Web Form Designer.
+			    //
+			    InitializeComponent();
+			    base.OnInit(e);
+		    }
+    		
+		    /// <summary>
+		    /// Required method for Designer support - do not modify
+		    /// the contents of this method with the code editor.
+		    /// </summary>
+		    private void InitializeComponent()
+		    {    
+			    this.rptArticles.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.rptArticles_ItemDataBound);
+			    this.pgrArticles.PageChanged += new Cuyahoga.ServerControls.PageChangedEventHandler(this.pgrArticles_PageChanged);
 
-		}
+		    }
 		#endregion
 
 		private void rptArticles_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
@@ -106,8 +110,30 @@ namespace Cuyahoga.Modules.Articles.Web
 
 		protected void pgrArticles_CacheEmpty(object sender, System.EventArgs e)
 		{
-			this.rptArticles.DataSource = this._articleModule.GetArticleList();
+			//this.rptArticles.DataSource = this._articleModule.GetArticleList();
+            this.rptArticles.DataSource = this._articleModule._contentItemService.FindContentItemsBySite(this._articleModule.Section.Site);
 		}
+
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (ddlArticleFilter.SelectedValue != "All")
+            {
+                Category c = _articleModule._categoryService.GetById(int.Parse(ddlArticleFilter.SelectedValue));
+               
+                Cuyahoga.Core.Service.Content.ContentItemSortBy sortBy = (Cuyahoga.Core.Service.Content.ContentItemSortBy)Enum.Parse(typeof(Cuyahoga.Core.Service.Content.ContentItemSortBy), ddlSortBy.SelectedValue, true);
+                Cuyahoga.Core.Service.Content.ContentItemSortDirection sortDirection = (Cuyahoga.Core.Service.Content.ContentItemSortDirection)Enum.Parse(typeof(Cuyahoga.Core.Service.Content.ContentItemSortDirection), ddlSortDirection.SelectedValue, true);
+                
+                this.rptArticles.DataSource = this._articleModule._contentItemService.FindVisibleContentItemsByCategory(c,
+                    new Cuyahoga.Core.Service.Content.ContentItemQuerySettings(sortBy, sortDirection));
+
+                this.rptArticles.DataBind();
+            }
+            else
+            {
+                this.rptArticles.DataSource = this._articleModule.GetFullArticleList();
+                this.rptArticles.DataBind();
+            }
+        }
 
     }
 }

@@ -1,4 +1,5 @@
-<%@ Register TagPrefix="cc1" Namespace="Cuyahoga.ServerControls" Assembly="Cuyahoga.ServerControls" %><%@ Page language="c#" Codebehind="AdminArticles.aspx.cs" AutoEventWireup="True" Inherits="Cuyahoga.Modules.Articles.Web.AdminArticles" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register TagPrefix="cc1" Namespace="Cuyahoga.ServerControls" Assembly="Cuyahoga.ServerControls" %><%@ Page language="c#" Codebehind="AdminArticles.aspx.cs" AutoEventWireup="True" Inherits="Cuyahoga.Modules.Articles.Web.AdminArticles" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
 	<title>Articles</title>
@@ -8,7 +9,25 @@
 			<div id="moduleadminpane">
 				<h1>Article management</h1>
                     <div id="catagoryfilers" class="group">
-                    <h4>Article Filtering</h4>
+                        <h4>Article Filtering</h4>
+                        <asp:Label ID="lblArtcleFilter" runat="server" AssociatedControlID="ddlArticleFilter" Text="Category"></asp:Label>
+                        <asp:DropDownList ID="ddlArticleFilter" runat="server" DataTextField="Name" 
+                            DataValueField="Id" AppendDataBoundItems="true">
+                            <asp:ListItem>All</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlSortBy" runat="server">
+                            <asp:ListItem>CreatedAt</asp:ListItem>
+                            <asp:ListItem>CreatedBy</asp:ListItem>
+                            <asp:ListItem>ModifiedAt</asp:ListItem>
+                            <asp:ListItem>ModifiedBy</asp:ListItem>
+                            <asp:ListItem>PublishedAt</asp:ListItem>
+                            <asp:ListItem>Title</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlSortDirection" runat="server">
+                            <asp:ListItem>Asc</asp:ListItem>
+                            <asp:ListItem>Desc</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:Button ID="btnFilter" runat="server" Text="Filter Articles" onclick="btnFilter_Click" />
                     </div>
 				    <div id="categories" class="group">
 				        <h4>Articles</h4>
@@ -50,7 +69,7 @@
 				    </div>
 				</div>
 				<br/>
-				<input id="btnNew" type="button" value="New Article" runat="server">
+				<input id="btnNew" type="button" value="New Article" runat="server" />
 			</div>
 		</form>
 	</body>

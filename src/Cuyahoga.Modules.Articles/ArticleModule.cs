@@ -159,99 +159,99 @@ namespace Cuyahoga.Modules.Articles
 
         #region ModuleBase overrides
 
-		public override void ReadSectionSettings()
-		{
-			base.ReadSectionSettings();
+		    public override void ReadSectionSettings()
+		    {
+			    base.ReadSectionSettings();
 
-			try
-			{
-				this._allowComments = Convert.ToBoolean(base.Section.Settings["ALLOW_COMMENTS"]);
-				this._allowAnonymousComments = Convert.ToBoolean(base.Section.Settings["ALLOW_ANONYMOUS_COMMENTS"]);
-				this._allowSyndication = Convert.ToBoolean(base.Section.Settings["ALLOW_SYNDICATION"]);
-				this._showArchive = Convert.ToBoolean(base.Section.Settings["SHOW_ARCHIVE"]);
-				this._showAuthor = Convert.ToBoolean(base.Section.Settings["SHOW_AUTHOR"]);
-				this._showCategory = Convert.ToBoolean(base.Section.Settings["SHOW_CATEGORY"]);
-				this._showDateTime = Convert.ToBoolean(base.Section.Settings["SHOW_DATETIME"]);
-				this._numberOfArticlesInList = Convert.ToInt32(base.Section.Settings["NUMBER_OF_ARTICLES_IN_LIST"]);
-				this._displayType = (DisplayType)Enum.Parse(typeof(DisplayType), base.Section.Settings["DISPLAY_TYPE"].ToString());
-				this._sortBy = (SortBy)Enum.Parse(typeof(SortBy), base.Section.Settings["SORT_BY"].ToString());
-				this._sortDirection = (SortDirection)Enum.Parse(typeof(SortDirection), base.Section.Settings["SORT_DIRECTION"].ToString());
-			}
-			catch
-			{
-				// Only if the module settings are not in the database yet for some reason.
-				this._sortBy = SortBy.DateOnline;
-				this._sortDirection = SortDirection.DESC;
-			}
-		}
+			    try
+			    {
+				    this._allowComments = Convert.ToBoolean(base.Section.Settings["ALLOW_COMMENTS"]);
+				    this._allowAnonymousComments = Convert.ToBoolean(base.Section.Settings["ALLOW_ANONYMOUS_COMMENTS"]);
+				    this._allowSyndication = Convert.ToBoolean(base.Section.Settings["ALLOW_SYNDICATION"]);
+				    this._showArchive = Convert.ToBoolean(base.Section.Settings["SHOW_ARCHIVE"]);
+				    this._showAuthor = Convert.ToBoolean(base.Section.Settings["SHOW_AUTHOR"]);
+				    this._showCategory = Convert.ToBoolean(base.Section.Settings["SHOW_CATEGORY"]);
+				    this._showDateTime = Convert.ToBoolean(base.Section.Settings["SHOW_DATETIME"]);
+				    this._numberOfArticlesInList = Convert.ToInt32(base.Section.Settings["NUMBER_OF_ARTICLES_IN_LIST"]);
+				    this._displayType = (DisplayType)Enum.Parse(typeof(DisplayType), base.Section.Settings["DISPLAY_TYPE"].ToString());
+				    this._sortBy = (SortBy)Enum.Parse(typeof(SortBy), base.Section.Settings["SORT_BY"].ToString());
+				    this._sortDirection = (SortDirection)Enum.Parse(typeof(SortDirection), base.Section.Settings["SORT_DIRECTION"].ToString());
+			    }
+			    catch
+			    {
+				    // Only if the module settings are not in the database yet for some reason.
+				    this._sortBy = SortBy.DateOnline;
+				    this._sortDirection = SortDirection.DESC;
+			    }
+		    }
 
-		/// <summary>
-		/// This module doesn't automatically delete content.
-		/// </summary>
-		public override void DeleteModuleContent()
-		{
-			if (this._contentItemService.FindContentItemsBySection(base.Section).Count > 0)
-			{
-				throw new ActionForbiddenException("You have to manually delete the related Articles before you can delete the Section.");
-			}
-		}
+		    /// <summary>
+		    /// This module doesn't automatically delete content.
+		    /// </summary>
+		    public override void DeleteModuleContent()
+		    {
+			    if (this._contentItemService.FindContentItemsBySection(base.Section).Count > 0)
+			    {
+				    throw new ActionForbiddenException("You have to manually delete the related Articles before you can delete the Section.");
+			    }
+		    }
 
-		/// <summary>
-		/// Parse the pathinfo. Translate pathinfo parameters into member variables.
-		/// </summary>
-		protected override void ParsePathInfo()
-		{
-			if (base.ModulePathInfo != null)
-			{
-				// try to find an articleId
-				string expression = @"^\/(\d+)";
-				if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
-				{
-					this._currentArticleId = Int32.Parse(Regex.Match(base.ModulePathInfo, expression).Groups[1].Value);
-					this._currentAction = ArticleModuleAction.Details;
-					return;
-				}
+		    /// <summary>
+		    /// Parse the pathinfo. Translate pathinfo parameters into member variables.
+		    /// </summary>
+		    protected override void ParsePathInfo()
+		    {
+			    if (base.ModulePathInfo != null)
+			    {
+				    // try to find an articleId
+				    string expression = @"^\/(\d+)";
+				    if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
+				    {
+					    this._currentArticleId = Int32.Parse(Regex.Match(base.ModulePathInfo, expression).Groups[1].Value);
+					    this._currentAction = ArticleModuleAction.Details;
+					    return;
+				    }
 
-				// try to find a categoryid
-				expression = @"^\/category\/(\d+)";
-				if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
-				{
-					this._currentCategoryId = Int32.Parse(Regex.Match(base.ModulePathInfo, expression).Groups[1].Value);
-					this._currentAction = ArticleModuleAction.Category;
-					return;
-				}
+				    // try to find a categoryid
+				    expression = @"^\/category\/(\d+)";
+				    if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
+				    {
+					    this._currentCategoryId = Int32.Parse(Regex.Match(base.ModulePathInfo, expression).Groups[1].Value);
+					    this._currentAction = ArticleModuleAction.Category;
+					    return;
+				    }
 
-				expression = @"^\/archive";
-				if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
-				{
-					this._isArchive = true;
-					this._currentAction = ArticleModuleAction.Archive;
-					return;
-				}
-			}
-		}
+				    expression = @"^\/archive";
+				    if (Regex.IsMatch(base.ModulePathInfo, expression, RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.Compiled))
+				    {
+					    this._isArchive = true;
+					    this._currentAction = ArticleModuleAction.Archive;
+					    return;
+				    }
+			    }
+		    }
 
-		/// <summary>
-		/// The current view user control based on the action that was set while parsing the pathinfo.
-		/// </summary>
-		public override string CurrentViewControlPath
-		{
-			get
-			{
-				string basePath = "Modules/Articles/";
-				switch (this._currentAction)
-				{
-					case ArticleModuleAction.List:
-					case ArticleModuleAction.Category:
-					case ArticleModuleAction.Archive:
-						return basePath + "Articles.ascx";
-					case ArticleModuleAction.Details:
-						return basePath + "ArticleDetails.ascx";
-					default:
-						return basePath + "Articles.ascx";
-				}
-			}
-		}
+		    /// <summary>
+		    /// The current view user control based on the action that was set while parsing the pathinfo.
+		    /// </summary>
+		    public override string CurrentViewControlPath
+		    {
+			    get
+			    {
+				    string basePath = "Modules/Articles/";
+				    switch (this._currentAction)
+				    {
+					    case ArticleModuleAction.List:
+					    case ArticleModuleAction.Category:
+					    case ArticleModuleAction.Archive:
+						    return basePath + "Articles.ascx";
+					    case ArticleModuleAction.Details:
+						    return basePath + "ArticleDetails.ascx";
+					    default:
+						    return basePath + "Articles.ascx";
+				    }
+			    }
+		    }
 
 		#endregion
 

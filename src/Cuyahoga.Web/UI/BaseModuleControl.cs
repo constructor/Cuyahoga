@@ -124,7 +124,7 @@ namespace Cuyahoga.Web.UI
             if (this._cuyahogaUser != null && (this._cuyahogaUser.CanEdit(this._module.Section) || this._cuyahogaUser.HasRight(Rights.AccessAdmin)))//.HasPermission(AccessLevel.Administrator)))
             {
                 string paneltitle = this._module.DisplayTitle.Length > 15 ? this._module.DisplayTitle.Substring(0, 12) + "..." : this._module.DisplayTitle;
-                writer.Write(String.Format("<img class=\"editorcontextmenu\" src=\"{0}\"/><div class=\"moduletools\"><div class=\"moduletitle\"> " + Text.TruncateText(paneltitle, 16) + " </div>", UrlHelper.GetApplicationPath() + "admin/images/arrow-down-green.png"));
+                writer.Write(String.Format("<img class=\"editorcontextmenu\" src=\"{0}\" alt=\"Toggle edit options\"/><div class=\"moduletools\"><div class=\"moduletitle\"> " + Text.TruncateText(paneltitle, 16) + " </div>", UrlHelper.GetApplicationPath() + "admin/images/arrow-down-green.png"));
                 // added for 1.6.0
                 bool isPreview = (Request.QueryString["preview"] == null
                                     ? false
@@ -138,19 +138,21 @@ namespace Cuyahoga.Web.UI
                     {
                         if (this._module.Section.Node != null)
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Edit</span></a>"
-                                                       , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
-                                                       , this._module.Section.Node.Id
-                                                       , this._module.Section.Id
-                                                       , this._module.Section.Site.Id));
+                            writer.Write(String.Format("&nbsp;<a id=\"editcontent{0}\" href=\"{1}?NodeId={2}&amp;SectionId={3}&amp;SiteId={4}\"><span>Edit</span></a>"
+                                , this._module.Section.Id                            
+                                , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
+                                , this._module.Section.Node.Id
+                                , this._module.Section.Id
+                                , this._module.Section.Site.Id));
                         }
                         else
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"editcontent\" href=\"{0}?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Edit</span></a>"
-                                                       , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
-                                                       , this.PageEngine.ActiveNode.Id
-                                                       , this._module.Section.Id
-                                                       , this._module.Section.Site.Id));
+                            writer.Write(String.Format("&nbsp;<a id=\"editcontent{0}\" href=\"{1}?NodeId={2}&amp;SectionId={3}&amp;SiteId={4}\"><span>Edit</span></a>"
+                                 , this._module.Section.Id
+                                 , UrlHelper.GetApplicationPath() + this._module.Section.ModuleType.EditPath
+                                 , this.PageEngine.ActiveNode.Id
+                                 , this._module.Section.Id
+                                 , this._module.Section.Site.Id));
                         }
                     }
                     if (this._cuyahogaUser.HasRight(Rights.AccessAdmin))//.HasPermission(AccessLevel.Administrator))
@@ -159,24 +161,27 @@ namespace Cuyahoga.Web.UI
                         {
                             writer.Write(
                                 String.Format(
-                                    "&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?NodeId={1}&amp;SectionId={2}&amp;SiteId={3}\"><span>Section Properties</span></a>"
+                                    "&nbsp;<a id=\"sectionproperties{0}\" href=\"{1}Admin/SectionEdit.aspx?NodeId={2}&amp;SectionId={3}&amp;SiteId={4}\"><span>Section Properties</span></a>"
+                                    , this._module.Section.Id
                                     , UrlHelper.GetApplicationPath()
                                     , this._module.Section.Node.Id
                                     , this._module.Section.Id
                                     , this._module.Section.Site.Id));
                             writer.Write(
                                 String.Format(
-                                    "&nbsp;<a id=\"pageproperties\" href=\"{0}Admin/NodeEdit.aspx?NodeId={1}&amp;SiteId={2}\"><span>Page Properties</span></a>"
+                                    "&nbsp;<a id=\"pageproperties{0}\" href=\"{1}Admin/NodeEdit.aspx?NodeId={2}&amp;SiteId={3}\"><span>Page Properties</span></a>"
+                                    , this._module.Section.Id
                                     , UrlHelper.GetApplicationPath()
                                     , this._module.Section.Node.Id
                                     , this._module.Section.Site.Id));
                         }
                         else
                         {
-                            writer.Write(String.Format("&nbsp;<a id=\"sectionproperties\" href=\"{0}Admin/SectionEdit.aspx?SectionId={1}&amp;SiteId={2}\"><span>Section Properties</span></a>"
-                                                       , UrlHelper.GetApplicationPath()
-                                                       , this._module.Section.Id
-                                                       , this._module.Section.Site.Id));
+                            writer.Write(String.Format("&nbsp;<a id=\"sectionproperties{0}\" href=\"{1}Admin/SectionEdit.aspx?SectionId={2}&amp;SiteId={3}\"><span>Section Properties</span></a>"
+                                    , this._module.Section.Id                        
+                                    , UrlHelper.GetApplicationPath()
+                                    , this._module.Section.Id
+                                    , this._module.Section.Site.Id));
                         }
                     }
                 }

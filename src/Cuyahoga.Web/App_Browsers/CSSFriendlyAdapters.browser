@@ -1,7 +1,7 @@
 <browsers>
 	<browser refID="Default">
 		<controlAdapters>
-            <adapter controlType="System.Web.UI.Page" adapterType="Manu.Web.Adapters.SEOFriendlyViewStatePageAdapter, SEOViewStateAdapter" />
+            <adapter controlType="System.Web.UI.Page" adapterType="Cuyahoga.Web.Adapters.SEOViewStatePageAdapter, SEOViewStateAdapter" />
 
             <adapter controlType="System.Web.UI.WebControls.Menu" adapterType="CSSFriendly.MenuAdapter" />
 			<adapter controlType="System.Web.UI.WebControls.TreeView" adapterType="CSSFriendly.TreeViewAdapter" />
