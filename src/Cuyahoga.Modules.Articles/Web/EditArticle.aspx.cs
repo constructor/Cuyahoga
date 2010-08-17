@@ -202,7 +202,7 @@ namespace Cuyahoga.Modules.Articles.Web
 				}
 				else
 				{
-					this._article.PublishedUntil = new DateTime(2199, 1, 1);
+					this._article.PublishedUntil = DateTime.Now.AddYears(100);
 				}
 				this._article.ModifiedBy = (Cuyahoga.Core.Domain.User)this.User.Identity;
 				this._articleModule._contentItemService.Save(this._article);

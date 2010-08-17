@@ -251,10 +251,43 @@ namespace Cuyahoga.Web.Admin
             {
                 try
                 {
-                    //Custom Added: Selete Tempate Folder
-                    Directory.Delete(Server.MapPath("~/" + this._activeTemplate.BasePath), true);
-                    TemplateService.DeleteTemplate(this._activeTemplate);
-                    Context.Response.Redirect("Templates.aspx");
+                    //Custom Added: Selete Tempate Folder IF NOT IN USE by the site
+                    bool deleteFolder = true;
+
+                    if (_activeTemplate.Site == null)
+                    {
+                        IList sites = base.SiteService.GetAllSites();
+                        foreach (Site s in sites)
+                        {
+                            foreach (Template t in s.Templates)
+                            {
+                                if (t.BasePath == _activeTemplate.BasePath)
+                                    deleteFolder = false;
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        int scount = 0;
+                        foreach (Template t in _activeTemplate.Site.Templates)
+                        {
+                            if (t.BasePath == _activeTemplate.BasePath)
+                                scount++;
+                        }
+                        deleteFolder = scount == 1;
+                    }
+
+                    if (deleteFolder)
+                    {
+                        Directory.Delete(Server.MapPath("~/" + this._activeTemplate.BasePath), true);
+                        TemplateService.DeleteTemplate(this._activeTemplate);
+                        Context.Response.Redirect("Templates.aspx?Message=Template+and+unused+folder+deleted+successfully.");
+                    }
+                    else
+                    {
+                        TemplateService.DeleteTemplate(this._activeTemplate);
+                        Context.Response.Redirect("Templates.aspx?Message=Template+deleted+successfully.");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -391,7 +424,27 @@ namespace Cuyahoga.Web.Admin
                 }
                 else 
                 {
-                    ShowError("This template folder already exists in that destination.");
+                    Template newTemplate = this._activeTemplate.GetCopy();
+                    newTemplate.Site = this.ActiveSite;
+                    newTemplate.BasePath = "SiteData/" + ActiveSite.Id.ToString() + "/templates/" + templateDirectoryName;
+                    txtBasePath.Text = newTemplate.BasePath;
+
+                    //Also copy the sections that are assigned to this template
+                    try
+                    {
+                        foreach (KeyValuePair<string, Section> entry in this._activeTemplate.Sections)
+                        {
+                            newTemplate.Sections.Add(entry.Key, entry.Value);
+                        }
+                    }
+                    catch
+                    {
+                        //log.Error("An unexpected error occured while creating a new site.", ex);
+                        //throw;
+                    }
+
+                    this.TemplateService.SaveTemplate(newTemplate);
+                    ShowMessage("This template folder was not copied as it already exists in that site. A template entry for the site was created with the existing folder.");
                 }
             }
         }
@@ -430,7 +483,7 @@ namespace Cuyahoga.Web.Admin
                 {
                     //Site drop down activation
                     ddlSites.Enabled = (this.ActiveSite.Id > 0);
-                    ddlSites.SelectedValue = this.ActiveSite.Id.ToString();
+                    ddlSites.SelectedValue = this.ActiveSite.Id.ToString() != null ? this.ActiveSite.Id.ToString() : this._activeTemplate.Site.Id.ToString();
 
                     //templatesRoot = "~/SiteData/" + this.ActiveSite.Id.ToString() + "/Templates/";
                     templatesRoot = VirtualPathUtility.Combine(this.ActiveSite.SiteDataDirectory, "templates");

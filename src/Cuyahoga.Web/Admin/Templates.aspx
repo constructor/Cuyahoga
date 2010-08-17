@@ -13,6 +13,7 @@
             AppendDataBoundItems="true" runat="server" 
             onselectedindexchanged="DdlSitesSelectedIndexChanged">
                 <asp:ListItem Value="0">All</asp:ListItem>
+                <asp:ListItem Value="-1">Unassigned</asp:ListItem>
             </asp:DropDownList>
             <hr />
 			<table class="tbl"><asp:repeater id="rptTemplates" OnItemDataBound="RptTemplatesItemDataBound" runat="server">

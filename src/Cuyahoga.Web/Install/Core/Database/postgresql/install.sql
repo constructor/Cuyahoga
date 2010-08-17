@@ -61,8 +61,8 @@ updatetimestamp timestamp DEFAULT current_timestamp NOT NULL);
 CREATE TABLE cuyahoga_modulesetting(
 modulesettingid serial NOT NULL CONSTRAINT PK_modulesetting PRIMARY KEY,
 moduletypeid int4 NOT NULL,
-name varchar(50) NOT NULL,
-friendlyname varchar(100) NOT NULL,
+name varchar(100) NOT NULL,
+friendlyname varchar(255) NOT NULL,
 settingdatatype varchar(100) NOT NULL,
 iscustomtype bool NOT NULL,
 isrequired bool NOT NULL,

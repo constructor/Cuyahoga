@@ -160,9 +160,6 @@
       <LastGenOutput>Cuyahoga.Modules.Articles.GlobalResources.nl.designer.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Domain\Article.hbm.xml" />
-    <EmbeddedResource Include="Web\AdminArticles.aspx.resx">
-      <DependentUpon>AdminArticles.aspx.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Web\AdminComments.aspx.resx">
       <DependentUpon>AdminComments.aspx.cs</DependentUpon>
     </EmbeddedResource>

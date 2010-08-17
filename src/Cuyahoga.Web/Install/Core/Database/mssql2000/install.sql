@@ -159,8 +159,8 @@ GO
 CREATE TABLE cuyahoga_modulesetting(
 modulesettingid int identity(1,1) NOT NULL CONSTRAINT PK_modulesetting PRIMARY KEY,
 moduletypeid int NOT NULL,
-name nvarchar(50) NOT NULL,
-friendlyname nvarchar(50) NOT NULL,
+name nvarchar(100) NOT NULL,
+friendlyname nvarchar(255) NOT NULL,
 settingdatatype nvarchar(100) NOT NULL,
 iscustomtype bit NOT NULL,
 isrequired bit NOT NULL)

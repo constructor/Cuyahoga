@@ -1,10 +1,12 @@
 using System;
+using System.Web;
 using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
 using Castle.Services.Transaction;
 using Cuyahoga.Core.Service.Files;
 using Cuyahoga.Core.Util;
+
 using log4net;
 
 namespace Cuyahoga.Core.Infrastructure.Transactions
@@ -15,8 +17,10 @@ namespace Cuyahoga.Core.Infrastructure.Transactions
 	public class TransactionalFileWriter : IResource
 	{
 		private static readonly ILog logger = LogManager.GetLogger(typeof (TransactionalFileWriter));
-		private readonly string _defaultTempDir = Environment.GetEnvironmentVariable("TEMP");
-		private readonly string _transactionName;
+
+        private readonly string _defaultTempDir = IsMediumTrustSetInConfig() ? System.Web.HttpContext.Current.Server.MapPath("~/__TEMPFILES/") : Environment.GetEnvironmentVariable("TEMP");
+        	
+        private readonly string _transactionName;
 		private readonly string _tempDir;
 		private string _transactionDir;
 
@@ -27,6 +31,38 @@ namespace Cuyahoga.Core.Infrastructure.Transactions
 		private IList<string> _copiedFiles = new List<string>();
 
         private IList<DirectoryInfo> _cleanupDirectories = new List<DirectoryInfo>();
+
+        //Method one: Get is medium trust (get if hosting environment is medium trust)
+        private static bool IsMediumTrust()
+        {
+            try
+            {
+                new AspNetHostingPermission(AspNetHostingPermissionLevel.Medium).Demand();
+            }
+            catch (System.Security.SecurityException)
+            {
+                return false;
+            }
+            return true;
+        }
+        //Method two: Get is medium trust (get if config is set as medium trust)
+        private static bool IsMediumTrustSetInConfig()
+        {
+            bool result = false;
+            try
+            {
+                string webConfigFile = System.IO.Path.Combine(System.Web.HttpContext.Current.Request.PhysicalApplicationPath, "web.config");
+                System.Xml.XmlTextReader webConfigReader = new System.Xml.XmlTextReader(new System.IO.StreamReader(webConfigFile));
+                webConfigReader.ReadToFollowing("trust");
+                result = webConfigReader.GetAttribute("level") == "Medium";
+                webConfigReader.Close(); //Close before return
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+        }
 
 		/// <summary>
 		/// Constructor.

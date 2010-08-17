@@ -71,8 +71,8 @@ UNIQUE UC_moduletype_classname (classname));
 CREATE TABLE cuyahoga_modulesetting(
 modulesettingid INT NOT NULL AUTO_INCREMENT,
 moduletypeid INT NOT NULL,
-name VARCHAR(50) NOT NULL,
-friendlyname VARCHAR(100) NOT NULL,
+name VARCHAR(100) NOT NULL,
+friendlyname VARCHAR(255) NOT NULL,
 settingdatatype VARCHAR(100) NOT NULL,
 iscustomtype TINYINT NOT NULL,
 isrequired TINYINT NOT NULL,

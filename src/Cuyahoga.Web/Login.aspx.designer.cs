@@ -8,90 +8,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cuyahoga.Modules.Articles.Web {
+namespace Cuyahoga.Web.Admin {
     
     
-    public partial class AdminArticles {
+    public partial class Login2 {
         
         /// <summary>
-        /// form1 control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// lblArtcleFilter control.
+        /// lblUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArtcleFilter;
+        protected global::System.Web.UI.WebControls.Label lblUsername;
         
         /// <summary>
-        /// ddlArticleFilter control.
+        /// txtUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlArticleFilter;
+        protected global::System.Web.UI.WebControls.TextBox txtUsername;
         
         /// <summary>
-        /// ddlSortBy control.
+        /// RequiredtxtUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSortBy;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredtxtUsername;
         
         /// <summary>
-        /// ddlSortDirection control.
+        /// lblPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSortDirection;
+        protected global::System.Web.UI.WebControls.Label lblPassword;
         
         /// <summary>
-        /// btnFilter control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// rptArticles control.
+        /// RequiredtxtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptArticles;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredtxtPassword;
         
         /// <summary>
-        /// pgrArticles control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Cuyahoga.ServerControls.Pager pgrArticles;
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// btnNew control.
+        /// btnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnNew;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
     }
 }

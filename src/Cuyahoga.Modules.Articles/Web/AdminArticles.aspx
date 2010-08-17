@@ -1,11 +1,12 @@
-<%@ Register TagPrefix="cc1" Namespace="Cuyahoga.ServerControls" Assembly="Cuyahoga.ServerControls" %><%@ Page language="c#" Codebehind="AdminArticles.aspx.cs" AutoEventWireup="True" Inherits="Cuyahoga.Modules.Articles.Web.AdminArticles" %>
+﻿<%@ Register TagPrefix="cuy" Namespace="Cuyahoga.ServerControls" Assembly="Cuyahoga.ServerControls" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminArticles.aspx.cs" Inherits="Cuyahoga.Modules.Articles.Web.AdminArticles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-	<title>Articles</title>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Articles</title>
 </head>
-	<body>
-		<form id="Form1" method="post" runat="server">
+<body>
+    <form id="form1" runat="server">
 			<div id="moduleadminpane">
 				<h1>Article management</h1>
                     <div id="catagoryfilers" class="group">
@@ -32,7 +33,8 @@
 				    <div id="categories" class="group">
 				        <h4>Articles</h4>
 					    <table class="tbl">
-						    <asp:repeater id="rptArticles" runat="server">
+						    <asp:repeater id="rptArticles" runat="server" 
+                                onitemdatabound="rptArticles_ItemDataBound">
 							    <headertemplate>
 								    <tr>
 									    <th>Title</th>
@@ -65,12 +67,15 @@
 					</div>
                 <div id="paging" class="group">
 				    <div class="pager">
-					    <cc1:pager id="pgrArticles" runat="server" controltopage="rptArticles" cachedatasource="True" pagesize="10" cacheduration="30" cachevarybyparams="SectionId" oncacheempty="pgrArticles_CacheEmpty"></cc1:pager>
+					    <cuy:pager id="pgrArticles" runat="server" controltopage="rptArticles" 
+                            cachedatasource="True" pagesize="10" cacheduration="30" 
+                            cachevarybyparams="SectionId" oncacheempty="pgrArticles_CacheEmpty" 
+                            onpagechanged="pgrArticles_PageChanged"></cuy:pager>
 				    </div>
 				</div>
 				<br/>
 				<input id="btnNew" type="button" value="New Article" runat="server" />
 			</div>
-		</form>
-	</body>
+    </form>
+</body>
 </html>

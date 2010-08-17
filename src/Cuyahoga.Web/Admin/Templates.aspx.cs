@@ -23,30 +23,50 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
+        protected void UpdateTemplates()
+        {
+            //Get only templates for dropdown selected site (Custom) Replaces above
+            Int32 selectedsiteid = Convert.ToInt32(ddlSites.SelectedValue);
+
+            if (selectedsiteid < 0)
+            {
+                Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(selectedsiteid);
+                this.rptTemplates.DataSource = this.TemplateService.GetUnassignedTemplates();
+                this.rptTemplates.DataBind();
+            }
+            else
+            {
+                if (selectedsiteid < 1)
+                {
+                    this.rptTemplates.DataSource = this.TemplateService.GetAllTemplates();
+                    this.rptTemplates.DataBind();
+                }
+                else
+                {
+                    Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(selectedsiteid);
+                    this.rptTemplates.DataSource = this.TemplateService.GetAllTemplatesBySite(selectedsite);
+                    this.rptTemplates.DataBind();
+                }
+            }
+        }
+
         protected void BindTemplates()
         {
             //Get only templates for dropdown selected site (Custom) Replaces above
             Int32 selectedsiteid = Convert.ToInt32(ddlSites.SelectedValue);
-            if (selectedsiteid > 0)
+
+            if (this.ActiveSite != null)
             {
-                Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(selectedsiteid);
+                Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(this.ActiveSite.Id);
                 this.rptTemplates.DataSource = this.TemplateService.GetAllTemplatesBySite(selectedsite);
                 this.rptTemplates.DataBind();
             }
             else
             {
-                if (this.ActiveSite != null)
-                {
-                    Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(this.ActiveSite.Id);
-                    this.rptTemplates.DataSource = this.TemplateService.GetAllTemplatesBySite(selectedsite);
-                    this.rptTemplates.DataBind();
-                }
-                else
-                {
-                    this.rptTemplates.DataSource = this.TemplateService.GetAllTemplates();
-                    this.rptTemplates.DataBind();
-                }
+                this.rptTemplates.DataSource = this.TemplateService.GetAllTemplates();
+                this.rptTemplates.DataBind();
             }
+
         }
 
         protected void BindSites()
@@ -59,22 +79,6 @@ namespace Cuyahoga.Web.Admin
             if (this.ActiveSite != null)
             {
                 ddlSites.SelectedValue = this.ActiveSite.Id.ToString();
-            }
-        }
-
-        protected void UpdateSites()
-        {
-            Int32 selectedsiteid = Convert.ToInt32(ddlSites.SelectedValue);
-            if (selectedsiteid > 0)
-            {
-                Cuyahoga.Core.Domain.Site selectedsite = SiteService.GetSiteById(selectedsiteid);
-                this.rptTemplates.DataSource = this.TemplateService.GetAllTemplatesBySite(selectedsite);
-                this.rptTemplates.DataBind();
-            }
-            else
-            {
-                this.rptTemplates.DataSource = this.TemplateService.GetAllTemplates();
-                this.rptTemplates.DataBind();
             }
         }
 
@@ -95,7 +99,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void DdlSitesSelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateSites();
+            UpdateTemplates();
         }
     }
 }

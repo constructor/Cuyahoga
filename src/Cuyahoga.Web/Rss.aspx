@@ -1,19 +1,16 @@
-<%@ Page language="c#" Codebehind="Rss.aspx.cs" AutoEventWireup="false" Inherits="Cuyahoga.Web.Rss" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RSS.aspx.cs" Inherits="Cuyahoga.Web.RSS" %>
 
-<html>
-  <head>
-    <title>Rss</title>
-    <meta name="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
-    <meta name="CODE_LANGUAGE" Content="C#">
-    <meta name=vs_defaultClientScript content="JavaScript">
-    <meta name=vs_targetSchema content="http://schemas.microsoft.com/intellisense/ie5">
-  </head>
-  <body MS_POSITIONING="FlowLayout">
-	
-    <form id="Form1" method="post" runat="server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-     </form>
-	
-  </body>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>RSS</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+    </form>
+</body>
 </html>

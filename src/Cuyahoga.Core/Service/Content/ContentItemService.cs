@@ -117,31 +117,32 @@ namespace Cuyahoga.Core.Service.Content
 			return this._contentItemDao.GetByCriteria(criteria);
 		}
 
-		/// <summary>
-		/// Find the syndicated content items for a given section.
-		/// </summary>
-		/// <param name="section"></param>
-		/// <param name="querySettings"></param>
-		/// <returns></returns>
-		public IList<T> FindSyndicatedContentItemsBySection(Section section, ContentItemQuerySettings querySettings)
-		{
-			DetachedCriteria criteria = GetCriteriaForSection(section, querySettings)
-				.Add(Restrictions.Eq("Syndicate", true));
-			return this._contentItemDao.GetByCriteria(criteria);
-		}
+        /// <summary>
+        /// Find the syndicated content items for a given section.
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="querySettings"></param>
+        /// <returns></returns>
+        public IList<T> FindSyndicatedContentItemsBySection(Section section, ContentItemQuerySettings querySettings)
+        {
+            DetachedCriteria criteria = GetCriteriaForSection(section, querySettings)
+                .Add(Restrictions.Eq("Syndicate", true));
+            return this._contentItemDao.GetByCriteria(criteria);
+        }
 
-		/// <summary>
-		/// Find the syndicated content items for a given category.
-		/// </summary>
-		/// <param name="category"></param>
-		/// <param name="querySettings"></param>
-		/// <returns></returns>
-		public IList<T> FindSyndicatedContentItemsByCategory(Category category, ContentItemQuerySettings querySettings)
-		{
-			DetachedCriteria criteria = GetCriteriaForCategory(category, querySettings)
-				.Add(Restrictions.Eq("Syndicate", true));
-			return this._contentItemDao.GetByCriteria(criteria);
-		}
+        /// <summary>
+        /// Find the syndicated content items for a given category.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="querySettings"></param>
+        /// <returns></returns>
+        public IList<T> FindSyndicatedContentItemsByCategory(Category category, ContentItemQuerySettings querySettings)
+        {
+            DetachedCriteria criteria = GetCriteriaForCategory(category, querySettings)
+                .Add(Restrictions.Eq("Syndicate", true));
+            return this._contentItemDao.GetByCriteria(criteria);
+        }
+
 
 		[Transaction(TransactionMode.Requires)]
 		public T Save(T entity)
@@ -167,7 +168,7 @@ namespace Cuyahoga.Core.Service.Content
 		{
 			return GetContentItemCriteria()
 				.CreateAlias("Categories", "cat")
-					.Add(Restrictions.Eq("cat.Id", category.Id))
+				.Add(Restrictions.Eq("cat.Id", category.Id))
 				.ApplyOrdering(querySettings.SortBy, querySettings.SortDirection)
 				.ApplyPaging(querySettings.PageSize, querySettings.PageNumber);
 		}

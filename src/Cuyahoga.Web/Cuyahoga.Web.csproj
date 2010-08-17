@@ -368,6 +368,13 @@
     </Compile>
     <Compile Include="Components\Bootstrapper.cs" />
     <Compile Include="Components\CuyahogaContext.cs" />
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HttpHandlers\SitemapHandler.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -375,6 +382,16 @@
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -412,10 +429,6 @@
       <DependentUpon>ViewProfile.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
       <SubType>Code</SubType>
@@ -435,13 +448,12 @@
       <DependentUpon>Upgrade.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="RSS.aspx.cs">
+      <DependentUpon>RSS.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Rss.aspx.cs">
-      <DependentUpon>Rss.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="RSS.aspx.designer.cs">
+      <DependentUpon>RSS.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\BaseModuleControl.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -569,6 +581,7 @@
     </Content>
     <Content Include="Admin\Web.config" />
     <Content Include="Css\UI.css" />
+    <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Controls\EditProfile.ascx">
       <SubType>UserControl</SubType>
@@ -591,9 +604,6 @@
     <Content Include="Default.aspx">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="Error.aspx">
-      <SubType>Form</SubType>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Install\Core\Database\mssql2000\1.5.0.sql" />
     <Content Include="Install\Core\Database\mssql2000\2.0.0.sql" />
@@ -612,12 +622,7 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="js\DefaultButton.js" />
-    <Content Include="Profile.aspx">
-      <SubType>Form</SubType>
-    </Content>
-    <Content Include="Rss.aspx">
-      <SubType>Form</SubType>
-    </Content>
+    <Content Include="Profile.aspx" />
     <None Include="Web.config" />
     <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.it.resx">
       <SubType>Designer</SubType>
@@ -721,10 +726,6 @@
       <DependentUpon>ViewProfile.ascx.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Error.aspx.resx">
-      <DependentUpon>Error.aspx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Global.asax.resx">
       <DependentUpon>Global.asax.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -741,22 +742,12 @@
       <DependentUpon>Upgrade.aspx.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.aspx.resx">
-      <DependentUpon>Login.aspx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Profile.aspx.resx">
-      <DependentUpon>Profile.aspx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rss.aspx.resx">
-      <DependentUpon>Rss.aspx.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Content Include="Config\facilities.config" />
     <Content Include="Config\properties.config" />
     <Content Include="Config\services.config" />
     <Content Include="Config\logging.config" />
     <Content Include="App_Browsers\CSSFriendlyAdapters.browser" />
+    <Content Include="RSS.aspx" />
     <None Include="App_Browsers\form._browser" />
     <None Include="Cuyahoga.Web.build" />
     <None Include="Install\Core\Database\mssql2000\0.8.2.sql" />

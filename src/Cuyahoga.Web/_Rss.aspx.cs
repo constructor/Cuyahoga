@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
@@ -13,15 +13,18 @@ using Cuyahoga.Core.Service.SiteStructure;
 
 namespace Cuyahoga.Web
 {
-    public partial class RSS : CuyahogaPage
-    {
-        private ISectionService _sectionService;
+	/// <summary>
+	/// Summary description for Rss.
+	/// </summary>
+	public class Rss : CuyahogaPage
+	{
+		private ISectionService _sectionService;
 		private ModuleLoader _moduleLoader;
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public void Rss()
+		public Rss()
 		{
 			this._sectionService = Container.Resolve<ISectionService>();
 			this._moduleLoader = Container.Resolve<ModuleLoader>();
@@ -130,5 +133,27 @@ namespace Cuyahoga.Web
 
 			Context.Response.End();
 		}
-    }
+
+		#region Web Form Designer generated code
+		override protected void OnInit(EventArgs e)
+		{
+			//
+			// CODEGEN: This call is required by the ASP.NET Web Form Designer.
+			//
+			InitializeComponent();
+			base.OnInit(e);
+		}
+
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			this.Load += new System.EventHandler(this.Page_Load);
+		}
+		#endregion
+
+
+	}
 }
