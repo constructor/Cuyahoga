@@ -623,6 +623,9 @@
     </Content>
     <Content Include="js\DefaultButton.js" />
     <Content Include="Profile.aspx" />
+    <None Include="Install\Core\Database\mssql2000\1.6.0.sql" />
+    <None Include="Install\Core\Database\mysql\1.6.0.sql" />
+    <None Include="Install\Core\Database\postgresql\1.6.0.sql" />
     <None Include="Web.config" />
     <Content Include="App_GlobalResources\Cuyahoga.Web.Controls.Resources.Strings.it.resx">
       <SubType>Designer</SubType>
@@ -822,11 +825,12 @@ xcopy /s /y "$(SolutionDir)"lib\CSSFriendly.dll "$(TargetDir)"</PostBuildEvent>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl></IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
