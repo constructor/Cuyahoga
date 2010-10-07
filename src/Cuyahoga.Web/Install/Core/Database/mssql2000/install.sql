@@ -103,7 +103,6 @@ GO
 CREATE TABLE cuyahoga_role(
 roleid int identity(1,1) NOT NULL CONSTRAINT PK_role PRIMARY KEY,
 name nvarchar(50) NOT NULL,
-/*permissionlevel int DEFAULT 1 NOT NULL,*/
 isglobal bit NOT NULL DEFAULT 1,
 inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL,

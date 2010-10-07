@@ -1,4 +1,4 @@
-﻿-- Add a temporary column to contentitem to store the old fileid's
+-- Add a temporary column to contentitem to store the old fileid's
 ALTER TABLE cuyahoga_contentitem
 	ADD fileid int NULL
 go
@@ -14,7 +14,7 @@ INSERT INTO cuyahoga_fileresource(fileresourceid, filename, physicalfilepath, le
 SELECT ci.contentitemid, f.filepath, ISNULL(ss.value, '') + f.filepath, f.filesize, f.contenttype, f.nrofdownloads
 FROM cm_file f 
 	INNER JOIN cuyahoga_contentitem ci ON ci.fileid = f.fileid
-	LEFT OUTER JOIN cuyahoga_sectionsetting ss ON ss.sectionid = s.sectionid && ss.[name] = 'PHYSICAL_DIR'
+	LEFT OUTER JOIN cuyahoga_sectionsetting ss ON ss.sectionid = f.sectionid AND ss.[name] = 'PHYSICAL_DIR'
 go
 
 -- copy data to contentitemrole
@@ -50,12 +50,6 @@ go
 
 ALTER TABLE cuyahoga_contentitem
 	DROP COLUMN fileid
-go
-
--- Change module admin url
-UPDATE cuyahoga_moduletype
-SET editpath = 'Modules/Downloads/ManageFiles'
-WHERE [name] = 'Downloads'
 go
 
 -- Description for physical directory

@@ -20,9 +20,9 @@ using System.Security;
 [assembly: AssemblyDescriptionAttribute("")]
 [assembly: AssemblyCompanyAttribute("Cuyahoga Project")]
 [assembly: AssemblyProductAttribute("Cuyahoga")]
-[assembly: AssemblyCopyrightAttribute("2004-2008 Cuyahoga Project. All rights reserved.")]
-[assembly: AssemblyVersionAttribute("1.5.2.0")]
-[assembly: AssemblyInformationalVersionAttribute("1.5.2.676")]
-[assembly: AssemblyFileVersionAttribute("1.5.2.0")]
+[assembly: AssemblyCopyrightAttribute("2004-2010 Cuyahoga Project. All rights reserved.")]
+[assembly: AssemblyVersionAttribute("2.0.0.0")]
+[assembly: AssemblyInformationalVersionAttribute("2.0.0.0")]
+[assembly: AssemblyFileVersionAttribute("2.0.0.0")]
 [assembly: AllowPartiallyTrustedCallersAttribute()]
 

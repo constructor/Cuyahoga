@@ -32,10 +32,10 @@ namespace Cuyahoga.Web.Install
 
 			// Check security first
 			User cuyahogaUser = (User) this.User.Identity;
-			if (! cuyahogaUser.IsInRole("Administrator"))//HasPermission(AccessLevel.Administrator))
-			{
-				throw new AccessForbiddenException("Upgrade not allowed for the current user");
-			}
+			//if (! cuyahogaUser.IsInRole("Administrator"))//HasPermission(AccessLevel.Administrator))
+			//{
+			//    throw new AccessForbiddenException("Upgrade not allowed for the current user");
+			//}
 
 			if (! this.IsPostBack)
 			{

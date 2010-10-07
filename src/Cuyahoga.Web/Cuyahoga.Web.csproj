@@ -368,6 +368,18 @@
     </Compile>
     <Compile Include="Components\Bootstrapper.cs" />
     <Compile Include="Components\CuyahogaContext.cs" />
+    <Compile Include="Controls\Navigation\HierarchicalMenu.ascx.cs">
+      <DependentUpon>HierarchicalMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Navigation\NavigationLevelTwo.ascx.cs">
+      <DependentUpon>NavigationLevelTwo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Navigation\NavigationLevelZeroOne.ascx.cs">
+      <DependentUpon>NavigationLevelZeroOne.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -580,6 +592,9 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="Admin\Web.config" />
+    <Content Include="Controls\Navigation\HierarchicalMenu.ascx" />
+    <Content Include="Controls\Navigation\NavigationLevelTwo.ascx" />
+    <Content Include="Controls\Navigation\NavigationLevelZeroOne.ascx" />
     <Content Include="Css\UI.css" />
     <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
@@ -716,6 +731,15 @@
     <EmbeddedResource Include="Controls\ModuleAdminTemplate.ascx.resx">
       <DependentUpon>ModuleAdminTemplate.ascx.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\HierarchicalMenu.ascx.resx">
+      <DependentUpon>HierarchicalMenu.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\NavigationLevelTwo.ascx.resx">
+      <DependentUpon>NavigationLevelTwo.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\NavigationLevelZeroOne.ascx.resx">
+      <DependentUpon>NavigationLevelZeroOne.ascx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Register.ascx.resx">
       <DependentUpon>Register.ascx.cs</DependentUpon>

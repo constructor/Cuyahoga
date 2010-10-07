@@ -17,7 +17,7 @@ createdby int NOT NULL,
 modifiedby int NOT NULL,
 publishedby int NULL,
 sectionid int NOT NULL)
-go
+GO
 
 CREATE TABLE cuyahoga_contentitemrole(
 contentitemroleid int identity(1,1) NOT NULL CONSTRAINT PK_contentitemrole PRIMARY KEY,
@@ -25,10 +25,11 @@ contentitemid int NOT NULL,
 roleid int NOT NULL,
 viewallowed bit NOT NULL,
 editallowed bit NOT NULL)
-go
+GO
 
 CREATE UNIQUE INDEX IX_contentitemrole_roleid_contentitemid ON cuyahoga_contentitemrole (roleid,contentitemid)
-go
+GO
+
 
 CREATE TABLE cuyahoga_category(
 categoryid int identity(1,1) NOT NULL CONSTRAINT PK_category PRIMARY KEY,
@@ -38,19 +39,19 @@ path nvarchar(80) NOT NULL,
 categoryname nvarchar(100) NOT NULL,
 description nvarchar(255) NULL,
 position int NOT NULL)
-go
+GO
 
 CREATE UNIQUE INDEX IX_category_path_siteid ON cuyahoga_category (path, siteid)
-go
+GO
 
 CREATE UNIQUE INDEX IX_category_categoryname_siteid ON cuyahoga_category (categoryname, siteid)
-go
+GO
 
 CREATE TABLE cuyahoga_categorycontentitem(
 categorycontentitemid int identity(1,1) NOT NULL CONSTRAINT PK_categorycontentitem PRIMARY KEY,
 categoryid int NOT NULL,
 contentitemid bigint NOT NULL)
-go
+GO
 
 CREATE TABLE cuyahoga_comment(
 commentid int identity(1,1) NOT NULL CONSTRAINT PK_comment PRIMARY KEY,
@@ -61,7 +62,7 @@ commentdatetime datetime NOT NULL,
 website nvarchar(100) NULL,
 commenttext nvarchar(2000) NOT NULL,
 userip nvarchar(15) NULL)
-go
+GO
 
 CREATE TABLE cuyahoga_fileresource(
 fileresourceid bigint NOT NULL CONSTRAINT PK_fileresource PRIMARY KEY,
@@ -70,7 +71,7 @@ physicalfilepath nvarchar(1000) NOT NULL,
 length bigint NULL,
 mimetype nvarchar(255) NULL,
 downloadcount int NULL)
-go
+GO
 
 ALTER TABLE cuyahoga_contentitem
 ADD CONSTRAINT FK_contentitem_user_createdby 
@@ -125,6 +126,24 @@ go
 ALTER TABLE cuyahoga_fileresource
 ADD CONSTRAINT FK_fileresource_contentitem_fileresourceid 
 FOREIGN KEY (fileresourceid) REFERENCES cuyahoga_contentitem (contentitemid)
+go
+
+-- ModuleSetting
+ALTER TABLE cuyahoga_modulesetting 
+    ALTER COLUMN friendlyname nvarchar(255) NOT NULL
+go
+
+ALTER TABLE cuyahoga_modulesetting 
+    ALTER COLUMN [name] nvarchar(100) NOT NULL
+go
+
+-- Node
+ALTER TABLE cuyahoga_node
+    ADD titleseo nvarchar(255) NULL
+go
+
+ALTER TABLE cuyahoga_node
+    ADD cssclass nvarchar(128) NULL
 go
 
 -- Roles per site
@@ -192,6 +211,18 @@ ALTER TABLE cuyahoga_section
 		FOREIGN KEY(siteid) REFERENCES cuyahoga_site(siteid)
 go
 
+ALTER TABLE cuyahoga_section
+	ADD cssclass nvarchar(100) NULL
+go
+
+ALTER TABLE cuyahoga_sectionsetting
+	ALTER COLUMN [name] nvarchar(100) NOT NULL
+go
+
+ALTER TABLE cuyahoga_sectionsetting
+	ALTER COLUMN [value] nvarchar(255) NULL
+go
+
 -- Template per site
 ALTER TABLE cuyahoga_template
 	ADD siteid int NULL
@@ -253,6 +284,13 @@ go
 ALTER TABLE cuyahoga_roleright
 	ADD CONSTRAINT FK_roleright_right_rightid 
 		FOREIGN KEY (rightid) REFERENCES cuyahoga_right (rightid)
+go
+
+-- Users per site
+CREATE TABLE cuyahoga_siteuser(
+siteid int NOT NULL,
+userid int NOT NULL,
+CONSTRAINT PK_cuyahoga_siteuser PRIMARY KEY (siteid, userid)) 
 go
 
 /* DATA */
