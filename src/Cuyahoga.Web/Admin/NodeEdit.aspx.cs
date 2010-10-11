@@ -281,7 +281,7 @@ namespace Cuyahoga.Web.Admin
                     this.ActiveNode.ParentNode.ChildNodes.Add(this.ActiveNode);
                 }
                 NodeService.SaveNode(this.ActiveNode);
-                Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node created sucessfully", this.ActiveNode.Id));
+                Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&SiteId={1}&message=Node created sucessfully", this.ActiveNode.Id, this.ActiveSite.Id));
             }
         }
 
