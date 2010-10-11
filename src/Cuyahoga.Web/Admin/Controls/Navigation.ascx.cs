@@ -1,48 +1,19 @@
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+
+using Cuyahoga.Core.Domain;
+using Cuyahoga.Web.Admin.UI;
 
 namespace Cuyahoga.Web.Admin.Controls
 {
-	using System;
-	using System.Collections;
-	using System.Web.UI;
-	using System.Web.UI.WebControls;
-	using System.Web.UI.HtmlControls;
-
-	using Cuyahoga.Core.Domain;
-	using Cuyahoga.Web.Admin.UI;
-
-	/// <summary>
-	///		Summary description for Navigation.
-	/// </summary>
-	public class Navigation : System.Web.UI.UserControl
-	{
+    public partial class Navigation : System.Web.UI.UserControl
+    {
         private AdminBasePage _page;
-
-		protected System.Web.UI.WebControls.PlaceHolder plhNodes;
-        protected System.Web.UI.WebControls.Panel pnlNewSite;
-		protected System.Web.UI.WebControls.Image i1;
-		protected System.Web.UI.WebControls.Image i2;
-		protected System.Web.UI.WebControls.Image i3;
-		protected System.Web.UI.WebControls.Image inew;
-		protected System.Web.UI.WebControls.HyperLink hplNew;
-		protected System.Web.UI.WebControls.HyperLink hplSections;
-		protected System.Web.UI.WebControls.HyperLink hplModules;
-		protected System.Web.UI.WebControls.HyperLink hplTemplates;
-        protected System.Web.UI.WebControls.HyperLink hplCategories;
-		protected System.Web.UI.WebControls.Image i5;
-		protected System.Web.UI.WebControls.HyperLink hplUsers;
-		protected System.Web.UI.WebControls.Image i6;
-		protected System.Web.UI.WebControls.HyperLink hplRoles;
-		protected System.Web.UI.WebControls.Image i7;
-		protected System.Web.UI.WebControls.HyperLink hplRebuild;
-		protected System.Web.UI.WebControls.Image i4;
-
-        //Custom
-        protected System.Web.UI.WebControls.PlaceHolder plhAdminOnlyOptions;
-        protected System.Web.UI.WebControls.PlaceHolder plhAdminOnlyOptionAddSite;
-        protected System.Web.UI.WebControls.CheckBox chkShowAll;
-
-        protected User _currentUser;
+        private User _currentUser;
 
         protected User CurrentUser
         {
@@ -56,12 +27,12 @@ namespace Cuyahoga.Web.Admin.Controls
             }
         }
 
-        public Navigation() 
+        public Navigation()
         {
             CurrentUser = Context.User.Identity as User;
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             //Navigation show all nodes session to False if null
             if (Session["ShowAll"] == null)
@@ -80,70 +51,33 @@ namespace Cuyahoga.Web.Admin.Controls
 
             BuildNodeTree();
 
-            if (!Page.IsPostBack && Request.QueryString["SiteId"] != null && Request.QueryString["SiteId"] != "-1")
-            {
-                hplTemplates.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-                hplUsers.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-                hplRoles.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-                hplSections.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-                hplCategories.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-                hplRebuild.NavigateUrl += "?SiteId=" + Request.QueryString["SiteId"].ToString();
-            }
-            else 
-            {
-                hplSections.Visible = false;
-                hplRoles.Visible = false;
-                hplCategories.Visible = false;
-                hplRebuild.Visible = false;
-            }
 
             if (CurrentUser.IsInRole("Site Administrator"))//If user is admin of a specific site (not admin of all sites)
             {
-                plhAdminOnlyOptions.Visible = false;
+                //plhAdminOnlyOptions.Visible = false;
                 plhAdminOnlyOptionAddSite.Visible = false;
                 pnlNewSite.Visible = false;
-
-                //hplSections.Enabled = false;
-                //hplModules.Enabled = false;
-                //hplTemplates.Enabled = false;
-                //hplUsers.Enabled = false;
-                //hplRoles.Enabled = false;
-                //hplNew.Enabled = false;
             }
 
-            ////Alternative fine grained rights for admin
-            //if (CurrentUser.HasRight("Access Admin"))//If user is admin of a specific site (not admin of all sites)
-            //{
-            //    plhAdminOnlyOptions.Visible = true;
-            //    plhAdminOnlyOptionAddSite.Visible = CurrentUser.HasRight("Manage Site"); //false;
-            //    pnlNewSite.Visible = CurrentUser.HasRight("Manage Site"); //false;
-
-            //    hplSections.Enabled = CurrentUser.HasRight("Manage Sections");
-            //    hplModules.Enabled = CurrentUser.HasRight("Manage Modules");
-            //    hplTemplates.Enabled = CurrentUser.HasRight("Manage Templates");
-            //    hplUsers.Enabled = CurrentUser.HasRight("Manage Users");
-            //    hplRoles.Enabled = CurrentUser.HasRight("Global Permissions");
-            //    hplNew.Enabled = CurrentUser.HasRight("Manage Site");
-            //}
         }
 
-		private void BuildNodeTree()
-		{
-			IList sites = this._page.SiteService.GetAllSites();
-			DisplaySites(sites);
-		}
+        private void BuildNodeTree()
+        {
+            IList sites = this._page.SiteService.GetAllSites();
+            DisplaySites(sites);
+        }
 
-        private void ClearNodeTreeControls() 
+        private void ClearNodeTreeControls()
         {
             this.plhNodes.Controls.Clear();
         }
 
-		private void DisplaySites(IList sites)
-		{
-			foreach (Site site in sites)
-			{
+        private void DisplaySites(IList sites)
+        {
+            foreach (Site site in sites)
+            {
                 //Custom statement to separate Administrator and Site Administrator
-                if (CurrentUser.IsInRole("Administrator") || (CurrentUser.IsInRole("Site Administrator") && CurrentUser.Sites.Contains(site)) )
+                if (CurrentUser.IsInRole("Administrator") || (CurrentUser.IsInRole("Site Administrator") && CurrentUser.Sites.Contains(site)))
                 {
                     HtmlGenericControl sitecontainer = CreateDisplaySite(site);
                     this.plhNodes.Controls.Add(sitecontainer);
@@ -152,11 +86,11 @@ namespace Cuyahoga.Web.Admin.Controls
                     {
                         this.plhNodes.Controls.Add(CreateNewChildNodeControl(sitecontainer));
                     }
-                        this.plhNodes.Controls.Add(CreateNewNodeControl(site, sitecontainer));
-                        sitecontainer.Controls.Add(new LiteralControl("<hr/>"));
+                    this.plhNodes.Controls.Add(CreateNewNodeControl(site, sitecontainer));
+                    sitecontainer.Controls.Add(new LiteralControl("<hr/>"));
                 }
-			}
-		}
+            }
+        }
 
         private HtmlGenericControl CreateDisplaySite(Site site)
         {
@@ -214,12 +148,12 @@ namespace Cuyahoga.Web.Admin.Controls
                     }
 
                     if (this._page.ActiveNode != null)
-                    if (this._page.ActiveNode.Id == node.Id)
-                    {
-                        // HACK: Replace the activenode with the one found while building the node tree to reduce future 
-                        // database calls.
-                        this._page.ActiveNode = node;
-                    }
+                        if (this._page.ActiveNode.Id == node.Id)
+                        {
+                            // HACK: Replace the activenode with the one found while building the node tree to reduce future 
+                            // database calls.
+                            this._page.ActiveNode = node;
+                        }
                 }
                 else
                 {
@@ -287,7 +221,7 @@ namespace Cuyahoga.Web.Admin.Controls
             img.ImageAlign = ImageAlign.Left;
             img.AlternateText = "Node";
             nodeli.Controls.Add(img);
-                            
+
             if (this._page.ActiveNode != null && node.Id == this._page.ActiveNode.Id)
             {
                 Label lpl = new Label();
@@ -308,57 +242,37 @@ namespace Cuyahoga.Web.Admin.Controls
         }
 
         private Control CreateNewChildNodeControl(HtmlGenericControl container)
-		{
-			if (this._page.ActiveNode != null)
+        {
+            if (this._page.ActiveNode != null)
             {
-				Image img = new Image();
-				img.ImageUrl = "../Images/sitepage-new.png";
-				img.ImageAlign = ImageAlign.Left;
-				img.AlternateText = "New child node";
-				container.Controls.Add(img);
-				HyperLink hpl = new HyperLink();
-				hpl.Text = "Add child node";
-				hpl.NavigateUrl = String.Format("../NodeEdit.aspx?NodeId=-1&ParentNodeId={0}", this._page.ActiveNode.Id);
-				hpl.CssClass = "navLink";
-				container.Controls.Add(hpl);
-			}
-			return container;
-		}
+                Image img = new Image();
+                img.ImageUrl = "../Images/sitepage-new.png";
+                img.ImageAlign = ImageAlign.Left;
+                img.AlternateText = "New child node";
+                container.Controls.Add(img);
+                HyperLink hpl = new HyperLink();
+                hpl.Text = "Add child node";
+                hpl.NavigateUrl = String.Format("../NodeEdit.aspx?SiteId={0}&ParentNodeId={0}&NodeId=-1", this._page.ActiveSite.Id, this._page.ActiveNode.Id);
+                hpl.CssClass = "navLink";
+                container.Controls.Add(hpl);
+            }
+            return container;
+        }
 
-		private Control CreateNewNodeControl(Site site, HtmlGenericControl container )
-		{
-			Image img = new Image();
-			img.ImageUrl ="../Images/sitepage-new-home.png";
-			img.ImageAlign = ImageAlign.Left;
-			img.AlternateText = "New Node";
-			container.Controls.Add(img);
-			HyperLink hpl = new HyperLink();
-			hpl.Text = "Add new root node";
-			hpl.NavigateUrl = String.Format("../NodeEdit.aspx?SiteId={0}&NodeId=-1", site.Id.ToString());
-			hpl.CssClass = "navLink";
-			container.Controls.Add(hpl);
-			return container;
-		}
-
-		#region Web Form Designer generated code
-		    override protected void OnInit(EventArgs e)
-		    {
-			    //
-			    // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-			    //
-			    InitializeComponent();
-			    base.OnInit(e);
-		    }
-    		
-		    /// <summary>
-		    ///		Required method for Designer support - do not modify
-		    ///		the contents of this method with the code editor.
-		    /// </summary>
-		    private void InitializeComponent()
-		    {
-			    this.Load += new System.EventHandler(this.Page_Load);
-		    }
-		#endregion
+        private Control CreateNewNodeControl(Site site, HtmlGenericControl container)
+        {
+            Image img = new Image();
+            img.ImageUrl = "../Images/sitepage-new-home.png";
+            img.ImageAlign = ImageAlign.Left;
+            img.AlternateText = "New Node";
+            container.Controls.Add(img);
+            HyperLink hpl = new HyperLink();
+            hpl.Text = "Add new root node";
+            hpl.NavigateUrl = String.Format("../NodeEdit.aspx?SiteId={0}&NodeId=-1", site.Id.ToString());
+            hpl.CssClass = "nodeLink";
+            container.Controls.Add(hpl);
+            return container;
+        }
 
         protected void chkShowAll_CheckedChanged(object sender, EventArgs e)
         {
@@ -373,5 +287,6 @@ namespace Cuyahoga.Web.Admin.Controls
             //Set checkbox to session for page reload/redirect
             chkShowAll.Checked = Convert.ToBoolean(Session["ShowAll"].ToString());
         }
-	}
+
+    }
 }

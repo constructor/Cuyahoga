@@ -26,8 +26,6 @@ namespace Cuyahoga.Web.Admin
         {
             _commonDao = IoC.Resolve<ICommonDao>();
 
-            this.Title = "Edit node";
-
             // Note: ActiveNode is handled primarily by the AdminBasePage because other pages use it.
             // ActiveNode is always freshly retrieved (also after postbacks), so it will be tracked by NHibernate.
             if (Context.Request.QueryString["NodeId"] != null
@@ -64,9 +62,9 @@ namespace Cuyahoga.Web.Admin
                     this.ActiveNode.Template = this.ActiveNode.Site.DefaultTemplate;
                 }
                 // Short description is auto-generated, so we don't need the controls with new nodes.
-                this.txtShortDescription.Visible = false;
-                this.rfvShortDescription.Enabled = false;
-                this.revShortDescription.Enabled = false;
+                this.txtShortDescription.Enabled = false;
+                this.rfvFriendlyURL.Enabled = false;
+                this.revFriendlyURL.Enabled = false;
             }
             if (!this.IsPostBack)
             {
@@ -102,6 +100,9 @@ namespace Cuyahoga.Web.Admin
             {
                 hplAddTemplate0.Enabled = false;
             }
+
+            //Set page title
+            this.Title = this.ActiveNode.Id > 0 ? string.Format("Editing Node '{0}'",this.ActiveNode.Title) : "Create New Node";
         }
 
         private void BindNodeControls()
@@ -124,20 +125,16 @@ namespace Cuyahoga.Web.Admin
                 this.chkLink.Checked = true;
                 this.pnlLink.Visible = true;
                 //this.pnlMenus.Visible = false;
-                this.pnlTemplate.Visible = false;
-                this.pnlSections.Visible = false;
+                //this.pnlTemplate.Visible = false;
+                //this.pnlSections.Visible = false;
                 this.txtLinkUrl.Text = this.ActiveNode.LinkUrl;
                 this.ddlLinkTarget.Items.FindByValue(this.ActiveNode.LinkTarget.ToString()).Selected = true;
             }
             // main buttons visibility
             btnNew.Visible = (this.ActiveNode.Id > 0);
-            btnNew2.Visible = (this.ActiveNode.Id > 0);
             btnDelete.Visible = (this.ActiveNode.Id > 0);
-            btnDelete2.Visible = (this.ActiveNode.Id > 0);
             btnDuplicate.Visible = (this.ActiveNode.Id > 0);
-            btnDuplicate2.Visible = (this.ActiveNode.Id > 0);
             btnDelete.Attributes.Add("onclick", "return confirmDeleteNode();");
-            btnDelete2.Attributes.Add("onclick", "return confirmDeleteNode();");
 
             // custom template to all pages confirm
             btnApplyToAll.Attributes.Add("onclick", "return confirmSiteApplyTemplate();");
@@ -211,8 +208,18 @@ namespace Cuyahoga.Web.Admin
             if (this.ActiveNode.Id > 0 && this.ActiveNode.Template != null)
             {
                 // Also enable add section link
-                this.hplNewSection.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SiteId={0}&SectionId=-1&NodeId={1}", this.ActiveSite.Id, this.ActiveNode.Id);
+                this.hplNewSection.NavigateUrl = String.Format("~/Admin/SectionEdit.aspx?SiteId={0}&NodeId={1}&SectionId=-1", this.ActiveSite.Id, this.ActiveNode.Id);
                 this.hplNewSection.Visible = true;
+            }
+            if(this.rptSections.Items.Count > 0)
+            {
+                this.pnlSections.Visible = true;
+                this.pnlNoSections.Visible = false;
+            }
+            else
+            {
+                this.pnlSections.Visible = false;
+                this.pnlNoSections.Visible = true;
             }
         }
 
@@ -330,6 +337,44 @@ namespace Cuyahoga.Web.Admin
             Context.Response.Redirect(Context.Request.RawUrl);
         }
 
+        private void CopySectionsFromNode(Node node, Node nodeTarget)
+        {
+            foreach (Section section in node.Sections)
+            {
+                Section newsection = new Section();
+
+                newsection.Node = nodeTarget;
+                newsection.Site = this.ActiveSite;
+                newsection.CacheDuration = section.CacheDuration;
+
+                foreach (KeyValuePair<string, Section> entry in section.Connections)
+                {
+                    newsection.Connections.Add(entry.Key, entry.Value);
+                }
+
+                newsection.ModuleType = section.ModuleType;
+                newsection.PlaceholderId = section.PlaceholderId;
+                newsection.Position = section.Position;
+
+                // copy module settings
+                foreach (DictionaryEntry sectionitem in section.Settings)
+                {
+                    newsection.Settings.Add(sectionitem.Key, sectionitem.Value);
+                }
+
+                newsection.ShowTitle = section.ShowTitle;
+                newsection.Title = section.Title;
+
+                newsection.CopyRolesFromNode();
+                newsection.CalculateNewPosition();
+
+                SectionService.SaveSection(newsection);
+
+            }
+        }
+
+
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -379,14 +424,6 @@ namespace Cuyahoga.Web.Admin
             }
         }
 
-        protected void btnNew_Click(object sender, EventArgs e)
-        {
-            // Create an url with NodeId -1 and the Id of the current node as ParentId
-            string url = String.Format("NodeEdit.aspx?NodeId=-1&ParentNodeId={0}&SiteId={1}", this.ActiveNode.Id, this.ActiveSite.Id);
-            // Redirect to the new url
-            Context.Response.Redirect(url);
-        }
-
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             if (this.ActiveNode.Id == -1 && this.ActiveNode.ParentNode != null)
@@ -396,6 +433,82 @@ namespace Cuyahoga.Web.Admin
             else
             {
                 Context.Response.Redirect("Default.aspx");
+            }
+        }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            // Create an url with NodeId -1 and the Id of the current node as ParentId
+            string url = String.Format("NodeEdit.aspx?NodeId=-1&ParentNodeId={0}&SiteId={1}&", this.ActiveNode.Id, this.ActiveSite.Id);
+            // Redirect to the new url
+            Context.Response.Redirect(url);
+        }
+
+        protected void btnDuplicate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ActiveNode == null)
+                {
+                    ShowError("btnDuplicate_Click:: non starting node found.");
+                    return;
+                }
+
+                Node node = new Node();
+                node.ParentNode = ActiveNode.ParentNode;
+                node.Site = this.ActiveSite;
+                node.Title = "Copy of " + ActiveNode.Title;
+
+                //Custom: Check for existing copies and rename accordingly
+                if (node.ParentNode.ChildNodes.Count > 0)
+                {
+                    foreach (Node n in node.ParentNode.ChildNodes)
+                    {
+                        if (node.Title == n.Title)
+                        {
+                            node.Title = "Copy of " + n.Title;
+                        }
+                    }
+                }
+
+                node.Template = ActiveNode.Template;
+                node.Culture = ActiveNode.Culture;
+                node.LinkUrl = ActiveNode.LinkUrl;
+                node.MetaDescription = ActiveNode.MetaDescription;
+                node.MetaKeywords = ActiveNode.MetaKeywords;
+                node.LinkTarget = ActiveNode.LinkTarget;
+                node.ShowInNavigation = ActiveNode.ShowInNavigation;
+
+                node.CreateShortDescription();
+
+                foreach (NodePermission np in ActiveNode.NodePermissions)
+                {
+                    NodePermission npNew = new NodePermission();
+                    npNew.Node = node;
+                    npNew.Role = np.Role;
+                    npNew.ViewAllowed = np.ViewAllowed;
+                    npNew.EditAllowed = np.EditAllowed;
+                    node.NodePermissions.Add(npNew);
+                }
+
+                IList rootNodes = NodeService.GetRootNodes(node.Site).ToList();
+
+                node.CalculateNewPosition(rootNodes);
+                ActiveNode.ChildNodes.Add(node);
+
+                NodeService.SaveNode(node);
+
+                CopySectionsFromNode(ActiveNode, node);
+
+                _commonDao.RemoveQueryFromCache("Nodes");
+                _commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.ChildNodes");
+
+                Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node has been duplicated.", node.Id));
+
+            }
+            catch (Exception ee)
+            {
+                ShowException(ee);
             }
         }
 
@@ -635,8 +748,8 @@ namespace Cuyahoga.Web.Admin
         protected void chkLink_CheckedChanged(object sender, EventArgs e)
         {
             this.pnlLink.Visible = this.chkLink.Checked;
-            this.pnlTemplate.Visible = !this.chkLink.Checked;
-            this.pnlSections.Visible = !this.chkLink.Checked;
+            //this.pnlTemplate.Visible = !this.chkLink.Checked;
+            //this.pnlSections.Visible = !this.chkLink.Checked;
         }
 
         protected void btnApplyToAll_Click(object sender, EventArgs e)
@@ -649,120 +762,5 @@ namespace Cuyahoga.Web.Admin
             this.ShowMessage("Template '" + t.Name + "' set to all pages successfully.");
         }
 
-        // added for v1.6.0
-        /// <summary>
-        /// Handles the Click event of the btnDuplicate control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        protected void btnDuplicate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ActiveNode == null)
-                {
-                    ShowError("btnDuplicate_Click:: non starting node found.");
-                    return;
-                }
-
-                Node node = new Node();
-                node.ParentNode = ActiveNode.ParentNode;
-                node.Site = this.ActiveSite;
-                node.Title = "Copy of " + ActiveNode.Title;
-
-                //Custom: Check for existing copies and rename accordingly
-                if (node.ParentNode.ChildNodes.Count > 0)
-                {
-                    foreach (Node n in node.ParentNode.ChildNodes)
-                    {
-                        if (node.Title == n.Title)
-                        {
-                            node.Title = "Copy of " + n.Title;
-                        }
-                    }
-                }
-
-                node.Template = ActiveNode.Template;
-                node.Culture = ActiveNode.Culture;
-                node.LinkUrl = ActiveNode.LinkUrl;
-                node.MetaDescription = ActiveNode.MetaDescription;
-                node.MetaKeywords = ActiveNode.MetaKeywords;
-                node.LinkTarget = ActiveNode.LinkTarget;
-                node.ShowInNavigation = ActiveNode.ShowInNavigation;
-
-                node.CreateShortDescription();
-
-                foreach (NodePermission np in ActiveNode.NodePermissions)
-                {
-                    NodePermission npNew = new NodePermission();
-                    npNew.Node = node;
-                    npNew.Role = np.Role;
-                    npNew.ViewAllowed = np.ViewAllowed;
-                    npNew.EditAllowed = np.EditAllowed;
-                    node.NodePermissions.Add(npNew);
-                }
-
-                IList rootNodes = NodeService.GetRootNodes(node.Site).ToList();
-
-                node.CalculateNewPosition(rootNodes);
-                ActiveNode.ChildNodes.Add(node);
-
-                NodeService.SaveNode(node);
-
-                CopySectionsFromNode(ActiveNode, node);
-
-                _commonDao.RemoveQueryFromCache("Nodes");
-                _commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.ChildNodes");
-
-                Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}&message=Node has been duplicated.", node.Id));
-
-            }
-            catch (Exception ee)
-            {
-                ShowException(ee);
-            }
-        }
-
-        /// <summary>
-        /// Copies the sections from node.
-        /// </summary>
-        /// <param name="node">The node.</param>
-        /// <param name="nodeTarget">The node target.</param>
-        private void CopySectionsFromNode(Node node, Node nodeTarget)
-        {
-            foreach (Section section in node.Sections)
-            {
-                Section newsection = new Section();
-
-                newsection.Node = nodeTarget;
-                newsection.Site = this.ActiveSite;
-                newsection.CacheDuration = section.CacheDuration;
-
-                foreach (KeyValuePair<string, Section> entry in section.Connections)
-                {
-                    newsection.Connections.Add(entry.Key, entry.Value);
-                }
-
-                newsection.ModuleType = section.ModuleType;
-                newsection.PlaceholderId = section.PlaceholderId;
-                newsection.Position = section.Position;
-
-                // copy module settings
-                foreach (DictionaryEntry sectionitem in section.Settings)
-                {
-                    newsection.Settings.Add(sectionitem.Key, sectionitem.Value);
-                }
-
-                newsection.ShowTitle = section.ShowTitle;
-                newsection.Title = section.Title;
-
-                newsection.CopyRolesFromNode();
-                newsection.CalculateNewPosition();
-
-                SectionService.SaveSection(newsection);
-
-            }
-        }
-        // added for v1.6.0
     }
 }

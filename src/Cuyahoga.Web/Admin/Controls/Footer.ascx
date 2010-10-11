@@ -1,1 +1,1 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="Footer.ascx.cs" Inherits="Cuyahoga.Web.Admin.Controls.Footer" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Footer.ascx.cs" Inherits="Cuyahoga.Web.Admin.Controls.Footer" %>

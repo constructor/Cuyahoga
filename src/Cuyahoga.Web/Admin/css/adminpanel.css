@@ -21,14 +21,26 @@
     position: absolute;
     right: 32px;
     width: 128px;
-    height: 128px;
     overflow: visible;
     z-index: 1000;
     vertical-align: top;
     display: none;
-    background-image: url(../images/edit-panel.png);
     margin: 0;
     padding: 10px;
+    
+    background-image:url(../images/panel-alpha-background.png);
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border:2px solid #000;
+    border-radius:8px;
+    
+    -moz-box-shadow: 0px 4px 4px #999;
+	-webkit-box-shadow: 0px 4px 4px #999;
+	box-shadow: 0px 4px 4px #999;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#666666')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#666666');
 }
 
 .moduletitle

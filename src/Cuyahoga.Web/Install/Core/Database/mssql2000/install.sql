@@ -14,7 +14,8 @@ publisheduntil datetime NULL,
 createdby int NOT NULL,
 modifiedby int NOT NULL,
 publishedby int NULL,
-sectionid int NOT NULL)
+sectionid int NOT NULL
+)
 GO
 
 CREATE TABLE cuyahoga_contentitemrole(
@@ -22,12 +23,12 @@ contentitemroleid int identity(1,1) NOT NULL CONSTRAINT PK_contentitemrole PRIMA
 contentitemid int NOT NULL,
 roleid int NOT NULL,
 viewallowed bit NOT NULL,
-editallowed bit NOT NULL)
+editallowed bit NOT NULL
+)
 GO
 
 CREATE UNIQUE INDEX IX_contentitemrole_roleid_contentitemid ON cuyahoga_contentitemrole (roleid,contentitemid)
 GO
-
 
 CREATE TABLE cuyahoga_category(
 categoryid int identity(1,1) NOT NULL CONSTRAINT PK_category PRIMARY KEY,
@@ -36,7 +37,8 @@ parentcategoryid int NULL,
 path nvarchar(80) NOT NULL,
 categoryname nvarchar(100) NOT NULL,
 description nvarchar(255) NULL,
-position int NOT NULL)
+position int NOT NULL
+)
 GO
 
 CREATE UNIQUE INDEX IX_category_path_siteid ON cuyahoga_category (path, siteid)
@@ -140,7 +142,6 @@ inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL)
 GO
 
-
 CREATE TABLE cuyahoga_moduletype(
 moduletypeid int identity(1,1) NOT NULL CONSTRAINT PK_moduletype PRIMARY KEY,
 name nvarchar(100) NOT NULL,
@@ -153,7 +154,6 @@ inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL,
 CONSTRAINT UC_moduletype_classname UNIQUE(classname))
 GO
-
 
 CREATE TABLE cuyahoga_modulesetting(
 modulesettingid int identity(1,1) NOT NULL CONSTRAINT PK_modulesetting PRIMARY KEY,
@@ -226,7 +226,6 @@ GO
 CREATE UNIQUE INDEX IX_node_shortdescription_siteid ON cuyahoga_node (shortdescription,siteid)
 GO
 
-
 CREATE TABLE cuyahoga_sitealias(
 sitealiasid int identity(1,1) NOT NULL CONSTRAINT PK_sitealias PRIMARY KEY,
 siteid int NOT NULL,
@@ -235,7 +234,6 @@ url nvarchar(100) NOT NULL,
 inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL)
 GO
-
 
 CREATE TABLE cuyahoga_section(
 sectionid int identity(1,1) NOT NULL CONSTRAINT PK_section PRIMARY KEY,
@@ -251,7 +249,6 @@ cacheduration int NULL,
 inserttimestamp datetime DEFAULT current_timestamp NOT NULL,
 updatetimestamp datetime DEFAULT current_timestamp NOT NULL)
 GO
-
 
 CREATE TABLE cuyahoga_sectionsetting(
 sectionsettingid int identity(1,1) NOT NULL CONSTRAINT PK_sectionsetting PRIMARY KEY,
@@ -305,15 +302,15 @@ GO
 CREATE UNIQUE INDEX IX_sectionrole_roleid_sectionid ON cuyahoga_sectionrole (roleid,sectionid)
 GO
 
-
 CREATE TABLE cuyahoga_version(
 versionid int identity(1,1) NOT NULL CONSTRAINT PK_version PRIMARY KEY,
 assembly nvarchar(255) NOT NULL,
 major int NOT NULL,
 minor int NOT NULL,
 patch int NOT NULL)
-
 GO
+
+
 
 ALTER TABLE cuyahoga_contentitem
 ADD CONSTRAINT FK_contentitem_user_createdby 
@@ -512,6 +509,7 @@ ALTER TABLE cuyahoga_sectionrole
 ADD CONSTRAINT FK_sectionrole_section_sectionid
 FOREIGN KEY (sectionid) REFERENCES cuyahoga_section (sectionid)
 GO
+
 
 -- DATA
 SET DATEFORMAT ymd

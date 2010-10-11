@@ -11,16 +11,23 @@ border:0;
 padding:0;
 }
 
+.shadow {
+-moz-box-shadow:0 3px 6px #999;
+-webkit-box-shadow:0 3px 6px #999;
+box-shadow:0 3px 6px #999;
+-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#999999')";
+filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#999999');
+}
+
 #messages {
-background-color:#366;
 height:24px;
 position:relative;
 width:100%;
+border: 0;
+margin: 0;
 }
 
 #messages p {
-color:#fff;
-font-weight:700;
 margin:0 0 0 8px;
 padding:4px;
 }
@@ -134,33 +141,7 @@ height:0;
 }
 
 input[type*="checkbox"] {
-border:1px!important;
-}
-
-input[type*="submit"] {
-background-color:#FFF;
-border:1px solid #999;
-color:#666;
-font-weight:700;
-padding:6px;
-}
-
-input[type*="submit"][name*="Save"]:hover {
-background-color:#393;
-border:1px solid #393;
-color:#fff;
-}
-
-input[type*="submit"][name*="Duplicate"]:hover {
-background-color:#639;
-border:1px solid #639;
-color:#fff;
-}
-
-input[type*="submit"][name*="New"]:hover {
-background-color:#f60;
-border:1px solid #c30;
-color:#FFF;
+border:1px;
 }
 
 input,select,textarea {
@@ -171,10 +152,6 @@ font-size:small;
 margin-left:1px;
 margin-right:1px;
 padding:6px;
-}
-
-.tblarge {
-width:50%;
 }
 
 .arrowup:hover {
@@ -209,6 +186,7 @@ font-family:Arial, Helvetica;
 font-size:large;
 font-weight:700;
 padding-bottom:4px;
+margin-top:0;
 }
 
 a {
@@ -221,23 +199,37 @@ margin:2px;
 padding:0 2px 2px;
 }
 
-.nodeLink,.navLink {
+.nodeLink {
 border:1px solid #fff;
 color:#666;
 display:block;
 font-size:small;
-height:24px;
 text-decoration:none;
+line-height:2.5em;
+vertical-align:middle;
+padding-left:24px;
 margin:0;
-padding:8px 4px 0 28px;
 }
 
-.site .nodeLink {
-height:24px;
+.navLink {
+border:1px solid #fff;
+color:#666;
+display:block;
+font-size:small;
+text-decoration:none;
+line-height:2em;
+vertical-align:middle;
+padding-left:14px;
+margin:0;
 }
 
 .sitepanel > img,.site > img,.rootnode > img,.newsite img {
 padding:2px 0 0;
+}
+
+.sitepanel > img {
+margin-left:8px;
+margin-right:8px;
 }
 
 .navsection a:hover {
@@ -252,13 +244,16 @@ border-radius:6px;
 color:#666;
 font-size:small;
 width:auto;
-margin:0;
+margin:8px 0 8px 32px;
 padding:0 0 0 4px;
+}
+
+.navsection .chkshowall input {
+margin:10px 0 0;
 }
 
 .sitepanel {
 border-left:2px solid #fff;
-margin-bottom:12px;
 overflow:hidden;
 padding-left:4px;
 position:relative;
@@ -266,6 +261,7 @@ position:relative;
 
 #collapseallcontrol {
 clear:both;
+text-align:center;
 }
 
 #collapseallcontrol label {
@@ -283,8 +279,8 @@ border-radius:6px;
 color:#fff;
 display:inline;
 text-decoration:none;
-margin:0;
-padding:0 6px;
+margin:0 6px;
+padding:2px 12px;
 }
 
 .sitepanel ul {
@@ -334,9 +330,9 @@ color:#366;
 }
 
 .group {
-border:2px solid #AAA;
+border:1px solid #AAA;
 position:relative;
-margin:10px 0 20px;
+margin:8px 0 16px;
 padding:8px;
 }
 
@@ -389,6 +385,12 @@ margin:0;
 color:#C00;
 }
 
+.error {
+display:inline;
+float:none;
+color:Red;
+}
+
 .messagebox {
 background-color:#EEE;
 border:solid 1px #CCC;
@@ -422,10 +424,13 @@ table.tbl {
 border-collapse:collapse;
 color:#333;
 visibility:visible;
+margin-bottom:8px;
+width:100%;
 }
 
 table.tbl th {
 background-color:#EEE;
+border-top:solid 1px #CCC;
 border-bottom:solid 1px #CCC;
 border-right:solid 1px #CCC;
 color:#333;
@@ -440,71 +445,47 @@ font-size:small;
 padding:4px;
 }
 
-table.tbl a {
-padding-left:5px;
-padding-right:5px;
-}
-
 table.tbl tr {
 height:32px;
 }
 
-table.tbl tr td a[id*="Edit"]:hover {
-background-color:#393;
-border:1px solid #393;
-color:#FFF;
+table.tbl tbody tr {
+background-color:#fff;
 }
 
-table.tbl tr td a[id*="Install"]:hover {
-background-color:#0A0;
-border:1px solid #0A0;
-color:#FFF;
+#role {
+width:60%;
+}
+
+#title {
+width:25%;
+}
+
+.AspNet-RadioButtonList {
+margin-top:12px;
 }
 
 #header {
 background-color:#FFF;
-background-image:url(../Images/PoweredByMain.gif);
-background-position:right;
-background-repeat:no-repeat;
-height:72px;
-padding:5px;
-}
-
-#headertitle {
 background-image:url(../Images/Logo-AdminMain.gif);
 background-repeat:no-repeat;
-color:#036;
-float:left;
-font-size:medium;
-height:64px;
-width:272px;
+height:56px;
 padding:5px;
 }
 
-#headeruser {
+#header h1 {
+visibility:hidden;
+display:none;
+}
+
+#header #viewbuttons {
+margin-top:12px;
 float:right;
-width:200px;
 }
 
-#subheader {
-background-color:#3cc;
-color:#fff;
-font-weight:700;
-position:relative;
-text-align:right;
-width:100%;
-padding:4px 0;
-}
-
-#subheader a {
--moz-border-radius:6px;
--webkit-border-radius:6px;
-background-color:#699;
-border:1px solid #366;
-border-radius:6px;
-color:#fff;
-text-decoration:none;
-padding:0 6px;
+#header #viewbuttons h3 {
+display:inline;
+margin:0 24px;
 }
 
 #adminwrapper {
@@ -564,142 +545,59 @@ width:66px;
 -moz-border-radius:12px;
 -webkit-border-radius:12px;
 background-color:#fff;
-border:2px #999 solid;
+border:1px #ccc solid;
 border-radius:12px;
 margin:8px 4px;
-padding:16px;
+padding:12px;
+}
+
+#navbar {
+min-width:1000px;
+padding: 0 8px 0 8px;
+} 
+
+#navigationbar {
+-moz-border-radius:12px;
+-webkit-border-radius:12px;
+background-color:#fff;
+border-radius:12px;
+height:32px;
+min-width:966px;
+margin:8px 4px;
+padding:12px;
+}
+
+#navigationbar a {
+float:left;
+margin-right:16px;
+padding:2px;
+}
+
+.min550 {
+min-height:550px;
 }
 
 #moduleadminpane {
-border:1px solid #999;
-background-color:#FFF;
-margin:10px;
-padding:8px;
+position:relative;
+top: 16px;
+-moz-border-radius:12px;
+-webkit-border-radius:12px;
+background-color:#fff;
+border:1px #999 solid;
+border-radius:12px;
+padding:12px;
+}
+
+.cleanpad16 {
+padding: 0 16px 0 16px ;
+}
+
+.cleanpad8 {
+padding: 0 4px 0 4px ;
 }
 
 .center {
 text-align:center;
-}
-
-#loginarea {
--moz-border-radius:16px;
--webkit-border-radius:16px;
-border:2px solid #666;
-display:block;
-margin-left:auto;
-margin-right:auto;
-margin-top:192px;
-width:358px;
-}
-
-#login {
-background-repeat:no-repeat;
-height:256px;
-padding-top:8px;
-text-align:left;
-width:358px;
-}
-
-#poweredby {
-background-image:url(../Images/PoweredBy.gif);
-display:block;
-height:80px;
-margin-left:auto;
-margin-right:auto;
-width:282px;
-}
-
-#login #lblError {
-display:block;
-float:left;
-font-family:Verdana, Arial, Helvetica, sans-serif;
-font-size:small;
-padding-left:32px;
-position:relative;
-}
-
-#login #cuyahoga {
-background-image:url(../Images/Login/Logo.gif);
-height:48px;
-margin-left:52px;
-margin-top:24px;
-width:242px;
-border-style:none;
-}
-
-#login label {
-color:#666;
-display:block;
-float:left;
-font-family:Verdana, Arial, Helvetica, sans-serif;
-font-size:small;
-font-weight:700;
-height:26px;
-position:relative;
-width:88px;
-padding:14px 0 0 40px;
-}
-
-.loginerror {
-clear:right;
-color:red;
-display:block;
-float:left;
-font-family:Verdana, Arial, Helvetica, sans-serif;
-font-size:small;
-height:30px;
-padding-left:32px;
-padding-top:12px;
-position:relative;
-width:128px;
-}
-
-#login input {
--moz-border-radius:8px;
--webkit-border-radius:8px;
-border:2px solid #666;
-color:#666;
-font-family:Verdana, Arial, Helvetica, sans-serif;
-font-size:small;
-height:20px;
-line-height:24px;
-width:150px;
-margin:2px 0;
-padding:8px;
-}
-
-#login input:focus,#login input:hover {
-background-color:#ffc;
-}
-
-#login .btnLogin {
-background-position:0 0;
-background-repeat:no-repeat;
-display:block;
-float:right;
-font-weight:700;
-height:38px;
-overflow:auto;
-position:relative;
-width:72px;
-margin:8px 58px 0 0;
-padding:0;
-}
-
-#login .btnLogin:hover {
-background-color:#666;
-color:#fff;
-}
-
-#login h3 {
-background-color:#006;
-color:#FFF;
-display:block;
-font-size:medium;
-font-weight:700;
-text-align:center;
-margin:0;
-padding:4px;
 }
 
 .AspNet-CheckBoxList ul {
@@ -738,24 +636,6 @@ padding:0;
 display:none;
 }
 
-input[type*="submit"]:hover,table.tbl tr td a:hover {
-background-color:#F60;
-border:1px solid #F60;
-color:#FFF;
-}
-
-input[type*="submit"][name*="Cancel"]:hover,table.tbl tr td a[id*="Detach"]:hover {
-background-color:#666;
-border:1px solid #666;
-color:#FFF;
-}
-
-input[type*="submit"][name*="Delete"]:hover,input[type*="submit"][name*="Rebuild"]:hover,table.tbl tr td a[id*="Delete"]:hover,table.tbl tr td a[id*="Uninstall"]:hover {
-background-color:red;
-border:1px solid red;
-color:#FFF;
-}
-
 .sitepanel:hover,.treeview:hover {
 border-left:2px solid #3cc;
 }
@@ -763,18 +643,6 @@ border-left:2px solid #3cc;
 #collapseallcontrol a:hover,#subheader a:hover {
 background-color:#e6f7f7;
 color:#366;
-}
-
-table.tbl tr td a,table.tbl tr td a[id*="Edit"],table.tbl tr td a[id*="Detach"],table.tbl tr td a[id*="Delete"],table.tbl tr td a[id*="Uninstall"],table.tbl tr td a[id*="Install"] {
--moz-border-radius:6px;
--webkit-border-radius:6px;
-background-color:#FFF;
-border:1px solid #999;
-color:#999;
-font-weight:700;
-text-decoration:none;
-margin:4px;
-padding:4px;
 }
 
 .AspNet-CheckBoxList .AspNet-CheckBoxList-Item label,.AspNet-RadioButtonList ul li label {
@@ -789,9 +657,6 @@ padding:0;
 .AdminContentPad {
 padding:16px;
 }
-
-
-/*Module admin styles*/
 
 .panel60,.panel40 {
 -moz-border-radius:8px;
@@ -870,276 +735,6 @@ color:#666;
 text-align:left;
 }
 
-#moduleadminpane .AspNet-GridView a[id*="btnSelect"] {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#CCC;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnSelect"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#F60;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnSelect"] {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #FFF;
-background-color:#F60;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnSelect"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #FF6;
-background-color:#F60;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnEdit"] {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#6C3;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnEdit"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#390;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnEdit"] {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #6C3;
-background-color:#6C3;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnEdit"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #390;
-background-color:#390;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnUpdate"] {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#B55BB5;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnUpdate"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#9B379B;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnUpdate"] {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #B55BB5;
-background-color:#B55BB5;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnUpdate"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #9B379B;
-background-color:#9B379B;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnCancel"] {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#AAA;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnCancel"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#999;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnCancel"] {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #AAA;
-background-color:#AAA;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnCancel"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #999;
-background-color:#999;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnDelete"] {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:red;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView a[id*="btnDelete"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:0;
-background-color:#A00;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnDelete"] {
-display:block;
-width:auto;
-height:auto;
-border:1px solid red;
-background-color:red;
-color:#FFF;
-font-size:small;
-font-weight:700;
-text-align:center;
-margin-bottom:1px;
-margin-top:1px;
-padding:4px;
-}
-
-#moduleadminpane .AspNet-GridView .AspNet-GridView-Selected a[id*="btnDelete"]:hover {
-display:block;
-width:auto;
-height:auto;
-border:1px solid #A00;
-background-color:#A00;
-color:#FFF;
-font-size:small;
-font-weight:700;
-padding:4px;
-}
-
 #moduleadminpane fieldset .validator {
 color:red;
 }
@@ -1169,28 +764,6 @@ height:16px;
 border:0;
 }
 
-#moduleadminpane fieldset .SubmitButton {
-margin-top:8px;
-border:1px solid #CCC;
-background-color:#EEE;
-color:#666;
-float:right;
-}
-
-#moduleadminpane fieldset .SubmitButton:hover {
-margin-top:8px;
-border:1px solid #CCC;
-background-color:#DDD;
-color:#666;
-float:right;
-}
-
-input,textarea,select,.group,fieldset,legend,#moduleadminpane .AspNet-GridView a[id*="btnSelect"],#moduleadminpane .AspNet-GridView a[id*="btnEdit"],#moduleadminpane .AspNet-GridView a[id*="btnUpdate"],#moduleadminpane .AspNet-GridView a[id*="btnCancel"],#moduleadminpane .AspNet-GridView a[id*="btnDelete"] {
--moz-border-radius:6px;
--webkit-border-radius:6px;
-border-radius:6px;
-}
-
 input:hover,select:hover,textarea:hover,input:focus,select:focus,textarea:focus,table.tbl tr:hover,#moduleadminpane .AspNet-GridView table tbody tr:hover {
 background-color:#FFC;
 }
@@ -1198,4 +771,28 @@ background-color:#FFC;
 .hidden,#headertitle span,#moduleadminpane .hidden {
 display:none;
 visibility:hidden;
+}
+
+.tblarge,#customsettings tr,#rights {
+width:50%;
+}
+
+#tosection,#name,#path,#aliasurl,#entrynode {
+width:40%;
+}
+
+#nodetitle,#rolename,#rightname,#lastupdated,#attach,#attached {
+width:20%;
+}
+
+#action,#select,#systemrole,#connectiondelete,#position {
+width:10%;
+}
+
+#actions,#path {
+width:30%;
+}
+
+#adminwrap,#nodegeneral,#roles,#sections,#customsettings,#connections,#authorisation,#categories,#aliases,#roles,#users,#templates,#userdetails,#placeholders {
+width:100%;
 }

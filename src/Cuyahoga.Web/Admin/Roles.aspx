@@ -4,32 +4,31 @@
 		<title>Roles</title>
 	</head>
 	<body>
-		<form id="Form1" method="post" runat="server">&nbsp;
-			<table class="tbl">
-				<asp:repeater id="rptRoles" runat="server" OnItemDataBound="RptRolesItemDataBound">
-					<headertemplate>
-						<tr>
-						    <th></th>
-							<th>Rolename</th>
-							<th>Right(s)</th>
-							<th>Last update</th>
-							<th></th>
-						</tr>
-					</headertemplate>
-					<itemtemplate>
-						<tr>
-						    <td><asp:Image Width="14" Height="12" ImageAlign="Middle" runat="server" ID="imgRole" /></td>
-							<td><%# DataBinder.Eval(Container.DataItem, "Name") %></td>
-							<td><asp:label id="lblRights" runat="server"></asp:label></td>
-							<td><asp:label id="lblLastUpdate" runat="server"></asp:label></td>
-							<td>
-								<asp:hyperlink id="hplEdit" runat="server">Edit</asp:hyperlink>
-							</td>
-						</tr>
-					</itemtemplate>
-				</asp:repeater>
-			</table>
-			<br/>
+		<form id="Form1" method="post" runat="server">
+		    <div class="group">
+			    <table id="roles" class="tbl">
+				    <asp:repeater id="rptRoles" runat="server" OnItemDataBound="RptRolesItemDataBound">
+					    <headertemplate>
+						    <tr>
+						        <th id="systemrole">System</th>
+							    <th id="rolename">Role Name</th>
+							    <th id="rights">Rights</th>
+							    <th id="lastupdated">Last Updated</th>
+							    <th id="action">Action</th>
+						    </tr>
+					    </headertemplate>
+					    <itemtemplate>
+						    <tr>
+						        <td><asp:Image Width="14" Height="12" ImageAlign="Middle" runat="server" ID="imgRole" /></td>
+							    <td><%# DataBinder.Eval(Container.DataItem, "Name") %></td>
+							    <td><asp:label id="lblRights" runat="server"></asp:label></td>
+							    <td><asp:label id="lblLastUpdate" runat="server"></asp:label></td>
+							    <td><asp:hyperlink id="hplEdit" runat="server">Edit</asp:hyperlink></td>
+						    </tr>
+					    </itemtemplate>
+				    </asp:repeater>
+			    </table>
+			</div>
 			<div>
 				<asp:button id="btnNew" runat="server" OnClick="BtnNewClick" text="Add new role"></asp:button>
 			</div>

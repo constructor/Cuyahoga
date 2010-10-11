@@ -295,12 +295,21 @@ a
 {
     -moz-border-radius: 16px;
     -webkit-border-radius: 16px;
-    border: 2px solid #666;
+    background-color: #fff;
+    border: 1px solid #999;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 192px;
     width: 358px;
+    
+    -moz-box-shadow: 0px 16px 64px #ccc;
+	-webkit-box-shadow: 0px 16px 64px #ccc;
+	box-shadow: 0px 16px 64px #ccc;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#666666')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#666666');
 }
 
 #login
@@ -365,7 +374,7 @@ a
 {
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
-    border: 2px solid #666;
+    border: 1px solid #999;
     color: #666;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: small;
@@ -398,7 +407,8 @@ a
 
 #login .btnLogin:hover
 {
-    background-color: #666;
+    border: 1px solid #999;
+    background-color: #999;
     color: #fff;
 }
 

@@ -185,6 +185,8 @@ namespace Cuyahoga.Web.Install
 		#region Site creation code
 		    private void CreateSite() 
             {
+                this._commonDao.Flush();//TEST
+
 			    User adminUser = (User) this._commonDao.GetObjectById(typeof(User), 1);
                 
                 //If SiteData/1/ exists then delete it
@@ -200,7 +202,7 @@ namespace Cuyahoga.Web.Install
                     Template ImpactDroppy = this._commonDao.GetObjectByDescription(typeof(Template), "Name", "Impact(Droppy)") as Template;
                 #endregion
 
-                Role defaultAuthenticatedRole = this._commonDao.GetObjectByDescription(typeof(Role), "Name", "Authenticated user") as Role;
+                Role defaultAuthenticatedRole = this._commonDao.GetObjectByDescription(typeof(Role), "Name", "Authenticated User") as Role;
 
                 #region Region for default site
                     // Site

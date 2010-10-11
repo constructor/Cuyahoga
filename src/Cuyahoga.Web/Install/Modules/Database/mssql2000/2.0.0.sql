@@ -1,4 +1,4 @@
--- Migrate StaticHtml to ContentItem
+﻿-- Migrate StaticHtml to ContentItem
 -- First add a temporary column to contentitem to store the old statichtmlid's
 ALTER TABLE cuyahoga_contentitem
 	ADD statichtmlid int NULL
@@ -6,7 +6,7 @@ go
 
 -- copy data to contentitem
 INSERT INTO cuyahoga_contentitem(statichtmlid, globalid, workflowstatus, title, version, createdat, modifiedat, createdby, modifiedby, sectionid)
-SELECT statichtmlid, newid(), 0, isnull(title, ''), 1, inserttimestamp, updatetimestamp, createdby, modifiedby, sectionid
+SELECT statichtmlid, newid(), 0, title, 1, inserttimestamp, updatetimestamp, createdby, modifiedby, sectionid
 FROM cm_statichtml
 go
 
@@ -78,6 +78,12 @@ go
 
 -- We don't drop the inserttimestamp and updatetimestamp columns because they have defaults and are 
 -- very hard to drop because of their generated names
+
+-- Change module admin url
+UPDATE cuyahoga_moduletype
+SET editpath = 'Modules/StaticHtml/ManageContent/Edit'
+WHERE [name] = 'StaticHtml'
+go
 
 /*
  * Version

@@ -23,6 +23,15 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
+        /// rptModules control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptModules;
+        
+        /// <summary>
         /// litMessages control.
         /// </summary>
         /// <remarks>
@@ -57,7 +66,7 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpload;
-
+        
         /// <summary>
         /// uplUploadModuleValidator control.
         /// </summary>
@@ -66,14 +75,5 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator uplUploadModuleValidator;
-        
-        /// <summary>
-        /// rptModules control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptModules;
     }
 }

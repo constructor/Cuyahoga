@@ -9,18 +9,13 @@ namespace Cuyahoga.Web.Admin
     {
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            this.Title = "Templates";
-
-            if (this.ActiveSite != null)
-            {
-                this.lblCurrentSite.Text = "Current selected site: " + this.ActiveSite.Name;
-            }
-
             if (!this.IsPostBack)
             {
                 BindTemplates();
                 BindSites();
             }
+
+            this.Title = this.ActiveSite != null ? string.Format("Templates of site '{0}'",this.ActiveSite.Name) : "Templates";
         }
 
         protected void UpdateTemplates()

@@ -1,21 +1,25 @@
-<%@ Control Language="c#" AutoEventWireup="false" CodeBehind="AdminTemplate.ascx.cs" Inherits="Cuyahoga.Web.Admin.Controls.AdminTemplate" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminTemplate.ascx.cs" Inherits="Cuyahoga.Web.Admin.Controls.AdminTemplate" %>
 <%@ Register TagPrefix="uc1" TagName="Header" Src="Header.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="NavigationBar" Src="NavigationBar.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="Navigation" Src="Navigation.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Cuyahoga Website Administration: <asp:Literal ID="PageTitle" runat="server"></asp:Literal></title>
+    <title>Cuyahoga Admin Panel - <asp:Literal ID="PageTitle" runat="server"></asp:Literal></title>
     <link id="CssStyleSheet" rel="stylesheet" type="text/css" runat="server" />
     <!--[if IE 6]><link href="Css/AdminIE6.css" type="text/css" rel="stylesheet"><![endif]-->
-    <link rel="stylesheet" href="/js/jquery-treeview/jquery.treeview.css" />
+    <link type="text/css" href="/js/jquery-treeview/jquery.treeview.css" rel="stylesheet" />
+    <link type="text/css" href="/js/jquery-ui-1.8.4/css/cuyahoga-green/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
     
     <!-- The 'if statement' enables jQuery intellisense by provideing correct path to the files for VS2008. 'CTRL-SHIFT J' also refreshes the intellisense for jQuery -->
     <%if (false){ %><script src="~/js/jquery-1.4.1.min.js" type="text/javascript"></script><%} %>
 
-    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="/js/jquery-urlEncode.js" type="text/javascript"></script>
     <script src="/js/jquery.urldecoder.min.js" type="text/javascript"></script>
-    <script src="/js/jquery-treeview/lib/jquery.cookie.js" type="text/javascript"></script>
     <script src="/js/jquery-treeview/jquery.treeview.min.js" type="text/javascript"></script>
     <script src="/js/jquery-contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
     <script src="/js/jQuery-jTypeWriter.js" type="text/javascript"></script>
@@ -389,6 +393,10 @@
 
         $(document).ready(function() {
 
+            //UI Buttons
+            $("input:submit, div[id='header'] a, div[id='navigationbar'] a, .tbl a:not([id*='Up'],[id*='Down']), a[id*='NewSection'], a[id*='AddTemplate']").button();
+            $("input,textarea,select,.group,fieldset,legend,#moduleadminpane .AspNet-GridView a[id*='btnSelect'],#moduleadminpane .AspNet-GridView a[id*='btnEdit'],#moduleadminpane .AspNet-GridView a[id*='btnUpdate'],#moduleadminpane .AspNet-GridView a[id*='btnCancel'],#moduleadminpane .AspNet-GridView a[id*='btnDelete']").addClass("ui-corner-all");
+
             buffernode(actionbuffer.siteid, actionbuffer.nodeid);
             updateMessage();
 
@@ -407,15 +415,19 @@
 <body>
     <form id="Frm" method="post" runat="server" enctype="multipart/form-data">
     <uc1:Header ID="Header" runat="server"></uc1:Header>
-    <div id="messages">
+    <div id="messages" class="ui-widget-header"></div>
+    <div id="navbar">
+        <uc1:NavigationBar ID="NavigationBar" runat="server"></uc1:NavigationBar>
     </div>
     <div id="adminwrapper">
         <div id="contentpane">
-            <div id="pad">
+            <div id="padding" class="cleanpad8">
+            <div id="pad" class="min550">
                 <h1><asp:Literal ID="PageTitleLabel" runat="server" /></h1>
                 <div id="MessageBox" class="messagebox" runat="server" visible="false" enableviewstate="false">
                 </div>
                 <asp:PlaceHolder ID="PageContent" runat="server"></asp:PlaceHolder>
+            </div>
             </div>
         </div>
         <div id="menupane">
@@ -423,9 +435,11 @@
                 <div id="progress">
                 </div>
             </div>
-            <div id="pad">
+            <div id="padding2" class="cleanpad8">
+            <div id="pad" class="min550">
                 <uc1:Navigation ID="Nav" runat="server"></uc1:Navigation>
                 <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+            </div>
             </div>
         </div>
     </div>

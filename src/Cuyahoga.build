@@ -12,6 +12,8 @@
 		<include name="Cuyahoga.Modules.Articles/Cuyahoga.Modules.Articles.build" />
 		<include name="Cuyahoga.Modules.Downloads/Cuyahoga.Modules.Downloads.build" />
 		<include name="Cuyahoga.Modules.RemoteContent/Cuyahoga.Modules.RemoteContent.build" />
+		<include name="Cuyahoga.Modules.Forum/Cuyahoga.Modules.Forum.build" />
+		<include name="Cuyahoga.Modules.Flash/Cuyahoga.Modules.Flash.build" />
 	</fileset>
 
 	<fileset id="buildfiles.deploy">
@@ -21,6 +23,8 @@
 		<include name="Cuyahoga.Modules.Articles/Cuyahoga.Modules.Articles.build" />
 		<include name="Cuyahoga.Modules.Downloads/Cuyahoga.Modules.Downloads.build" />
 		<include name="Cuyahoga.Modules.RemoteContent/Cuyahoga.Modules.RemoteContent.build" />
+		<include name="Cuyahoga.Modules.Forum/Cuyahoga.Modules.Forum.build" />
+		<include name="Cuyahoga.Modules.Flash/Cuyahoga.Modules.Flash.build" />
 	</fileset>
 
 	<target name="build" 

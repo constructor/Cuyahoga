@@ -36,8 +36,6 @@ namespace Cuyahoga.Web.Admin
 
             LoadSection();
 
-            this.Title = "Edit section";
-
             if (this._activeSection != null && !this.IsPostBack)
             {
                 BindSectionControls();
@@ -48,6 +46,16 @@ namespace Cuyahoga.Web.Admin
                 BindRoles();
             }
 
+            bool isNew = _activeSection.Id < 0;
+            bool isStandalone = _activeSection.Id > -1 && _activeSection.Node == null;
+
+            if (isNew)
+                this.Title = "Create New Section";
+            else if (isStandalone)
+                this.Title = string.Format("Edit the '{0}' Standalone Section", _activeSection.Title);
+            else
+                this.Title = string.Format("Edit the '{0}' Section of Node '{1}'", _activeSection.Title, this._activeSection.Node.Title);
+                
         }
 
         /// <summary>
@@ -102,6 +110,7 @@ namespace Cuyahoga.Web.Admin
                 }
             }
             this.pnlCustomSettings.Visible = mt.ModuleSettings.Count > 0;
+            this.pnlNoCustomSettings.Visible = mt.ModuleSettings.Count < 1;
         }
 
         protected void BindSectionControls()
@@ -221,6 +230,7 @@ namespace Cuyahoga.Web.Admin
                     IActionProvider actionProvider = (IActionProvider)moduleInstance;
                     // OK, show connections panel
                     this.pnlConnections.Visible = true;
+                    this.pnlNoConnections.Visible = false;
                     this.rptConnections.DataSource = this._activeSection.Connections;
                     this.rptConnections.DataBind();
                     if (this._activeSection.Connections.Count < actionProvider.GetOutboundActions().Count && this._activeSection.Node != null)
@@ -406,22 +416,23 @@ namespace Cuyahoga.Web.Admin
                     _commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Node.Sections");
 
                     ShowMessage("Section saved.");
+
+                    if (!(this._activeSection.Id > 0))
+                    {
+                        if (this.ActiveNode != null)
+                        {
+                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId{0}&NodeId={1}", this.ActiveSite.Id, this.ActiveNode.Id));
+                        }
+                        else
+                        {
+                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId{0}", this.ActiveSite.Id));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
+                    //this.Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "DefaultButtonScript", "<script type=\"text/javascript\">" + System.Environment.NewLine + "showMessage('" + ex.Message + "');" + System.Environment.NewLine + "</script>");
                     this.ShowError(ex.Message);
-                }
-
-                if (!(this._activeSection.Id > 0))
-                {
-                    if (this.ActiveNode != null)
-                    {
-                        Context.Response.Redirect(String.Format("NodeEdit.aspx?NodeId={0}", this.ActiveNode.Id));
-                    }
-                    else
-                    {
-                        Context.Response.Redirect("Sections.aspx");
-                    }
                 }
 
             }

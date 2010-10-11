@@ -7,43 +7,43 @@
 	<form id="form1" runat="server">
 
 		<script type="text/javascript">
-    <!--
-    function SetUniqueRadioButton(nameregex, current)
-    {
-       re = new RegExp(nameregex);
-       for(i = 0; i < document.forms[0].elements.length; i++)
-       {
-          elm = document.forms[0].elements[i]
-          if (elm.type == 'radio')
-          {
-             if (re.test(elm.name))
-             {
-                elm.checked = false;
-             }
-          }
-       }
-       current.checked = true;
-    }
-    //-->
+            <!--
+            function SetUniqueRadioButton(nameregex, current)
+            {
+               re = new RegExp(nameregex);
+               for(i = 0; i < document.forms[0].elements.length; i++)
+               {
+                  elm = document.forms[0].elements[i]
+                  if (elm.type == 'radio')
+                  {
+                     if (re.test(elm.name))
+                     {
+                        elm.checked = false;
+                     }
+                  }
+               }
+               current.checked = true;
+            }
+            //-->
 		</script>
 
 		<p>
 		    <em>NOTE: For each category tree, you have to <asp:HyperLink ID="btnNewRoot" runat="server" NavigateUrl="~/Admin/CategoryEdit.aspx?cid=0&pcid=-1" Text="create a root category" /></em>
 		</p>
-		<div>
-			&nbsp;<asp:Literal ID="litNoRoot" Text="Choose root category: " runat="server" />
-			<asp:RadioButtonList ID="rdioListRoot" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RdioListRootSelectedIndexChanged" RepeatDirection="Vertical" RepeatLayout="Flow" />
-			<hr />
+		<div class="group">
+			<h4><asp:Literal ID="litNoRoot" Text="Select Root Category: " runat="server" /></h4>
+			<asp:RadioButtonList ID="rdioListRoot" runat="server" AutoPostBack="True" CssClass="nodeslist" OnSelectedIndexChanged="RdioListRootSelectedIndexChanged" RepeatDirection="Vertical" RepeatLayout="Flow" />
 		</div>
-		<div>
+		<div class="group">
+		    <h4>Categories</h4>
 			<asp:Repeater ID="rptCategories" runat="server" OnItemDataBound="RptCategoriesItemDataBound">
 				<HeaderTemplate>
-					<table class="tbl">
+					<table id="categories" class="tbl">
 						<tr>
-							<th>Select</th>
-							<th>Name</th>
-							<th>Path</th>
-							<th>Action</th>
+							<th id="select">Select</th>
+							<th id="name">Name</th>
+							<th id="path">Path</th>
+							<th id="action">Action</th>
 						</tr>
 				</HeaderTemplate>
 				<ItemTemplate>

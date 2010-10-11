@@ -30,7 +30,7 @@
                         </asp:DropDownList>
                         <asp:Button ID="btnFilter" runat="server" Text="Filter Articles" onclick="btnFilter_Click" />
                     </div>
-				    <div id="categories" class="group">
+				    <div id="articlecategories" class="group">
 				        <h4>Articles</h4>
 					    <table class="tbl">
 						    <asp:repeater id="rptArticles" runat="server" 

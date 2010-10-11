@@ -5,25 +5,28 @@
 	<head>
 		<title><asp:literal id="PageTitle" runat="server"></asp:literal></title>
 		<link id="CssStyleSheet" rel="stylesheet" type="text/css" runat="server" />
-		<asp:PlaceHolder ID="AddedCssPlaceHolder" runat="server"></asp:PlaceHolder>
+		<link type="text/css" href="/js/jquery-ui-1.8.4/css/cuyahoga-green/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	    <asp:PlaceHolder ID="AddedCssPlaceHolder" runat="server"></asp:PlaceHolder>
         <asp:PlaceHolder ID="AddedJavaScriptPlaceHolder" runat="server"></asp:PlaceHolder>
 		<script type="text/javascript" src="<%= ResolveUrl("~/js/jquery-1.4.2.min.js") %>"></script>
+		<script type="text/javascript" src="<%= ResolveUrl("~/js/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js") %>"></script>
+	    <script type="text/javascript">
+            $(document).ready(function() {
+                //UI Buttons
+                $("input:submit, input:button, div[id='header'] a, .tbl a, a[id*='NewSection']").button();
+                $("input,textarea,select,.group,fieldset,legend,#moduleadminpane .AspNet-GridView a[id*='btnSelect'],#moduleadminpane .AspNet-GridView a[id*='btnEdit'],#moduleadminpane .AspNet-GridView a[id*='btnUpdate'],#moduleadminpane .AspNet-GridView a[id*='btnCancel'],#moduleadminpane .AspNet-GridView a[id*='btnDelete']").addClass("ui-corner-all");
+            });
+        </script>
 	</head>
 	<body>
 		<form id="Frm" method="post" enctype="multipart/form-data" runat="server">
 			<uc1:header id="header" runat="server"></uc1:header>
-			<div id="MessageBox" class="messagebox" runat="server" visible="false" enableviewstate="false"></div>
-			<asp:placeholder id="PageContent" runat="server"></asp:placeholder>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					// Hide module admin header when we're inside an iframe
-					var isInsideIframe = (window.location != window.parent.location) ? true : false;
-					if (isInsideIframe) {
-						$('#header').hide();
-						$('#subheader').hide();
-					}
-				});
-			</script>
+			<div id="adminwrap">
+			    <div id="padding" class="cleanpad16">
+			        <div id="MessageBox" class="messagebox" runat="server" visible="false" enableviewstate="false"></div>
+			        <asp:placeholder id="PageContent" runat="server"></asp:placeholder>
+			    </div>
+			</div>
 		</form>
 	</body>
 </html>

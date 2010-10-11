@@ -18,17 +18,11 @@ namespace Cuyahoga.Web
         private ISectionService _sectionService;
 		private ModuleLoader _moduleLoader;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public void Rss()
-		{
-			this._sectionService = Container.Resolve<ISectionService>();
-			this._moduleLoader = Container.Resolve<ModuleLoader>();
-		}
-
 		private void Page_Load(object sender, System.EventArgs e)
 		{
+            this._sectionService = Container.Resolve<ISectionService>();
+            this._moduleLoader = Container.Resolve<ModuleLoader>();
+
 			Context.Response.Clear();
 			Context.Response.ContentType = "text/xml";
 			if (Context.Request.QueryString["SectionId"] != null)
@@ -42,9 +36,8 @@ namespace Cuyahoga.Web
 				{
 					// Get the data for the RSS feed because it's not in the cache yet.
 					// Use the same cache duration for the RSS feed as the Section.
-					Section section = this._sectionService.GetSectionById(sectionId);
-
-					ModuleBase module = this._moduleLoader.GetModuleFromSection(section);
+                    Section section = this._sectionService.GetSectionById(sectionId);
+                    ModuleBase module = this._moduleLoader.GetModuleFromSection(section);
 
 					module.ModulePathInfo = pathInfo;
 					ISyndicatable syndicatableModule = module as ISyndicatable;

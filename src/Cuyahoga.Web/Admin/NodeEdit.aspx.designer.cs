@@ -23,51 +23,6 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// btnSave2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave2;
-        
-        /// <summary>
-        /// btnCancel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel2;
-        
-        /// <summary>
-        /// btnNew2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNew2;
-        
-        /// <summary>
-        /// btnDuplicate2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDuplicate2;
-        
-        /// <summary>
-        /// btnDelete2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete2;
-        
-        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -95,22 +50,22 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtShortDescription;
         
         /// <summary>
-        /// revShortDescription control.
+        /// revFriendlyURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revShortDescription;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFriendlyURL;
         
         /// <summary>
-        /// rfvShortDescription control.
+        /// rfvFriendlyURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvShortDescription;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFriendlyURL;
         
         /// <summary>
         /// txtTitleSEO control.
@@ -248,24 +203,6 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlLinkTarget;
         
         /// <summary>
-        /// pnlTemplate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlTemplate;
-        
-        /// <summary>
-        /// hplAddTemplate0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hplAddTemplate0;
-        
-        /// <summary>
         /// ddlTemplates control.
         /// </summary>
         /// <remarks>
@@ -284,6 +221,15 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.Button btnApplyToAll;
         
         /// <summary>
+        /// hplAddTemplate0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hplAddTemplate0;
+        
+        /// <summary>
         /// pnlSections control.
         /// </summary>
         /// <remarks>
@@ -300,6 +246,15 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptSections;
+        
+        /// <summary>
+        /// pnlNoSections control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoSections;
         
         /// <summary>
         /// hplNewSection control.

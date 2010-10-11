@@ -19,8 +19,4 @@ WHERE assemblyname = 'Cuyahoga.Modules.Articles';
  *  Remove module specific tables
  */
 
-DROP TABLE cm_articlecomment;
-
 DROP TABLE cm_article;
-
-DROP TABLE cm_articlecategory;

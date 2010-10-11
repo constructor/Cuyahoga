@@ -104,6 +104,15 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlTemplates;
         
         /// <summary>
+        /// rfvddlTemplates control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlTemplates;
+        
+        /// <summary>
         /// hplAddTemplate control.
         /// </summary>
         /// <remarks>
@@ -174,6 +183,24 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptAliases;
+        
+        /// <summary>
+        /// pnlNoAliases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoAliases;
+        
+        /// <summary>
+        /// litAliases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litAliases;
         
         /// <summary>
         /// hplNewAlias control.

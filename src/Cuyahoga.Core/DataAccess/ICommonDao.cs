@@ -149,6 +149,11 @@ namespace Cuyahoga.Core.DataAccess
 		void Flush();
 
         /// <summary>
+        /// Clears the session.
+        /// </summary>
+        void Clear();
+
+        /// <summary>
         /// Refreshes the specified object from the database.
         /// </summary>
         void RefreshObject(object obj);

@@ -143,7 +143,6 @@ namespace Cuyahoga.Core.DataAccess
 			return crit.List<T>();
 		}
 
-
         [Transaction(TransactionMode.Requires)]
 		public virtual void SaveOrUpdateObject(object obj)
 		{
@@ -172,7 +171,6 @@ namespace Cuyahoga.Core.DataAccess
 			session.Delete(obj);
 		}
 
-        
 		public void MarkForDeletion(object obj)
 		{
 			ISession session = this._sessionManager.OpenSession();
@@ -202,6 +200,12 @@ namespace Cuyahoga.Core.DataAccess
 			ISession session = this._sessionManager.OpenSession();
 			session.Flush();
 		}
+
+        public void Clear()
+        {
+            ISession session = this._sessionManager.OpenSession();
+            session.Clear();
+        }
 
         public void RefreshObject(object obj) 
         {

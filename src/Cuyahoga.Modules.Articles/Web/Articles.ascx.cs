@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Web.UI.WebControls;
 using Cuyahoga.Core.Util;
@@ -100,8 +101,16 @@ namespace Cuyahoga.Modules.Articles.Web
 				DisplayType displayType = (DisplayType)Enum.Parse(typeof(DisplayType), this.Module.Section.Settings["DISPLAY_TYPE"].ToString());
 
 				HyperLink hpl = e.Item.FindControl("hplTitle") as HyperLink;
-				string articleUrl = UrlHelper.GetUrlFromSection(this.Module.Section) + "/" + article.Id;
-				hpl.NavigateUrl = articleUrl;
+				
+                //string articleUrl = UrlHelper.GetUrlFromSection(this.Module.Section) + "/" + article.Id;
+                string seoArticleUrl = UrlHelper.GetUrlFromSection(this.Module.Section)
+                    + "/" + article.Id
+                    + "/" + article.Title.Replace(" ", "-").ToLower();
+                // replace spaces with dashes
+                seoArticleUrl = Regex.Replace(seoArticleUrl, "[^A-Za-z0-9-/._]", "");
+                // strip all illegal characters like punctuation
+                string articleUrl = seoArticleUrl;
+                hpl.NavigateUrl = articleUrl;
 
 				Panel pnlSummary = e.Item.FindControl("pnlSummary") as Panel;
 				pnlSummary.Visible = (displayType == DisplayType.HeadersAndSummary);

@@ -34,6 +34,9 @@ namespace Cuyahoga.Web
 
         protected void Application_Start(Object sender, EventArgs e)
         {
+            //NHProfiler Starter
+            //HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize(); 
+
             // Initialize log4net 
             XmlConfigurator.ConfigureAndWatch(new FileInfo(Server.MapPath("~/") + "config/logging.config"));
 

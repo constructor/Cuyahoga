@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -63,7 +64,7 @@ namespace Cuyahoga.Web.Admin
                     availableModules.Add(newModuleType);
                 }
             }
-            rptModules.DataSource = availableModules;
+            rptModules.DataSource = availableModules;//.OrderBy(x => x.Name);
             rptModules.DataBind();
         }
 

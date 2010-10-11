@@ -26,11 +26,13 @@ namespace Cuyahoga.Web.Admin
                 if (templateid == -1)
                 {
                     this._activeTemplate = new Template();
+                    this.pnlNoPlaceholders.Visible = true;
                 }
                 else
                 {
                     this._activeTemplate = this.TemplateService.GetTemplateById(templateid);
                     this.pnlPlaceholders.Visible = true;
+                    this.pnlNoPlaceholders.Visible = false;
                 }
 
                 if (!Page.IsPostBack)

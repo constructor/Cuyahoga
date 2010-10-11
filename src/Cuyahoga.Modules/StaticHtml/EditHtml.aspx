@@ -10,7 +10,7 @@
 			<div id="moduleadminpane">
 			    <h1>Edit Static HTML Content</h1>
 			    <hr />
-                <asp:Label ID="lblTitle" runat="server" AssociatedControlID="tbTitle" Text="Title: "></asp:Label><asp:TextBox ID="tbTitle" runat="server"></asp:TextBox>
+                <asp:Label ID="lblTitle" runat="server" AssociatedControlID="tbTitle" Text="Title: "></asp:Label><asp:TextBox ID="tbTitle" runat="server"></asp:TextBox>&nbsp;(for search results page)
 			    <hr />
 			    <fckeditorv2:fckeditor id="fckEditor" runat="server" height="440px" width="100%"></fckeditorv2:fckeditor>
 			    <br/>

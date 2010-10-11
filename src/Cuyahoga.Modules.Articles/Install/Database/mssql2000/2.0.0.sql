@@ -1,10 +1,10 @@
--- Migrate Articles to ContentItem
+﻿-- Migrate Articles to ContentItem
 -- Move categories to cuyahoga_category table
 -- Create a temp table and copy the categories that need to be moved to that table. We need this for proper position generation.
 CREATE TABLE #tempcategory(id int identity(1,1), categoryname nvarchar(100))
 
 DECLARE @currentMaxPosition int
-SELECT @currentMaxPosition = ISNULL(MAX([position]), 0) FROM cuyahoga_category WHERE parentcategoryid IS NULL 
+SELECT @currentMaxPosition = MAX([position]) FROM cuyahoga_category WHERE parentcategoryid IS NULL 
 
 INSERT INTO #tempcategory(categoryname)
 SELECT ac.title
@@ -162,6 +162,12 @@ go
 -- Remove IArticelDao from moduleservice table
 DELETE FROM cuyahoga_moduleservice
 WHERE servicekey = 'articles.articledao';
+go
+
+-- Change module admin url
+UPDATE cuyahoga_moduletype
+SET editpath = 'Modules/Articles/ManageArticles'
+WHERE [name] = 'Articles'
 go
 
 /*

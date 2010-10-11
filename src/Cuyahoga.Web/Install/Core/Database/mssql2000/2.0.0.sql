@@ -17,7 +17,7 @@ createdby int NOT NULL,
 modifiedby int NOT NULL,
 publishedby int NULL,
 sectionid int NOT NULL)
-GO
+go
 
 CREATE TABLE cuyahoga_contentitemrole(
 contentitemroleid int identity(1,1) NOT NULL CONSTRAINT PK_contentitemrole PRIMARY KEY,
@@ -25,11 +25,10 @@ contentitemid int NOT NULL,
 roleid int NOT NULL,
 viewallowed bit NOT NULL,
 editallowed bit NOT NULL)
-GO
+go
 
 CREATE UNIQUE INDEX IX_contentitemrole_roleid_contentitemid ON cuyahoga_contentitemrole (roleid,contentitemid)
-GO
-
+go
 
 CREATE TABLE cuyahoga_category(
 categoryid int identity(1,1) NOT NULL CONSTRAINT PK_category PRIMARY KEY,
@@ -39,19 +38,19 @@ path nvarchar(80) NOT NULL,
 categoryname nvarchar(100) NOT NULL,
 description nvarchar(255) NULL,
 position int NOT NULL)
-GO
+go
 
 CREATE UNIQUE INDEX IX_category_path_siteid ON cuyahoga_category (path, siteid)
-GO
+go
 
 CREATE UNIQUE INDEX IX_category_categoryname_siteid ON cuyahoga_category (categoryname, siteid)
-GO
+go
 
 CREATE TABLE cuyahoga_categorycontentitem(
 categorycontentitemid int identity(1,1) NOT NULL CONSTRAINT PK_categorycontentitem PRIMARY KEY,
 categoryid int NOT NULL,
 contentitemid bigint NOT NULL)
-GO
+go
 
 CREATE TABLE cuyahoga_comment(
 commentid int identity(1,1) NOT NULL CONSTRAINT PK_comment PRIMARY KEY,
@@ -62,7 +61,7 @@ commentdatetime datetime NOT NULL,
 website nvarchar(100) NULL,
 commenttext nvarchar(2000) NOT NULL,
 userip nvarchar(15) NULL)
-GO
+go
 
 CREATE TABLE cuyahoga_fileresource(
 fileresourceid bigint NOT NULL CONSTRAINT PK_fileresource PRIMARY KEY,
@@ -71,7 +70,7 @@ physicalfilepath nvarchar(1000) NOT NULL,
 length bigint NULL,
 mimetype nvarchar(255) NULL,
 downloadcount int NULL)
-GO
+go
 
 ALTER TABLE cuyahoga_contentitem
 ADD CONSTRAINT FK_contentitem_user_createdby 
@@ -126,24 +125,6 @@ go
 ALTER TABLE cuyahoga_fileresource
 ADD CONSTRAINT FK_fileresource_contentitem_fileresourceid 
 FOREIGN KEY (fileresourceid) REFERENCES cuyahoga_contentitem (contentitemid)
-go
-
--- ModuleSetting
-ALTER TABLE cuyahoga_modulesetting 
-    ALTER COLUMN friendlyname nvarchar(255) NOT NULL
-go
-
-ALTER TABLE cuyahoga_modulesetting 
-    ALTER COLUMN [name] nvarchar(100) NOT NULL
-go
-
--- Node
-ALTER TABLE cuyahoga_node
-    ADD titleseo nvarchar(255) NULL
-go
-
-ALTER TABLE cuyahoga_node
-    ADD cssclass nvarchar(128) NULL
 go
 
 -- Roles per site
@@ -211,18 +192,6 @@ ALTER TABLE cuyahoga_section
 		FOREIGN KEY(siteid) REFERENCES cuyahoga_site(siteid)
 go
 
-ALTER TABLE cuyahoga_section
-	ADD cssclass nvarchar(100) NULL
-go
-
-ALTER TABLE cuyahoga_sectionsetting
-	ALTER COLUMN [name] nvarchar(100) NOT NULL
-go
-
-ALTER TABLE cuyahoga_sectionsetting
-	ALTER COLUMN [value] nvarchar(255) NULL
-go
-
 -- Template per site
 ALTER TABLE cuyahoga_template
 	ADD siteid int NULL
@@ -286,38 +255,35 @@ ALTER TABLE cuyahoga_roleright
 		FOREIGN KEY (rightid) REFERENCES cuyahoga_right (rightid)
 go
 
--- Users per site
-CREATE TABLE cuyahoga_siteuser(
-siteid int NOT NULL,
-userid int NOT NULL,
-CONSTRAINT PK_cuyahoga_siteuser PRIMARY KEY (siteid, userid)) 
-go
-
 /* DATA */
 SET IDENTITY_INSERT cuyahoga_right ON
+
 GO
 
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (1, 'Access Admin', 'Access site administration')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (2, 'Manage Server', 'Manage server properties')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (3, 'Create Site', 'Create a new site')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (4, 'Manage Site', 'Manage site properties')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (5, 'Manage Templates', 'Manage templates')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (6, 'Manage Users', 'Manage users and roles')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (7, 'Manage Modules', 'Can install and uninstall site modules')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (8, 'Global Permissions', 'Manage permissions that are shared across sites')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (9, 'Manage Pages', 'Create, edit, move and delete pages')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (10, 'Manage Sections', 'Create, edit, move and delete sections within pages')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (11, 'Edit Sections', 'Can content manage sections')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (12, 'Manage Files', 'Manage files')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (13, 'Access Root Data Folder', 'Access root data folder')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (14, 'Create Directory', 'Create a new directory')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (15, 'Manage Directories', 'Move, Rename and Delete Directories')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (16, 'Copy Files', 'Copy files')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (17, 'Move Files', 'Move files')
-INSERT INTO cuyahoga_right (rightid, name, description) VALUES (18, 'Delete Files', 'Delete files')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (1, 'Anonymous', 'Legacy right, migrated from AccessLevel.Anonymous')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (2, 'Authenticated', 'Legacy right, migrated from AccessLevel.Authenticated')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (3, 'Editor', 'Legacy right, migrated from AccessLevel.Editor')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (4, 'Administrator', 'Legacy right, migrated from AccessLevel.Administrator')
+
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (5, 'Manage Pages', 'Create, edit, move and delete pages')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (6, 'Manage Files', 'Manage files')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (7, 'Manage Users', 'Manage users and roles')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (8, 'Manage Site', 'Manage site properties')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (9, 'Manage Server', 'Manage server properties')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (10, 'Global Permissions', 'Manage permissions that are shared between sites')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (11, 'Access Admin', 'Access site administration')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (12, 'Create Site', 'Create a new site')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (13, 'Manage Templates', 'Manage templates')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (14, 'Access Root Data Folder', 'Access root data folder')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (15, 'Create Directory', 'Create a new directory')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (16, 'Copy Files', 'Copy files and folders')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (17, 'Move Files', 'Move files and folders')
+INSERT INTO cuyahoga_right (rightid, name, description) VALUES (18, 'Delete Files', 'Delete files and folders')
+
 GO
 
 SET IDENTITY_INSERT cuyahoga_right OFF
+
 GO
 
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (1, 1)
@@ -338,41 +304,19 @@ INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (1, 15)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (1, 16)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (1, 17)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (1, 18)
-
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 1)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 2)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 3)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 4)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 5)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 6)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 7)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 8)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 9)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 10)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 11)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 12)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 13)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 14)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 15)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 16)
 INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 17)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (2, 18)
+INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 1)
+INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 2)
+INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (4, 1)
 
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 9)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 10)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 11)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 12)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 14)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 15)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 16)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 17)
-INSERT INTO cuyahoga_roleright(roleid, rightid) VALUES (3, 18)
-GO
-
-INSERT INTO cuyahoga_template ([name], basepath, templatecontrol, css, inserttimestamp, updatetimestamp) VALUES ('Cuyahoga', 'Templates/Cuyahoga', 'Cuyahoga.ascx', 'default.css', '2010-06-17 17:59:50.277', '2010-01-26 21:52:52.365')
-INSERT INTO cuyahoga_template ([name], basepath, templatecontrol, css, inserttimestamp, updatetimestamp) VALUES ('Corporate', 'Templates/Corporate', 'Corporate.ascx', 'style.css', '2010-01-26 21:52:52.365', '2010-01-26 21:52:52.365')
-INSERT INTO cuyahoga_template ([name], basepath, templatecontrol, css, inserttimestamp, updatetimestamp) VALUES ('Impact(Droppy)', 'Templates/Impact(Droppy)', 'Impact(Droppy).ascx', 'default.css', '2010-01-26 21:52:52.365', '2010-01-26 21:52:52.365')
-INSERT INTO cuyahoga_template ([name], basepath, templatecontrol, css, inserttimestamp, updatetimestamp) VALUES ('CityLights', 'Templates/CityLights', 'CityLights.ascx', 'default.css', '2010-01-26 21:52:52.365', '2010-01-26 21:52:52.365')
 GO
 
 /*

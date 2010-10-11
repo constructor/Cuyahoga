@@ -6,52 +6,51 @@
   </head>
 	<body>
 		<form id="Form1" method="post" runat="server">
+		    <p>Add a new user or find and edit and existing user.</p>
 			<div class="group">
-			    <h4>List all users</h4>
-			    By Website <asp:DropDownList ID="ddlWebsite" AppendDataBoundItems="true" 
+			    <p>
+			    Filter by Website <asp:DropDownList ID="ddlWebsite" AppendDataBoundItems="true" 
                     DataTextField="Name" DataValueField="iD" runat="server" AutoPostBack="True" 
                     onselectedindexchanged="DdlWebsiteSelectedIndexChanged">
                                 <asp:ListItem Value="0">All</asp:ListItem>
-                            </asp:DropDownList>
-                <p>Or...</p>
-				By Username <asp:textbox id="txtUsername" runat="server"></asp:textbox><asp:button id="btnFind" runat="server" OnClick="BtnFindClick" text="Find"></asp:button>
+                            </asp:DropDownList> or Username <asp:textbox id="txtUsername" runat="server"></asp:textbox><asp:button id="btnFind" runat="server" OnClick="BtnFindClick" text="Find"></asp:button>
+			    </p>
+		
+			    <table id="users" class="tbl">
+				    <asp:repeater id="rptUsers" runat="server" OnItemDataBound="RptUsersItemDataBound">
+					    <headertemplate>
+						    <tr>
+							    <th>Username</th>
+							    <th>Firstname</th>
+							    <th>Lastname</th>
+							    <th>Email</th>
+							    <th>Website</th>
+							    <th>Last login date</th>
+							    <th>Last login from</th>
+							    <th></th>
+						    </tr>
+					    </headertemplate>
+					    <itemtemplate>
+						    <tr>
+							    <td><%# DataBinder.Eval(Container.DataItem, "UserName") %></td>
+							    <td><%# DataBinder.Eval(Container.DataItem, "FirstName") %></td>
+							    <td><%# DataBinder.Eval(Container.DataItem, "LastName") %></td>
+							    <td><%# DataBinder.Eval(Container.DataItem, "Email") %></td>
+							    <td><%# DataBinder.Eval(Container.DataItem, "Website") %></td>
+							    <td><asp:label id="lblLastLogin" runat="server"></asp:label></td>
+							    <td style="text-align:right"><%# DataBinder.Eval(Container.DataItem, "LastIp") %></td>
+							    <td>
+								    <asp:hyperlink id="hplEdit" runat="server">Edit</asp:hyperlink>
+							    </td>
+						    </tr>
+					    </itemtemplate>
+				    </asp:repeater>
+			    </table>
 			</div>
-			<asp:panel id="pnlResults" runat="server" cssclass="group">
-				<h4>Search results</h4>
-					<table class="tbl">
-						<asp:repeater id="rptUsers" runat="server" OnItemDataBound="RptUsersItemDataBound">
-							<headertemplate>
-								<tr>
-									<th>Username</th>
-									<th>Firstname</th>
-									<th>Lastname</th>
-									<th>Email</th>
-									<th>Website</th>
-									<th>Last login date</th>
-									<th>Last login from</th>
-									<th></th>
-								</tr>
-							</headertemplate>
-							<itemtemplate>
-								<tr>
-									<td><%# DataBinder.Eval(Container.DataItem, "UserName") %></td>
-									<td><%# DataBinder.Eval(Container.DataItem, "FirstName") %></td>
-									<td><%# DataBinder.Eval(Container.DataItem, "LastName") %></td>
-									<td><%# DataBinder.Eval(Container.DataItem, "Email") %></td>
-									<td><%# DataBinder.Eval(Container.DataItem, "Website") %></td>
-									<td><asp:label id="lblLastLogin" runat="server"></asp:label></td>
-									<td style="text-align:right"><%# DataBinder.Eval(Container.DataItem, "LastIp") %></td>
-									<td>
-										<asp:hyperlink id="hplEdit" runat="server">Edit</asp:hyperlink>
-									</td>
-								</tr>
-							</itemtemplate>
-						</asp:repeater>
-					</table>
-				<div class=pager>
-					<csc:pager id="pgrUsers" runat="server" OnPageChanged="PgrUsersPageChanged" OnCacheEmpty="PgrUsersCacheEmpty" controltopage="rptUsers" cachedatasource="True" pagesize="10" CacheDuration="10"></csc:pager>
-				</div>
-			</asp:panel>
+				
+			<div class="group pager">
+				<csc:pager id="pgrUsers" runat="server" OnPageChanged="PgrUsersPageChanged" OnCacheEmpty="PgrUsersCacheEmpty" controltopage="rptUsers" cachedatasource="True" pagesize="10" CacheDuration="10"></csc:pager>
+			</div>
 			<div>
 				<asp:button id="btnNew" runat="server" OnClick="BtnNewClick" text="Add new user"></asp:button>
 			</div>

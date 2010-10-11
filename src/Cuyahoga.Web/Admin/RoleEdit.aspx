@@ -6,11 +6,11 @@
 	<body>
 
 		<form id="Form1" method="post" runat="server">
+		<p>Edit the rights of the selected role.</p>
 			<div class="group">
-				<h4>General</h4>
-				<table>
+				<table id="roles">
 					<tr>
-						<td style="width: 200px">Name</td>
+						<td id="rightname">Name</td>
 						<td><asp:textbox id="txtName" runat="server" width="200px"></asp:textbox>
 							<asp:requiredfieldvalidator id="rfvName" runat="server" errormessage="Name is required" cssclass="validator" display="Dynamic" enableclientscript="False" controltovalidate="txtName"></asp:requiredfieldvalidator>
 						</td>

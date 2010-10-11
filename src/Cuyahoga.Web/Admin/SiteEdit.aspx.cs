@@ -54,12 +54,18 @@ namespace Cuyahoga.Web.Admin
                 BindTemplates();
                 BindCultures();
                 BindRoles();
+
                 if (base.ActiveSite.Id > 0)
                 {
                     BindAliases();
+                    this.litAliases.Visible = false;
+                }
+                else
+                {
+                    this.litAliases.Visible = true;
+                    this.pnlAliases.Visible = false;
                 }
             }
-
         }
 
         private void BindSiteControls()
@@ -98,11 +104,11 @@ namespace Cuyahoga.Web.Admin
                     ddlPlaceholders.Enabled = true;
                 }
 
-                // Insert option for no template
-                Template emptyTemplate = new Template();
-                emptyTemplate.Id = -1;
-                emptyTemplate.Name = "No template";
-                templates.Insert(0, emptyTemplate);
+                //// Insert option for no template
+                //Template emptyTemplate = new Template();
+                //emptyTemplate.Id = -1;
+                //emptyTemplate.Name = "Select Template";
+                //templates.Insert(0, emptyTemplate);
 
                 // Bind
                 this.ddlTemplates.DataSource = templates;
@@ -191,6 +197,17 @@ namespace Cuyahoga.Web.Admin
             this.rptAliases.DataSource = base.SiteService.GetSiteAliasesBySite(base.ActiveSite);
             this.rptAliases.DataBind();
             this.hplNewAlias.NavigateUrl = String.Format("~/Admin/SiteAliasEdit.aspx?SiteId={0}&SiteAliasId=-1", base.ActiveSite.Id);
+            
+            if (rptAliases.Items.Count > 0)
+            {
+                this.pnlAliases.Visible = true;
+                this.pnlNoAliases.Visible = false;
+            }
+            else 
+            {
+                this.pnlAliases.Visible = false;
+                this.pnlNoAliases.Visible = true;
+            }
         }
 
         protected void BtnSaveClick(object sender, EventArgs e)
@@ -246,6 +263,7 @@ namespace Cuyahoga.Web.Admin
                             //Custom Added
                             string systemTemplatePath = Server.MapPath(Config.GetConfiguration()["TemplateDir"]);
                             this.SiteService.CreateSite(base.ActiveSite, Server.MapPath("~/SiteData"), TemplateService.GetUnassignedTemplates(), systemTemplatePath);
+
                             Response.Redirect("Default.aspx?message=Site created successfully.");
                             //ShowMessage("Site created.");
                         }

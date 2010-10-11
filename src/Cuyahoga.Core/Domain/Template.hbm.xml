@@ -7,7 +7,7 @@
 		<id name="Id" column="templateid" type="Int32" unsaved-value="-1">
 			<generator class="native">
 				<param name="sequence">cuyahoga_template_templateid_seq</param>
-			</generator>
+            </generator>
 		</id>
 		<timestamp name="UpdateTimestamp" column="updatetimestamp" />
 

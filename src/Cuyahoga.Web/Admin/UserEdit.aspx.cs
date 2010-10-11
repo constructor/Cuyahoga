@@ -295,5 +295,11 @@ namespace Cuyahoga.Web.Admin
 				}
 			}
 		}
+
+        protected void BtnBackClick(object sender, EventArgs e)
+        {
+            Context.Response.Redirect("Users.aspx");
+        }
+
     }
 }

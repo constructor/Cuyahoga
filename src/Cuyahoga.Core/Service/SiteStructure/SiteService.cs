@@ -28,7 +28,10 @@ namespace Cuyahoga.Core.Service.SiteStructure
 		/// <param name="siteStructureDao"></param>
 		/// <param name="commonDao"></param>
 		/// <param name="fileService"></param>
-		public SiteService(ISiteStructureDao siteStructureDao, ICommonDao commonDao, IFileService fileService)
+		public SiteService(ISiteStructureDao siteStructureDao, 
+            ICommonDao commonDao, 
+            IFileService fileService,
+            ITemplateService templateService)
 		{
 			this._siteStructureDao = siteStructureDao;
 			this._commonDao = commonDao;
@@ -82,6 +85,8 @@ namespace Cuyahoga.Core.Service.SiteStructure
         {
             try
             {
+                this._commonDao.Flush();//TEST 
+
                 // 1. Add global roles to site
                 IList<Role> roles = this._commonDao.GetAll<Role>();
                 foreach (Role role in roles)
@@ -93,7 +98,8 @@ namespace Cuyahoga.Core.Service.SiteStructure
                 }
 
                 // 2. Save site in database
-                this._commonDao.SaveObject(site);
+                //this._commonDao.SaveObject(site);
+                this.SaveSite(site);
 
                 // 3. Create SiteData folder structure
                 if (!this._fileService.CheckIfDirectoryIsWritable(siteDataRoot))
@@ -123,7 +129,12 @@ namespace Cuyahoga.Core.Service.SiteStructure
                         templateDirectoriesToCopy.Add(templateDirectoryName);
                     }
                     Template newTemplate = template.GetCopy();
+                    this._commonDao.SaveObject(newTemplate);
                     newTemplate.Site = site;
+
+                    this._commonDao.RemoveCollectionFromCache("Cuyahoga.Core.Domain.Site.Templates", site.Id);
+                    this._commonDao.RemoveQueryFromCache("Templates");
+
 
                     //Also copy the sections that are assigned to this template
                     try
@@ -153,7 +164,6 @@ namespace Cuyahoga.Core.Service.SiteStructure
 
                     //Save newTemplate
                     this._commonDao.SaveOrUpdateObject(newTemplate);
-
                     //Save the site
                     this._commonDao.SaveOrUpdateObject(site);
                 }

@@ -140,6 +140,15 @@ namespace Cuyahoga.Web.Admin {
         protected global::System.Web.UI.WebControls.PlaceHolder plcCustomSettings;
         
         /// <summary>
+        /// pnlNoCustomSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoCustomSettings;
+        
+        /// <summary>
         /// pnlConnections control.
         /// </summary>
         /// <remarks>
@@ -165,6 +174,15 @@ namespace Cuyahoga.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hplNewConnection;
+        
+        /// <summary>
+        /// pnlNoConnections control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoConnections;
         
         /// <summary>
         /// rptRoles control.
