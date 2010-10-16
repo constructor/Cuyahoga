@@ -65,7 +65,7 @@ namespace Cuyahoga.Web.Admin
                 }
                 else
                 {
-                    hplAttachNode.NavigateUrl = (this.ActiveSite != null) ? String.Format("~/Admin/SectionAttachNode.aspx?SiteId{0}&SectionId={1}", this.ActiveSite.Id.ToString() , section.Id) : String.Format("~/Admin/SectionAttachNode.aspx?SectionId={0}", section.Id);
+                    hplAttachNode.NavigateUrl = (this.ActiveSite != null) ? String.Format("~/Admin/SectionAttachNode.aspx?SiteId={0}&SectionId={1}", this.ActiveSite.Id.ToString(), section.Id) : String.Format("~/Admin/SectionAttachNode.aspx?SectionId={0}", section.Id);
                 }
                 lbtDelete.Attributes.Add("onclick", "return confirm('Are you sure?')");
             }

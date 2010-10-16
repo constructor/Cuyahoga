@@ -68,7 +68,6 @@
                         }
                     });
                 
-                
                     // Tabs
                     $("#sectiontabs").tabs({
                         cookie: {
@@ -207,7 +206,7 @@
 			
 			<div>
 				<asp:button id="btnSave" runat="server" OnClick="BtnSaveClick" text="Save"></asp:button>
-				<asp:button id="btnBack" runat="server" OnClick="BtnBackClick" text="Back" causesvalidation="False"></asp:button>
+				<asp:linkbutton id="btnBack" runat="server" OnClick="BtnBackClick" text="Back" causesvalidation="False"></asp:linkbutton>
 			</div>
 			
 			<script type="text/javascript"> <!--

@@ -74,7 +74,7 @@ namespace Cuyahoga.Web.Admin
             {
                 this.lbxAvailableNodes.Visible = true;
                 this.lbxAvailableNodes.Items.Clear();
-                IList<Node> rootNodes = NodeService.GetNodesBySite(this._selectedSite) as IList<Node>;
+                IList<Node> rootNodes = this._selectedSite.RootNodes;
                 AddAvailableNodes(rootNodes);
             }
             this.btnSave.Enabled = false;

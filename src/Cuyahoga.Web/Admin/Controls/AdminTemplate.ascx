@@ -394,7 +394,7 @@
         $(document).ready(function() {
 
             //UI Buttons
-            $("input:submit, div[id='header'] a, div[id='navigationbar'] a, .tbl a:not([id*='Up'],[id*='Down']), a[id*='NewSection'], a[id*='AddTemplate']").button();
+            $("input:submit, div[id='header'] a, div[id='navigationbar'] a, .tbl a:not([id*='Up'],[id*='Down']), a[id*='NewSection'], a[id*='AddTemplate'], a[id*='Back']").button();
             $("input,textarea,select,.group,fieldset,legend,#moduleadminpane .AspNet-GridView a[id*='btnSelect'],#moduleadminpane .AspNet-GridView a[id*='btnEdit'],#moduleadminpane .AspNet-GridView a[id*='btnUpdate'],#moduleadminpane .AspNet-GridView a[id*='btnCancel'],#moduleadminpane .AspNet-GridView a[id*='btnDelete']").addClass("ui-corner-all");
 
             buffernode(actionbuffer.siteid, actionbuffer.nodeid);

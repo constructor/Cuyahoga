@@ -17,6 +17,11 @@ namespace Cuyahoga.Web.Admin
         protected void Page_Load(object sender, System.EventArgs e)
         {
             base.Title = "Attach section to template(s)";
+            if (!Page.IsPostBack)
+            {
+                BindSectionControls();
+                BindTemplates();
+            }
         }
 
         protected void BindSectionControls()
@@ -30,7 +35,7 @@ namespace Cuyahoga.Web.Admin
 
         protected void BindTemplates()
         {
-            this.rptTemplates.DataSource = TemplateService.GetAllTemplates();
+            this.rptTemplates.DataSource = this.ActiveSite.Templates;
             this.rptTemplates.DataBind();
         }
 
@@ -49,7 +54,8 @@ namespace Cuyahoga.Web.Admin
                 {
                     // Check if the placeholder isn't taken by another section
                     bool isTaken = false;
-                    Section section = template.Sections[entry.Key.ToString()] as Section;
+                    //Section section = template.Sections.Contains(new KeyValuePair<String, Section>(entry.Key.ToString(), entry.Value as Section)) ? template.Sections[entry.Key.ToString()] as Section : null;
+                    Section section = template.Sections.ContainsKey(entry.Key.ToString()) ? template.Sections[entry.Key.ToString()] as Section : null;
                     if (section != null)
                     {
                         if (section == base.ActiveSection)
@@ -88,7 +94,8 @@ namespace Cuyahoga.Web.Admin
 
         protected void BtnBackClick(object sender, System.EventArgs e)
         {
-            Context.Response.Redirect("~/Admin/Sections.aspx");
+            string url = String.Format("~/Admin/Sections.aspx?SiteId={0}&SectionId={1}", this.ActiveSite.Id, this.ActiveSection.Id);
+            Context.Response.Redirect(url);
         }
 
         protected void BtnSaveClick(object sender, System.EventArgs e)
@@ -132,7 +139,8 @@ namespace Cuyahoga.Web.Admin
                     }
                     TemplateService.SaveTemplate(template);
                 }
-                Context.Response.Redirect("~/Admin/Sections.aspx");
+                string url = String.Format("~/Admin/Sections.aspx?SiteId={0}&SectionId={1}", this.ActiveSite.Id, this.ActiveSection.Id);
+                Context.Response.Redirect(url);
             }
             catch (Exception ex)
             {

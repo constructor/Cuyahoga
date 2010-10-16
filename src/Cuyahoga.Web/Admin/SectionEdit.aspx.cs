@@ -421,11 +421,18 @@ namespace Cuyahoga.Web.Admin
                     {
                         if (this.ActiveNode != null)
                         {
-                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId{0}&NodeId={1}", this.ActiveSite.Id, this.ActiveNode.Id));
+                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId={0}&NodeId={1}", this.ActiveSite.Id, this.ActiveNode.Id));
                         }
                         else
                         {
-                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId{0}", this.ActiveSite.Id));
+                            Context.Response.Redirect(String.Format("NodeEdit.aspx?SiteId={0}", this.ActiveSite.Id));
+                        }
+                    }
+                    else 
+                    {
+                        if (this.ActiveNode != null)
+                        {
+                            Context.Response.Redirect(String.Format("SectionEdit.aspx?SiteId={0}&NodeId={1}&SectionId={2}", this.ActiveSite.Id, this.ActiveNode.Id, this._activeSection.Id));
                         }
                     }
                 }
