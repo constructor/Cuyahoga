@@ -275,7 +275,7 @@ xcopy /s /y "$(ProjectDir)"App_GlobalResources\*.resx "$(SolutionDir)"Cuyahoga.W
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1190</DevelopmentServerPort>
+          <DevelopmentServerPort>7742</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

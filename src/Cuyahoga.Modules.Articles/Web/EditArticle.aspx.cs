@@ -42,9 +42,9 @@ namespace Cuyahoga.Modules.Articles.Web
             //RegisterStylesheet("CatModCSS", UrlHelper.GetApplicationPath() + "Modules/Articles/EditorCSS/style.css");
 
             //To DISPLAY template styles in editor
-            fckContent.EditorAreaCSS = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/css/editor_" + this.Node.Template.Css;
+            fckContent.EditorAreaCSS = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/Css/editor_" + this.Node.Template.Css;
             //To ADD template styles in editor DropDown List
-            fckContent.StylesXmlPath = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/css/fckstyles.xml";
+            fckContent.StylesXmlPath = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/Css/fckstyles.xml";
 
 			this._articleModule = base.Module as ArticleModule;
 			this.btnCancel.Attributes.Add("onclick", String.Format("document.location.href='AdminArticles.aspx{0}'", base.GetBaseQueryString()));

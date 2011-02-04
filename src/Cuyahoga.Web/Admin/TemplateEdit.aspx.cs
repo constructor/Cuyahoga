@@ -385,7 +385,7 @@ namespace Cuyahoga.Web.Admin
                     {
                         Template newTemplate = this._activeTemplate.GetCopy();
                         newTemplate.Site = this.ActiveSite;
-                        newTemplate.BasePath = "SiteData/" + ActiveSite.Id.ToString() + "/templates/" + templateDirectoryName;
+                        newTemplate.BasePath = "SiteData/" + ActiveSite.Id.ToString() + "/Templates/" + templateDirectoryName;
 
                         //Also copy the sections that are assigned to this template
                         try
@@ -428,7 +428,7 @@ namespace Cuyahoga.Web.Admin
                 {
                     Template newTemplate = this._activeTemplate.GetCopy();
                     newTemplate.Site = this.ActiveSite;
-                    newTemplate.BasePath = "SiteData/" + ActiveSite.Id.ToString() + "/templates/" + templateDirectoryName;
+                    newTemplate.BasePath = "SiteData/" + ActiveSite.Id.ToString() + "/Templates/" + templateDirectoryName;
                     txtBasePath.Text = newTemplate.BasePath;
 
                     //Also copy the sections that are assigned to this template
@@ -490,13 +490,13 @@ namespace Cuyahoga.Web.Admin
                     //templatesRoot = "~/SiteData/" + this.ActiveSite.Id.ToString() + "/Templates/";
                     templatesRoot = VirtualPathUtility.Combine(this.ActiveSite.SiteDataDirectory, "templates");
                     tName = filename.Substring(0, filename.Length - 4);
-                    tBasePath = "SiteData/" + this.ActiveSite.Id.ToString() + "/templates/" + filename.Substring(0, filename.Length - 4);
+                    tBasePath = "SiteData/" + this.ActiveSite.Id.ToString() + "/Templates/" + filename.Substring(0, filename.Length - 4);
                 }
                 else
                 {
-                    templatesRoot = "~/templates/";
+                    templatesRoot = "~/Templates/";
                     tName = filename.Substring(0, filename.Length - 4);
-                    tBasePath = "templates/" + filename.Substring(0, filename.Length - 4);
+                    tBasePath = "Templates/" + filename.Substring(0, filename.Length - 4);
                 }
 
                 string filePath = Path.Combine(Server.MapPath(templatesRoot), filename);

@@ -639,7 +639,6 @@
     <Content Include="Install\Upgrade.aspx">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="js\DefaultButton.js" />
     <Content Include="Profile.aspx" />
     <None Include="Install\Core\Database\mysql\install.sql" />
     <None Include="Install\Core\Database\postgresql\install.sql" />
@@ -801,6 +800,7 @@
   <ItemGroup>
     <Folder Include="Admin\Images\Login\" />
     <Folder Include="Images\" />
+    <Folder Include="js\" />
     <Folder Include="Modules\" />
     <Folder Include="SiteData\1\" />
     <Folder Include="Support\" />
@@ -825,7 +825,7 @@ xcopy /s /y "$(SolutionDir)"lib\CSSFriendly.dll "$(TargetDir)"</PostBuildEvent>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

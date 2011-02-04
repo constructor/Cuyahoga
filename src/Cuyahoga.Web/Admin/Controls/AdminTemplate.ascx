@@ -16,10 +16,10 @@
 
     <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script src="/js/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.validate.js" type="text/javascript"></script>
     <script src="/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="/js/jquery-urlEncode.js" type="text/javascript"></script>
-    <script src="/js/jquery.urldecoder.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.urlDecoder.min.js" type="text/javascript"></script>
     <script src="/js/jquery-treeview/jquery.treeview.min.js" type="text/javascript"></script>
     <script src="/js/jquery-contextmenu/jquery.contextMenu.js" type="text/javascript"></script>
     <script src="/js/jQuery-jTypeWriter.js" type="text/javascript"></script>
@@ -444,19 +444,15 @@
         </div>
     </div>
     <ul id="admincontext" class="admincontext">
-        <optgroup label="Editing">
-            <li class="new"><a href="#new">New</a></li>
-            <li class="cut"><a href="#cut">Cut</a></li>
-            <li class="copy"><a href="#copy">Copy</a></li>
-            <li class="paste"><a href="#paste">Paste</a></li>
-            <li class="delete"><a href="#delete">Delete</a></li>
-        </optgroup>
-        <optgroup label="Ordering">
-            <li class="moveup"><a href="#moveup">Move Up</a></li>
-            <li class="movedown"><a href="#movedown">Move Down</a></li>
-            <li class="moveright"><a href="#moveright">Move In</a></li>
-            <li class="moveleft"><a href="#moveleft">Move Out</a></li>
-        </optgroup>
+        <li class="new"><a href="#new">New</a></li>
+        <li class="cut"><a href="#cut">Cut</a></li>
+        <li class="copy"><a href="#copy">Copy</a></li>
+        <li class="paste"><a href="#paste">Paste</a></li>
+        <li class="delete"><a href="#delete">Delete</a></li>
+        <li class="moveup"><a href="#moveup">Move Up</a></li>
+        <li class="movedown"><a href="#movedown">Move Down</a></li>
+        <li class="moveright"><a href="#moveright">Move In</a></li>
+        <li class="moveleft"><a href="#moveleft">Move Out</a></li>
     </ul>
     </form>
 </body>

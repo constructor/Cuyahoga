@@ -10,8 +10,7 @@ namespace Cuyahoga.Core.Service.Search
 	{
 		private readonly ISearchService _searchService;
 
-		public SearchDecorator(IContentItemService<T> contentItemService, ISearchService searchService)
-			: base(contentItemService)
+		public SearchDecorator(IContentItemService<T> contentItemService, ISearchService searchService): base(contentItemService)
 		{
 			this._searchService = searchService; 
 		}
@@ -28,38 +27,38 @@ namespace Cuyahoga.Core.Service.Search
 		}
 
 		#region Overrides
+		    public override T Save(T entity)
+		    {
+			    // First, save entity to the database, so it has an identifier. 
+                // Otherwise, the entity should be indexed with the wrong path.
+			    entity = base.Save(entity);
 
-		public override T Save(T entity)
-		{
-			// First, save entity to the database, so it has an identifier. Otherwise, the entity should be indexed with the wrong path.
-			entity = base.Save(entity);
+			    if (UseInstantIndexing && entity is ISearchableContent)
+			    {
+				    if (entity.IsNew)
+				    {
+					    this._searchService.AddContent(entity);
+				    }
+				    else
+				    {
+					    this._searchService.UpdateContent(entity);
+				    }
+			    }
+			    return entity;
+		    }
 
-			if (UseInstantIndexing && entity is ISearchableContent)
-			{
-				if (entity.IsNew)
-				{
-					this._searchService.AddContent(entity);
-				}
-				else
-				{
-					this._searchService.UpdateContent(entity);
-				}
-			}
-			return entity;
-		}
-
-		public override void Delete(T entity)
-		{
-			if (UseInstantIndexing)
-			{
-				if (entity is ISearchableContent)
-				{
-					this._searchService.DeleteContent(entity);
-				}
-			}
-			base.Delete(entity);
-		}
-
+		    public override void Delete(T entity)
+		    {
+			    if (UseInstantIndexing)
+			    {
+				    if (entity is ISearchableContent)
+				    {
+					    this._searchService.DeleteContent(entity);
+				    }
+			    }
+			    base.Delete(entity);
+		    }
 		#endregion
+
 	}
 }

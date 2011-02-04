@@ -109,14 +109,14 @@ namespace Cuyahoga.Core.Service.SiteStructure
 
                 string siteDataPhysicalDirectory = Path.Combine(siteDataRoot, site.Id.ToString());
                 this._fileService.CreateDirectory(siteDataPhysicalDirectory);
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "file"));
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "image"));
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "flash"));
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "media"));
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "downloads"));
-                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "index"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "File"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "Image"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "Flash"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "Media"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "Downloads"));
+                this._fileService.CreateDirectory(Path.Combine(siteDataPhysicalDirectory, "Index"));
 
-                string siteTemplatesDirectory = Path.Combine(siteDataPhysicalDirectory, "templates");
+                string siteTemplatesDirectory = Path.Combine(siteDataPhysicalDirectory, "Templates");
                 this._fileService.CreateDirectory(siteTemplatesDirectory);
 
                 // 4. Copy templates
@@ -152,7 +152,7 @@ namespace Cuyahoga.Core.Service.SiteStructure
                     }
 
                     //Custom Added (without '/')
-                    newTemplate.BasePath = "SiteData/" + site.Id.ToString() + "/templates/" + templateDirectoryName;
+                    newTemplate.BasePath = "SiteData/" + site.Id.ToString() + "/Templates/" + templateDirectoryName;
 
                     site.Templates.Add(newTemplate);
 

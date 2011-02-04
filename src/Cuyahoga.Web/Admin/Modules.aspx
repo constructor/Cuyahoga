@@ -59,7 +59,6 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
-            
             </div>
             
             <div id="tabs-2">

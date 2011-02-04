@@ -58,21 +58,21 @@ hr {
 	height: 45px;
 	margin: 0 auto;
 	padding: 0px 0;
-	background: url(../images/img02.jpg) no-repeat center top;
+	background: url(../Images/img02.jpg) no-repeat center top;
 }
 
 #menu .section ul {
 	height: 45px;
 	margin: 0;
 	padding: 0;
-	background: url(../images/img03.gif) no-repeat;
+	background: url(../Images/img03.gif) no-repeat;
 	list-style: none;
 }
 
 #menu .section li {
 	float: left;
 	height: 45px;
-	background: url(../images/img03.gif) no-repeat right top;
+	background: url(../Images/img03.gif) no-repeat right top;
 }
 
 #menu .section li ul{
@@ -92,7 +92,7 @@ hr {
 }
 
 #menu .section a:hover {
-	background: url(../images/img02.gif) repeat-x;
+	background: url(../Images/img02.gif) repeat-x;
 	color: #FFFFFF;
 	height: 45px;
 }
@@ -233,7 +233,7 @@ hr {
 	margin: 0;
 	padding-left: 10px;
 	padding-bottom: 5px;
-	background: url(../images/img04.gif) no-repeat left 50%;
+	background: url(../Images/img04.gif) no-repeat left 50%;
 }
 
 #sidebar p {
@@ -244,7 +244,7 @@ hr {
 	height: 20px;
 	margin: 0;
 	padding: 6px 0 0 20px;
-	background: url(../images/img07.jpg) no-repeat;
+	background: url(../Images/img07.jpg) no-repeat;
 	border-bottom: 1px dashed #B9B9B9;
 	text-transform: uppercase;
 	font-size: 14px;

@@ -5,9 +5,8 @@
 </head>
 <body>
 	<form id="form1" runat="server">
-
+	
 		<script type="text/javascript">
-            <!--
             function SetUniqueRadioButton(nameregex, current)
             {
                re = new RegExp(nameregex);
@@ -24,7 +23,6 @@
                }
                current.checked = true;
             }
-            //-->
 		</script>
 
 		<p>

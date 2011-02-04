@@ -38,7 +38,7 @@ p, blockquote, ul, ol
 blockquote
 {
     padding-left: 20px;
-    background: url(../images/blockquote-gackground.gif) repeat-y;
+    background: url(../Images/blockquote-gackground.gif) repeat-y;
 }
 
 a img
@@ -62,7 +62,7 @@ code
     width: 85%;
     min-width: 760px;
     height: 80px;
-    background: url(../images/logo.png);
+    background: url(../Images/logo.png);
     background-repeat: no-repeat;
     background-color: #FFF;
     z-index: 110;
@@ -73,7 +73,7 @@ code
 {
     width: 610px;
     height: 80px;
-    background: url(../images/bannerimage1.png);
+    background: url(../Images/bannerimage1.png);
     float: right;
 }
 
@@ -229,7 +229,7 @@ code
     border-right-color: #329494;
     border-left-color: #329494;
     overflow: inherit;
-    background: url(../images/content-background.jpg) repeat-x left bottom;
+    background: url(../Images/content-background.jpg) repeat-x left bottom;
     padding: 20px 10px 10px;
 }
 
@@ -255,7 +255,7 @@ code
     float: right;
     width: 200px;
     padding-left: 20px;
-    background: url(../images/img05.gif) repeat-y;
+    background: url(../Images/img05.gif) repeat-y;
     overflow: visible;
     margin: 0 auto;
 }
@@ -267,7 +267,7 @@ code
 
 #links li li
 {
-    background: url(../images/links-background.gif) repeat-x left bottom;
+    background: url(../Images/links-background.gif) repeat-x left bottom;
     padding: 7px 10px;
 }
 
@@ -290,7 +290,7 @@ code
 #footer
 {
     height: 100px;
-    background: #FFF url(../images/footer-background.gif) repeat-x;
+    background: #FFF url(../Images/footer-background.gif) repeat-x;
     text-align: center;
     padding: 20px;
 }

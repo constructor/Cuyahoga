@@ -367,12 +367,12 @@ input.ui-button:active { background: url(images/button_bg.png) 0px bottom repeat
 
 /*button text element */
 .ui-button .ui-button-text { display: block; line-height: 1.4; font-weight: bold; font-size: 14px; text-shadow: 0px 1px 0px rgba(255,255,255,0.8); }
-.ui-button-text-only .ui-button-text { padding: .2em .4em }
+.ui-button-text-only .ui-button-text { padding: .2em .4em; }
 .ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: 5px; text-indent: -9999999px; }
 .ui-button-text-icon .ui-button-text, .ui-button-text-icons .ui-button-text { padding: 5px 12px 5px 25px; }
 .ui-button-text-icons .ui-button-text { padding-right: 1.8em; }
 /* no icon support for input elements, provide padding by default */
-input.ui-button { padding: .4em 1em; }
+input.ui-button { padding: .2em .4em; }
 
 /*button icon element(s) */
 .ui-button .ui-icon { border: 0px none; }

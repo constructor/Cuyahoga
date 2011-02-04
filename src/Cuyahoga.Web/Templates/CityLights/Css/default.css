@@ -1,7 +1,7 @@
 body {
 	margin: 75px 0 0 0;
 	padding: 0;
-	background: #FFFFFF url(../images/img01.jpg) repeat-x left top;
+	background: #FFFFFF url(../Images/img01.jpg) repeat-x left top;
 	text-align: justify;
 	font: 15px Arial, Helvetica, sans-serif;
 	color: #666666;
@@ -12,7 +12,7 @@ form {
 }
 input {
 	padding: 5px;
-	background: #FEFEFE url(../images/img13.gif) repeat-x;
+	background: #FEFEFE url(../Images/img13.gif) repeat-x;
 	border: 1px solid #626262;
 }
 h1, h1 a, h2, h2 a, h3, h3 a {
@@ -124,7 +124,7 @@ a {
 }
 
 #banner {
-	background: url(../images/img03.gif) no-repeat left top;
+	background: url(../Images/img03.gif) no-repeat left top;
 	width: 960px;
 	height: 250px;
 	margin: 0 auto;
@@ -165,7 +165,7 @@ a {
 #sidebar li li {
 	margin: 0;
 	padding-left: 30px;
-	background: url(../images/img02.gif) no-repeat 5px 50%;
+	background: url(../Images/img02.gif) no-repeat 5px 50%;
 }
 #sidebar h2 {
 	padding: 0px 30px 10px 30px;

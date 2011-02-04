@@ -25,7 +25,7 @@ namespace Cuyahoga.Modules.StaticHtml
 
         protected void Page_Load(object sender, System.EventArgs e)
 		{
-            this.fckEditor.BasePath = this.Page.ResolveUrl("~/Support/FCKeditor/");
+            this.fckEditor.BasePath = this.Page.ResolveUrl("~/Support/fckeditor/");
 			this._module = base.Module as StaticHtmlModule;
 
 			if (! this.IsPostBack)
@@ -45,9 +45,9 @@ namespace Cuyahoga.Modules.StaticHtml
 			}
 
             //To DISPLAY template styles in editor
-            fckEditor.EditorAreaCSS = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/css/editor_" + this.Node.Template.Css;
+            fckEditor.EditorAreaCSS = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/Css/editor_" + this.Node.Template.Css;
             //To ADD template styles in editor DropDown List
-            fckEditor.StylesXmlPath = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/css/fckstyles.xml";
+            fckEditor.StylesXmlPath = UrlHelper.GetApplicationPath() + this.Node.Template.BasePath + "/Css/fckstyles.xml";
         }
 
 		private void SaveStaticHtml()

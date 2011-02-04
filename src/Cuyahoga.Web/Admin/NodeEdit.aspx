@@ -55,7 +55,7 @@
 
 
                 //Validator is fired by 'Save' button
-                var validator = $("#aspnetForm").validate({
+                var validator = $('form:first').validate({
                     success: function(label) {
                         label.remove(); //So the errorTab can be found (otherwise finds hidden labels)
                     },

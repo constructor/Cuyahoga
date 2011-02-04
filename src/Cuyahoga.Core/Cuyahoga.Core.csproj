@@ -284,7 +284,9 @@
     <Compile Include="Search\SearchContent.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service\Content\AbstractContentItemServiceDecorator.cs" />
+    <Compile Include="Service\Content\AbstractContentItemServiceDecorator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\Content\AuditContentDecorator.cs" />
     <Compile Include="Service\Content\CategoryService.cs" />
     <Compile Include="Service\Content\CommentService.cs" />
@@ -325,7 +327,9 @@
     <Compile Include="Service\Search\ISearchService.cs" />
     <Compile Include="Service\Search\ITextExtractor.cs" />
     <Compile Include="Service\Search\NativeTextExtractor.cs" />
-    <Compile Include="Service\Search\SearchDecorator.cs" />
+    <Compile Include="Service\Search\SearchDecorator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\Search\SearchIndexProperties.cs" />
     <Compile Include="Service\Search\SearchResult.cs" />
     <Compile Include="Service\Search\SearchResultCollection.cs" />
@@ -344,7 +348,9 @@
     <Compile Include="Service\Versioning\IVersionableContent.cs" />
     <Compile Include="Service\Versioning\IVersioningService.cs" />
     <Compile Include="Service\Versioning\VersionEntry.cs" />
-    <Compile Include="Service\Versioning\VersioningDecorator.cs" />
+    <Compile Include="Service\Versioning\VersioningDecorator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\Versioning\VersioningService.cs" />
     <Compile Include="Util\Config.cs">
       <SubType>Code</SubType>

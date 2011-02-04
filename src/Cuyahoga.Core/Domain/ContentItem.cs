@@ -272,7 +272,6 @@ namespace Cuyahoga.Core.Domain
 
 		public virtual bool IsViewAllowed(IPrincipal currentPrincipal)
 		{
-			
 			if (!currentPrincipal.Identity.IsAuthenticated)
 			{
                 return this.ViewRoles.Any(vr => vr.Name == "Anonymous User");

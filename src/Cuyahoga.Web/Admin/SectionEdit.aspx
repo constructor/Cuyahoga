@@ -12,7 +12,7 @@
                 $(document).ready(function() {
 
                     //Validator is fired by 'Save' button
-                    var validator = $("#aspnetForm").validate({
+                    var validator = $('form:first').validate({
                         success: function(label) {
                             label.remove(); //So the errorTab can be found (otherwise finds hidden labels)
                         },
@@ -215,7 +215,7 @@
 				var placeholdersList = document.getElementById(ddlist);
 				if (placeholdersList != null)
 				{
-					for (i = 0; i < placeholdersList.options.length; i++)
+					for (i = 0; placeholdersList.options.length > i; i++)
 					{
 						if (placeholdersList.options[i].value == val)
 						{

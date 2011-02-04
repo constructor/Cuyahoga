@@ -11,7 +11,7 @@
             $(document).ready(function() {
 
                 //Validator is fired by 'Save' button
-                var validator = $("#aspnetForm").validate({
+                var validator = $('form:first').validate({
 
                     onsubmit: false,
                     success: function(label) {

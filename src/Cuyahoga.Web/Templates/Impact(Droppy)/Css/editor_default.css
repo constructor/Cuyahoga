@@ -27,7 +27,7 @@ p, blockquote, ul, ol {
 
 blockquote {
 	padding-left: 20px;
-	background: url(../images/img05.gif) repeat-y;
+	background: url(../Images/img05.gif) repeat-y;
 }
 
 a {
@@ -44,7 +44,7 @@ a:hover {
 	width: 760px;
 	height: 180px;
 	margin: 0 auto;
-	background: url(../images/img02.jpg);
+	background: url(../Images/img02.jpg);
 }
 
 #header h1, #header h2 {
@@ -161,7 +161,7 @@ a:hover {
 	width: 720px;
 	margin: 0 auto 20px auto;
 	padding: 20px;
-	background: #FFFFFF url(../images/img04.jpg) repeat-x left bottom;
+	background: #FFFFFF url(../Images/img04.jpg) repeat-x left bottom;
 }
 
 /* Posts */
@@ -177,7 +177,7 @@ a:hover {
 	float: right;
 	width: 200px;
 	padding-left: 20px;
-	background: url(../images/img05.gif) repeat-y;
+	background: url(../Images/img05.gif) repeat-y;
 }
 
 #links ul {
@@ -192,7 +192,7 @@ a:hover {
 
 #links li li {
 	padding: 7px 10px;
-	background: url(../images/img06.gif) repeat-x left bottom;
+	background: url(../Images/img06.gif) repeat-x left bottom;
 }
 
 #links li a {
@@ -217,7 +217,7 @@ a:hover {
 #footer {
 	height: 100px;
 	padding: 20px;
-	background: #2D2D2D url(../images/img07.gif) repeat-x;
+	background: #2D2D2D url(../Images/img07.gif) repeat-x;
 }
 
 #footer p {

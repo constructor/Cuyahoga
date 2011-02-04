@@ -6,7 +6,7 @@
 
 input {
 	padding: 5px;
-	background: #FEFEFE url(../images/img13.gif) repeat-x;
+	background: #FEFEFE url(../Images/img13.gif) repeat-x;
 	border: 1px solid #626262;
 	font: normal 1em Arial, Helvetica, sans-serif;
 }
@@ -141,7 +141,7 @@ a:hover {
 
 
 #banner {
-	background: url(../images/img03.gif) no-repeat left top;
+	background: url(../Images/img03.gif) no-repeat left top;
 	width: 960px;
 	height: 250px;
 	margin: 0 auto;
@@ -186,7 +186,7 @@ a:hover {
 .post .title p {
 	margin: 0;
 	padding: 10px 0 10px 20px;
-	background: url(../images/img02.gif) no-repeat left center;
+	background: url(../Images/img02.gif) no-repeat left center;
 	border-top: 4px #D8DFE6 solid;
 	line-height: normal;
 	color: #3CB7FF;
@@ -216,12 +216,12 @@ a:hover {
 
 .post .links .more {
 	padding: 0 0 0 20px;
-	background: url(../images/img04.gif) no-repeat left 50%;
+	background: url(../Images/img04.gif) no-repeat left 50%;
 }
 
 .post .links .comments {
 	margin-left: 20px;
-	background: url(../images/img05.gif) no-repeat left 50%;
+	background: url(../Images/img05.gif) no-repeat left 50%;
 	padding: 0 0 0 20px;
 }
 
@@ -249,7 +249,7 @@ a:hover {
 #sidebar li li {
 	margin: 0;
 	padding-left: 30px;
-	background: url(../images/img02.gif) no-repeat 5px 50%;
+	background: url(../Images/img02.gif) no-repeat 5px 50%;
 }
 
 #sidebar h2 {

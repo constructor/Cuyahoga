@@ -7,7 +7,6 @@ namespace Cuyahoga.Core.Service.Content
 	public abstract class AbstractContentItemServiceDecorator<T> : IContentItemService<T> where T: IContentItem
 	{
 		private readonly IContentItemService<T> _contentItemService;
-
 		protected IContentItemService<T> ContentItemService
 		{
 			get { return this._contentItemService; }

@@ -96,11 +96,11 @@ namespace Cuyahoga.Web.UI
                 string adminjqpath = String.Format("{0}js/jquery-1.4.1.min.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString());
                 this._pageEngine.RegisterJavascript("jquery", adminjqpath);
 
-                string adminjspath = String.Format("{0}admin/js/adminpanel.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString());
+                string adminjspath = String.Format("{0}Admin/js/adminpanel.js", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString());
                 this._pageEngine.RegisterJavascript("popadminjs", adminjspath);
 
                 //CSS for popup panel
-                string admincsspath = String.Format("{0}admin/css/adminpanel.css", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString());
+                string admincsspath = String.Format("{0}Admin/Css/adminpanel.css", Cuyahoga.Web.Util.UrlHelper.GetApplicationPath().ToString());
                 this._pageEngine.RegisterStylesheet("popadmincss", admincsspath);
             }
 
@@ -124,7 +124,7 @@ namespace Cuyahoga.Web.UI
             if (this._cuyahogaUser != null && (this._cuyahogaUser.CanEdit(this._module.Section) || this._cuyahogaUser.HasRight(Rights.AccessAdmin)))//.HasPermission(AccessLevel.Administrator)))
             {
                 string paneltitle = this._module.DisplayTitle.Length > 15 ? this._module.DisplayTitle.Substring(0, 12) + "..." : this._module.DisplayTitle;
-                writer.Write(String.Format("<img class=\"editorcontextmenu\" src=\"{0}\" alt=\"Toggle edit options\"/><div class=\"moduletools\"><div class=\"moduletitle\"> " + Text.TruncateText(paneltitle, 16) + " </div>", UrlHelper.GetApplicationPath() + "admin/images/arrow-down-green.png"));
+                writer.Write(String.Format("<img class=\"editorcontextmenu\" src=\"{0}\" alt=\"Toggle edit options\"/><div class=\"moduletools\"><div class=\"moduletitle\"> " + Text.TruncateText(paneltitle, 16) + " </div>", UrlHelper.GetApplicationPath() + "Admin/Images/arrow-down-green.png"));
                 // added for 1.6.0
                 bool isPreview = (Request.QueryString["preview"] == null
                                     ? false

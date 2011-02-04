@@ -53,8 +53,14 @@ namespace Cuyahoga.Web
             // Initialize container
             Bootstrapper.InitializeContainer();
 
-            // Misc
-            FixAppDomainRestartWhenTouchingFiles();
+            // Misc: May need to be conditional if causes problems with Mono Builds
+            //FixAppDomainRestartWhenTouchingFiles();
+
+            Type t = Type.GetType("Mono.Runtime");
+            if (t == null) {
+                FixAppDomainRestartWhenTouchingFiles();
+            }
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

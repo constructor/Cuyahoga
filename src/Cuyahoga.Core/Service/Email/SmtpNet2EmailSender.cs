@@ -12,6 +12,7 @@ namespace Cuyahoga.Core.Service.Email
 	{
 		private string _host;
 		private int _port;
+        private bool _ssl;
 		private string _smtpUsername;
 		private string _smtpPassword;
 		private Encoding _encoding;
@@ -23,6 +24,11 @@ namespace Cuyahoga.Core.Service.Email
 		{
 			set { this._port = value; }
 		}
+
+        public bool Ssl
+        {
+            set { this._ssl = value; }
+        }
 
 		/// <summary>
 		/// SMTP Username
@@ -99,6 +105,7 @@ namespace Cuyahoga.Core.Service.Email
 			{
 				client.Credentials = new NetworkCredential(this._smtpUsername, this._smtpPassword);
 			}
+            client.EnableSsl = this._ssl;
 			client.Send(message);
 		}
 
