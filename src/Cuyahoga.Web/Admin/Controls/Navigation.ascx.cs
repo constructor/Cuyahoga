@@ -74,19 +74,21 @@ namespace Cuyahoga.Web.Admin.Controls
 
         private void DisplaySites(IList sites)
         {
+            HtmlGenericControl RootContainer = new HtmlGenericControl("div");
+            RootContainer.Attributes.Add("class", "rootcontainer");
+            this.plhNodes.Controls.Add(RootContainer);
+
             foreach (Site site in sites)
             {
                 //Custom statement to separate Administrator and Site Administrator
                 if (CurrentUser.IsInRole("Administrator") || (CurrentUser.IsInRole("Site Administrator") && CurrentUser.Sites.Contains(site)))
                 {
                     HtmlGenericControl sitecontainer = CreateDisplaySite(site);
-                    this.plhNodes.Controls.Add(sitecontainer);
-
                     if (this._page.ActiveNode != null && this._page.ActiveNode.Site == site && this._page.ActiveNode.Id > 0)
                     {
-                        this.plhNodes.Controls.Add(CreateNewChildNodeControl(sitecontainer));
+                        RootContainer.Controls.Add(CreateNewChildNodeControl(sitecontainer));
                     }
-                    this.plhNodes.Controls.Add(CreateNewNodeControl(site, sitecontainer));
+                    RootContainer.Controls.Add(CreateNewNodeControl(site, sitecontainer));
                     sitecontainer.Controls.Add(new LiteralControl("<hr/>"));
                 }
             }
