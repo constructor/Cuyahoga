@@ -46,7 +46,7 @@
 
                     buffernode(0, 0, '');
 
-                    $(".sitepanel").replaceWith(returnObject.SitesHTML);
+                    $(".rootcontainer").replaceWith(returnObject.SitesHTML);
                     showMessage(returnObject.Details);
                     siteTree();
                     contextMenu();
@@ -77,7 +77,7 @@
 
                     buffernode(0, 0, '');
 
-                    $(".sitepanel").replaceWith(returnObject.SitesHTML);
+                    $(".rootcontainer").replaceWith(returnObject.SitesHTML);
                     showMessage(returnObject.Details);
                     siteTree();
                     contextMenu();
@@ -110,7 +110,7 @@
 
                     buffernode(0, 0, '');
 
-                    $(".sitepanel").replaceWith(returnObject.SitesHTML);
+                    $(".rootcontainer").replaceWith(returnObject.SitesHTML);
                     showMessage(returnObject.Details);
                     siteTree();
                     contextMenu();
@@ -145,7 +145,7 @@
 
                         buffernode(0, 0, '');
 
-                        $(".sitepanel").replaceWith(returnObject.SitesHTML);
+                        $(".rootcontainer").replaceWith(returnObject.SitesHTML);
                         showMessage(returnObject.Details);
                         siteTree();
                         contextMenu();
