@@ -34,9 +34,7 @@ namespace Cuyahoga.Web.Admin.Controls
 
             if (this._page.ActiveSection != null && this._page.ActiveSection.Node != null && this._page.ActiveSection.Id > 0)
             {
-
                 this.hplSite.NavigateUrl = Util.UrlHelper.GetFullUrlFromSectionViaSite(this._page.ActiveSection);
-
             }
             else if (this._page.ActiveNode != null && this._page.ActiveNode.Id > 0)
             {
@@ -57,7 +55,7 @@ namespace Cuyahoga.Web.Admin.Controls
         protected void lbtLogout_Click(object sender, System.EventArgs e)
         {
             FormsAuthentication.SignOut();
-            Context.Response.Redirect(Context.Request.RawUrl);
+            Context.Response.Redirect("/");
         }
     }
 }

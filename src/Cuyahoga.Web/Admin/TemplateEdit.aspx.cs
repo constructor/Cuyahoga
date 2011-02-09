@@ -71,11 +71,12 @@ namespace Cuyahoga.Web.Admin
             ddlSites.DataSource = this.SiteService.GetAllSites();
             ddlSites.DataBind();
 
-            if (this.ActiveSite != null)
+            foreach (ListItem li in ddlSites.Items)
             {
-                ddlSites.SelectedValue = this.ActiveSite.Id.ToString();
+                if (li.Value != null && _activeTemplate.Site != null)
+                    li.Selected = li.Value == _activeTemplate.Site.Id.ToString();
             }
-        }
+        } 
 
         protected void BindTemplateControls()
         {
