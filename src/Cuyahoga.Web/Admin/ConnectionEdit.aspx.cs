@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 using Cuyahoga.Core.Communication;
@@ -98,7 +99,7 @@ namespace Cuyahoga.Web.Admin
             if (compatibleModuleTypes.Count > 0)
             {
                 // Retrieve all sections that have the compatible ModuleTypes
-                IList compatibleSections = base.SectionService.GetSectionsByModuleTypes(compatibleModuleTypes);
+                IList compatibleSections = base.SectionService.GetSectionsByModuleTypes(compatibleModuleTypes).Cast<Section>().Where(x=>x.Node != null).ToList();
 
                 if (compatibleSections.Count > 0)
                 {
